@@ -14,39 +14,6 @@
     -webkit-border-radius: 60% 0 0 60%;
 }
 
-/* custom slide */
-
-.slide-background {
-    position: relative;
-    width: 100vw;
-    height: 106vh;
-}
-
-.slide-front {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 106vh;
-}
-
-.slide-text {
-    position: relative;
-    background-color: #fff !important;
-    width: 100vw;
-    height: 106vh;
-}
-
-.slide-image {
-    position: absolute;
-    right: 0;
-    background-color: #425CC7 !important;
-    width: 50vw;
-    height: 106vh;
-    border-radius: 60% 0 0 60%;
-    -moz-border-radius: 60% 0 0 60%;
-    -webkit-border-radius: 60% 0 0 60%;
-}
-
 /* custom transition slide*/
 .carousel-item {
     transition: transform 4s ease-in-out;
@@ -73,46 +40,7 @@
 /* responsive form */
 
 /* Small devices (landscape phones, 576px and down) */
-@media (max-width: 576px) {
-    /* custom slide */
-
-    .slide-background {
-        display: block;
-        background-color: #fff !important;
-        width: 100vw !important;
-        height: 50vh !important;
-    }
-
-    .slide-front {
-        display: block !important;
-        top: 0 !important;
-        width: 100vw !important;
-        height: 50vh !important;
-    }
-
-    .slide-text {
-        display: block !important;
-        background-color: #fff !important;
-        width: 100vw !important;
-        height: 50vh !important;
-    }
-
-    .slide-image {
-        display: block !important;
-        top: 325px;
-        background-color: #425CC7 !important;
-        width: 100vw !important;
-        height: 50vh !important;
-        border-radius: 60% 0 0 60%;
-        -moz-border-radius: 60% 0 0 60%;
-        -webkit-border-radius: 60% 0 0 60%;
-    }
-
-    .space{
-        width: auto !important;
-        height: 400px !important;
-    }
-}
+@media (max-width: 576px) {}
 
 /* Medium devices (tablets, 768px and down) */
 @media (max-width: 768px) {
@@ -125,46 +53,6 @@
 @media (max-width: 992px) {
     .center-text {
         margin: 0 10%;
-    }
-
-    /* custom slide */
-
-    .slide-background {
-        position: relative;
-        width: 100vw;
-        height: 40vh;
-        padding-top: 5rem;
-    }
-
-    .slide-front {
-        position: absolute;
-        top: -8%;
-        width: 100vw;
-        height: 40vh;
-        padding-top: 5rem;
-    }
-
-    .slide-text {
-        position: relative;
-        background-color: #fff !important;
-        width: 100vw;
-        height: 40vh;
-    }
-
-    .slide-image {
-        position: absolute;
-        right: 0;
-        background-color: #425CC7 !important;
-        width: 50vw;
-        height: 40vh;
-        border-radius: 60% 0 0 60%;
-        -moz-border-radius: 60% 0 0 60%;
-        -webkit-border-radius: 60% 0 0 60%;
-    }
-
-    .space{
-        width: auto;
-        height: 100px;
     }
 }
 
