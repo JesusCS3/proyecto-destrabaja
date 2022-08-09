@@ -1,28 +1,35 @@
-<nav class="navbar navbar-expand-lg bg-light fixed-top menu">
-    <div class="container-fluid">
-        <a class="navbar-brand" routerLink="">
-            <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="130" height="31">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span ><i class="bi bi-three-dots-vertical"></i></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/landing-page">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="singin">Iniciar sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="singup">Registrarse</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2 rounded-pill" type="search" placeholder="Buscar..." aria-label="Search">
-                <button class="btn btn-dark search-btn rounded-5" type="submit"><i class="bi bi-search"></i></button>
-            </form>
+<header>
+    <nav class="navbar navbar-expand-lg bg-light fixed-top menu">
+        <div class="container-fluid mx-lg-4">
+            <a class="navbar-brand mx-3" routerLink="">
+                <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="130" height="31">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span ><i class="bi bi-three-dots-vertical"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" routerLink="/landing-page">Inicio</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-light log-text" routerLink="singin">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light log-text me-2" routerLink="singup">Registrarse</a>
+                    </li>
+                    <li class="nav-item" style="width: 150px;">
+                        <form class="position-relative" role="search">
+                            <button class="btn btn-dark search-btn rounded-5 position-absolute top-0 start-0" type="submit"><i class="bi bi-search"></i></button>
+                            <input class="form-control me-2 rounded-pill" type="search" placeholder="       Buscar..." aria-label="Search">
+                        </form>
+                    </li>
+                </ul>
+    
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

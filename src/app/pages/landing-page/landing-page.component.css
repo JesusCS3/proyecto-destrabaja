@@ -1,0 +1,28 @@
+/* customized carousel */
+.text-container{
+    color: #425CC7;
+}
+.person-container{
+    background-color: #425CC7 !important;
+    border-radius: 60% 0 0 60%;
+    -moz-border-radius: 60% 0 0 60%;
+    -webkit-border-radius: 60% 0 0 60%;
+}
+
+/* custom button signup*/
+.singup {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #FF4713;
+    --bs-btn-border-color: #FF4713;
+    --bs-btn-hover-color: #FF4713;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #FF4713;
+    --bs-btn-focus-shadow-rgb: 66,70,73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #FF4713;
+    --bs-btn-active-border-color: #373b3e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #FF4713;
+    --bs-btn-disabled-border-color: #FF4713;
+}

@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { SingupComponent } from './components/singup/singup.component';
-import { LandingPageComponent } from './components/landing-page/landing-page.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule} from '@angular/common/http';
+import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
+import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HttpClientModule} from '@angular/common/http'
     SingupComponent,
     LandingPageComponent,
     HomePageComponent,
-    FooterComponent
+    FooterComponent,
+    PrivacyPolicyComponent,
+    ServiceConditionsComponent
   ],
   imports: [
     BrowserModule,

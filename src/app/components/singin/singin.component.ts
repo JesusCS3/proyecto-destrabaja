@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-singin',
@@ -10,18 +9,18 @@ import { NgForm } from '@angular/forms';
 })
 export class SinginComponent implements OnInit {
 
-  email: string = '';
-  password: string = '';
+  email = '';
+  password = '';
   
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSingin(form: NgForm): void {
+  onSingin(): void {
       var credentials = {
-      username: form.value.email,
-      password: form.value.password
+      username: this.email,
+      password: this.password
     }
     Auth.signIn(credentials).then( data => {
       this.router.navigate(['/home-page']);
@@ -29,7 +28,6 @@ export class SinginComponent implements OnInit {
     .catch(err => {
       alert(err.message || JSON.stringify(err));
     })
-    console.log(credentials);
   }
 
   onSinginFacebook(): void {

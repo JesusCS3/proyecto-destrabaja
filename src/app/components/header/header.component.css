@@ -1,22 +1,83 @@
 /* custom button search */
 .btn-dark {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #FF4713;
-    --bs-btn-border-color: #FF4713;
-    --bs-btn-hover-color: #FF4713;
-    --bs-btn-hover-bg: #fff;
-    --bs-btn-hover-border-color: #fff;
-    --bs-btn-focus-shadow-rgb: 66,70,73;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #FF4713;
-    --bs-btn-active-border-color: #373b3e;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #FF4713;
-    --bs-btn-disabled-border-color: #FF4713;
-  }
+  --bs-btn-color: #425CC7;
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #425CC7;
+  --bs-btn-hover-border-color: #425CC7;
+  --bs-btn-focus-shadow-rgb: 66, 70, 73;
+  --bs-btn-active-color: #425CC7;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #425CC7;
+  --bs-btn-disabled-bg: #fff;
+  --bs-btn-disabled-border-color: #fff;
+}
 
 /* navbar background*/
-.menu{
-    background-color: #ffffff00 !important;
+.menu {
+  background-color: #ffffff00 !important;
+}
+
+/* text color singin and signup */
+.log-text {
+  --bs-text-opacity: 1;
+  color: #fff !important;
+}
+
+/* responsive form */
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) {
+
+  /* navbar background*/
+  .menu {
+    background-color: #e0e0e0 !important;
+  }
+
+  /* text color singin and signup */
+  .log-text {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity)) !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+
+  /* navbar background*/
+  .menu {
+    background-color: #e0e0e0 !important;
+  }
+
+  /* text color singin and signup */
+  .log-text {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity)) !important;
+  }
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+    /* navbar background*/
+    .menu {
+      background-color: #e0e0e0 !important;
+    }
+  
+    /* text color singin and signup */
+    .log-text {
+      --bs-text-opacity: 1;
+      color: rgba(var(--bs-secondary-rgb),var(--bs-text-opacity)) !important;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* text color singin and signup */
+.log-text {
+  --bs-text-opacity: 1;
+  color: #fff !important;
+}
 }

@@ -1,0 +1,19 @@
+/*home background*/
+.home-background {
+    margin: 0;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #e0e0e0 !important;
+    height: 100vh;
+    background-size: cover;
+}
+
+/* customized carousel */
+.text-container{
+    color: #fff;
+}
+.person-one-container{
+    background-color: #FFC600 !important;
+    height: 50vh;
+    margin: auto;
+}
