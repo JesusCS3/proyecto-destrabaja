@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SinginComponent } from './components/singin/singin.component';
 import { SingupComponent } from './components/singup/singup.component';
+import { ForgotComponent} from './components/forgot/forgot.component';
 //pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'header', component:HeaderComponent},
   {path:'singin', component:SinginComponent},
   {path:'singup', component:SingupComponent},
+  {path:'forgot', component:ForgotComponent},
   {path:'home-page', component:HomePageComponent},
   {path:'landing-page', component:LandingPageComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},

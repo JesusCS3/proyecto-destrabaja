@@ -1,5 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    margin: 0;
-    background-color: #ffffff !important;
+
+/***** company colors *****/
+
+/* primary color */
+.first-color-blue {
+    color: #425CC7;
 }
+
+/* secondary colors */
+
+.yellow-color{
+    color: #FFC600;
+}
+
+.second-color-blue{
+    color: #54C8E8;
+}
+
+.orange-color{
+    color: #FF4713;
+}
+
+/* Additional color */
+
+.third-color-blue{
+    color: #21145F;
+}
+
+

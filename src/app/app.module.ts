@@ -13,7 +13,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
-import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component'
+import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
+import { ForgotComponent } from './components/forgot/forgot.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ServiceConditionsComponent } from './pages/about/service-conditions/ser
     HomePageComponent,
     FooterComponent,
     PrivacyPolicyComponent,
-    ServiceConditionsComponent
+    ServiceConditionsComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,

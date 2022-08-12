@@ -1,4 +1,4 @@
-/*background signin */
+/* signin background */
 .background-form {
   margin: 0;
   padding-top: 5rem;
@@ -8,14 +8,14 @@
   background-size: cover;
 }
 
-/* custom switch remember */
+/* custom remember switch */
 .form-check-input:checked {
   background-color: #425CC7;
   border-color: #425CC7;
 }
 
 
-/* custom button */
+/* custom social button */
 .btn-outline-dark {
   --bs-btn-color: #425CC7;
   --bs-btn-border-color: #425CC7;
@@ -32,7 +32,7 @@
   --bs-gradient: none;
 }
 
-/* custom button login*/
+/* custom singin button*/
 .login {
   --bs-btn-color: #FF4713;
   --bs-btn-border-color: #FF4713;
