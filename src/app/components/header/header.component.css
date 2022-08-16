@@ -21,6 +21,10 @@
   background-color: #ffffff00 !important;
 }
 
+.menu{
+  background-color: #e3f2fd00;
+}
+
 /* text color singin and signup */
 .log-text {
   --bs-text-opacity: 1;

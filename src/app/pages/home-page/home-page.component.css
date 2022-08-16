@@ -1,18 +1,9 @@
 /*slide background*/
-.slide-background {
-    margin-top: 7rem;
-    padding-top: 6rem;
-    height: 100vh;
-}
-
-.person-one-container {
-    background-color: #FFC600 !important;
-    height: 70vh;
-}
-
-.person-two-container {
-    background-color: #FF4713 !important;
-    height: 70vh;
+.slide-size {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
 }
 
 /* custom transition slide*/
@@ -26,7 +17,13 @@
     /* -webkit-filter: grayscale(70%); */
     /* filter: grayscale(70%); */
     color: #fff; 
-    border-radius: 2rem;
+    border-radius: 3rem;
+}
+
+.img-card-category{
+    width: 12rem;
+    height: 9rem;
+    border-radius: 3rem;
 }
 
 /* customized cards services */
@@ -86,6 +83,16 @@
     left: 60%;
     border-top-right-radius: 5rem;
     border-bottom-right-radius: 5rem;
+}
+
+.img-get-started{
+    height: 50vh;
+    width: auto;
+}
+
+/*custom shadow */
+.shadow-lg {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.37) !important;
 }
 
 /* responsive form */
