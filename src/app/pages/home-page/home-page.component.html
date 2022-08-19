@@ -257,17 +257,66 @@
   </section>
   <!-- want to get started? -->
   <section>
-    <div class="get-started position-relative">
+    <div class="get-started ">
       <div class="col-12 col-md-12 col-lg-12">
-        <div class="first-bg position-relative d-flex justify-content-center">
-          <div class="second-bg position-absolute"></div>
-          <div class="position-absolute">
-            <img src="./assets/img/home-page/get-started/get-started.png" class="img-fluid img-get-started" alt="get-started">
-          </div>
-        </div>
+            <img src="./assets/img/home-page/get-started/get-started.png" class="img-fluid" alt="get-started">
       </div>
     </div>
   </section>
+
+  <nav class="navbar navbar-expand-lg bg-light fixed-top menu2">
+    <div class="container-fluid mx-lg-4 my-lg-4">
+        <a class="navbar-brand d-lg-none mx-3" routerLink="">
+            <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180" height="auto">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="bi bi-three-dots-vertical"></i></span>
+        </button>
+        <div class="collapse navbar-collapse row" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto justify-content-center">
+                <li class="nav-item mx-3">
+                    <button class="btn btn-client" type="button" routerLink="">
+                        Cliente
+                    </button>
+                </li>
+                <li class="nav-item mx-3 me-5">
+                    <button class="btn btn-destrabadores" type="button" routerLink="">
+                        Destrabadores
+                    </button>
+                </li>
+                <a class="navbar-brand d-none d-lg-block mx-5" routerLink="">
+                    <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180"
+                        height="auto">
+                </a>
+                <li class="nav-item mx-3 ms-5" style="width: 150px;">
+                    <div class="input-group w-100">
+                        <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                        <input type="search" class="form-control search-text" name="search" id="search"
+                        placeholder="Buscar..." aria-label="Search">
+                    </div>
+                </li>
+                <li class="nav-item mx-3">
+                    <button class="btn btn-publish" type="button" routerLink="">
+                        ¡Publica Ahora!
+                    </button>
+                </li>
+                <li class="nav-item dropdown mx-3">
+                    <i class="bi bi-person-circle profile-btn" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="" (click)="getAttributes()">Ver perfil</a></li>
+                        <li><a class="dropdown-item" routerLink="/profile-settings">Ajustes</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" (click)="onSingup()" type="button">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
   <div class="row justify-content-center">
     <div class="col-md-5 col-lg-4 my-5 py-5 shadow-lg bg-body rounded" style="margin-top: 5rem;">

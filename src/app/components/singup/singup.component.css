@@ -57,13 +57,15 @@
 /* custom eye button */
 .eye-btn {
     width: 40px; 
-    height:40px; 
+    height:40px;
+    border-top-right-radius: 0.3rem !important;
+    border-bottom-right-radius: 0.3rem !important;
     --bs-btn-color: #425CC7;
     --bs-btn-bg: #fff;
     --bs-btn-border-color: var(--bs-border-color-translucent);
     --bs-btn-hover-color: #425CC7;
     --bs-btn-hover-bg: #fff;
-    --bs-btn-hover-border-color: #fff;
+    --bs-btn-hover-border-color: 1px solid #ced4da;
     --bs-btn-focus-shadow-rgb: 66, 70, 73;
     --bs-btn-active-color: #425CC7;
     --bs-btn-active-bg: #fff;

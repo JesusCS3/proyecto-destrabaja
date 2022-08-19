@@ -14,7 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
-import { ForgotComponent } from './components/forgot/forgot.component'
+import { ForgotComponent } from './components/forgot/forgot.component';
+import { ProfileSettingsComponent } from './pages/user/settings/profile-settings/profile-settings.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ForgotComponent } from './components/forgot/forgot.component'
     FooterComponent,
     PrivacyPolicyComponent,
     ServiceConditionsComponent,
-    ForgotComponent
+    ForgotComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,

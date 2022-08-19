@@ -10,6 +10,7 @@ import { ForgotComponent} from './components/forgot/forgot.component';
 //pages
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ProfileSettingsComponent } from './pages/user/settings/profile-settings/profile-settings.component';
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'forgot', component:ForgotComponent},
   {path:'home-page', component:HomePageComponent},
   {path:'landing-page', component:LandingPageComponent},
+  {path:'profile-settings', component:ProfileSettingsComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent}
 ];

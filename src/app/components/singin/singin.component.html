@@ -24,9 +24,11 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <div>
-                        <input type="password" class="form-control" id="password" name="password" [(ngModel)]='password' required
+                    <div class="input-group w-100">
+                        <input type="password" class="form-control" id="password" name="password" #asPassword [(ngModel)]='password' required
                         placeholder="Contraseña">
+                        <button class="btn eye-btn" (click)="show()" #eyeShow name="eyeShow"><i class="bi bi-eye-slash-fill"></i></button>
+                        <button class="btn eye-btn d-none" (click)="hide()" #eyeHide name="eyeHide"><i class="bi bi-eye-fill"></i></button>
                     </div>
                 </div>
                 <div class="form-check form-switch d-flex flex-row">

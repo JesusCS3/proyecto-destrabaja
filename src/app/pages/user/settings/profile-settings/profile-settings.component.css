@@ -1,0 +1,66 @@
+/* profile background */
+.background-form {
+    margin: 0;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #e0e0e0 !important;
+    height: auto;
+    background-size: cover;
+}
+
+/* custom next button*/
+.next-btn {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #425CC7;
+    --bs-btn-border-color: #425CC7;
+    --bs-btn-hover-color: #425CC7;
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: #425CC7;
+    --bs-btn-focus-shadow-rgb: 66, 70, 73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #425CC7;
+    --bs-btn-active-border-color: #373b3e;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #425CC7;
+    --bs-btn-disabled-border-color: #425CC7;
+}
+
+/*custom shadow */
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.37) !important;
+}
+
+/* responsive form */
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) {
+    .logo {
+        width: 60%;
+        height: auto;
+    }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    .logo {
+        width: 60%;
+        height: auto;
+    }
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 992px) {
+    .logo {
+        width: 60%;
+        height: auto;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .logo {
+        width: 60%;
+        height: auto;
+    }
+}
