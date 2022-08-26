@@ -13,29 +13,27 @@
 
 /* customized cards category */
 .card-category{
-    width: 12rem; 
-    /* -webkit-filter: grayscale(70%); */
-    /* filter: grayscale(70%); */
+    width: 12rem;
+    height: 14rem;
     color: #fff; 
     border-radius: 3rem;
 }
 
 .img-card-category{
     width: 12rem;
-    height: 9rem;
+    height: 14rem;
     border-radius: 3rem;
 }
 
 /* customized cards services */
 .card-services{
     width: 18rem; 
-    opacity: .9 !important; 
-    /* -webkit-filter: grayscale(70%); */
-    /* filter: grayscale(70%); */
     border-radius: 2rem;
 }
 
 .card-img-top {
+    width: 100%;
+    height: 12rem;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
   }
@@ -61,43 +59,10 @@
     --bs-btn-disabled-border-color: #fff;
 }
 
-/*get started background*/
-.get-started {
-    margin-top: 3rem;
-    padding-top: 3rem;
-    margin-bottom: 3rem;
-    padding-bottom: 3rem;
-    height: 50vh;
-}
-
-.first-bg{
-    background-color: #54C8E8 !important;
-    height: 50vh;
-    border-radius: 5rem;
-}
-
-.second-bg{
-    background-color: #FFC600 !important;
-    height: 50vh;
-    width: 40vw;
-    left: 60%;
-    border-top-right-radius: 5rem;
-    border-bottom-right-radius: 5rem;
-}
-
-.img-get-started{
-    height: 50vh;
-    width: auto;
-}
-
 /*custom shadow */
 .shadow-lg {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.37) !important;
+    box-shadow: 0.5rem 1rem 1rem  rgba(0, 0, 0, 0.192) !important;
 }
-
-  
-
-
 
 /* responsive form */
 
@@ -109,21 +74,6 @@
     .center-text {
         margin: 0 10%;
     }
-
-    /*slide background*/
-    .slide-background {
-        margin-top: 3rem !important;
-        padding-top: 3rem !important;
-        height: 85vh !important;
-    }
-
-    .person-one-container {
-        height: 70vh !important;
-    }
-
-    .person-two-container {
-        height: 70vh !important;
-    }
 }
 
 /* Large devices (desktops, 992px and down) */
@@ -131,22 +81,6 @@
     .center-text {
         margin: 0 10%;
     }
-
-    /*slide background*/
-    .slide-background {
-        margin-top: 4rem;
-        padding-top: 4rem;
-        height: 50vh;
-    }
-
-    .person-one-container {
-        height: 35vh;
-    }
-
-    .person-two-container {
-        height: 35vh;
-    }
-
 }
 
 /* Large devices (desktops, 992px and up) */

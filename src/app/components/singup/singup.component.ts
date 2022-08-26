@@ -25,6 +25,7 @@ export class SingupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // show password
   show(): void{
     const asPassword = this.pass.nativeElement;
     const show = this.eyeShow.nativeElement;
@@ -35,7 +36,7 @@ export class SingupComponent implements OnInit {
     this.renderer2.removeClass(hide, 'd-none');
     this.renderer2.addClass(hide, 'd-block');
   }
-
+  // hide password
   hide(): void {
     const asPassword = this.pass.nativeElement;
     const show = this.eyeShow.nativeElement;

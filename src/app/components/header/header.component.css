@@ -43,7 +43,7 @@
 .search-text{
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
-
+  box-shadow: none;
 }
 
 /* navbar background*/
@@ -52,7 +52,8 @@
 }
 
 .menu2{
-  background-color: #e0e0e0 !important;
+  background-color: #ffffff !important;
+  border: 3px solid #54C8E8;
 }
 
 /* text color singin and signup */

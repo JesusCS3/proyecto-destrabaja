@@ -63,5 +63,4 @@ export class SinginComponent implements OnInit {
   onSinginGoogle(): void {
     Auth.federatedSignIn({customProvider: 'Google'})
   }
-
 }

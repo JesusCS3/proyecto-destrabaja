@@ -1,75 +1,68 @@
 <section>
-    <div class="container-fluid col-12 col-md-9 col-lg-12 my-5 py-5 shadow-lg bg-body rounded">
-        <form #f="ngForm" novalidate>
+    <div class="container-fluid row justify-content-center col-12 col-md-12 col-lg-12 my-5 py-5">
+        <div class="col-12 col-md-8 col-lg-10 p-5">
+            <h2 class="col-12 col-md-12 col-lg-12 fw-bold first-color-blue px-lg-3 mx-lg-3">Completa tu registro</h2>
+        </div>
+        <form #f="ngForm" novalidate (ngSubmit)="f.form.valid">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-9 mx-5 my-5">
-                    <h2 class="col-lg-5 fw-bold first-color-blue mx-3">Completa tu registro</h2>
-                </div>
-                <div class="row align-items-center col-12 col-md-12 col-lg-10">
+                <div class="row align-items-center col-12 col-md-10 col-lg-10 register">
                     <div class="row justify-content-center col-12 col-md-12 col-lg-4 mb-md-5 mb-5 mb-lg-0">
-                        <div class="img-profile">
-
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
-                        <div class="col-10 col-md-12 col-lg-10 mb-3">
-                            <div>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="col-10 col-md-12 col-lg-10 mb-3">
-                            <div>
-                                <input type="text" class="form-control" name="fathers-last-name" id="fathers-last-name"
-                                    placeholder="Apellido Paterno" required>
-                            </div>
-                        </div>
-                        <div class="col-10 col-md-12 col-lg-10 mb-3">
-                            <div>
-                                <input type="text" class="form-control" name="mothers-last-name" id="mothers-last-name"
-                                    placeholder="Apellido Materno" required>
+                        <div class="img-profile row align-items-center">
+                            <div class="img-file">
+                                <p id="text-file">Da clic para agregar tu foto de perfil</p>
+                                <input type="file" id="send-file" name="send-file" accept="image/png, image/jpeg">
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
-                        <div class="col-10 col-md-12 col-lg-10 mb-3">
-                            <div>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Género...</option>
-                                    <option>...</option>
-                                </select>
-
-                            </div>
+                        <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre" required>
+                            <label for="name">Nombre(s)</label>
                         </div>
-                        <div class="col-10 col-md-12 col-lg-10 mb-3">
-                            <div>
-                                <label class="pb-2" for="date">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" name="date-birth" id="date-birth"
-                                    placeholder="Fecha" required>
-                            </div>
+                        <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <input type="text" class="form-control" name="fathers-last-name" id="fathers-last-name"
+                                placeholder="Apellido Paterno" required>
+                            <label for="fathers-last-name">Apellido Paterno</label>
                         </div>
-                        <div class="col-5 col-md-6 col-lg-5 mb-3">
-                            <div>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">País...</option>
-                                    <option>...</option>
-                                </select>
-
-                            </div>
+                        <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <input type="text" class="form-control" name="mothers-last-name" id="mothers-last-name"
+                                placeholder="Apellido Materno" required>
+                            <label for="mothers-last-name">Apellido Materno</label>
                         </div>
-                        <div class="col-5 col-md-6 col-lg-5 mb-3">
-                            <div>
-                                <select class="form-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Ciudad...</option>
-                                    <option>...</option>
-                                </select>
-
-                            </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
+                        <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <select class="form-select" id="gender" required>
+                                <option selected disabled>Género</option>
+                                <option value="">Masculino</option>
+                                <option value="">Femenino</option>
+                                <option value="">Prefiero no decirlo</option>
+                            </select>
+                        </div>
+                        <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <label class="pb-2" for="date-birth">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" name="date-birth" id="date-birth"
+                                placeholder="Fecha de nacimiento" required>
+                        </div>
+                        <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
+                            <select class="form-select" id="contry" name="contry" required>
+                                <option selected disabled>País</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+                        <div class="col-5 col-md-6 col-lg-5 form-floating mb-3" v>
+                            <select class="form-select" id="city" name="city" required>
+                                <option selected disabled>Ciudad</option>
+                                <option value="">...</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input class="d-none" type="text" name="nextOne" id="nextOne" value="1" [(ngModel)]='nextOne'>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end col-12 col-lg-8 mx-auto my-5">
-                    <button class="btn next-btn col-1 col-md-1 col-lg-2">Siguiente</button>
+                <div class="row justify-content-end col-10 col-lg-8 pt-5">
+                    <button class="btn next-btn col-3 col-md-3 col-lg-2">Siguiente</button>
                 </div>
             </div>
         </form>
@@ -77,64 +70,62 @@
 </section>
 
 
-    <div class="row justify-content-center">
-        <div class="col-10 col-md-8 col-lg-9 my-5">
-            <h2 class="fw-bold first-color-blue mx-3">Completa tu registro</h2>
-        </div>
-            <div class="col-10 col-md-8 col-lg-9">
-                <div>
-                    <label class="me-3 first-color-blue fw-bold mb-3" for="">Redacta tu hoja de vida</label><i class="bi bi-question-circle-fill question-btn"></i>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    </div>
-                </div>
+<div class="row justify-content-center registerCV">
+    <div class="col-10 col-md-8 col-lg-9">
+        <div>
+            <label class="me-3 first-color-blue fw-bold mb-3" for="">Redacta tu hoja de vida</label><i
+                class="bi bi-question-circle-fill question-btn"></i>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                    style="height: 100px"></textarea>
             </div>
-        <div class="row justify-content-end col-12 col-lg-9 mx-auto my-5">
-            <button class="btn next-btn col-1 col-md-1 col-lg-2">Siguiente</button>
         </div>
     </div>
+</div>
 
 
 
-    <div class="row justify-content-center">
-        <div class="col-10 col-md-8 col-lg-9 my-5">
-            <h2 class="fw-bold first-color-blue mx-3">Completa tu registro</h2>
-        </div>
-        <div class="row align-items-center col-10 col-md-8 col-lg-9">
-            <div class="col col-md-4 col-lg-4">
-              <label class="me-3 first-color-blue fw-bold mb-3" for="">Agrega tu Video CV</label><i class="bi bi-question-circle-fill question-btn"></i>
-              <div>
-                <img src="./assets/img/user/settings/profile/video.svg" alt="like" style="width: 300px; height: 300px">
-              </div>
-              <div class="mb-3">
-                <input type="file" id="myFile" name="filename">
-              </div>              
+<div class="row justify-content-center">
+    <div class="row align-items-center col-10 col-md-8 col-lg-9 py-5">
+        <div class="col col-md-4 col-lg-4">
+            <label class="me-3 first-color-blue fw-bold mb-3" for="">Agrega tu Video CV</label><i
+                class="bi bi-question-circle-fill question-btn"></i>
+            <div class="py-5">
+                <img src="./assets/img/user/settings/profile/video.svg" alt="like" style="width: 300px; height: auto">
             </div>
-            <div class="col col-md-4 col-lg-4">
-              <label class="me-3 first-color-blue fw-bold mb-3" for="">Agrega tu CV</label><i class="bi bi-question-circle-fill question-btn"></i>
-              <div>
+            <div class="file">
+                <p id="text-file">Editar</p>
+                <input type="file" id="send-file" name="send-file" accept="video/mp4">
+            </div>
+        </div>
+        <div class="col col-md-4 col-lg-4">
+            <label class="me-3 first-color-blue fw-bold mb-3" for="">Agrega tu CV</label><i
+                class="bi bi-question-circle-fill question-btn"></i>
+            <div>
                 <div>
                     <i class="bi bi-paperclip icon"></i>
-              </div>
-              </div>
-              <div class="mb-3">
-                <input type="file" id="myFile" name="filename">
-              </div> 
+                </div>
             </div>
-            <div class="col col-md-4 col-lg-4">
-              <label class="me-3 first-color-blue fw-bold mb-3 text-center col-lg-8" for="">Agrega muestras de tu
+            <div class="file">
+                <p id="text-file">Editar</p>
+                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+            </div>
+        </div>
+        <div class="col col-md-4 col-lg-4">
+            <label class="me-3 first-color-blue fw-bold mb-3 text-center col-lg-8" for="">Agrega muestras de tu
                 trabajo previo</label><i class="bi bi-question-circle-fill question-btn"></i>
+            <div>
                 <div>
-                    <div>
-                        <i class="bi bi-filetype-pdf icon"></i>
-                  </div>
-                  </div>
-                <div class="mb-3">
-                    <input type="file" id="myFile" name="filename">
-                </div> 
+                    <i class="bi bi-filetype-pdf icon"></i>
+                </div>
             </div>
-          </div>        
-        <div class="row justify-content-end col-12 col-lg-9 mx-auto my-5">
-            <button class="btn next-btn col-1 col-md-1 col-lg-2">Siguiente</button>
+            <div class="file">
+                <p id="text-file">Editar</p>
+                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+            </div>
         </div>
     </div>
+    <div class="row justify-content-end col-12 col-lg-9 mx-auto my-5">
+        <button class="btn next-btn col-1 col-md-1 col-lg-2">Siguiente</button>
+    </div>
+</div>
