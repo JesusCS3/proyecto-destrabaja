@@ -15,7 +15,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
-import { ProfileSettingsComponent } from './pages/user/settings/profile-settings/profile-settings.component'
+import { ProfileSettingsComponent } from './pages/user/settings/profile-settings/profile-settings.component';
+import { ProfileComponent } from './pages/user/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileSettingsComponent } from './pages/user/settings/profile-settings
     PrivacyPolicyComponent,
     ServiceConditionsComponent,
     ForgotComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -32,4 +32,10 @@
     color: #21145F;
 }
 
+/* header space */
+.header-space {
+    margin-top: 6rem !important;
+    margin-bottom: 2rem !important;
+}
+
 

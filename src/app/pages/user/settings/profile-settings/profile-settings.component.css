@@ -27,7 +27,7 @@
 
 /* custom question button */
 .question-btn {
-    color: #425CC7;
+    color: #54C8E8;
     --bs-nav-link-hover-color: #54C8E8;
   }
 
@@ -139,6 +139,15 @@
     outline: none;
     box-shadow: none;
     border-radius: 0;
+    width: 100%;
+    height: 200px;
+}
+
+/* files */
+
+.add-files{
+    width: 200px !important;
+    height: 160px !important;
 }
 
 /* responsive form */
