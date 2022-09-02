@@ -1,5 +1,5 @@
 /* reset */
-*{
+* {
     margin: 0;
     padding: 0;
     /*font-family: Arial, Helvetica, sans-serif;*/
@@ -14,28 +14,33 @@
 
 /* secondary colors */
 
-.yellow-color{
+.yellow-color {
     color: #FFC600 !important;
 }
 
-.second-color-blue{
+.second-color-blue {
     color: #54C8E8 !important;
 }
 
-.orange-color{
+.orange-color {
     color: #FF4713 !important;
 }
 
 /* Additional color */
 
-.third-color-blue{
+.third-color-blue {
     color: #21145F !important;
 }
 
 /* header space */
 .header-space {
-    margin-top: 6rem !important;
+    margin-top: 10rem !important;
     margin-bottom: 2rem !important;
 }
 
-
+/* custom question button */
+.question-btn {
+    color: #54C8E8;
+    font-size: 1.5rem;
+    display: inline;
+}

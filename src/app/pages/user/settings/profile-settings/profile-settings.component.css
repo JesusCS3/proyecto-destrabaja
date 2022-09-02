@@ -25,12 +25,6 @@
     border: 3px solid #54C8E8;
 }
 
-/* custom question button */
-.question-btn {
-    color: #54C8E8;
-    --bs-nav-link-hover-color: #54C8E8;
-  }
-
   /* custom browse file button */
 .browse-file-btn {
     border-radius: 2rem;
@@ -53,7 +47,6 @@
 .icon {
     color: #425CC7;
     font-size: 10rem;
-    --bs-nav-link-hover-color: #54C8E8;
   }
 
 /* custom padding form-select */
