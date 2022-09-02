@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSingup(): void{
+  signOut(): void{
     Auth.signOut().then( () => {
       this.router.navigate(['/']);
     }).catch( err => {

@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -39,7 +40,7 @@ import { ProfileComponent } from './pages/user/profile/profile.component'
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

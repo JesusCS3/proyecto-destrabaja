@@ -16,7 +16,6 @@ import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-pol
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'landing-page'},
   {path:'footer', component:FooterComponent},
   {path:'header', component:HeaderComponent},
   {path:'singin', component:SinginComponent},
@@ -27,7 +26,9 @@ const routes: Routes = [
   {path:'profile-settings', component:ProfileSettingsComponent},
   {path:'profile', component:ProfileComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
-  {path:'service-conditions', component:ServiceConditionsComponent}
+  {path:'service-conditions', component:ServiceConditionsComponent},
+  {path: '', redirectTo: '/landing-page', pathMatch: 'full'}
+  //{path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

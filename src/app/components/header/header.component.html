@@ -1,8 +1,8 @@
 <header>
-    <!-- navbar outside session -->
-    <nav class="navbar navbar-expand-lg bg-light fixed-top menu" #outsideSession *ngIf="!logged; else loggedtemplate">
+    <!-- navbar no session logged in (landing-page) -->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top menu" *ngIf="!isLoggedIn && noLoggedIn">
         <div class="container-fluid mx-lg-4 my-lg-4">
-            <a class="navbar-brand mx-3" routerLink="">
+            <a class="navbar-brand mx-3" routerLink="/home-page">
                 <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180" height="auto">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
@@ -28,11 +28,8 @@
             </div>
         </div>
     </nav>
-</header>
-
-<ng-template #loggedtemplate>
-    <!-- navbar inside session -->
-    <nav class="navbar navbar-expand-lg bg-light fixed-top menu2" #insideSession>
+    <!-- navbar no session logged in -->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top menu2" *ngIf="!isLoggedIn && !noLoggedIn">
         <div class="container-fluid mx-lg-4 my-lg-2">
             <a class="navbar-brand d-lg-none mx-3" routerLink="/home-page">
                 <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180" height="auto">
@@ -43,33 +40,110 @@
             </button>
             <div class="collapse navbar-collapse row" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ms-auto justify-content-center">
-                    <li class="nav-item mx-3">
-                        <button class="btn btn-client" type="button">
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-client" type="button">
                             Cliente
-                        </button>
+                        </a>
                     </li>
-                    <li class="nav-item mx-3 me-5">
-                        <button class="btn btn-destrabadores" type="button">
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-destrabadores" type="button">
                             Destrabadores
-                        </button>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-client" type="button" routerLink="/singin">
+                            Iniciar sesión
+                        </a>
                     </li>
                     <a class="navbar-brand d-none d-lg-block mx-5" routerLink="/home-page">
                         <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180"
                             height="auto">
                     </a>
-                    <li class="nav-item mx-3 ms-5" style="width: 150px;">
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-publish" type="button" routerLink="/singup">
+                            Registrarse
+                        </a>
+                    </li>
+                    <li class="nav-item mx-3 d-none d-lg-block" style="width: 150px;">
                         <div class="input-group w-100">
                             <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
                             <input type="search" class="form-control search-text" name="search" id="search"
                                 placeholder="Buscar..." aria-label="Search">
                         </div>
                     </li>
-                    <li class="nav-item mx-3">
-                        <button class="btn btn-publish" type="button">
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-publish" type="button">
                             ¡Publica Ahora!
-                        </button>
+                        </a>
                     </li>
-                    <li class="nav-item dropdown mx-3">
+                </ul>
+                <!-- small device links -->
+                <ul class="navbar-nav ms-3 mb-2 d-lg-none">
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Destrabadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">¡Publica Ahora!</a>
+                    </li>
+                    <li class="nav-item" style="width: 150px;">
+                        <div class="input-group w-100">
+                            <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                            <input type="search" class="form-control search-text" name="search" id="search"
+                                placeholder="Buscar..." aria-label="Search">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar sesion logged in -->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top menu2" *ngIf="isLoggedIn">
+        <div class="container-fluid mx-lg-4 my-lg-2">
+            <a class="navbar-brand d-lg-none mx-3" routerLink="/home-page">
+                <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180" height="auto">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="bi bi-three-dots-vertical"></i></span>
+            </button>
+            <div class="collapse navbar-collapse row" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ms-auto justify-content-center">
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-client" type="button">
+                            Cliente
+                        </a>
+                    </li>
+                    <li class="nav-item mx-3 me-5 d-none d-lg-block">
+                        <a class="btn btn-destrabadores" type="button">
+                            Destrabadores
+                        </a>
+                    </li>
+                    <a class="navbar-brand d-none d-lg-block mx-5" routerLink="/home-page">
+                        <img src="./assets/img/logo/header.svg" class="img-fluid" alt="Destrabaja" width="180"
+                            height="auto">
+                    </a>
+                    <li class="nav-item mx-3 ms-5 d-none d-lg-block" style="width: 150px;">
+                        <div class="input-group w-100">
+                            <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                            <input type="search" class="form-control search-text" name="search" id="search"
+                                placeholder="Buscar..." aria-label="Search">
+                        </div>
+                    </li>
+                    <li class="nav-item mx-3 d-none d-lg-block">
+                        <a class="btn btn-publish" type="button">
+                            ¡Publica Ahora!
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown mx-3 d-none d-lg-block">
                         <i class="bi bi-person-circle profile-btn" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"></i>
                         <ul class="dropdown-menu">
@@ -78,11 +152,42 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" (click)="onSingup()" type="button">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" (click)="signOut()" type="button">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- small device links -->
+                <ul class="navbar-nav ms-3 mb-2 d-lg-none">
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">Destrabadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link first-color-blue">¡Publica Ahora!</a>
+                    </li>
+                    <li class="nav-item" style="width: 150px;">
+                        <div class="input-group w-100">
+                            <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                            <input type="search" class="form-control search-text" name="search" id="search"
+                                placeholder="Buscar..." aria-label="Search">
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown mx-3 ms-0">
+                        <i class="bi bi-person-circle profile-btn" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false"></i>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" routerLink="/profile">Ver perfil</a></li>
+                            <li><a class="dropdown-item" routerLink="/profile-settings">Ajustes</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" (click)="signOut()" type="button">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-</ng-template>
+</header>
