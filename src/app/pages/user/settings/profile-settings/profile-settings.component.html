@@ -1,6 +1,6 @@
 <section>
-    <div class="container-fluid row justify-content-center col-12 col-md-12 col-lg-12 my-5 py-5">
-        <div class="col-12 col-md-8 col-lg-11 p-5">
+    <div class="container-fluid col-12 col-md-12 col-lg-12 header-space">
+        <div class="col-12 col-md-8 col-lg-11 ms-lg-5 ps-5 pb-3">
             <h2 class="col-12 col-md-12 col-lg-12 fw-bold first-color-blue px-lg-2 mx-lg-2">Completa tu registro</h2>
         </div>
         <div *ngIf="!firstPart; else secondPartTemplate">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
-                                <select class="form-select" id="gender" name="gender"  required>
+                                <select class="form-select" id="gender" name="gender" required>
                                     <option selected disabled>Género</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
@@ -48,13 +48,13 @@
                                     placeholder="Fecha de nacimiento" [(ngModel)]='dateBirth' required>
                             </div>
                             <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="contry" name="contry"  required>
+                                <select class="form-select" id="contry" name="contry" required>
                                     <option selected disabled>País</option>
                                     <option value="méxico">...</option>
                                 </select>
                             </div>
                             <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="city" name="city"  required>
+                                <select class="form-select" id="city" name="city" required>
                                     <option selected disabled>Ciudad</option>
                                     <option value="hidalgo">...</option>
                                 </select>
@@ -62,8 +62,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-end col-10 col-lg-10 pt-5">
-                        <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit"
-                            >Siguiente</button>
+                        <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Siguiente</button>
                     </div>
                 </div>
             </form>
@@ -75,19 +74,18 @@
     <div *ngIf="!secondPart; else thirdTemplate">
         <form #f="ngForm" novalidate (ngSubmit)="registerSecondPart()">
             <div class="col-10 col-md-8 col-lg-12 row justify-content-center registerCV">
-                    <div class="col-10 col-md-8 col-lg-10">
-                        <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Redacta tu hoja de vida</label><i
-                            class="bi bi-question-circle-fill question-btn"></i>
-                        <div class="form-floating">
-                            <textarea class="form-control" name="resumeSummary" id="resumeSummary" 
-                             placeholder="Redacta de manera breve" [(ngModel)]="resumeSummary"
-                             maxlength="250"></textarea>
-                        </div>
+                <div class="col-10 col-md-8 col-lg-10">
+                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Redacta tu hoja de
+                        vida</label><i class="bi bi-question-circle-fill question-btn"></i>
+                    <div class="form-floating">
+                        <textarea class="form-control" name="resumeSummary" id="resumeSummary"
+                            placeholder="Redacta de manera breve" [(ngModel)]="resumeSummary"
+                            maxlength="250"></textarea>
                     </div>
-                    <div class="row justify-content-end col-10 col-lg-10 pt-5">
-                        <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit"
-                            >Siguiente</button>
-                    </div>
+                </div>
+                <div class="row justify-content-end col-10 col-lg-10 pt-5">
+                    <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Siguiente</button>
+                </div>
             </div>
         </form>
     </div>
@@ -96,52 +94,76 @@
 <ng-template #thirdTemplate>
     <div>
         <form #f="ngForm" novalidate (ngSubmit)="registerThirdPart()">
-        <div class="row justify-content-center">
-            <div class="row col-10 col-md-8 col-lg-10 py-5">
-                <div class="col col-md-4 col-lg-4">
-                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Agrega tu Video CV</label><i
-                        class="bi bi-question-circle-fill question-btn"></i>
-                    <div class="py-5">
-                        <img src="./assets/img/user/settings/profile/video.svg" class="add-files" alt="like"
-                            style="width: 300px; height: auto">
-                    </div>
-                    <div class="file">
-                        <p id="text-file">Editar</p>
-                        <input type="file" id="send-file" name="send-file" accept="video/mp4">
-                    </div>
-                </div>
-                <div class="col col-md-4 col-lg-4">
-                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Agrega tu CV</label><i
-                        class="bi bi-question-circle-fill question-btn"></i>
-                    <div>
-                        <div class="row justify-content-center">
-                            <i class="bi bi-paperclip icon"></i>
+            <div class="row justify-content-center">
+                <div class="row col-12 col-md-8 col-lg-10">
+                    <div class="col-12 col-md-4 col-lg-5 pb-5 pb-lg-0">
+                        <div style="height: 3.6rem;">
+                            <label class="first-color-blue px-3" style="font-size:1.2rem;"><strong>Agrega tu Video
+                                    CV</strong></label>
+                            <i class="bi bi-question-circle-fill question-btn"></i>
+                        </div>
+                        <div class="ps-3 pb-3">
+                            <img src="./assets/img/user/settings/profile/video.svg" class="img-fluid add-files" alt="video">
+                        </div>
+                        <div class="justify-content-center d-flex flex-row">
+                            <div class="col-12 file">
+                                <p id="text-file">Editar</p>
+                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                            </div>
                         </div>
                     </div>
-                    <div class="file">
-                        <p id="text-file">Editar</p>
-                        <input type="file" id="send-file" name="send-file" accept="application/pdf">
-                    </div>
-                </div>
-                <div class="col col-md-4 col-lg-4">
-                    <label class="me-3 first-color-blue fw-bold mb-3 text-center col-lg-8" style="font-size:1.2rem;">Agrega muestras de tu
-                        trabajo previo</label><i class="bi bi-question-circle-fill question-btn"></i>
-                    <div>
-                        <div>
-                            <i class="bi bi-filetype-pdf icon"></i>
+                    <div class="row justify-content-center col-12 col-md-4 col-lg-3 pb-5 pb-lg-0">
+                        <div style="height: 3.6rem;">
+                            <label class="first-color-blue px-3" style="font-size:1.2rem;"><strong>Agrega tu
+                                    CV</strong></label>
+                            <i class="bi bi-question-circle-fill question-btn"></i>
+                        </div>
+                        <div class="row justify-content-center ps-2">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-file">
+                                    <i class="bi bi-paperclip"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="justify-content-center d-flex flex-row">
+                            <div class="col-12 file">
+                                <p id="text-file">Editar</p>
+                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                            </div>
+                            <div class="ps-3">
+                                <button type="button" class="btn btn-see">Ver</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="file">
-                        <p id="text-file">Editar</p>
-                        <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                    <div class="row justify-content-center col-12 col-md-4 col-lg-4 pb-5 pb-lg-0">
+                        <div style="height: 3.6rem;">
+                            <label class="first-color-blue px-3 text-center"
+                                style="font-size:1.2rem; width: 15rem;"><strong>Agrega muestras de tu
+                                    trabajo previo</strong></label>
+                            <i class="bi bi-question-circle-fill question-btn"></i>
+                        </div>
+                        <div class="row justify-content-center ps-2">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-file">
+                                    <i class="bi bi-filetype-pdf"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="justify-content-center d-flex flex-row">
+                            <div class="file">
+                                <p id="text-file">Editar</p>
+                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                            </div>
+                            <div class="ps-3">
+                                <button type="button" class="btn btn-see">Ver</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row justify-content-end col-12 col-lg-10 pt-2">
+                    <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Finalizar</button>
+                </div>
             </div>
-            <div class="row justify-content-end col-10 col-lg-10 pt-5">
-                <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit"
-                    >Siguiente</button>
-            </div>
-        </div>
-    </form>
+        </form>
     </div>
 </ng-template>

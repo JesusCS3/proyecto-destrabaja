@@ -17,7 +17,14 @@ import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-pol
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ProfileSettingsComponent } from './pages/user/settings/profile-settings/profile-settings.component';
-import { ProfileComponent } from './pages/user/profile/profile.component'
+import { ProfileComponent } from './pages/user/profile/profile.component';
+import { SlideHomeComponent } from './components/slide-home/slide-home.component';
+import { ProfileInformationComponent } from './pages/user/profile/profile-information/profile-information.component';
+import { FavoritesComponent } from './pages/user/profile/favorites/favorites.component';
+import { ProjectsComponent } from './pages/user/profile/projects/projects.component';
+import { ServicesComponent } from './pages/user/profile/services/services.component';
+import { FinanceComponent } from './pages/user/profile/finance/finance.component';
+import { ReferredComponent } from './pages/user/profile/referred/referred.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +39,14 @@ import { ProfileComponent } from './pages/user/profile/profile.component'
     ServiceConditionsComponent,
     ForgotComponent,
     ProfileSettingsComponent,
-    ProfileComponent
+    ProfileComponent,
+    SlideHomeComponent,
+    ProfileInformationComponent,
+    FavoritesComponent,
+    ProjectsComponent,
+    ServicesComponent,
+    FinanceComponent,
+    ReferredComponent
   ],
   imports: [
     BrowserModule,

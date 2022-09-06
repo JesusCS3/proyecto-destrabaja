@@ -106,8 +106,8 @@
 
 /* customized cards services */
 .card-services{
-    width: 20rem;
-    height: 24rem; 
+    width: 24rem;
+    height: auto; 
     border-radius: 2rem;
 }
 
@@ -121,7 +121,7 @@
 /* custom like button */
 .like-btn {
     width: 50px; 
-    height:50px; 
+    height:auto; 
     border-radius: 50% !important;
     --bs-btn-color: #425CC7;
     --bs-btn-bg: #fff;
@@ -140,7 +140,7 @@
 }
 
 .like-icon{
-    width: 30px; 
+    width: 35px; 
     height: auto;
 }
 

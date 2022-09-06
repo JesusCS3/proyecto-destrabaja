@@ -1,18 +1,14 @@
-/* customized profile container */
-.profile-container{
-    border: 1px solid #425CC7;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+/* customized profile tabs */
+.nav-link {
+    color: #425CC7 !important;
+    transition: none;
 }
 
-.profile-container th, .profile-container td{
-    color: #425CC7;
+.nav-link.active {
+    color: #54C8E8 !important;
+    border: none !important;
 }
 
-/* customized hr */
-hr{
-    border: 2px solid #54C8E8;
-    opacity: 0.8;
+.nav-tabs{
+    border-bottom: 3px solid #54C8E8;
 }
