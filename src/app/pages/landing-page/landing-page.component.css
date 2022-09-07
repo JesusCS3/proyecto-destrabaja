@@ -22,13 +22,6 @@
     transition: all 3s linear;
 }
 
-/*
-.active.carousel-item-start,
-.carousel-item-prev:not(.carousel-item-end){
-    transform: translateX(100%);
-}
-*/
-
 /* custom button signup*/
 .singup {
     --bs-btn-color: #fff;
