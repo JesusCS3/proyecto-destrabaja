@@ -1,0 +1,5 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 0.8;
+}

@@ -1,74 +1,53 @@
 <!-- profile tabs -->
 <div class="container-fluid row justify-content-md-center col-12 header-space">
-  <div class="d-flex align-items-start d-md-block d-lg-block col-12 col-md-11 col-lg-10">
+  <div class="align-items-start col-12 col-md-11 col-lg-10">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
-          role="tab" aria-controls="home-tab-pane" aria-selected="true">Tu perfil</button>
+        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+          type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Tu perfil</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
-          role="tab" aria-controls="profile-tab-pane" aria-selected="false">Tus favoritos</button>
+        <button class="nav-link" id="favorites-tab" data-bs-toggle="tab" data-bs-target="#favorites-tab-pane"
+          type="button" role="tab" aria-controls="favorites-tab-pane" aria-selected="false">Tus favoritos</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
-          role="tab" aria-controls="contact-tab-pane" aria-selected="false">Tus proyectos</button>
+        <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects-tab-pane"
+          type="button" role="tab" aria-controls="projects-tab-pane" aria-selected="false">Tus proyectos</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
-          role="tab" aria-controls="contact-tab-pane" aria-selected="false">Tus servicios</button>
+        <button class="nav-link" id="services-published-tab" data-bs-toggle="tab"
+          data-bs-target="#services-published-tab-pane" type="button" role="tab"
+          aria-controls="services-published-tab-pane" aria-selected="false">Tus servicios</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
-          role="tab" aria-controls="contact-tab-pane" aria-selected="false">Tus finanzas</button>
+        <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button"
+          role="tab" aria-controls="finance-tab-pane" aria-selected="false">Tus finanzas</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
-          role="tab" aria-controls="contact-tab-pane" aria-selected="false">Referidos</button>
+        <button class="nav-link" id="referred-tab" data-bs-toggle="tab" data-bs-target="#referred-tab-pane"
+          type="button" role="tab" aria-controls="referred-tab-pane" aria-selected="false">Referidos</button>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+      <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+        tabindex="0">
         <app-profile-information></app-profile-information>
       </div>
-      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+      <div class="tab-pane fade" id="favorites-tab-pane" role="tabpanel" aria-labelledby="favorites-tab" tabindex="0">
         <app-favorites></app-favorites>
       </div>
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-        <strong>contenido de la sección</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl
-        vitae nisl lobortis vulputate. Aliquam laoreet libero sit amet sagittis tincidunt. Etiam ut erat sit amet ligula
-        aliquet suscipit eget sed enim. Quisque quis malesuada urna, sed dignissim elit. Praesent varius, dolor molestie
-        dapibus convallis, erat nibh consectetur augue, sollicitudin dictum lorem nibh ut tortor. Aliquam a interdum
-        mauris. Integer vulputate quam sed urna consequat posuere eget ac dui. Maecenas dictum, ipsum in scelerisque
-        dictum, lacus ex pulvinar diam, ut vehicula sapien ante non tellus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Nulla pharetra enim quis efficitur cursus.
+      <div class="tab-pane fade" id="projects-tab-pane" role="tabpanel" aria-labelledby="projects-tab" tabindex="0">
+        <app-projects></app-projects>
       </div>
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-        <strong>contenido de la sección</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl
-        vitae nisl lobortis vulputate. Aliquam laoreet libero sit amet sagittis tincidunt. Etiam ut erat sit amet ligula
-        aliquet suscipit eget sed enim. Quisque quis malesuada urna, sed dignissim elit. Praesent varius, dolor molestie
-        dapibus convallis, erat nibh consectetur augue, sollicitudin dictum lorem nibh ut tortor. Aliquam a interdum
-        mauris. Integer vulputate quam sed urna consequat posuere eget ac dui. Maecenas dictum, ipsum in scelerisque
-        dictum, lacus ex pulvinar diam, ut vehicula sapien ante non tellus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Nulla pharetra enim quis efficitur cursus.
+      <div class="tab-pane fade" id="services-published-tab-pane" role="tabpanel"
+        aria-labelledby="services-published-tab" tabindex="0">
+        <app-services-published></app-services-published>
       </div>
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-        <strong>contenido de la sección</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl
-        vitae nisl lobortis vulputate. Aliquam laoreet libero sit amet sagittis tincidunt. Etiam ut erat sit amet ligula
-        aliquet suscipit eget sed enim. Quisque quis malesuada urna, sed dignissim elit. Praesent varius, dolor molestie
-        dapibus convallis, erat nibh consectetur augue, sollicitudin dictum lorem nibh ut tortor. Aliquam a interdum
-        mauris. Integer vulputate quam sed urna consequat posuere eget ac dui. Maecenas dictum, ipsum in scelerisque
-        dictum, lacus ex pulvinar diam, ut vehicula sapien ante non tellus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Nulla pharetra enim quis efficitur cursus.
+      <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">
+        <app-finance></app-finance>
       </div>
-      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-        <strong>contenido de la sección</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id nisl
-        vitae nisl lobortis vulputate. Aliquam laoreet libero sit amet sagittis tincidunt. Etiam ut erat sit amet ligula
-        aliquet suscipit eget sed enim. Quisque quis malesuada urna, sed dignissim elit. Praesent varius, dolor molestie
-        dapibus convallis, erat nibh consectetur augue, sollicitudin dictum lorem nibh ut tortor. Aliquam a interdum
-        mauris. Integer vulputate quam sed urna consequat posuere eget ac dui. Maecenas dictum, ipsum in scelerisque
-        dictum, lacus ex pulvinar diam, ut vehicula sapien ante non tellus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas. Nulla pharetra enim quis efficitur cursus.
+      <div class="tab-pane fade" id="referred-tab-pane" role="tabpanel" aria-labelledby="referred-tab" tabindex="0">
+        <app-referred></app-referred>
       </div>
     </div>
   </div>

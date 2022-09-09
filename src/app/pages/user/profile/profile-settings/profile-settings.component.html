@@ -74,7 +74,7 @@
     <div *ngIf="!secondPart; else thirdTemplate">
         <form #f="ngForm" novalidate (ngSubmit)="registerSecondPart()">
             <div class="col-10 col-md-8 col-lg-12 row justify-content-center registerCV">
-                <div class="col-10 col-md-8 col-lg-10">
+                <div class="col-10 col-md-12 col-lg-10">
                     <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Redacta tu hoja de
                         vida</label><i class="bi bi-question-circle-fill question-btn"></i>
                     <div class="form-floating">
@@ -83,8 +83,9 @@
                             maxlength="250"></textarea>
                     </div>
                 </div>
-                <div class="row justify-content-end col-10 col-lg-10 pt-5">
-                    <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Siguiente</button>
+                <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
+                    <div class="p-2 bd-highlight"><button class="btn next-btn" type="button">Atras</button></div>
+                    <div class="ms-auto p-2 bd-highlight"><button class="btn next-btn" type="submit">Siguiente</button></div>
                 </div>
             </div>
         </form>
@@ -108,7 +109,7 @@
                         <div class="justify-content-center d-flex flex-row">
                             <div class="col-12 file">
                                 <p id="text-file">Editar</p>
-                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                                <input type="file" id="send-file" name="send-file" accept="video/*">
                             </div>
                         </div>
                     </div>
@@ -160,8 +161,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end col-12 col-lg-10 pt-2">
-                    <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Finalizar</button>
+                <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
+                    <div class="p-2 bd-highlight"><button class="btn next-btn" type="button">Atras</button></div>
+                    <div class="ms-auto p-2 bd-highlight"><button class="btn next-btn" type="submit">Finalizar</button></div>
                 </div>
             </div>
         </form>
