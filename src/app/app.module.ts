@@ -26,7 +26,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ServicesPublishedComponent } from './pages/user/profile/services-published/services-published.component';
 import { ServiceCardComponent } from './pages/user/profile/services-published/components/service-card/service-card.component';
 import { PublishNowComponent } from './pages/publish-now/publish-now.component';
-import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component'
+import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component';
+import { GeneralInfoComponent } from './pages/publish-now/publish-service/general-info/general-info.component';
+import { ServiceDescriptionComponent } from './pages/publish-now/publish-service/service-description/service-description.component';
+import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
+import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
+import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component'
 
 @NgModule({
   declarations: [
@@ -52,7 +57,12 @@ import { PublishServiceComponent } from './pages/publish-now/publish-service/pub
     ServicesPublishedComponent,
     ServiceCardComponent,
     PublishNowComponent,
-    PublishServiceComponent
+    PublishServiceComponent,
+    GeneralInfoComponent,
+    ServiceDescriptionComponent,
+    ServiceLevelsComponent,
+    ExtrasComponent,
+    RequirementsComponent
   ],
   imports: [
     BrowserModule,

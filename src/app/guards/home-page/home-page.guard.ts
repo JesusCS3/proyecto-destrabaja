@@ -12,15 +12,13 @@ export class HomePageGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-
-
     state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve) => {
       Auth.currentAuthenticatedUser({ bypassCache: false }).then(() => {
         resolve(true);
       })
         .catch(() => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/landing-page']);
           resolve(false);
         })
     });

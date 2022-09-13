@@ -1,3 +1,5 @@
+import { HomePageGuard } from './guards/home-page/home-page.guard';
+import { SinginGuard } from './guards/singin/singin.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -29,6 +31,11 @@ import { ReferredComponent } from './pages/user/profile/referred/referred.compon
 // publish-now
 import { PublishNowComponent } from './pages/publish-now/publish-now.component';
 import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component';
+import { GeneralInfoComponent } from './pages/publish-now/publish-service/general-info/general-info.component';
+import { ServiceDescriptionComponent } from './pages/publish-now/publish-service/service-description/service-description.component';
+import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
+import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
+import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component';
 //about
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
@@ -36,14 +43,14 @@ import { ServiceConditionsComponent } from './pages/about/service-conditions/ser
 const routes: Routes = [
   {path:'footer', component:FooterComponent},
   {path:'header', component:HeaderComponent},
-  {path:'singin', component:SinginComponent},
-  {path:'singup', component:SingupComponent},
+  {path:'singin', component:SinginComponent, canActivate: [SinginGuard]},
+  {path:'singup', component:SingupComponent, canActivate: [SinginGuard]},
   {path:'forgot', component:ForgotComponent},
   // home-page
   {path:'home-page', component:HomePageComponent},
   {path:'slide-home', component:SlideHomeComponent},
   // landing-page
-  {path:'landing-page', component:LandingPageComponent},
+  {path:'landing-page', component:LandingPageComponent, canActivate: [SinginGuard]},
   // profile
   {path:'profile-settings', component:ProfileSettingsComponent},
   {path:'profile', component:ProfileComponent},
@@ -58,9 +65,15 @@ const routes: Routes = [
   // publish-now
   {path:'publish-now', component:PublishNowComponent},
   {path:'publish-service', component:PublishServiceComponent},
+  {path:'general-info', component:GeneralInfoComponent},
+  {path:'service-description', component:ServiceDescriptionComponent},
+  {path:'service-levels', component:ServiceLevelsComponent},
+  {path:'extras', component:ExtrasComponent},
+  {path:'requeriments', component:RequirementsComponent},
+  // privacy-policy
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent},
-  {path: '', redirectTo: '/landing-page', pathMatch: 'full'},
+  {path: '', component:LandingPageComponent, canActivate: [SinginGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 

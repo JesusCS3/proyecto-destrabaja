@@ -1,5 +1,11 @@
 /* customized hr */
 hr {
     border: 1px solid #54C8E8;
-    opacity: 0.8;
+    opacity: 1;
+}
+
+/* customized form */
+.bg-form{
+    border: 1px solid #bebebe;
+    box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.2) !important;
 }
