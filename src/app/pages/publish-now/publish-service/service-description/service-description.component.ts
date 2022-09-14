@@ -7,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceDescriptionComponent implements OnInit {
 
+  // variables for counting characters
+  counterShortDescription = 0;
+  counterLongDescription = 0;
+  
   constructor() { }
+
+  // functions for counting characters
+ shortDescriptionCount(event: any){
+  this.counterShortDescription = event.target.value.length
+ }
+
+ longDescriptionCount(event: any){
+  this.counterLongDescription = event.target.value.length
+ }
 
   ngOnInit(): void {
   }

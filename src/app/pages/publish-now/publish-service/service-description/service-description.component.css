@@ -7,9 +7,15 @@ hr {
 /* customized service-description */
 .service-description label{
     color: #425CC7;
+    font-weight: bold;
+}
+
+.service-description span{
+    color: #425CC7;
 }
 
 .service-description textarea{
     border: 1px solid #54C8E8;
     border-radius: 0.8rem;
+    box-shadow: none;
 }

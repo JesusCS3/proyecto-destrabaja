@@ -1,7 +1,8 @@
-import { HomePageGuard } from './guards/home-page/home-page.guard';
-import { SinginGuard } from './guards/singin/singin.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageGuard } from './guards/home-page/home-page.guard';
+import { SinginGuard } from './guards/singin/singin.guard';
+import { PublishNowGuard } from './guards/publish-now/publish-now.guard';
 
 // **** components ****
 import { FooterComponent } from './components/footer/footer.component';
@@ -64,12 +65,12 @@ const routes: Routes = [
   {path:'referred', component:ReferredComponent},
   // publish-now
   {path:'publish-now', component:PublishNowComponent},
-  {path:'publish-service', component:PublishServiceComponent},
-  {path:'general-info', component:GeneralInfoComponent},
-  {path:'service-description', component:ServiceDescriptionComponent},
-  {path:'service-levels', component:ServiceLevelsComponent},
-  {path:'extras', component:ExtrasComponent},
-  {path:'requeriments', component:RequirementsComponent},
+  {path:'publish-service', component:PublishServiceComponent, canActivate: [PublishNowGuard]},
+  {path:'general-info', component:GeneralInfoComponent, canActivate: [PublishNowGuard]},
+  {path:'service-description', component:ServiceDescriptionComponent, canActivate: [PublishNowGuard]},
+  {path:'service-levels', component:ServiceLevelsComponent, canActivate: [PublishNowGuard]},
+  {path:'extras', component:ExtrasComponent, canActivate: [PublishNowGuard]},
+  {path:'requeriments', component:RequirementsComponent, canActivate: [PublishNowGuard]},
   // privacy-policy
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent},

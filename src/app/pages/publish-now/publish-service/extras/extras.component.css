@@ -1,0 +1,22 @@
+/* customized hr */
+hr {
+    border: 1px solid #54C8E8;
+    opacity: 1;
+}
+
+/* customized general-information */
+.extras{
+    border: 1px solid #54C8E8;
+    border-radius: 0.8rem;
+}
+.extras label{
+    color: #425CC7;
+    font-weight: bold;
+}
+
+.extras input{
+    border: none;
+    border: 3px solid #54C8E8;
+    outline: none;
+    box-shadow: none;
+}
