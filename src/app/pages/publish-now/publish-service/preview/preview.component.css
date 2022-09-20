@@ -10,7 +10,7 @@ hr {
     box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* custom button save and preview*/
+/* custom button back and publish*/
 .publish-btn {
     --bs-btn-color: #fff;
     --bs-btn-bg: #425CC7;
@@ -27,4 +27,10 @@ hr {
     --bs-btn-disabled-bg: #425CC7;
     --bs-btn-disabled-border-color: #425CC7;
     border-radius: 2rem;
+}
+
+/* customized preview */
+.preview h3{
+    color: #425CC7;
+    font-weight: bold;
 }

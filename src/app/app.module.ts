@@ -32,6 +32,13 @@ import { ServiceDescriptionComponent } from './pages/publish-now/publish-service
 import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
 import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
 import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component'
+import { DeliverablesService } from './pages/publish-now/publish-service/service-levels/services/deliverables/deliverables.service';
+import { ExtrasService } from './pages/publish-now/publish-service/service-levels/services/extras/extras.service';
+import { FeaturesService } from './pages/publish-now/publish-service/service-levels/services/features/features.service';
+import { PlansService } from './pages/publish-now/publish-service/service-levels/services/plans/plans.service';
+import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
+import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
+import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +69,10 @@ import { RequirementsComponent } from './pages/publish-now/publish-service/requi
     ServiceDescriptionComponent,
     ServiceLevelsComponent,
     ExtrasComponent,
-    RequirementsComponent
+    RequirementsComponent,
+    PreviewComponent,
+    PublishServiceCardComponent,
+    ConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +80,13 @@ import { RequirementsComponent } from './pages/publish-now/publish-service/requi
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    DeliverablesService,
+    ExtrasService,
+    FeaturesService,
+    PlansService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

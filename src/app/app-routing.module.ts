@@ -37,6 +37,9 @@ import { ServiceDescriptionComponent } from './pages/publish-now/publish-service
 import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
 import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
 import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component';
+import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
+import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
+import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
 //about
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
@@ -71,7 +74,9 @@ const routes: Routes = [
   {path:'service-levels', component:ServiceLevelsComponent, canActivate: [PublishNowGuard]},
   {path:'extras', component:ExtrasComponent, canActivate: [PublishNowGuard]},
   {path:'requeriments', component:RequirementsComponent, canActivate: [PublishNowGuard]},
-  // privacy-policy
+  {path:'preview', component:PreviewComponent, canActivate: [PublishNowGuard]},
+  {path:'publish-service-card', component:PublishServiceCardComponent, canActivate: [PublishNowGuard]},
+  {path:'confirm', component:ConfirmComponent, canActivate: [PublishNowGuard]},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent},
   {path: '', component:LandingPageComponent, canActivate: [SinginGuard]},
