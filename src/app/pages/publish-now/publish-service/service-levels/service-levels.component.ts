@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { deliverable } from './models/deliverables/deliverables.model';
+import { deliverables } from './models/deliverables/deliverables.model';
 import { features } from './models/features/features.model';
 import { extras } from './models/extras/extras.model';
 import { plans } from './models/plans/plans.model';
@@ -15,21 +15,38 @@ import { PlansService } from './services/plans/plans.service';
 })
 export class ServiceLevelsComponent implements OnInit {
 
-  deliverable:deliverable[] = [];
+  deliverables:deliverables[] = [];
   features:features[] = [];
   extras:extras[] = [];
 
   plans:plans[] = [];
 
+  /* variables for deliverables */
+  deliverableInput:string = "";
+  deliverableInputInitialPlan: boolean = false;
+  deliverableInputPlusPlan: boolean = false;
+  deliverableInputPremiumPlan: boolean = false;
+
   constructor(private deliverableService:DeliverablesService, private featuresService:FeaturesService,
               private extrasService:ExtrasService, private plansService:PlansService) {
-                this.deliverable = deliverableService.deliverable;
                 this.features = featuresService.features;
                 this.extras = extrasService.extras;
                 this.plans = plansService.plans;
                }
 
   ngOnInit(): void {
+
+    this.deliverables = this.deliverableService.deliverables;
+    this.features = this.featuresService.features;
+  }
+
+  deleteDeliverable(deliverables:deliverables){
+    this.deliverableService.delete(deliverables);
+  }
+
+  addDeliverable(){
+    this.deliverableService.deliverables.push(new deliverables(this.deliverableInput,
+    this.deliverableInputInitialPlan,this.deliverableInputPlusPlan,this.deliverableInputPremiumPlan));
   }
 
 }

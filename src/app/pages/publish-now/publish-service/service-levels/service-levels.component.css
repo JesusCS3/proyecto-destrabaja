@@ -17,3 +17,92 @@ hr {
 .service-levels th{
     color: #425CC7;
 }
+
+.service-levels-input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #425CC7;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid #54C8E8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    outline: none;
+}
+
+.service-levels #deliveryTimeInitialPlan, #deliveryTimePlusPlan, #deliveryTimePremiumPlan {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #425CC7;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid #54C8E8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    outline:  none;
+}
+
+.service-levels #labelDeliveryTimeInitialPlan, #labelDeliveryTimePlusPlan, #labelDeliveryTimePremiumPlan{
+    color: #425CC7;
+}
+
+.service-levels span{
+    color: #425CC7;
+    font-size: 0.8rem;
+}
+
+/* customized delete deliverable */
+
+.cleanStyles::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.right { float: right; }
+
+.element {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.element:first-child { border-top: 1px solid #e7e7e7; }
+.element:nth-child(even) { background-color: #f7f7f7; }
+
+.elementDescription {
+    float: left;
+}
+
+.elementDelete {
+    float: left;
+}
+
+.elementDelete--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+    color: #425CC7;
+}
+
+.elementDelete--btn:focus { outline: none; }
+.elementDelete--btn:active { transform: translateY(2px); }
+
+.element:hover .elementDelete--btn { display: block; }
