@@ -39,6 +39,10 @@ import { PlansService } from './pages/publish-now/publish-service/service-levels
 import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
 import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
 import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
+import { GeneralInfoService } from './pages/publish-now/publish-service/general-info/services/general-info.service';
+import { RequirementsService } from './pages/publish-now/publish-service/requirements/services/requirements.service';
+import { ServiceDescriptionService } from './pages/publish-now/publish-service/service-description/services/service-description.service';
+import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,7 @@ import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/co
     PreviewComponent,
     PublishServiceCardComponent,
     ConfirmComponent,
+    ServiceScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,9 +87,12 @@ import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/co
   ],
   providers: [
     AuthService,
+    GeneralInfoService,
+    ServiceDescriptionService,
     DeliverablesService,
     ExtrasService,
     FeaturesService,
+    RequirementsService,
     PlansService
   ],
   bootstrap: [AppComponent]

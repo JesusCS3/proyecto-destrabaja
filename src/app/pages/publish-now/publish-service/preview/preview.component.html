@@ -12,19 +12,22 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <div class="pb-3">
-                            <h3>Ícono en pantalla de inicio</h3>
+                            <h3>Ícono en pantalla de inicio</h3>{{gnralInfo.nameService}}
                         </div>
-                        <app-publish-service-card></app-publish-service-card>
+                        <app-publish-service-card
+                        [gnralInfo]="gnralInfo"
+                        ></app-publish-service-card>
                     </div>
                     <div class="col">
                         <div class="pb-3">
                             <h3>Pantalla de servicio</h3>
                         </div>
+                        <app-service-screen></app-service-screen>
                     </div>
                   </div>                
             </div>
             <div class="d-flex justify-content-center col-11 p-5">
-                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-service">Regresar y
+                <div class="p-2 px-4"><button type="button" class="btn publish-btn" (click)="preview">Regresar y
                     editar</button></div>
                 <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/confirm">¡Publicar!</button></div>
             </div>

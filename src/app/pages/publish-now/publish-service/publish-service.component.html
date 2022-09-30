@@ -1,5 +1,5 @@
 <div class="container-fluid col-12 header-space">
-    <div class="row justify-content-center pb-5">
+    <div class="row justify-content-center pb-5" *ngIf="!preview; else previewTemplate">
         <div class="col-11">
             <div class="col-6 col-lg-3 text-left">
                 <h3 class="first-color-blue"><strong>Publica un servicio</strong>
@@ -10,17 +10,28 @@
         <div class="row justify-content-center col-11 py-5 bg-form">
             <div class="col-11 ">
                 <form action="">
-                    <app-general-info></app-general-info>
+                    <app-general-info
+                    (shareGeneralInfo)="addGeneralInfo($event)"
+                    ></app-general-info>
                     <app-service-description></app-service-description>
                     <app-service-levels></app-service-levels>
                     <app-extras></app-extras>
                     <app-requirements></app-requirements>
                     <div class="d-flex flex-row-reverse bd-highlight pt-5">
-                        <div class="p-2 bd-highlight"><button type="button" class="btn publish-btn" routerLink="/preview">Previsualizar</button></div>
+                        <div class="p-2 bd-highlight"><button type="button" class="btn publish-btn" (click)="servicePreview()">Previsualizar</button></div>
                         <div class="p-2 bd-highlight"><button type="button" class="btn publish-btn">Guardar</button></div>
                       </div>
                 </form>
             </div>
         </div>
     </div>
+    <ng-template #previewTemplate>
+        <div>
+            <app-preview
+            *ngFor="let gnral of generalInfo"
+            [gnralInfo]="gnral"
+            [preview]="editService()"
+            ></app-preview>
+        </div>
+    </ng-template>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { generalInfo } from '../../../general-info/models/general-info.model';
 
 @Component({
   selector: 'app-publish-service-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publish-service-card.component.css']
 })
 export class PublishServiceCardComponent implements OnInit {
+
+  /* variables to receive general information to display on the service card and service table */
+  @Input() gnralInfo!: generalInfo;
 
   img: any;
   title: string = 'Clases de diseño de logos';

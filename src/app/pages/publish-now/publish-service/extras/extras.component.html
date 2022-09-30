@@ -4,33 +4,56 @@
         <hr>
     </h5>
 </div>
-<div class="extras p-4">
-    <label for="" class="col-5 form-label">Servicio urgente</label>
-    <div class="input-group mb-3">
-        <div class="col-6">
-            <div class="col-12">
-                <div class="mb-3 row">
-                    <label for="input" class="col-5 col-form-label">Tiempo de entrega</label>
-                    <div class="col-7">
-                        <input type="textt" class="form-control" id="input">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="input" class="col-5 col-form-label">¿Cuánto quieres ganar por
-                        este extra? (en pesos mexicanos)</label>
-                    <div class="col-7">
-                        <input type="textt" class="form-control" id="input">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="input" class="col-5 col-form-label">Precio que verá el cliente</label>
-                    <div class="col-7">
-                        <input type="textt" class="form-control" id="input">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="extras service-levels p-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Inicial</th>
+                <th scope="col">Plus</th>
+                <th scope="col">Premium</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Servicio urgente</th>
+                <td>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxInitialPlan" value="" aria-label="...">
+                    </div>   
+                </td>
+                <td>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxPlusPlan" value="" aria-label="...">
+                    </div>  
+                </td>
+                <td>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan" value="" aria-label="...">
+                    </div>  
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Tiempo de entrega</th>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+            </tr>
+            <tr>
+                <th scope="row">¿Cuánto quieres ganar por
+                    este extra? (en pesos mexicanos)</th>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+            </tr>
+            <tr>
+                <th scope="row">Precio que verá el cliente</th>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+                <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
   

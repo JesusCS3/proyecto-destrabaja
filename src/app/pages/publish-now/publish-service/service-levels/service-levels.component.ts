@@ -27,6 +27,28 @@ export class ServiceLevelsComponent implements OnInit {
   deliverableInputPlusPlan: boolean = false;
   deliverableInputPremiumPlan: boolean = false;
 
+  /* variables for features */
+
+  /* delivery time */
+  deliveryTimeInitialPlan: number = 0;
+  deliveryTimePlusPlan: number = 0;
+  deliveryTimePremiumPlan: number = 0;
+
+  /* comments */
+  commentInitialPlan: string = "";
+  commentPlusPlan: string = "";
+  commentPremiumPlan: string = "";
+
+  /* price */
+  priceInitialPlan: number = 0;
+  pricePlusPlan: number = 0;
+  pricePremiumPlan: number = 0;
+  
+  /* price see */
+  priceSeeInitialPlan: number = 0;
+  priceSeePlusPlan: number = 0;
+  priceSeePremiumPlan: number = 0;
+
   constructor(private deliverableService:DeliverablesService, private featuresService:FeaturesService,
               private extrasService:ExtrasService, private plansService:PlansService) {
                 this.features = featuresService.features;

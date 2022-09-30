@@ -8,8 +8,6 @@ import { Injectable } from '@angular/core';
 export class DeliverablesService {
 
   deliverables:deliverables[]=[
-    new deliverables("Logo en formato editable", true, true, true),
-    new deliverables("Logo en formato para redes sociales", false, true, true),
   ];
 
   delete(deliverable:deliverables){

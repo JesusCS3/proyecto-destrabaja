@@ -20,3 +20,25 @@ hr {
     outline: none;
     box-shadow: none;
 }
+
+.service-levels th{
+    color: #425CC7;
+}
+
+.service-levels-input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #425CC7;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid #54C8E8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    outline: none;
+}

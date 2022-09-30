@@ -14,7 +14,18 @@ hr {
     font-weight: bold;
 }
 
+.general-info input, select{
+    color:#425CC7;
+}
+
 .general-info input{
+    border: none;
+    border: 3px solid #54C8E8;
+    outline: none;
+    box-shadow: none;
+}
+
+.general-info select{
     border: none;
     border: 3px solid #54C8E8;
     outline: none;
@@ -25,6 +36,7 @@ hr {
 .file p, i{
     text-align: center;
     color: #54C8E8;
+    font-size: 0.8rem;
 }
 
 .file i{
@@ -37,7 +49,7 @@ hr {
     position: relative;
     width: 150px;
     height: 100px;
-    background-color: #fff;
+    background-color: transparent;
     border: 3px solid #54C8E8;
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
@@ -68,4 +80,14 @@ hr {
     width: 100%;
     height: 100%;
     opacity: 0;
+}
+
+/* preview image service */
+.file img{
+    width: 150px;
+    height: 95px;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
 }
