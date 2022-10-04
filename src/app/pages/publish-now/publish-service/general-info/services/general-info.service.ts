@@ -6,9 +6,7 @@ import { generalInfo } from '../models/general-info.model';
 })
 export class GeneralInfoService {
 
-  generalInfo:generalInfo[] = [
-    new generalInfo("Logotipos para empresas en méxico","#logos","Diseño","Logotipos", "video", "imagenes")
-  ]; 
+  generalInfo:generalInfo[] = []; 
 
   constructor() { }
 }

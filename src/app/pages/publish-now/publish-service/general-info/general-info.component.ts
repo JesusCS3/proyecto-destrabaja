@@ -11,6 +11,7 @@ export class GeneralInfoComponent implements OnInit {
 
   /* share with the publish service component */
   @Output() shareGeneralInfo = new EventEmitter<generalInfo>();
+  @Output() sharePreviewImg = new EventEmitter<any>();
 
   /* variables for general info */
   nameService: string = '';
@@ -20,10 +21,35 @@ export class GeneralInfoComponent implements OnInit {
   videoFile: any;
   imageFile: any;
 
+  /* variable for category */
+  categoryList = [
+    {
+      id:'bie',
+      name:'Bienestar'
+    },
+    {
+      id:'cla',
+      name:'Clases'
+    },
+    {
+      id:'dis',
+      name:'Diseño'
+    },
+    {
+      id:'mus',
+      name:'Música'
+    },
+    {
+      id:'web',
+      name:'Web'
+    }
+  ];
+
   /* variables for file capture */
   public previewImg: string = '';
   public files: any = [];
 
+  /*variables de prueba preview image/video */
   url!: string | ArrayBuffer | null;
   format: string = '';
 
@@ -37,7 +63,7 @@ export class GeneralInfoComponent implements OnInit {
     const capturedFile = event.target.files[0];
     this.extractBase64(capturedFile).then((img: any) => {
       this.previewImg = img.base;
-      console.log(img);
+      //console.log(img);
     })
     this.files.push(capturedFile);
     //console.log(event.target.files);
@@ -77,10 +103,17 @@ export class GeneralInfoComponent implements OnInit {
     }
   }
 
+  /* sharing the new general info object with the publish service component */
   shareAddGeneralInfo() {
     let shareGeneralInfo = new generalInfo(this.nameService, this.hashtags, 
     this.category, this.subcategory, this.videoFile, this.imageFile);
     this.shareGeneralInfo.emit(shareGeneralInfo);
+  }
+
+  /* share the preview image with the publish service component */
+  sharePreviewImage(){
+    let sharePreviewImg = this.previewImg;
+    this.sharePreviewImg.emit(sharePreviewImg);
   }
 
 }

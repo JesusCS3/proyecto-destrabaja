@@ -1,26 +1,27 @@
-<div class="col-9 col-md-4 col-xl-3 text-left">
+<!-- title general info -->
+<div class="col-10 col-md-4 col-xl-3 text-left">
     <h5 class="first-color-blue"><strong>Información General</strong>
         <hr>
     </h5>
 </div>
+<!-- input text for general info -->
 <div class="general-info p-4">
-    <div class="input-group mb-3">
+    <div class="input-group">
         <div class="col-xl-8">
             <div class="col-xl-12">
                 <div class="mb-3 row">
                     <label for="input" class="col-md-5 col-xl-5 col-form-label">Nombre de tu<br>
                         servicio</label>
                     <div class="col-md-7 col-xl-6">
-                        <input type="textt" class="form-control" id="nameService" name="nameService" 
-                        [(ngModel)]="nameService">
+                        <input type="textt" class="form-control" id="nameService" name="nameService"
+                            [(ngModel)]="nameService">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="input" class="col-md-5 col-xl-5 col-form-label">Hashtags<br>
                         <span style="font-size: 0.7rem ;">(Palabras clave como: #Clases #Diseño)</span></label>
                     <div class="col-md-7 col-xl-6">
-                        <input type="textt" class="form-control" id="hashtags" name="hashtags"
-                        [(ngModel)]="hashtags">
+                        <input type="textt" class="form-control" id="hashtags" name="hashtags" [(ngModel)]="hashtags">
                     </div>
                 </div>
             </div>
@@ -30,12 +31,11 @@
                         <label for="input" class="col-12 col-md-4 col-xl-4 col-form-label">Categoría del
                             servicio</label>
                         <div class="col-12 col-md-8 col-xl-8">
-                            <select class="form-select" aria-label="select category" id="category" 
-                            name="category" [(ngModel)]="category">
-                                <option selected disabled>Seleccionar...</option>
-                                <option value="1">Uno</option>
-                                <option value="2">Dos</option>
-                                <option value="3">Tres</option>
+                            <select class="form-select" aria-label="select category" id="category" name="category"
+                                [(ngModel)]="category">
+                                <option selected>Seleccionar...</option>
+                                <option *ngFor="let category of categoryList" [value]="category.id">
+                                    {{category.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             Categoría</label>
                         <div class="col-12 col-md-8 col-xl-7">
                             <select class="form-select" aria-label="select subcategory" id="subcategory"
-                            name="subcategory" [(ngModel)]="subcategory">
+                                name="subcategory" [(ngModel)]="subcategory">
                                 <option selected disabled>Seleccionar...</option>
                                 <option value="1">Uno</option>
                                 <option value="2">Dos</option>
@@ -64,10 +64,18 @@
                         <!-- capturing video for service -->
                         <div class="row justify-content-center">
                             <div class="file">
-                                <i class="bi bi-camera-video-fill"></i>
-                                <p id="text-file">Máximo 50 mb</p>
-                                <input type="file" id="videoFile" name="videoFile"
-                                [(ngModel)]="videoFile" accept="video/*">
+                                <div *ngIf="!url; else previewVideotemplate">
+                                    <i class="bi bi-camera-video-fill"></i>
+                                    <p id="text-file">Máximo 50 mb</p>
+                                </div>
+                                <!-- preview video for service-->
+                                <ng-template #previewVideotemplate>
+                                    <div>
+                                        <video [src]="url" *ngIf="format==='video' && url" controls></video>
+                                    </div>
+                                </ng-template>
+                                <input type="file" id="videoFile" name="videoFile" [(ngModel)]="videoFile"
+                                    accept="video/*" (change)="onSelectFile($event)">
                             </div>
                         </div>
                     </div>
@@ -85,8 +93,8 @@
                                         <img class="img-fluid" [src]="previewImg" alt="preview img">
                                     </div>
                                 </ng-template>
-                                <input type="file" id="imageFile" name="imageFile"
-                                [(ngModel)]="imageFile" accept="image/*" (change)="captureFileImg($event)">
+                                <input type="file" id="imageFile" name="imageFile" [(ngModel)]="imageFile"
+                                    accept="image/*" (change)="captureFileImg($event)">
                             </div>
                         </div>
                     </div>
@@ -94,19 +102,24 @@
             </div>
         </div>
     </div>
+    <!-- save data for preview -->
+    <div class="d-flex flex-row-reverse bd-highlight">
+        <div class="p-2 bd-highlight">
+            <button type="button" class="btn save-btn" (click)="shareAddGeneralInfo();sharePreviewImage()">Guardar
+            </button>
+        </div>
+    </div>
 </div>
 
-<div class="d-flex flex-row-reverse bd-highlight pt-5">
-    <div class="p-2 bd-highlight"><button type="button" class="btn publish-btn" (click)="shareAddGeneralInfo()">Guardar</button></div>
-</div>
-
-<!-- prueba previsualizacion video -->
+<!-- prueba previsualizacion video 
 <div>
     <p>
         Image/Video Preview
-      </p>
-      
-      <img [src]="url" *ngIf="format==='image' && url" height="200"> <br/>
-      <video [src]="url" *ngIf="format==='video' && url" height="200" controls></video> <br/>
-      <input type='file' (change)="onSelectFile($event)" />
+    </p>
+
+    <img [src]="url" *ngIf="format==='image' && url" height="200"> <br />
+    <video [src]="url" *ngIf="format==='video' && url" height="200" controls></video> <br />
+    <input type='file' (change)="onSelectFile($event)" />
 </div>
+
+-->

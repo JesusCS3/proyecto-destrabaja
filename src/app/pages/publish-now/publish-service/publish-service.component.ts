@@ -1,6 +1,8 @@
+import { serviceDescription } from './service-description/models/service-description.model';
 import { generalInfo } from './general-info/models/general-info.model';
 import { Component, OnInit } from '@angular/core';
 import { GeneralInfoService } from './general-info/services/general-info.service';
+import { ServiceDescriptionService } from './service-description/services/service-description.service';
 
 @Component({
   selector: 'app-publish-service',
@@ -12,20 +14,45 @@ export class PublishServiceComponent implements OnInit {
   /* variable for service preview */
   preview: boolean = false;
 
-  /* object general info */
+  /* variable for preview img service */
+  previewImg: string = '';
+
+  /***** variables for save information *****/
+
   generalInfo:generalInfo[] = [];
+  serviceDescription:serviceDescription[] = [];
 
-  nameService: string = 'Esta información viene desde publish service';
+  /***** variables to share information for preview *****/
 
-  constructor(private generalInfoService:GeneralInfoService) { }
+  gnralInfo:any;
+  serviceDescrip: any;
+
+  constructor(private generalInfoService:GeneralInfoService, 
+              private serviceDescriptionService:ServiceDescriptionService) { }
 
   ngOnInit(): void {
     this.generalInfo = this.generalInfoService.generalInfo;
+    this.serviceDescription = this.serviceDescriptionService.serviceDescription;
   }
 
-  /* add general info */
+  /* receive information from general info component */
   addGeneralInfo(generalInfo:generalInfo) {
-    this.generalInfoService.generalInfo.push(generalInfo)
+    this.generalInfoService.generalInfo.push(generalInfo);
+    this.gnralInfo = generalInfo;
+  }
+
+  /* receive the preview image of the general info component */
+  addPreviewImg(previewImage:any){
+    this.previewImg = previewImage;
+    //console.log(this.previewImg);
+  }
+
+  /* receive information from service description component */
+  addServiceDescription(serviceDescription:serviceDescription){
+    this.serviceDescriptionService.serviceDescription.push(serviceDescription);
+    this.serviceDescrip = serviceDescription;
+    //console.log("Esta es la informacion guardada en el servicio de descripcion de servicio" + JSON.stringify(this.serviceDescriptionService.serviceDescription));
+    //console.log("Esta es la informacion para compartir con la vista previa" + JSON.stringify(this.serviceDescrip));
   }
 
   /* service preview */

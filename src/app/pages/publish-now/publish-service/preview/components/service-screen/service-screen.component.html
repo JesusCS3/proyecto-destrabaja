@@ -1,52 +1,70 @@
 <div class="row justify-content-center col-12 bg-form">
-    <div class="service-levels">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Inicial</th>
-                    <th scope="col">Plus</th>
-                    <th scope="col">Premium</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Entregables</th>
-                    <td>
-                        <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxInitialPlan" value="" aria-label="...">
-                        </div>   
-                    </td>
-                    <td>
-                        <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxPlusPlan" value="" aria-label="...">
-                        </div>  
-                    </td>
-                    <td>
-                        <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan" value="" aria-label="...">
-                        </div>  
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Características</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">Extras</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">Contratar</th>
-                    <td><button type="button" class="btn publish-btn">Comprar</button></td>
-                    <td><button type="button" class="btn publish-btn">Comprar</button></td>
-                    <td><button type="button" class="btn publish-btn">Comprar</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="service-screen">
+        <div class="col-xl-12">
+            <div class="row pt-3 p-3">
+                <div class="col-xl-4">
+                    <img [src]="previewImg" class="card-img-top service-screen-image" alt="preview-image">
+                </div>
+                <div class="col-xl-8">
+                    <h5 class="first-color-blue">{{generalInfo.nameService}}</h5>
+                    <p class="second-color-blue">{{serviceDescription.shortDescription}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-3">
+            <table class="table">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col"></th>
+                        <th scope="col" class="initial text-white">Inicial</th>
+                        <th scope="col" class="plus text-white">Plus</th>
+                        <th scope="col" class="premium text-white">Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let deliverable of deliverables">
+                        <th scope="row">
+                            {{deliverable.name}}
+                        </th>
+                        <td class="text-center initial text-white">
+                          <div>
+                            <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+                              [(ngModel)]="deliverable.initialPlan" aria-label="...">
+                          </div>
+                        </td>
+                        <td class="text-center plus text-white">
+                          <div>
+                            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+                              [(ngModel)]="deliverable.plusPlan" aria-label="...">
+                          </div>
+                        </td>
+                        <td class="text-center premium text-white">
+                          <div>
+                            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+                              [(ngModel)]="deliverable.premiumPlan" aria-label="...">
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                        <th scope="row">Características</th>
+                        <td class="text-center initial text-white"></td>
+                        <td class="text-center plus text-white"></td>
+                        <td class="text-center premium text-white"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Extras</th>
+                        <td class="text-center initial text-white"></td>
+                        <td class="text-center plus text-white"></td>
+                        <td class="text-center premium text-white"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Contratar</th>
+                        <td class="text-center initial"><button type="button" class="btn buy-btn">Comprar</button></td>
+                        <td class="text-center plus"><button type="button" class="btn buy-btn">Comprar</button></td>
+                        <td class="text-center premium"><button type="button" class="btn buy-btn">Comprar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

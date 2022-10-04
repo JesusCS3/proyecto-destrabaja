@@ -10,19 +10,25 @@
         <div class="row justify-content-center col-11 pt-5 bg-form preview">
             <div class="col-11">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-xl-5">
                         <div class="pb-3">
-                            <h3>Ícono en pantalla de inicio</h3>{{gnralInfo.nameService}}
+                            <h3>Ícono en pantalla de inicio</h3>
                         </div>
                         <app-publish-service-card
-                        [gnralInfo]="gnralInfo"
+                        [generalInfo]="generalInfo"
+                        [previewImg]="previewImg"
+                        [serviceDescription]="serviceDescription"
                         ></app-publish-service-card>
                     </div>
-                    <div class="col">
+                    <div class="col-xl-7">
                         <div class="pb-3">
                             <h3>Pantalla de servicio</h3>
                         </div>
-                        <app-service-screen></app-service-screen>
+                        <app-service-screen
+                        [generalInfo]="generalInfo"
+                        [previewImg]="previewImg"
+                        [serviceDescription]="serviceDescription"
+                        ></app-service-screen>
                     </div>
                   </div>                
             </div>

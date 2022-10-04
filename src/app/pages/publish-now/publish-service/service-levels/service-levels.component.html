@@ -1,177 +1,192 @@
+<!-- title service levels -->
 <div class="col-6 col-lg-2 text-left pt-5">
-    <h5 class="first-color-blue"><strong>Niveles de servicio</strong>
-        <hr>
-    </h5>
+  <h5 class="first-color-blue"><strong>Niveles de servicio</strong>
+    <hr>
+  </h5>
 </div>
+<!-- input text for service levels -->
 <div class="service-levels">
-    <table class="table">
-        <thead>
-          <tr>
-            <th class="text-left" scope="col-3">Activar Plus / Premium</th>
-            <th class="text-center" scope="col-3">Inicial</th>
-            <th class="text-center" scope="col-3">
-              Plus
-              <div>
-                <input class="form-check-input" type="checkbox" id="checkboxPlusPlan" value="" aria-label="...">
-              </div>              
-            </th>
-            <th class="text-center" scope="col-3">
-              Premium
-              <div>
-                <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan" value="" aria-label="...">
-              </div>              
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Nombre de cada plan</th>
-            <td><input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"></td>
-            <td><input class="service-levels-input" type="text" name="plusPlan" id="plusPlan"></td>
-            <td><input class="service-levels-input" type="text" name="premiumPlan" id="premiumPlan"></td>
-          </tr>
-          
-          <tr *ngFor="let deliverables of deliverables">
-            <th scope="row">
-              <div class="element cleanStyles">
-                <div class="elementDescription pe-3">{{deliverables.name}}</div>
-                <div class="right cleanStyles">
-                    <div class="elementDelete">
-                        <button class="elementDelete--btn">
-                          <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
-                        </button>
-                    </div>
-                </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="text-left" scope="col-3">Activar Plus / Premium</th>
+        <th class="text-center" scope="col-3">Inicial</th>
+        <th class="text-center" scope="col-3">
+          Plus
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxPlusPlan" value="" aria-label="...">
+          </div>
+        </th>
+        <th class="text-center" scope="col-3">
+          Premium
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan" value="" aria-label="...">
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Nombre de cada plan</th>
+        <td>
+          <input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"
+          placeholder="Ingresar el nombre del plan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="plusPlan" id="plusPlan"
+          placeholder="Ingresar el nombre del plan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="premiumPlan" id="premiumPlan"
+          placeholder="Ingresar el nombre del plan">
+        </td>
+      </tr>
+
+      <tr *ngFor="let deliverables of deliverables">
+        <th scope="row">
+          <div class="element cleanStyles">
+            <div class="elementDescription pe-3">{{deliverables.name}}</div>
+            <div class="right cleanStyles">
+              <div class="elementDelete">
+                <button class="elementDelete--btn">
+                  <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
+                </button>
               </div>
-            </th>
-            <td class="text-center">
-              {{deliverables.initialPlan}}
-              <div>
-                <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan" value="{{deliverables.initialPlan}}" aria-label="...">
-              </div>              
-            </td>
-            <td class="text-center">
-              {{deliverables.plusPlan}}
-              <div>
-                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan" value="" aria-label="...">
-              </div>              
-            </td>
-            <td class="text-center">
-              {{deliverables.premiumPlan}}
-              <div>
-                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan" value="" aria-label="...">
-              </div>              
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
-              [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable">
-            </th>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" name="deliverableInputInitialPlan" 
-              id="deliverableInputInitialPlan" [(ngModel)]="deliverableInputInitialPlan"
-              value="" aria-label="...">
-            </td>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" name="deliverableInputPlusPlan" 
-              id="deliverableInputPlusPlan" [(ngModel)]="deliverableInputPlusPlan"
-              value="" aria-label="...">
-            </td>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" name="deliverableInputPremiumPlan" 
-              id="deliverableInputPremiumPlan" [(ngModel)]="deliverableInputPremiumPlan"
-              value="" aria-label="...">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" type="button" (click)="addDeliverable()">+ Agregar Entregable</th>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row">Máximo tiempo de entrega</th>
-            <td>
-              <div class="row mb-3">
-                <div class="col-sm-8">
-                  <input type="text" name="deliveryTimeInitialPlan" id="deliveryTimeInitialPlan"
-                  [(ngModel)]="deliveryTimeInitialPlan">
-                </div>
-                <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" 
-                id="labelDeliveryTimeInitialPlan">días hab.</label>
-              </div>            
-            </td>
-            <td>
-              <div class="row mb-3">
-                <div class="col-sm-8">
-                  <input type="text" name="deliveryTimePlusPlan" id="deliveryTimePlusPlan"
-                  [(ngModel)]="deliveryTimePlusPlan">
-                </div>
-                <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" 
-                id="labelDeliveryTimePlusPlan">días hab.</label>
-              </div>
-            </td>
-            <td>
-              <div class="row mb-3">
-                <div class="col-sm-8">
-                  <input type="text" name="deliveryTimePremiumPlan" id="deliveryTimePremiumPlan"
-                  [(ngModel)]="deliveryTimePremiumPlan">
-                </div>
-                <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" 
-                id="labelDeliveryTimePremiumPlan">días hab.</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Comentarios <span>(Número de revisiones,<br> horario de atención,
-                propuestas iniciales de diseño, etc.)</span>
-            </th>
-            <td>
-              <input class="service-levels-input" type="text" name="commentInitialPlan" id="commentinItialPlan"
-              [(ngModel)]="commentInitialPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="commentPlusPlan" id="commentPlusPlan"
-              [(ngModel)]="commentPlusPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="commentPremiumPlan" id="commentPremiumPlan"
-              [(ngModel)]="commentPremiumPlan">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">¿Cuánto quieres ganar por<br>
-                venta? (en pesos mexicanos)
-            </th>
-            <td>
-              <input class="service-levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
-              [(ngModel)]="priceInitialPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="pricePlusPlan" id="pricePlusPlan"
-              [(ngModel)]="pricePlusPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="pricePremiumPlan" id="pricePremiumPlan"
-              [(ngModel)]="pricePremiumPlan">
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Precio que verá el cliente</th>
-            <td>
-              <input class="service-levels-input" type="text" name="priceSeeInitialPlan" id="priceSeeInitialPlan"
-              [(ngModel)]="priceSeeInitialPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="priceSeePlusPlan" id="priceSeePlusPlan"
-              [(ngModel)]="priceSeePlusPlan">
-            </td>
-            <td>
-              <input class="service-levels-input" type="text" name="priceSeePremiumPlan" id="priceSeePremiumPlan"
-              [(ngModel)]="priceSeePremiumPlan">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </div>
+        </th>
+        <td class="text-center">
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+              [(ngModel)]="deliverables.initialPlan" aria-label="...">
+          </div>
+        </td>
+        <td class="text-center">
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+              [(ngModel)]="deliverables.plusPlan" aria-label="...">
+          </div>
+        </td>
+        <td class="text-center">
+          <div>
+            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+              [(ngModel)]="deliverables.premiumPlan" aria-label="...">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
+            [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable">
+        </th>
+        <td class="text-center">
+          <input class="form-check-input" type="checkbox" name="deliverableInputInitialPlan"
+            id="deliverableInputInitialPlan" [(ngModel)]="deliverableInputInitialPlan" value="" aria-label="...">
+        </td>
+        <td class="text-center">
+          <input class="form-check-input" type="checkbox" name="deliverableInputPlusPlan" id="deliverableInputPlusPlan"
+            [(ngModel)]="deliverableInputPlusPlan" value="" aria-label="...">
+        </td>
+        <td class="text-center">
+          <input class="form-check-input" type="checkbox" name="deliverableInputPremiumPlan"
+            id="deliverableInputPremiumPlan" [(ngModel)]="deliverableInputPremiumPlan" value="" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" type="button" (click)="addDeliverable()">+ Agregar Entregable</th>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">Máximo tiempo de entrega</th>
+        <td>
+          <div class="row mb-3">
+            <div class="col-sm-8">
+              <input type="text" name="deliveryTimeInitialPlan" id="deliveryTimeInitialPlan"
+                [(ngModel)]="deliveryTimeInitialPlan">
+            </div>
+            <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimeInitialPlan">días
+              hab.</label>
+          </div>
+        </td>
+        <td>
+          <div class="row mb-3">
+            <div class="col-sm-8">
+              <input type="text" name="deliveryTimePlusPlan" id="deliveryTimePlusPlan"
+                [(ngModel)]="deliveryTimePlusPlan">
+            </div>
+            <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePlusPlan">días
+              hab.</label>
+          </div>
+        </td>
+        <td>
+          <div class="row mb-3">
+            <div class="col-sm-8">
+              <input type="text" name="deliveryTimePremiumPlan" id="deliveryTimePremiumPlan"
+                [(ngModel)]="deliveryTimePremiumPlan">
+            </div>
+            <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePremiumPlan">días
+              hab.</label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Comentarios <span>(Número de revisiones,<br> horario de atención,
+            propuestas iniciales de diseño, etc.)</span>
+        </th>
+        <td>
+          <input class="service-levels-input" type="text" name="commentInitialPlan" id="commentinItialPlan"
+            [(ngModel)]="commentInitialPlan" placeholder="Ingresar comentarios">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="commentPlusPlan" id="commentPlusPlan"
+            [(ngModel)]="commentPlusPlan" placeholder="Ingresar comentarios">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="commentPremiumPlan" id="commentPremiumPlan"
+            [(ngModel)]="commentPremiumPlan" placeholder="Ingresar comentarios">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">¿Cuánto quieres ganar por<br>
+          venta? (en pesos mexicanos)
+        </th>
+        <td>
+          <input class="service-levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
+            [(ngModel)]="priceInitialPlan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="pricePlusPlan" id="pricePlusPlan"
+            [(ngModel)]="pricePlusPlan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="pricePremiumPlan" id="pricePremiumPlan"
+            [(ngModel)]="pricePremiumPlan">
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Precio que verá el cliente</th>
+        <td>
+          <input class="service-levels-input" type="text" name="priceSeeInitialPlan" id="priceSeeInitialPlan"
+            [(ngModel)]="priceSeeInitialPlan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="priceSeePlusPlan" id="priceSeePlusPlan"
+            [(ngModel)]="priceSeePlusPlan">
+        </td>
+        <td>
+          <input class="service-levels-input" type="text" name="priceSeePremiumPlan" id="priceSeePremiumPlan"
+            [(ngModel)]="priceSeePremiumPlan">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- save data for preview -->
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight">
+    <button type="button" class="btn save-btn">Guardar
+    </button>
+  </div>
 </div>

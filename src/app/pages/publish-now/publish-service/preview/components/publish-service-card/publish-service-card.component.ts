@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { generalInfo } from '../../../general-info/models/general-info.model';
+import { serviceDescription } from '../../../service-description/models/service-description.model';
 
 @Component({
   selector: 'app-publish-service-card',
@@ -8,12 +9,13 @@ import { generalInfo } from '../../../general-info/models/general-info.model';
 })
 export class PublishServiceCardComponent implements OnInit {
 
-  /* variables to receive general information to display on the service card and service table */
-  @Input() gnralInfo!: generalInfo;
+  /* variable to receive preview image to display on the service card */
+  @Input() previewImg: string = '';
 
-  img: any;
-  title: string = 'Clases de diseño de logos';
-  description: string = 'Te enseño a usar paginas web de logos gratuitas para que los cobres en una lana. Te enseño a usar paginas web de logos gratuitas si';
+  /***** variables to receive information to display on the service card and service table *****/
+  @Input() generalInfo!: generalInfo;
+  @Input() serviceDescription!: serviceDescription;
+
   price: number = 0.0;
   score: number = 4.8;
 

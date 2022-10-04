@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { deliverables } from './models/deliverables/deliverables.model';
 import { features } from './models/features/features.model';
 import { extras } from './models/extras/extras.model';
@@ -15,11 +15,22 @@ import { PlansService } from './services/plans/plans.service';
 })
 export class ServiceLevelsComponent implements OnInit {
 
+  /* share with the publish service component */
+  @Output() shareDeliverables = new EventEmitter<deliverables>();
+
+  /***** variables for save information *****/
+
+  /* objects */
   deliverables:deliverables[] = [];
   features:features[] = [];
   extras:extras[] = [];
 
   plans:plans[] = [];
+
+  /***** variables to share information for preview *****/
+
+  /* objects */
+  deliv:any;
 
   /* variables for deliverables */
   deliverableInput:string = "";
@@ -62,13 +73,23 @@ export class ServiceLevelsComponent implements OnInit {
     this.features = this.featuresService.features;
   }
 
+  /* delete deliverables information */
   deleteDeliverable(deliverables:deliverables){
     this.deliverableService.delete(deliverables);
   }
 
+  /* save deliverables information */
   addDeliverable(){
     this.deliverableService.deliverables.push(new deliverables(this.deliverableInput,
     this.deliverableInputInitialPlan,this.deliverableInputPlusPlan,this.deliverableInputPremiumPlan));
   }
+
+  /* sharing the new service-levels object with the publish service component */
+  shareAddServiceLevels(){
+    this.deliv = this.deliverables;
+    let shareDeliverables = this.deliv;
+    this.shareDeliverables.emit(shareDeliverables);
+  }
+  
 
 }
