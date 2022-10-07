@@ -33,7 +33,7 @@
                         <div class="col-12 col-md-8 col-xl-8">
                             <select class="form-select" aria-label="select category" id="category" name="category"
                                 [(ngModel)]="category">
-                                <option selected>Seleccionar...</option>
+                                <option selected disabled>Seleccionar...</option>
                                 <option *ngFor="let category of categoryList" [value]="category.id">
                                     {{category.name}}</option>
                             </select>

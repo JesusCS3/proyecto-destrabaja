@@ -14,10 +14,10 @@ export class GeneralInfoComponent implements OnInit {
   @Output() sharePreviewImg = new EventEmitter<any>();
 
   /* variables for general info */
-  nameService: string = '';
-  hashtags: string = '';
-  category: string = '';
-  subcategory: string = '';
+  nameService: string;
+  hashtags: string;
+  category: string;
+  subcategory: string;
   videoFile: any;
   imageFile: any;
 
@@ -46,7 +46,7 @@ export class GeneralInfoComponent implements OnInit {
   ];
 
   /* variables for file capture */
-  public previewImg: string = '';
+  public previewImg: string;
   public files: any = [];
 
   /*variables de prueba preview image/video */

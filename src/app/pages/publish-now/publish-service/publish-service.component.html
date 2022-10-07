@@ -18,7 +18,12 @@
                     <app-service-description
                     (shareServiceDescription)="addServiceDescription($event)"
                     ></app-service-description>
-                    <app-service-levels></app-service-levels>
+                    <app-service-levels
+                    (sharePlanName)="addPlanName($event)"
+                    (shareFeatures)="addFeatures($event)"
+                    (shareFeaturesPlus)="addFeaturesPlus($event)"
+                    (shareFeaturesPremium)="addFeaturesPremium($event)"
+                    ></app-service-levels>
                     <app-extras></app-extras>
                     <app-requirements></app-requirements>
                     <div class="d-flex flex-row-reverse bd-highlight pt-5">
@@ -40,6 +45,10 @@
             [preview]="editService()"
             [previewImg]="previewImg"
             [serviceDescription]="serviceDescrip"
+            [planName]="planNames"
+            [features]="feature"
+            [featuresPlus]="featurePlus"
+            [featuresPremium]="featurePremium"
             ></app-preview>
         </div>
     <!-- </ng-template> -->

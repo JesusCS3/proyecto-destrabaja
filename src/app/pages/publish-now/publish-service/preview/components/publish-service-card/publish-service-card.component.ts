@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { generalInfo } from '../../../general-info/models/general-info.model';
 import { serviceDescription } from '../../../service-description/models/service-description.model';
+import { features } from '../../../service-levels/models/features/features.model';
 
 @Component({
   selector: 'app-publish-service-card',
@@ -15,8 +16,8 @@ export class PublishServiceCardComponent implements OnInit {
   /***** variables to receive information to display on the service card and service table *****/
   @Input() generalInfo!: generalInfo;
   @Input() serviceDescription!: serviceDescription;
+  @Input() features!: features;
 
-  price: number = 0.0;
   score: number = 4.8;
 
   constructor() { }

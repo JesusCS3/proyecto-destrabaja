@@ -29,16 +29,16 @@
       <tr>
         <th scope="row">Nombre de cada plan</th>
         <td>
-          <input class="service-levels-input" type="text" name="initialPlan" id="initialPlan"
-          placeholder="Ingresar el nombre del plan">
+          <input class="service-levels-input" type="text" name="initialPlanName" id="initialPlanName"
+          placeholder="Ingresar el nombre del plan" [(ngModel)]="initialPlanName">
         </td>
         <td>
-          <input class="service-levels-input" type="text" name="plusPlan" id="plusPlan"
-          placeholder="Ingresar el nombre del plan">
+          <input class="service-levels-input" type="text" name="plusPlanName" id="plusPlanName"
+          placeholder="Ingresar el nombre del plan" [(ngModel)]="plusPlanName">
         </td>
         <td>
-          <input class="service-levels-input" type="text" name="premiumPlan" id="premiumPlan"
-          placeholder="Ingresar el nombre del plan">
+          <input class="service-levels-input" type="text" name="premiumPlanName" id="premiumPlanName"
+          placeholder="Ingresar el nombre del plan" [(ngModel)]="premiumPlanName">
         </td>
       </tr>
 
@@ -93,7 +93,7 @@
         </td>
       </tr>
       <tr>
-        <th scope="row" type="button" (click)="addDeliverable()">+ Agregar Entregable</th>
+        <th scope="row" type="button" (click)="addDeliverable(); clear()">+ Agregar Entregable</th>
         <td></td>
         <td></td>
         <td></td>
@@ -169,15 +169,15 @@
         <th scope="row">Precio que verá el cliente</th>
         <td>
           <input class="service-levels-input" type="text" name="priceSeeInitialPlan" id="priceSeeInitialPlan"
-            [(ngModel)]="priceSeeInitialPlan">
+            [(ngModel)]="priceClientInitialPlan">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="priceSeePlusPlan" id="priceSeePlusPlan"
-            [(ngModel)]="priceSeePlusPlan">
+            [(ngModel)]="priceClientPlusPlan">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="priceSeePremiumPlan" id="priceSeePremiumPlan"
-            [(ngModel)]="priceSeePremiumPlan">
+            [(ngModel)]="priceClientPremiumPlan">
         </td>
       </tr>
     </tbody>
@@ -186,7 +186,8 @@
 <!-- save data for preview -->
 <div class="d-flex flex-row-reverse bd-highlight">
   <div class="p-2 bd-highlight">
-    <button type="button" class="btn save-btn">Guardar
+    <button type="button" class="btn save-btn" (click)="shareAddPlanName(); shareAddFeatures(); 
+    shareAddFeaturesPlus(); shareAddFeaturesPremium()">Guardar
     </button>
   </div>
 </div>

@@ -1,3 +1,3 @@
 export class serviceDescription {
-    constructor(public shortDescription: String, public longDescription:String){}
+    constructor(public shortDescription: string, public longDescription:string){}
 }

@@ -8,6 +8,32 @@
                 <div class="col-xl-8">
                     <h5 class="first-color-blue">{{generalInfo.nameService}}</h5>
                     <p class="second-color-blue">{{serviceDescription.shortDescription}}</p>
+                    <!-- modal to display the long description of the service -->
+                    <div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn modal-btn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Consulta más detalles del servicio
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="position relative">
+                                        <div>
+                                            <button type="button" class="btn close-btn position-absolute top-0 start-100 translate-middle" 
+                                            data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{serviceDescription.longDescription}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -16,55 +42,201 @@
                 <thead>
                     <tr class="text-center">
                         <th scope="col"></th>
-                        <th scope="col" class="initial text-white">Inicial</th>
-                        <th scope="col" class="plus text-white">Plus</th>
-                        <th scope="col" class="premium text-white">Premium</th>
+                        <th scope="col" id="plan" class="initial text-white">
+                            <span>Inicial</span><br> 
+                            {{planName.initialPlanName}}
+                        </th>
+                        <th scope="col" id="plan" class="plus text-white">
+                            <span>Plus</span><br> 
+                            {{planName.plusPlanName}}
+                        </th>
+                        <th scope="col" id="plan" class="premium text-white">
+                            <span>Premium</span><br> 
+                            {{planName.premiumPlanName}}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let deliverable of deliverables">
-                        <th scope="row">
+                        <th id="deliverableName" scope="row">
                             {{deliverable.name}}
                         </th>
                         <td class="text-center initial text-white">
-                          <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
-                              [(ngModel)]="deliverable.initialPlan" aria-label="...">
-                          </div>
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+                                    [(ngModel)]="deliverable.initialPlan" aria-label="..." [disabled]="true">
+                            </div>
                         </td>
                         <td class="text-center plus text-white">
-                          <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
-                              [(ngModel)]="deliverable.plusPlan" aria-label="...">
-                          </div>
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+                                    [(ngModel)]="deliverable.plusPlan" aria-label="..." [disabled]="true">
+                            </div>
                         </td>
                         <td class="text-center premium text-white">
-                          <div>
-                            <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
-                              [(ngModel)]="deliverable.premiumPlan" aria-label="...">
-                          </div>
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+                                    [(ngModel)]="deliverable.premiumPlan" aria-label="..." [disabled]="true">
+                            </div>
                         </td>
-                      </tr>
-                    <tr>
-                        <th scope="row">Características</th>
-                        <td class="text-center initial text-white"></td>
-                        <td class="text-center plus text-white"></td>
-                        <td class="text-center premium text-white"></td>
                     </tr>
                     <tr>
-                        <th scope="row">Extras</th>
+                        <th id="features" scope="row">Tiempo de entrega</th>
+                        <td class="text-center initial text-white">
+                            {{features.deliveryTime}} <span>días hábiles</span>
+                        </td>
+                        <td class="text-center plus text-white">
+                            {{featuresPlus.deliveryTimePlus}} <span>días hábiles</span>
+                        </td>
+                        <td class="text-center premium text-white">
+                            {{featuresPremium.deliveryTimePremium}} <span>días hábiles</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th id="features" scope="row">Comentarios</th>
+                        <td class="text-center initial text-white">
+                            {{features.comments}}
+                        </td>
+                        <td class="text-center plus text-white">
+                            {{featuresPlus.commentsPlus}}
+                        </td>
+                        <td class="text-center premium text-white">
+                            {{featuresPremium.commentsPremium}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th id="features" scope="row">Precio <span style="font-size: 0.5rem;">(incluye IVA y comisión
+                            de compra)</span></th>
+                        <td class="text-center initial text-white">
+                            {{features.priceClient | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                        </td>
+                        <td class="text-center plus text-white">
+                            {{featuresPlus.priceClientPlus | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                        </td>
+                        <td class="text-center premium text-white">
+                            {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th id="extras" scope="row">Extras</th>
                         <td class="text-center initial text-white"></td>
                         <td class="text-center plus text-white"></td>
                         <td class="text-center premium text-white"></td>
                     </tr>
                     <tr>
                         <th scope="row">Contratar</th>
-                        <td class="text-center initial"><button type="button" class="btn buy-btn">Comprar</button></td>
-                        <td class="text-center plus"><button type="button" class="btn buy-btn">Comprar</button></td>
-                        <td class="text-center premium"><button type="button" class="btn buy-btn">Comprar</button></td>
+                        <td class="text-center initial">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
+                        <td class="text-center plus">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
+                        <td class="text-center premium">
+                            <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <div class="d-flex justify-content-center col-12">
+            <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
+                Visita mi perfil</button></div>
+            <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
+                ¡Contáctame!</button></div>
+        </div>
+        <div class="p-3">
+            <ul class="list-unstyled">
+                <li>
+                    <input id="deliverables-included" readonly>
+                    <span id="included" class="ps-2">Entregables incluidos</span>
+                </li>
+                <li>
+                    <input id="features-included" readonly>
+                    <span id="included" class="ps-2">Características</span>
+                </li>
+                <li>
+                    <input id="extras-included" readonly>
+                    <span id="included" class="ps-2">Extras</span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+<!--
+<table class="table">
+    <thead>
+        <tr></tr>
+        <tr class="text-center">
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col" id="plan" class="initial text-white">Inicial</th>
+            <th scope="col" id="plan" class="plus text-white">Plus</th>
+            <th scope="col" id="plan" class="premium text-white">Premium</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div class="position-relative">
+            <tr>
+                <th class="verticalText" [attr.rowspan]="rowsDeliverables" scope="col">Entregables</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <div class="position-absolute top-0 start-100">
+            <tr *ngFor="let deliverable of deliverables">
+                <th scope="col"></th>
+                <th scope="row">
+                    {{deliverable.name}}
+                </th>
+                <td class="text-center initial text-white">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
+                            [(ngModel)]="deliverable.initialPlan" aria-label="..." [disabled]="true">
+                    </div>
+                </td>
+                <td class="text-center plus text-white">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
+                            [(ngModel)]="deliverable.plusPlan" aria-label="..." [disabled]="true">
+                    </div>
+                </td>
+                <td class="text-center premium text-white">
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
+                            [(ngModel)]="deliverable.premiumPlan" aria-label="..." [disabled]="true">
+                    </div>
+                </td>
+            </tr>
+        </div>
+        </tr>
+        </div>
+        <tr>
+            <th scope="col"></th>
+            <th scope="row">Características</th>
+            <td class="text-center initial text-white"></td>
+            <td class="text-center plus text-white"></td>
+            <td class="text-center premium text-white"></td>
+        </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="row">Extras</th>
+            <td class="text-center initial text-white"></td>
+            <td class="text-center plus text-white"></td>
+            <td class="text-center premium text-white"></td>
+        </tr>
+        <tr>
+            <th scope="col"></th>
+            <th scope="row">Contratar</th>
+            <td class="text-center initial">
+                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+            </td>
+            <td class="text-center plus">
+                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+            </td>
+            <td class="text-center premium">
+                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->

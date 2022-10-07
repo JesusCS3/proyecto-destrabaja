@@ -23,7 +23,7 @@
             Descripción larga para tu tarjeta de servicio (Opcional)
         </label>
         <textarea class="form-control" id="longDescription" name="longDescription" rows="3" maxlength="1500"
-            [ngModel]="longDescription" (keyup)="longDescriptionCount($event)"></textarea>
+            [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"></textarea>
         <!-- counting characters for long description -->
         <div class="d-flex bd-highlight">
             <div class="p-2 bd-highlight"><span>Máximo 1,500 caracteres.</span></div>

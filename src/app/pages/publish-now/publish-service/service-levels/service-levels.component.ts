@@ -1,12 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { deliverables } from './models/deliverables/deliverables.model';
-import { features } from './models/features/features.model';
+import { features, featuresPlus, featuresPremium } from './models/features/features.model';
 import { extras } from './models/extras/extras.model';
 import { plans } from './models/plans/plans.model';
 import { DeliverablesService } from './services/deliverables/deliverables.service';
-import { FeaturesService } from './services/features/features.service';
 import { ExtrasService } from './services/extras/extras.service';
 import { PlansService } from './services/plans/plans.service';
+import { planName } from './models/plan-name/plan-name.model';
 
 @Component({
   selector: 'app-service-levels',
@@ -16,61 +16,60 @@ import { PlansService } from './services/plans/plans.service';
 export class ServiceLevelsComponent implements OnInit {
 
   /* share with the publish service component */
-  @Output() shareDeliverables = new EventEmitter<deliverables>();
+  @Output() sharePlanName = new EventEmitter<planName>();
+  @Output() shareFeatures = new EventEmitter<features>();
+  @Output() shareFeaturesPlus = new EventEmitter<featuresPlus>();
+  @Output() shareFeaturesPremium = new EventEmitter<featuresPremium>();
 
   /***** variables for save information *****/
 
   /* objects */
   deliverables:deliverables[] = [];
-  features:features[] = [];
-  extras:extras[] = [];
-
-  plans:plans[] = [];
 
   /***** variables to share information for preview *****/
 
   /* objects */
   deliv:any;
 
+  /* variables for plan name */
+  initialPlanName:string;
+  plusPlanName:string;
+  premiumPlanName:string;
+
   /* variables for deliverables */
-  deliverableInput:string = "";
-  deliverableInputInitialPlan: boolean = false;
-  deliverableInputPlusPlan: boolean = false;
-  deliverableInputPremiumPlan: boolean = false;
+  deliverableInput:string;
+  deliverableInputInitialPlan: boolean;
+  deliverableInputPlusPlan: boolean;
+  deliverableInputPremiumPlan: boolean;
 
   /* variables for features */
 
   /* delivery time */
-  deliveryTimeInitialPlan: number = 0;
-  deliveryTimePlusPlan: number = 0;
-  deliveryTimePremiumPlan: number = 0;
+  deliveryTimeInitialPlan: number;
+  deliveryTimePlusPlan: number;
+  deliveryTimePremiumPlan: number;
 
   /* comments */
-  commentInitialPlan: string = "";
-  commentPlusPlan: string = "";
-  commentPremiumPlan: string = "";
+  commentInitialPlan: string;
+  commentPlusPlan: string;
+  commentPremiumPlan: string;
 
   /* price */
-  priceInitialPlan: number = 0;
-  pricePlusPlan: number = 0;
-  pricePremiumPlan: number = 0;
+  priceInitialPlan: number;
+  pricePlusPlan: number;
+  pricePremiumPlan: number;
   
   /* price see */
-  priceSeeInitialPlan: number = 0;
-  priceSeePlusPlan: number = 0;
-  priceSeePremiumPlan: number = 0;
+  priceClientInitialPlan: number;
+  priceClientPlusPlan: number;
+  priceClientPremiumPlan: number;
 
-  constructor(private deliverableService:DeliverablesService, private featuresService:FeaturesService,
-              private extrasService:ExtrasService, private plansService:PlansService) {
-                this.features = featuresService.features;
-                this.extras = extrasService.extras;
-                this.plans = plansService.plans;
+  constructor(private deliverableService:DeliverablesService) {
                }
 
   ngOnInit(): void {
 
     this.deliverables = this.deliverableService.deliverables;
-    this.features = this.featuresService.features;
   }
 
   /* delete deliverables information */
@@ -84,12 +83,36 @@ export class ServiceLevelsComponent implements OnInit {
     this.deliverableInputInitialPlan,this.deliverableInputPlusPlan,this.deliverableInputPremiumPlan));
   }
 
-  /* sharing the new service-levels object with the publish service component */
-  shareAddServiceLevels(){
-    this.deliv = this.deliverables;
-    let shareDeliverables = this.deliv;
-    this.shareDeliverables.emit(shareDeliverables);
+  /* clear input and check box to add deliverable */
+  clear() {
+    this.deliverableInput = '';
+    this.deliverableInputInitialPlan = false;
+    this.deliverableInputPlusPlan = false;
+    this.deliverableInputPremiumPlan = false;
   }
-  
+
+  /* sharing the new service-levels objects with the publish service component */
+  shareAddPlanName(){
+    let sharePlanName = new planName(this.initialPlanName, this.plusPlanName, this.premiumPlanName);
+    this.sharePlanName.emit(sharePlanName);
+  }
+
+  shareAddFeatures(){
+    let shareFeatures = new features(this.deliveryTimeInitialPlan, this.commentInitialPlan,
+      this.priceInitialPlan,this.priceClientInitialPlan);
+      this.shareFeatures.emit(shareFeatures);
+  }
+
+  shareAddFeaturesPlus(){
+    let shareFeaturesPlus = new featuresPlus(this.deliveryTimePlusPlan, this.commentPlusPlan, this.pricePlusPlan,
+      this.priceClientPlusPlan);
+      this.shareFeaturesPlus.emit(shareFeaturesPlus);
+  }
+
+  shareAddFeaturesPremium(){
+    let shareFeaturesPremium = new featuresPremium(this.deliveryTimePremiumPlan, this.commentPremiumPlan, this.pricePremiumPlan,
+      this.priceClientPremiumPlan);
+      this.shareFeaturesPremium.emit(shareFeaturesPremium);
+  }
 
 }
