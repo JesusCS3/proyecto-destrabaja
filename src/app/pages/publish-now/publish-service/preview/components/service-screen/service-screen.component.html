@@ -2,38 +2,48 @@
     <div class="service-screen">
         <div class="col-xl-12">
             <div class="row pt-3 p-3">
+                <!-- preview images and video for service-->
                 <div class="col-xl-4">
-                    <img [src]="previewImg" class="card-img-top service-screen-image" alt="preview-image">
+                    <div id="carouselServiceScreen" class="carousel slide carousel-fade service-screen-image" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" *ngIf="previewImg">
+                                <img [src]="previewImg" class="img-fluid d-block w-100" alt="preview-img-service">
+                            </div>
+                            <div class="carousel-item" *ngIf="previewImgTwo">
+                                <img [src]="previewImgTwo" class="img-fluid d-block w-100" alt="preview-img-service">
+                            </div>
+                            <div class="carousel-item" *ngIf="previewImgThree">
+                                <img [src]="previewImgThree" class="img-fluid d-block w-100" alt="preview-img-service">
+                            </div>
+                            <div class="carousel-item" *ngIf="previewVideo">
+                                <video [src]="previewVideo" class="img-fluid d-block w-100" controls poster="./assets/img/main/video.svg"></video>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="col-xl-8">
                     <h5 class="first-color-blue">{{generalInfo.nameService}}</h5>
                     <p class="second-color-blue">{{serviceDescription.shortDescription}}</p>
                     <!-- modal to display the long description of the service -->
-                    <div>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn modal-btn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Consulta más detalles del servicio
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="position relative">
-                                        <div>
-                                            <button type="button" class="btn close-btn position-absolute top-0 start-100 translate-middle" 
-                                            data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body">
-                                        {{serviceDescription.longDescription}}
-                                    </div>
-                                </div>
-                            </div>
+                    <ng-template #longContent let-modal>
+                        <button type="button" class="btn modal-close position-absolute top-0 start-100"
+                                aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <i class="bi bi-x-lg"></i></button>
+                        <div class="modal-body">
+                            {{serviceDescription.longDescription}}
                         </div>
-                    </div>
+                    </ng-template>
+
+                    <button class="btn modal-btn" (click)="openScrollableContent(longContent)">
+                        Consulta más detalles del servicio</button>
                 </div>
             </div>
         </div>
@@ -42,16 +52,16 @@
                 <thead>
                     <tr class="text-center">
                         <th scope="col"></th>
-                        <th scope="col" id="plan" class="initial text-white">
-                            <span>Inicial</span><br> 
+                        <th scope="col" id="plan" class="initial text-white align-baseline">
+                            <span>Inicial</span><br>
                             {{planName.initialPlanName}}
                         </th>
-                        <th scope="col" id="plan" class="plus text-white">
-                            <span>Plus</span><br> 
+                        <th scope="col" id="plan" class="plus text-white align-baseline">
+                            <span>Plus</span><br>
                             {{planName.plusPlanName}}
                         </th>
-                        <th scope="col" id="plan" class="premium text-white">
-                            <span>Premium</span><br> 
+                        <th scope="col" id="plan" class="premium text-white align-baseline">
+                            <span>Premium</span><br>
                             {{planName.premiumPlanName}}
                         </th>
                     </tr>
@@ -105,23 +115,41 @@
                         </td>
                     </tr>
                     <tr>
-                        <th id="features" scope="row">Precio <span style="font-size: 0.5rem;">(incluye IVA y comisión
-                            de compra)</span></th>
+                        <th id="features" scope="row">Precio MXN <br><span style="font-size: 0.5rem;">(incluye IVA y
+                                comisión de compra)</span></th>
                         <td class="text-center initial text-white">
-                            {{features.priceClient | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                            {{features.priceClient | currency:'MNX':'$':'1.0-0'}}
                         </td>
                         <td class="text-center plus text-white">
-                            {{featuresPlus.priceClientPlus | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                            {{featuresPlus.priceClientPlus | currency:'MNX':'$':'1.0-0'}}
                         </td>
                         <td class="text-center premium text-white">
-                            {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.2-2'}} <span>MXN</span>
+                            {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.0-0'}}
                         </td>
                     </tr>
-                    <tr>
-                        <th id="extras" scope="row">Extras</th>
-                        <td class="text-center initial text-white"></td>
-                        <td class="text-center plus text-white"></td>
-                        <td class="text-center premium text-white"></td>
+                    <tr *ngFor="let extras of extras">
+                        <th id="extras" scope="row">{{extras.nameExtra}}</th>
+                        <td class="text-center plus text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate"></td>
+                        <ng-template #extrasTemplate>
+                            <td class="text-center initial text-white">
+                                {{extras.deliveryTimeExtra}} <span>días hábiles por </span>
+                                {{extras.priceClientExtra | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
+                        <td class="text-center plus text-white" *ngIf="!extras.plusPlanExtra else extrasPlusTemplate"></td>
+                        <ng-template #extrasPlusTemplate>
+                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra">
+                                {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
+                                {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
+                        <td class="text-center plus text-white" *ngIf="!extras.premiumPlanExtra else extrasPremiumTemplate"></td>
+                        <ng-template #extrasPremiumTemplate>
+                            <td class="text-center premium text-white">
+                                {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
+                                {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
+                            </td>
+                        </ng-template>
                     </tr>
                     <tr>
                         <th scope="row">Contratar</th>
@@ -140,9 +168,9 @@
         </div>
         <div class="d-flex justify-content-center col-12">
             <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
-                Visita mi perfil</button></div>
+                    Visita mi perfil</button></div>
             <div class="p-2 px-4"><button type="button" class="btn preview-btn" [disabled]="true">
-                ¡Contáctame!</button></div>
+                    ¡Contáctame!</button></div>
         </div>
         <div class="p-3">
             <ul class="list-unstyled">
@@ -162,6 +190,36 @@
         </div>
     </div>
 </div>
+
+<!-- modal to display the long description of the service 
+                    <div>
+                        <button type="button" class="btn modal-btn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Consulta más detalles del servicio
+                        </button>
+                        <div class="modal fade pt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="position relative">
+                                        <div>
+                                            <button type="button"
+                                                class="btn close-btn position-absolute top-0 start-100 translate-middle"
+                                                data-bs-dismiss="modal" aria-label="Close"><i
+                                                    class="bi bi-x-lg"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{serviceDescription.longDescription}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+
+
 <!--
 <table class="table">
     <thead>

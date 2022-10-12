@@ -1,11 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { deliverables } from './models/deliverables/deliverables.model';
 import { features, featuresPlus, featuresPremium } from './models/features/features.model';
-import { extras } from './models/extras/extras.model';
-import { plans } from './models/plans/plans.model';
 import { DeliverablesService } from './services/deliverables/deliverables.service';
-import { ExtrasService } from './services/extras/extras.service';
-import { PlansService } from './services/plans/plans.service';
 import { planName } from './models/plan-name/plan-name.model';
 
 @Component({
@@ -22,14 +18,9 @@ export class ServiceLevelsComponent implements OnInit {
   @Output() shareFeaturesPremium = new EventEmitter<featuresPremium>();
 
   /***** variables for save information *****/
-
-  /* objects */
   deliverables:deliverables[] = [];
 
   /***** variables to share information for preview *****/
-
-  /* objects */
-  deliv:any;
 
   /* variables for plan name */
   initialPlanName:string;
@@ -64,8 +55,7 @@ export class ServiceLevelsComponent implements OnInit {
   priceClientPlusPlan: number;
   priceClientPremiumPlan: number;
 
-  constructor(private deliverableService:DeliverablesService) {
-               }
+  constructor(private deliverableService:DeliverablesService) {}
 
   ngOnInit(): void {
 

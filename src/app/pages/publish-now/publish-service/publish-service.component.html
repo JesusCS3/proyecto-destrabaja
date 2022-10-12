@@ -14,6 +14,9 @@
                     <app-general-info
                     (shareGeneralInfo)="addGeneralInfo($event)"
                     (sharePreviewImg)="addPreviewImg($event)"
+                    (sharePreviewImgTwo)="addPreviewImgTwo($event)"
+                    (sharePreviewImgThree)="addPreviewImgThree($event)"
+                    (sharePreviewVid)="addPreviewVideo($event)"
                     ></app-general-info>
                     <app-service-description
                     (shareServiceDescription)="addServiceDescription($event)"
@@ -44,6 +47,9 @@
             [generalInfo]="gnralInfo"
             [preview]="editService()"
             [previewImg]="previewImg"
+            [previewImgTwo]="previewImgTwo"
+            [previewImgThree]="previewImgThree"
+            [previewVideo]="previewVideo"
             [serviceDescription]="serviceDescrip"
             [planName]="planNames"
             [features]="feature"

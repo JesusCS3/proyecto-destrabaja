@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { extras } from '../../../extras/models/extras.model';
+import { ExtrasService } from '../../../extras/services/extras.service';
 import { generalInfo } from '../../../general-info/models/general-info.model';
 import { serviceDescription } from '../../../service-description/models/service-description.model';
 import { deliverables } from '../../../service-levels/models/deliverables/deliverables.model';
@@ -12,9 +15,15 @@ import { DeliverablesService } from '../../../service-levels/services/deliverabl
   styleUrls: ['./service-screen.component.css']
 })
 export class ServiceScreenComponent implements OnInit {
+  closeResult: string;
 
     /* variable to receive preview image to display on the service card */
-  @Input() previewImg: string = '';
+  @Input() previewImg: string;
+  @Input() previewImgTwo: string;
+  @Input() previewImgThree: string;
+
+  /* variable to receive preview video to display on the service card */
+  @Input() previewVideo: string;
 
   /***** variables to receive information to display on the service card and service table *****/
   @Input() generalInfo!: generalInfo;
@@ -24,15 +33,22 @@ export class ServiceScreenComponent implements OnInit {
   @Input() features!: features;
   @Input() featuresPlus!: featuresPlus;
   @Input() featuresPremium!: featuresPremium;
+  extras:extras[] = [];
 
   rowsDeliverables:number = this.deliverables.length;
 
-  constructor(private deliverableService:DeliverablesService) { }
+  constructor(private deliverableService:DeliverablesService, private extrasService:ExtrasService,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.deliverables = this.deliverableService.deliverables;
-    //console.log(this.deliverables);
-    console.log(this.rowsDeliverables);
+    this.extras = this.extrasService.extras;
   }
+
+  /* modal scrollable */
+  openScrollableContent(longContent: any) {
+    this.modalService.open(longContent, { scrollable: true });
+  }
+
 
 }

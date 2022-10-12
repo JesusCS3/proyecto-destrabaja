@@ -12,6 +12,9 @@ export class GeneralInfoComponent implements OnInit {
   /* share with the publish service component */
   @Output() shareGeneralInfo = new EventEmitter<generalInfo>();
   @Output() sharePreviewImg = new EventEmitter<any>();
+  @Output() sharePreviewImgTwo = new EventEmitter<any>();
+  @Output() sharePreviewImgThree = new EventEmitter<any>();
+  @Output() sharePreviewVid = new EventEmitter<any>();
 
   /* variables for general info */
   nameService: string;
@@ -47,6 +50,8 @@ export class GeneralInfoComponent implements OnInit {
 
   /* variables for file capture */
   public previewImg: string;
+  public previewImgTwo: string;
+  public previewImgThree: string;
   public files: any = [];
 
   /*variables de prueba preview image/video */
@@ -63,10 +68,21 @@ export class GeneralInfoComponent implements OnInit {
     const capturedFile = event.target.files[0];
     this.extractBase64(capturedFile).then((img: any) => {
       this.previewImg = img.base;
-      //console.log(img);
     })
+
+    const capturedFileTwo = event.target.files[1];
+    this.extractBase64(capturedFileTwo).then((img: any) => {
+      this.previewImgTwo = img.base;
+    })
+
+    const capturedFileThree = event.target.files[2];
+    this.extractBase64(capturedFileThree).then((img: any) => {
+      this.previewImgThree = img.base;
+    })
+
     this.files.push(capturedFile);
-    //console.log(event.target.files);
+    this.files.push(capturedFileTwo);
+    this.files.push(capturedFileThree);
   }
 
   extractBase64 = async ($event: any) => new Promise((resolve, reject) => {
@@ -115,5 +131,22 @@ export class GeneralInfoComponent implements OnInit {
     let sharePreviewImg = this.previewImg;
     this.sharePreviewImg.emit(sharePreviewImg);
   }
+
+  sharePreviewImageTwo(){
+    let sharePreviewImgTwo = this.previewImgTwo;
+    this.sharePreviewImgTwo.emit(sharePreviewImgTwo);
+  }
+
+  sharePreviewImageThree(){
+    let sharePreviewImgThree = this.previewImgThree;
+    this.sharePreviewImgThree.emit(sharePreviewImgThree);
+  }
+
+  /* share the preview video with the publish service component */
+  sharePreviewVideo(){
+    let sharePreviewVid = this.url;
+    this.sharePreviewVid.emit(sharePreviewVid);
+  }
+
 
 }

@@ -22,9 +22,14 @@ hr {
     box-shadow: none;
 }
 
-.extras th{
+.extras th, td{
     color: #425CC7;
 }
+
+.extras table, tbody, td, tfoot, th, thead, tr {
+    border:none;
+}
+   
 
 .extras-input {
     display: block;
@@ -42,4 +47,70 @@ hr {
     appearance: none;
     border-radius: .25rem;
     outline: none;
+}
+
+.extras #deliveryTimeExtra, #deliveryTimeExtraPlus, #deliveryTimeExtraPremium {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #425CC7;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 3px solid #54C8E8;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    outline:  none;
+}
+
+/* customized delete deliverable */
+
+.cleanStyles::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.right { float: right; }
+
+.element {
+    padding: 13px;
+}
+
+.element:nth-child(even) { background-color: #f7f7f7; }
+
+.elementDescription {
+    float: left;
+}
+
+.elementDelete {
+    float: left;
+}
+
+.elementDelete--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+    color: #fff;
+}
+
+.elementDelete--btn:focus { outline: none; }
+.elementDelete--btn:active { transform: translateY(2px); }
+
+.element:hover .elementDelete--btn { display: block; }
+
+/* customized name extra */
+.name-extra {
+    background-color: #54C8E8;
+    color: #fff !important;
 }

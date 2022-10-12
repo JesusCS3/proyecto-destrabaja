@@ -33,7 +33,6 @@ import { ServiceLevelsComponent } from './pages/publish-now/publish-service/serv
 import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
 import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component'
 import { DeliverablesService } from './pages/publish-now/publish-service/service-levels/services/deliverables/deliverables.service';
-import { ExtrasService } from './pages/publish-now/publish-service/service-levels/services/extras/extras.service';
 import { FeaturesService } from './pages/publish-now/publish-service/service-levels/services/features/features.service';
 import { PlansService } from './pages/publish-now/publish-service/service-levels/services/plans/plans.service';
 import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
@@ -43,6 +42,7 @@ import { GeneralInfoService } from './pages/publish-now/publish-service/general-
 import { RequirementsService } from './pages/publish-now/publish-service/requirements/services/requirements.service';
 import { ServiceDescriptionService } from './pages/publish-now/publish-service/service-description/services/service-description.service';
 import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -83,14 +83,14 @@ import { ServiceScreenComponent } from './pages/publish-now/publish-service/prev
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [
     AuthService,
     GeneralInfoService,
     ServiceDescriptionService,
     DeliverablesService,
-    ExtrasService,
     FeaturesService,
     RequirementsService,
     PlansService

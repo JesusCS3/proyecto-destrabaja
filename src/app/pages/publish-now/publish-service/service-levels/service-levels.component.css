@@ -73,6 +73,11 @@ hr {
     font-size: 0.8rem;
 }
 
+.service-levels label{
+    color: #425CC7;
+    font-weight: bold;
+}
+
 /* customized delete deliverable */
 
 .cleanStyles::after {

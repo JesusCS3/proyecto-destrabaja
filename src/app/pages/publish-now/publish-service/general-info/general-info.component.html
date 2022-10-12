@@ -87,15 +87,15 @@
                                     <i class="bi bi-image"></i>
                                     <p id="text-file">Máximo 3 fotos</p>
                                 </div>
-                                <!-- preview images for service-->
-                                <ng-template #previewImgtemplate>
-                                    <div *ngIf="previewImg">
-                                        <img class="img-fluid" [src]="previewImg" alt="preview img">
-                                    </div>
-                                </ng-template>
                                 <input type="file" id="imageFile" name="imageFile" [(ngModel)]="imageFile"
-                                    accept="image/*" (change)="captureFileImg($event)">
+                                    accept="image/*" multiple (change)="captureFileImg($event)">
                             </div>
+                            <!-- preview images for service-->
+                            <ng-template #previewImgtemplate>
+                                <div>
+                                    <img class="img-fluid" [src]="previewImg" class="img-fluid" alt="preview img">
+                                </div>
+                            </ng-template>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,8 @@
     <!-- save data for preview -->
     <div class="d-flex flex-row-reverse bd-highlight">
         <div class="p-2 bd-highlight">
-            <button type="button" class="btn save-btn" (click)="shareAddGeneralInfo();sharePreviewImage()">Guardar
+            <button type="button" class="btn save-btn" (click)="shareAddGeneralInfo();sharePreviewImage();
+            sharePreviewImageTwo(); sharePreviewImageThree(); sharePreviewVideo()">Guardar
             </button>
         </div>
     </div>
@@ -122,4 +123,30 @@
     <input type='file' (change)="onSelectFile($event)" />
 </div>
 
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" *ngIf="previewImg">
+            <img [src]="previewImg" class="img-fluid d-block w-100" alt="preview-img-service">
+        </div>
+        <div class="carousel-item" *ngIf="previewImgTwo">
+            <img [src]="previewImgTwo" class="img-fluid d-block w-100" alt="preview-img-service">
+        </div>
+        <div class="carousel-item" *ngIf="previewImgThree">
+            <img [src]="previewImgThree" class="img-fluid d-block w-100" alt="preview-img-service">
+        </div>
+        <div class="carousel-item" *ngIf="url">
+            <video [src]="url" class="img-fluid d-block w-100" controls poster="./assets/img/main/video.svg"></video>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
 -->
+

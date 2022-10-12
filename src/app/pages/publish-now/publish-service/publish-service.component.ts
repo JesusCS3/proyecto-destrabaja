@@ -19,7 +19,12 @@ export class PublishServiceComponent implements OnInit {
   preview: boolean = false;
 
   /* variable for preview img service */
-  previewImg: string = '';
+  previewImg: string;
+  previewImgTwo: string;
+  previewImgThree: string;
+
+  /* variable for preview video service */
+  previewVideo: string;
 
   /***** variables for save information *****/
 
@@ -62,7 +67,19 @@ export class PublishServiceComponent implements OnInit {
   /* receive the preview image of the general info component */
   addPreviewImg(previewImage: any) {
     this.previewImg = previewImage;
-    //console.log(this.previewImg);
+  }
+
+  addPreviewImgTwo(previewImageTwo: any) {
+    this.previewImgTwo = previewImageTwo;
+  }
+
+  addPreviewImgThree(previewImageThree: any) {
+    this.previewImgThree = previewImageThree;
+  }
+
+  /* receive the preview video of the general info component */
+  addPreviewVideo(previewVideo: any) {
+    this.previewVideo = previewVideo;
   }
 
   /* receive information from service description component */

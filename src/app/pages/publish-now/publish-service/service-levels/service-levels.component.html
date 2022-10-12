@@ -9,15 +9,15 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="text-left" scope="col-3">Activar Plus / Premium</th>
-        <th class="text-center" scope="col-3">Inicial</th>
-        <th class="text-center" scope="col-3">
+        <th class="text-left align-baseline" scope="col-3">Activar Plus / Premium</th>
+        <th class="text-center align-baseline" scope="col-3">Inicial</th>
+        <th class="text-center align-baseline" scope="col-3">
           Plus
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPlusPlan" value="" aria-label="...">
           </div>
         </th>
-        <th class="text-center" scope="col-3">
+        <th class="text-center align-baseline" scope="col-3">
           Premium
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan" value="" aria-label="...">
@@ -116,7 +116,7 @@
               <input type="text" name="deliveryTimePlusPlan" id="deliveryTimePlusPlan"
                 [(ngModel)]="deliveryTimePlusPlan">
             </div>
-            <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePlusPlan">días
+            <label for="deliveryTimePlusPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePlusPlan">días
               hab.</label>
           </div>
         </td>
@@ -126,13 +126,13 @@
               <input type="text" name="deliveryTimePremiumPlan" id="deliveryTimePremiumPlan"
                 [(ngModel)]="deliveryTimePremiumPlan">
             </div>
-            <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePremiumPlan">días
+            <label for="deliveryTimePremiumPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePremiumPlan">días
               hab.</label>
           </div>
         </td>
       </tr>
       <tr>
-        <th scope="row">Comentarios <span>(Número de revisiones,<br> horario de atención,
+        <th scope="row">Comentarios <br><span>(Número de revisiones, horario de atención,
             propuestas iniciales de diseño, etc.)</span>
         </th>
         <td>
@@ -149,8 +149,8 @@
         </td>
       </tr>
       <tr>
-        <th scope="row">¿Cuánto quieres ganar por<br>
-          venta? (en pesos mexicanos)
+        <th scope="row">¿Cuánto quieres ganar por
+          venta?<br><span>(en pesos mexicanos)</span> 
         </th>
         <td>
           <input class="service-levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
@@ -168,15 +168,15 @@
       <tr>
         <th scope="row">Precio que verá el cliente</th>
         <td>
-          <input class="service-levels-input" type="text" name="priceSeeInitialPlan" id="priceSeeInitialPlan"
+          <input class="service-levels-input" type="text" name="priceClientInitialPlan" id="priceClientInitialPlan"
             [(ngModel)]="priceClientInitialPlan">
         </td>
         <td>
-          <input class="service-levels-input" type="text" name="priceSeePlusPlan" id="priceSeePlusPlan"
+          <input class="service-levels-input" type="text" name="priceClientPlusPlan" id="priceClientPlusPlan"
             [(ngModel)]="priceClientPlusPlan">
         </td>
         <td>
-          <input class="service-levels-input" type="text" name="priceSeePremiumPlan" id="priceSeePremiumPlan"
+          <input class="service-levels-input" type="text" name="priceClientPremiumPlan" id="priceClientPremiumPlan"
             [(ngModel)]="priceClientPremiumPlan">
         </td>
       </tr>

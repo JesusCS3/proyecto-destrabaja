@@ -110,9 +110,12 @@
 
 /* service screen image */
 .service-screen-image {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.service-screen-image img, video {
     width: 170px;
-    height: auto;
-    box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.2) !important;
+    height: 115px;
 }
 
 /* custom buy button */
@@ -209,4 +212,26 @@
     background: #FF4713;
     border-color: #FF4713;
     box-shadow: none;
+    transform: translate(-90%,0%) !important;
 }
+
+/* close button modal */
+.modal-close{
+    box-sizing: content-box;
+    padding: .25em .25em;
+    color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 0;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #FF4713;
+    border-color: #FF4713;
+    box-shadow: none;
+    transform: translate(-110%,10%) !important;
+    z-index: 2000;
+}
+
