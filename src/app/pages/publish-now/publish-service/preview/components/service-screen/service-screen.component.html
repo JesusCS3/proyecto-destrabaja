@@ -38,7 +38,7 @@
                                 aria-label="Close" (click)="modal.dismiss('Cross click')">
                                 <i class="bi bi-x-lg"></i></button>
                         <div class="modal-body">
-                            {{serviceDescription.longDescription}}
+                            <pre>{{serviceDescription.longDescription}}</pre>
                         </div>
                     </ng-template>
 
@@ -51,16 +51,16 @@
             <table class="table">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col"></th>
-                        <th scope="col" id="plan" class="initial text-white align-baseline">
+                        <th scope="col-xl-4"></th>
+                        <th scope="col-xl-4" id="plan" class="initial text-white align-baseline">
                             <span>Inicial</span><br>
                             {{planName.initialPlanName}}
                         </th>
-                        <th scope="col" id="plan" class="plus text-white align-baseline">
+                        <th scope="col-xl-4" id="plan" class="plus text-white align-baseline">
                             <span>Plus</span><br>
                             {{planName.plusPlanName}}
                         </th>
-                        <th scope="col" id="plan" class="premium text-white align-baseline">
+                        <th scope="col-xl-4" id="plan" class="premium text-white align-baseline">
                             <span>Premium</span><br>
                             {{planName.premiumPlanName}}
                         </th>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr *ngFor="let extras of extras">
                         <th id="extras" scope="row">{{extras.nameExtra}}</th>
-                        <td class="text-center plus text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate"></td>
+                        <td class="text-center initial text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate"></td>
                         <ng-template #extrasTemplate>
                             <td class="text-center initial text-white">
                                 {{extras.deliveryTimeExtra}} <span>días hábiles por </span>
@@ -143,7 +143,7 @@
                                 {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
-                        <td class="text-center plus text-white" *ngIf="!extras.premiumPlanExtra else extrasPremiumTemplate"></td>
+                        <td class="text-center premium text-white" *ngIf="!extras.premiumPlanExtra else extrasPremiumTemplate"></td>
                         <ng-template #extrasPremiumTemplate>
                             <td class="text-center premium text-white">
                                 {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>

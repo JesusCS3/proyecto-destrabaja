@@ -9,7 +9,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="text-left align-baseline" scope="col-3">Activar Plus / Premium</th>
+        <th class="text-left" scope="col-3">Activar Plus / Premium</th>
         <th class="text-center align-baseline" scope="col-3">Inicial</th>
         <th class="text-center align-baseline" scope="col-3">
           Plus
@@ -26,33 +26,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">Nombre de cada plan</th>
         <td>
           <input class="service-levels-input" type="text" name="initialPlanName" id="initialPlanName"
-          placeholder="Ingresar el nombre del plan" [(ngModel)]="initialPlanName">
+            placeholder="Ingresar el nombre del plan" [(ngModel)]="initialPlanName">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="plusPlanName" id="plusPlanName"
-          placeholder="Ingresar el nombre del plan" [(ngModel)]="plusPlanName">
+            placeholder="Ingresar el nombre del plan" [(ngModel)]="plusPlanName">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="premiumPlanName" id="premiumPlanName"
-          placeholder="Ingresar el nombre del plan" [(ngModel)]="premiumPlanName">
+            placeholder="Ingresar el nombre del plan" [(ngModel)]="premiumPlanName">
         </td>
       </tr>
-
-      <tr *ngFor="let deliverables of deliverables">
+      <!-- deliverables preview -->
+      <tr *ngFor="let deliverables of deliverables" class="element align-middle">
         <th scope="row">
-          <div class="element cleanStyles">
-            <div class="elementDescription pe-3">{{deliverables.name}}</div>
-            <div class="right cleanStyles">
-              <div class="elementDelete">
-                <button class="elementDelete--btn">
-                  <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
-                </button>
-              </div>
-            </div>
+          <div class="elementDescription pe-3">{{deliverables.name}}</div>
+          <div class="elementDelete">
+            <button class="elementDelete--btn">
+              <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
+            </button>
           </div>
         </th>
         <td class="text-center">
@@ -74,7 +70,7 @@
           </div>
         </td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">
           <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
             [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable">
@@ -92,13 +88,13 @@
             id="deliverableInputPremiumPlan" [(ngModel)]="deliverableInputPremiumPlan" value="" aria-label="...">
         </td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row" type="button" (click)="addDeliverable(); clear()">+ Agregar Entregable</th>
         <td></td>
         <td></td>
         <td></td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">Máximo tiempo de entrega</th>
         <td>
           <div class="row mb-3">
@@ -131,26 +127,26 @@
           </div>
         </td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">Comentarios <br><span>(Número de revisiones, horario de atención,
             propuestas iniciales de diseño, etc.)</span>
         </th>
         <td>
           <input class="service-levels-input" type="text" name="commentInitialPlan" id="commentinItialPlan"
-            [(ngModel)]="commentInitialPlan" placeholder="Ingresar comentarios">
+            [(ngModel)]="commentInitialPlan" placeholder="Ingresar comentarios" maxlength="60">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="commentPlusPlan" id="commentPlusPlan"
-            [(ngModel)]="commentPlusPlan" placeholder="Ingresar comentarios">
+            [(ngModel)]="commentPlusPlan" placeholder="Ingresar comentarios" maxlength="60">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="commentPremiumPlan" id="commentPremiumPlan"
-            [(ngModel)]="commentPremiumPlan" placeholder="Ingresar comentarios">
+            [(ngModel)]="commentPremiumPlan" placeholder="Ingresar comentarios" maxlength="60">
         </td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">¿Cuánto quieres ganar por
-          venta?<br><span>(en pesos mexicanos)</span> 
+          venta?<br><span>(en pesos mexicanos)</span>
         </th>
         <td>
           <input class="service-levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
@@ -165,7 +161,7 @@
             [(ngModel)]="pricePremiumPlan">
         </td>
       </tr>
-      <tr>
+      <tr class="align-middle">
         <th scope="row">Precio que verá el cliente</th>
         <td>
           <input class="service-levels-input" type="text" name="priceClientInitialPlan" id="priceClientInitialPlan"

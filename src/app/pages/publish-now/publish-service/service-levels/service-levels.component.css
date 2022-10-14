@@ -80,21 +80,9 @@ hr {
 
 /* customized delete deliverable */
 
-.cleanStyles::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.right { float: right; }
-
 .element {
-    padding: 13px;
-    border-bottom: 1px solid #e7e7e7;
+    color: #425CC7;
 }
-
-.element:first-child { border-top: 1px solid #e7e7e7; }
-.element:nth-child(even) { background-color: #f7f7f7; }
 
 .elementDescription {
     float: left;

@@ -68,21 +68,13 @@ hr {
     outline:  none;
 }
 
-/* customized delete deliverable */
-
-.cleanStyles::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.right { float: right; }
+/* customized delete extra */
 
 .element {
-    padding: 13px;
+    padding: .5rem;
+    border: 3px solid #54C8E8;
+    color:#425CC7;
 }
-
-.element:nth-child(even) { background-color: #f7f7f7; }
 
 .elementDescription {
     float: left;
@@ -101,16 +93,10 @@ hr {
     vertical-align: middle;
     line-height: 1;
     display: none;
-    color: #fff;
+    color: #425CC7;
 }
 
 .elementDelete--btn:focus { outline: none; }
 .elementDelete--btn:active { transform: translateY(2px); }
 
 .element:hover .elementDelete--btn { display: block; }
-
-/* customized name extra */
-.name-extra {
-    background-color: #54C8E8;
-    color: #fff !important;
-}

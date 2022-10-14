@@ -1,18 +1,27 @@
+<!-- service card -->
 <div class="mt-5">
     <div class="card services-card shadow-lg">
         <div id="carouselServiceCard" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" *ngIf="previewImg">
-                    <img [src]="previewImg" class="card-img-top img-fluid d-block w-100" alt="preview-img-service">
+                    <div class="card-img-preview">
+                        <img [src]="previewImg" class="img-preview"  alt="preview-img-service">
+                    </div>
                 </div>
                 <div class="carousel-item" *ngIf="previewImgTwo">
-                    <img [src]="previewImgTwo" class="card-img-top img-fluid d-block w-100" alt="preview-img-service">
+                    <div class="card-img-preview">
+                        <img [src]="previewImgTwo" class="img-preview" alt="preview-img-service">
+                    </div>
                 </div>
                 <div class="carousel-item" *ngIf="previewImgThree">
-                    <img [src]="previewImgThree" class="card-img-top img-fluid d-block w-100" alt="preview-img-service">
+                    <div class="card-img-preview">
+                        <img [src]="previewImgThree" class="img-preview" alt="preview-img-service">
+                    </div>
                 </div>
                 <div class="carousel-item" *ngIf="previewVideo">
-                    <video [src]="previewVideo" class="card-img-top img-fluid d-block w-100" controls poster="./assets/img/main/video.svg"></video>
+                    <div class="card-img-preview">
+                        <video [src]="previewVideo" class="img-preview" controls poster="./assets/img/main/video.svg"></video>
+                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceCard" data-bs-slide="prev">
@@ -20,6 +29,104 @@
                 <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceCard" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title first-color-blue">{{generalInfo.nameService}}</h5>
+            <p class="card-text second-color-blue">{{serviceDescription.shortDescription}}.</p>
+        </div>
+        <div class="card-body row">
+            <div class="col-6">
+                <p class="first-color-blue">Desde: {{features.priceClient | currency:'MNX':'$':'1.0-0'}}</p>
+              </div>
+              <div class="col-6 text-end">
+                <p class="first-color-blue"><i class="bi bi-star-fill yellow-color pe-1"></i> {{score}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- service card test one -->
+<div class="mt-5">
+    <div class="card services-card shadow-lg">
+        <div id="carouselServiceCardOne" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" *ngIf="previewImg">
+                    <div class="card-img-preview">
+                        <img [src]="previewImg" class="img-previewTwo"  alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewImgTwo">
+                    <div class="card-img-preview">
+                        <img [src]="previewImgTwo" class="img-previewTwo" alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewImgThree">
+                    <div class="card-img-preview">
+                        <img [src]="previewImgThree" class="img-previewTwo" alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewVideo">
+                    <div class="card-img-preview">
+                        <video [src]="previewVideo" class="img-previewTwo" controls poster="./assets/img/main/video.svg"></video>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceCardOne" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceCardOne" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title first-color-blue">{{generalInfo.nameService}}</h5>
+            <p class="card-text second-color-blue">{{serviceDescription.shortDescription}}.</p>
+        </div>
+        <div class="card-body row">
+            <div class="col-6">
+                <p class="first-color-blue">Desde: {{features.priceClient | currency:'MNX':'$':'1.0-0'}}</p>
+              </div>
+              <div class="col-6 text-end">
+                <p class="first-color-blue"><i class="bi bi-star-fill yellow-color pe-1"></i> {{score}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- service card test two -->
+<div class="mt-5">
+    <div class="card services-card shadow-lg">
+        <div id="carouselServiceCardTwo" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" *ngIf="previewImg">
+                    <div class="card-img-top">
+                        <img [src]="previewImg" class="card-img-top"  alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewImgTwo">
+                    <div class="card-img-top">
+                        <img [src]="previewImgTwo" class="card-img-top" alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewImgThree">
+                    <div class="card-img-top">
+                        <img [src]="previewImgThree" class="card-img-top" alt="preview-img-service">
+                    </div>
+                </div>
+                <div class="carousel-item" *ngIf="previewVideo">
+                    <div class="card-img-top">
+                        <video [src]="previewVideo" class="card-img-top" controls poster="./assets/img/main/video.svg"></video>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceCardTwo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceCardTwo" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Siguiente</span>
             </button>

@@ -20,3 +20,40 @@ hr {
     outline: none;
     box-shadow: none;
 }
+
+.requirements li{
+    color: #425CC7;
+    vertical-align: middle;
+}
+
+/* customized delete extra */
+
+.element {
+    vertical-align: middle;
+    color:#425CC7;
+}
+
+.elementDescription {
+    float: left;
+}
+
+.elementDelete {
+    float: left;
+}
+
+.elementDelete--btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    display: none;
+    color: #425CC7;
+}
+
+.elementDelete--btn:focus { outline: none; }
+.elementDelete--btn:active { transform: translateY(2px); }
+
+.element:hover .elementDelete--btn { display: block; }

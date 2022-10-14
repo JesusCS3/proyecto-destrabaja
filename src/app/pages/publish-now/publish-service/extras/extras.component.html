@@ -4,9 +4,9 @@
     </h5>
 </div>
 <div class="extras p-4">
-    <div class="pb-5 ">
-        <!-- extras preview -->
-        <table class="table extras-preview" *ngIf="extras.length != 0">
+    <!-- extras preview -->
+    <div class="pb-5" *ngIf="extras.length != 0">
+        <table class="table extras-preview">
             <thead>
                 <tr class="text-center">
                     <th scope="col"></th>
@@ -17,16 +17,12 @@
             </thead>
             <tbody *ngFor="let extras of extras">
                 <tr>
-                    <th scope="row" class="name-extra">
-                        <div class="element cleanStyles">
-                            <div class="elementDescription pe-3">{{extras.nameExtra}}</div>
-                            <div class="right cleanStyles">
-                                <div class="elementDelete">
-                                    <button class="elementDelete--btn">
-                                        <i class="bi bi-x-circle" type="button" (click)="deleteExtra(extras)"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <th scope="row" class="element">
+                        <div class="elementDescription pe-3">{{extras.nameExtra}}</div>
+                        <div class="elementDelete">
+                            <button class="elementDelete--btn">
+                                <i class="bi bi-x-circle" type="button" (click)="deleteExtra(extras)"></i>
+                            </button>
                         </div>
                     </th>
                     <td class="text-center">
@@ -70,9 +66,9 @@
             </tbody>
         </table>
     </div>
+    <!-- extras inputs -->
     <div>
-        <!-- extras input -->
-        <table class="table pt-5">
+        <table class="table">
             <thead>
                 <tr class="text-center">
                     <th scope="col"></th>
@@ -81,7 +77,7 @@
                     <th scope="col">Premium</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="align-middle">
                 <tr>
                     <th scope="row">
                         <input class="extras-input" type="text" name="extraInput" id="extraInput"

@@ -13,12 +13,37 @@
     font-size: 0.8rem;
 }
 
-.card-img-top {
-    width: 100%;
+
+/* customize service card image  */ 
+
+.card-img-preview {
+    width: 21.3rem;
     height: 10.8rem;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
 }
+
+.img-preview {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+/* pruebas ajuste de imagen */ 
+
+.img-previewTwo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center center;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+
 
 /*custom shadow */
 .shadow-lg {
