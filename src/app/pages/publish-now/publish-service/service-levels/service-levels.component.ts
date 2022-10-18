@@ -20,6 +20,10 @@ export class ServiceLevelsComponent implements OnInit {
   /***** variables for save information *****/
   deliverables:deliverables[] = [];
 
+  /* variables for disabled */
+  checkboxPlusPlan:boolean = false;
+  checkboxPremiumPlan:boolean = false;
+
   /***** variables to share information for preview *****/
 
   /* variables for plan name */
@@ -103,6 +107,44 @@ export class ServiceLevelsComponent implements OnInit {
     let shareFeaturesPremium = new featuresPremium(this.deliveryTimePremiumPlan, this.commentPremiumPlan, this.pricePremiumPlan,
       this.priceClientPremiumPlan);
       this.shareFeaturesPremium.emit(shareFeaturesPremium);
+  }
+
+  /* calculate the customer price */
+  clientPrice(){
+    if(this.priceInitialPlan != 0){
+      this.priceClientInitialPlan = Math.round(((this.priceInitialPlan/.80)*1.21));
+    }
+  }
+
+  clientPricePlus(){
+    if(this.pricePlusPlan != 0){
+      this.priceClientPlusPlan = Math.round(((this.pricePlusPlan/.80)*1.21));
+    }
+  }
+
+  clientPricePremium(){
+    if(this.pricePremiumPlan != 0){
+      this.priceClientPremiumPlan = Math.round(((this.pricePremiumPlan/.80)*1.21));
+    }
+  }
+
+  /* calculate price */
+  price(){
+    if(this.priceClientInitialPlan != 0){
+      this.priceInitialPlan = Math.round(((this.priceClientInitialPlan *.80)/1.21));
+    }
+  }
+
+  pricePlus(){
+    if(this.priceClientPlusPlan != 0){
+      this.pricePlusPlan = Math.round(((this.priceClientPlusPlan *.80)/1.21));
+    }
+  }
+
+  pricePremium(){
+    if(this.priceClientPremiumPlan != 0){
+      this.pricePremiumPlan = Math.round(((this.priceClientPremiumPlan *.80)/1.21));
+    }
   }
 
 }

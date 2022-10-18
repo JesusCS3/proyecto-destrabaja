@@ -16,8 +16,8 @@ export class ExtrasComponent implements OnInit {
 
   extraInput:string;
   checkboxInitialPlanExtra: boolean;
-  checkboxPlusPlanExtra: boolean;
-  checkboxPremiumPlanExtra: boolean;
+  checkboxPlusPlanExtra: boolean = false;
+  checkboxPremiumPlanExtra: boolean = false;
 
   /* delivery time */
   deliveryTimeExtra: number;
@@ -69,5 +69,44 @@ export class ExtrasComponent implements OnInit {
     this.priceExtraPremium = 0; 
     this.priceClientExtraPremium = 0; 
   }
+
+  /* calculate the customer price */
+  clientPriceExtra(){
+    if(this.priceExtra != 0){
+      this.priceClientExtra = Math.round(((this.priceExtra/.80)*1.21));
+    }
+  }
+
+  clientPricePlusExtra(){
+    if(this.priceExtraPlus != 0){
+      this.priceClientExtraPlus = Math.round(((this.priceExtraPlus/.80)*1.21));
+    }
+  }
+
+  clientPricePremiumExtra(){
+    if(this.priceExtraPremium != 0){
+      this.priceClientExtraPremium = Math.round(((this.priceExtraPremium/.80)*1.21));
+    }
+  }
+
+  /* calculate price */
+  priceExtraInitial(){
+    if(this.priceClientExtra != 0){
+      this.priceExtra = Math.round(((this.priceClientExtra *.80)/1.21));
+    }
+  }
+
+  pricePlusExtra(){
+    if(this.priceClientExtraPlus != 0){
+      this.priceExtraPlus = Math.round(((this.priceClientExtraPlus *.80)/1.21));
+    }
+  }
+
+  pricePremiumExtra(){
+    if(this.priceClientExtraPremium != 0){
+      this.priceExtraPremium = Math.round(((this.priceClientExtraPremium *.80)/1.21));
+    }
+  }
+
 
 }

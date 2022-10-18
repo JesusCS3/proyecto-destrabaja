@@ -100,3 +100,8 @@ hr {
 .elementDelete--btn:active { transform: translateY(2px); }
 
 .element:hover .elementDelete--btn { display: block; }
+
+/* disabled inputs */
+*:disabled{
+    background-color: #54C8E8 !important;
+}

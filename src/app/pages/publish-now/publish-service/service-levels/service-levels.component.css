@@ -54,7 +54,6 @@ hr {
     font-weight: 400;
     line-height: 1.5;
     color: #425CC7;
-    background-color: #fff;
     background-clip: padding-box;
     border: 3px solid #54C8E8;
     -webkit-appearance: none;
@@ -128,4 +127,9 @@ hr {
     --bs-btn-disabled-border-color: #425CC7;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
     box-shadow: none;
+}
+
+/* disabled inputs */
+*:disabled{
+    background-color: #54C8E8 !important;
 }
