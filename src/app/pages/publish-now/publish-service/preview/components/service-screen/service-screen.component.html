@@ -38,7 +38,9 @@
                                 aria-label="Close" (click)="modal.dismiss('Cross click')">
                                 <i class="bi bi-x-lg"></i></button>
                         <div class="modal-body">
-                            <pre>{{serviceDescription.longDescription}}</pre>
+                            <p style="white-space: pre-line">
+                                {{serviceDescription.longDescription}}
+                            </p>
                         </div>
                     </ng-template>
 
@@ -56,11 +58,13 @@
                             <span>Inicial</span><br>
                             {{planName.initialPlanName}}
                         </th>
-                        <th scope="col-xl-4" id="plan" class="plus text-white align-baseline">
+                        <th scope="col-xl-4" id="plan" class="plus text-white align-baseline"
+                        *ngIf="planName.plusPlanName">
                             <span>Plus</span><br>
                             {{planName.plusPlanName}}
                         </th>
-                        <th scope="col-xl-4" id="plan" class="premium text-white align-baseline">
+                        <th scope="col-xl-4" id="plan" class="premium text-white align-baseline"
+                        *ngIf="planName.premiumPlanName">
                             <span>Premium</span><br>
                             {{planName.premiumPlanName}}
                         </th>
@@ -77,13 +81,13 @@
                                     [(ngModel)]="deliverable.initialPlan" aria-label="..." [disabled]="true">
                             </div>
                         </td>
-                        <td class="text-center plus text-white">
+                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
                                     [(ngModel)]="deliverable.plusPlan" aria-label="..." [disabled]="true">
                             </div>
                         </td>
-                        <td class="text-center premium text-white">
+                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
                                     [(ngModel)]="deliverable.premiumPlan" aria-label="..." [disabled]="true">
@@ -95,10 +99,10 @@
                         <td class="text-center initial text-white">
                             {{features.deliveryTime}} <span>días hábiles</span>
                         </td>
-                        <td class="text-center plus text-white">
+                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
                             {{featuresPlus.deliveryTimePlus}} <span>días hábiles</span>
                         </td>
-                        <td class="text-center premium text-white">
+                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
                             {{featuresPremium.deliveryTimePremium}} <span>días hábiles</span>
                         </td>
                     </tr>
@@ -107,10 +111,10 @@
                         <td class="text-center initial text-white">
                             {{features.comments}}
                         </td>
-                        <td class="text-center plus text-white">
+                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
                             {{featuresPlus.commentsPlus}}
                         </td>
-                        <td class="text-center premium text-white">
+                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
                             {{featuresPremium.commentsPremium}}
                         </td>
                     </tr>
@@ -120,10 +124,10 @@
                         <td class="text-center initial text-white">
                             {{features.priceClient | currency:'MNX':'$':'1.0-0'}}
                         </td>
-                        <td class="text-center plus text-white">
+                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
                             {{featuresPlus.priceClientPlus | currency:'MNX':'$':'1.0-0'}}
                         </td>
-                        <td class="text-center premium text-white">
+                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
                             {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.0-0'}}
                         </td>
                     </tr>
@@ -136,14 +140,16 @@
                                 {{extras.priceClientExtra | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
-                        <td class="text-center plus text-white" *ngIf="!extras.plusPlanExtra else extrasPlusTemplate"></td>
+                        <td class="text-center plus text-white" 
+                        *ngIf="!extras.plusPlanExtra && planName.plusPlanName else extrasPlusTemplate"></td>
                         <ng-template #extrasPlusTemplate>
                             <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra">
                                 {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
-                        <td class="text-center premium text-white" *ngIf="!extras.premiumPlanExtra else extrasPremiumTemplate"></td>
+                        <td class="text-center premium text-white" 
+                        *ngIf="!extras.premiumPlanExtra && planName.premiumPlanName else extrasPremiumTemplate"></td>
                         <ng-template #extrasPremiumTemplate>
                             <td class="text-center premium text-white">
                                 {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
@@ -156,10 +162,10 @@
                         <td class="text-center initial">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
-                        <td class="text-center plus">
+                        <td class="text-center plus" *ngIf="planName.plusPlanName">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
-                        <td class="text-center premium">
+                        <td class="text-center premium" *ngIf="planName.premiumPlanName">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
                     </tr>

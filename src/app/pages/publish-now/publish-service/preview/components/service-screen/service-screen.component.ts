@@ -17,7 +17,7 @@ import { DeliverablesService } from '../../../service-levels/services/deliverabl
 export class ServiceScreenComponent implements OnInit {
   closeResult: string;
 
-    /* variable to receive preview image to display on the service card */
+  /* variable to receive preview image to display on the service card */
   @Input() previewImg: string;
   @Input() previewImgTwo: string;
   @Input() previewImgThree: string;
@@ -35,7 +35,14 @@ export class ServiceScreenComponent implements OnInit {
   @Input() featuresPremium!: featuresPremium;
   extras:extras[] = [];
 
-  rowsDeliverables:number = this.deliverables.length;
+  /* receive variables to show plans */
+  @Input() checkboxPlus: boolean;
+  @Input() checkboxPremium: boolean;
+
+  values = {
+    checkboxOne: false,
+    checkboxTwo: false
+  };
 
   constructor(private deliverableService:DeliverablesService, private extrasService:ExtrasService,
               private modalService: NgbModal) { }
@@ -43,6 +50,7 @@ export class ServiceScreenComponent implements OnInit {
   ngOnInit(): void {
     this.deliverables = this.deliverableService.deliverables;
     this.extras = this.extrasService.extras;
+    console.log('valor de checkboxplus: ' + this.checkboxPlus);
   }
 
   /* modal scrollable */
@@ -50,5 +58,11 @@ export class ServiceScreenComponent implements OnInit {
     this.modalService.open(longContent, { scrollable: true });
   }
 
+  mostrar(){
+    this.values.checkboxOne = true;
+  }
 
+  ocultar(){
+    this.values.checkboxOne = false;
+  }
 }

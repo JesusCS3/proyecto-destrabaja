@@ -15,14 +15,16 @@
           Plus
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPlusPlan"
-            aria-label="checkboxPlusPlan" name="checkboxPlusPlan" [(ngModel)]="checkboxPlusPlan">
+            aria-label="checkboxPlusPlan" name="checkboxPlusPlan" [(ngModel)]="checkboxPlusPlan"
+            (change)="clearPlusPlan()">
           </div>
         </th>
         <th class="text-center align-baseline" scope="col-3">
           Premium
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan"
-            aria-label="checkboxPremiumPlan" name="checkboxPremiumPlan" [(ngModel)]="checkboxPremiumPlan">
+            aria-label="checkboxPremiumPlan" name="checkboxPremiumPlan" [(ngModel)]="checkboxPremiumPlan"
+            (change)="clearPremiumPlan()">
           </div>
         </th>
       </tr>
@@ -32,17 +34,20 @@
         <th scope="row">Nombre de cada plan</th>
         <td>
           <input class="service-levels-input" type="text" name="initialPlanName" id="initialPlanName"
-            placeholder="Ingresar el nombre del plan" [(ngModel)]="initialPlanName">
+            placeholder="Ingresar el nombre del plan" [(ngModel)]="initialPlanName"
+            maxlength="30">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="plusPlanName" id="plusPlanName"
             placeholder="Ingresar el nombre del plan" [(ngModel)]="plusPlanName"
-            [disabled]="checkboxPlusPlan === false">
+            [disabled]="checkboxPlusPlan === false"
+            maxlength="30">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="premiumPlanName" id="premiumPlanName"
             placeholder="Ingresar el nombre del plan" [(ngModel)]="premiumPlanName"
-            [disabled]="checkboxPremiumPlan === false">
+            [disabled]="checkboxPremiumPlan === false"
+            maxlength="30">
         </td>
       </tr>
       <!-- deliverables preview -->
@@ -64,20 +69,23 @@
         <td class="text-center">
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
-              [(ngModel)]="deliverables.plusPlan" aria-label="...">
+              [(ngModel)]="deliverables.plusPlan" aria-label="..."
+              [disabled]="checkboxPlusPlan === false">
           </div>
         </td>
         <td class="text-center">
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
-              [(ngModel)]="deliverables.premiumPlan" aria-label="...">
+              [(ngModel)]="deliverables.premiumPlan" aria-label="..."
+              [disabled]="checkboxPremiumPlan === false">
           </div>
         </td>
       </tr>
       <tr class="align-middle">
         <th scope="row">
           <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
-            [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable">
+            [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable"
+            maxlength="30">
         </th>
         <td class="text-center">
           <input class="form-check-input" type="checkbox" name="deliverableInputInitialPlan"
@@ -106,7 +114,8 @@
           <div class="row mb-3">
             <div class="col-sm-8">
               <input type="text" name="deliveryTimeInitialPlan" id="deliveryTimeInitialPlan"
-                [(ngModel)]="deliveryTimeInitialPlan">
+                [(ngModel)]="deliveryTimeInitialPlan"
+                maxlength="3">
             </div>
             <label for="deliveryTimeInitialPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimeInitialPlan">días
               hab.</label>
@@ -117,7 +126,8 @@
             <div class="col-sm-8">
               <input type="text" name="deliveryTimePlusPlan" id="deliveryTimePlusPlan"
                 [(ngModel)]="deliveryTimePlusPlan"
-                [disabled]="checkboxPlusPlan === false">
+                [disabled]="checkboxPlusPlan === false"
+                maxlength="3">
             </div>
             <label for="deliveryTimePlusPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePlusPlan">días
               hab.</label>
@@ -128,7 +138,8 @@
             <div class="col-sm-8">
               <input type="text" name="deliveryTimePremiumPlan" id="deliveryTimePremiumPlan"
                 [(ngModel)]="deliveryTimePremiumPlan"
-                [disabled]="checkboxPremiumPlan === false">
+                [disabled]="checkboxPremiumPlan === false"
+                maxlength="3">
             </div>
             <label for="deliveryTimePremiumPlan" class="col-sm-4 col-form-label" id="labelDeliveryTimePremiumPlan">días
               hab.</label>
@@ -156,39 +167,61 @@
       </tr>
       <tr class="align-middle">
         <th scope="row">¿Cuánto quieres ganar por
-          venta?<br><span>(en pesos mexicanos)</span>
+          venta?<br><span class="pe-2">(en pesos mexicanos)</span>
+          <button type="button" class="question-btn" placement="end"
+                  ngbTooltip="Ingresa el monto que recibirás por cada venta que realices de cada servicio. 
+                  Si ingresas, por ejemplo 299 pesos, recibirás por esa venta dichos 299 pesos." 
+                  tooltipClass="my-custom-class">
+                  <i class="bi bi-question-circle-fill "></i>
+          </button>
         </th>
         <td>
           <input class="service-levels-input" type="text" name="priceInitialPlan" id="priceInitialPlan"
-            [(ngModel)]="priceInitialPlan" (keyup)="clientPrice()" [value]="priceInitialPlan">
+            [(ngModel)]="priceInitialPlan" (keyup)="clientPrice()" [value]="priceInitialPlan"
+            [disabled]="readOnlyPrice"
+            maxlength="9">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="pricePlusPlan" id="pricePlusPlan"
-            [(ngModel)]="pricePlusPlan" [disabled]="checkboxPlusPlan === false" (keyup)="clientPricePlus()"
-            [value]="pricePlusPlan">
+            [(ngModel)]="pricePlusPlan" [disabled]="checkboxPlusPlan === false || readOnlyPricePlus" 
+            (keyup)="clientPricePlus()" [value]="pricePlusPlan"
+            maxlength="9">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="pricePremiumPlan" id="pricePremiumPlan"
-            [(ngModel)]="pricePremiumPlan" [disabled]="checkboxPremiumPlan === false"
-            (keyup)="clientPricePremium()" [value]="pricePremiumPlan">
+            [(ngModel)]="pricePremiumPlan" [disabled]="checkboxPremiumPlan === false || readOnlyPricePremium"
+            (keyup)="clientPricePremium()" [value]="pricePremiumPlan"
+            maxlength="9">
         </td>
       </tr>
       <tr class="align-middle">
-        <th scope="row">Precio que verá el cliente</th>
+        <th scope="row">
+          <span class="pe-2">Precio que verá el cliente</span>
+          <button type="button" class="question-btn" placement="end"
+                  ngbTooltip="Los clientes verán un precio que incluye: Lo que vas a ganar de la 
+                  venta + comisión por uso de plataforma + comisión por transacción + 16% de IVA." 
+                  tooltipClass="my-custom-class">
+                  <i class="bi bi-question-circle-fill "></i>
+          </button>
+        </th>
         <td>
           <input class="service-levels-input" type="text" name="priceClientInitialPlan" id="priceClientInitialPlan"
             [(ngModel)]="priceClientInitialPlan" [value]="priceClientInitialPlan"
-            (keyup)="price()">
+            (keyup)="price()"
+            [disabled]="readOnlyPriceClient"
+            maxlength="9">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="priceClientPlusPlan" id="priceClientPlusPlan"
-            [(ngModel)]="priceClientPlusPlan" [disabled]="checkboxPlusPlan === false" 
-            [value]="priceClientPlusPlan" (keyup)="pricePlus()">
+            [(ngModel)]="priceClientPlusPlan" [disabled]="checkboxPlusPlan === false || readOnlyPricePlusClient" 
+            [value]="priceClientPlusPlan" (keyup)="pricePlus()"
+            maxlength="9">
         </td>
         <td>
           <input class="service-levels-input" type="text" name="priceClientPremiumPlan" id="priceClientPremiumPlan"
-            [(ngModel)]="priceClientPremiumPlan" [disabled]="checkboxPremiumPlan === false"
-            (keyup)="pricePremium()">
+            [(ngModel)]="priceClientPremiumPlan" [disabled]="checkboxPremiumPlan === false || readOnlyPricePremiumClient"
+            (keyup)="pricePremium()"
+            maxlength="9">
         </td>
       </tr>
     </tbody>
@@ -198,7 +231,7 @@
 <div class="d-flex flex-row-reverse bd-highlight">
   <div class="p-2 bd-highlight">
     <button type="button" class="btn save-btn" (click)="shareAddPlanName(); shareAddFeatures(); 
-    shareAddFeaturesPlus(); shareAddFeaturesPremium()">Guardar
+    shareAddFeaturesPlus(); shareAddFeaturesPremium(); shareCheckboxPlus(); shareCheckboxPremium()">Guardar
     </button>
   </div>
 </div>

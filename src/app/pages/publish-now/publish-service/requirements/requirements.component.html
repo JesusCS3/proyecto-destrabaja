@@ -25,7 +25,8 @@
     <div class="mb-3 col-9">
         <label for="requirementInput" class="form-label">1. Pregunta, comentario o requisito</label>
         <input type="text" class="form-control" id="requirementInput" name="requirementInput"
-            [(ngModel)]="requirementInput">
+            [(ngModel)]="requirementInput"
+            maxlength="150">
     </div>
     <!-- add requirement btn -->
     <label scope="row" type="button" (click)="addRequirement(); clear()">+ Agregar pregunta, comentario o

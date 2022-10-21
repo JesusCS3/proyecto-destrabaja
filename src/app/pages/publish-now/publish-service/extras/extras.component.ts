@@ -19,6 +19,14 @@ export class ExtrasComponent implements OnInit {
   checkboxPlusPlanExtra: boolean = false;
   checkboxPremiumPlanExtra: boolean = false;
 
+  /* disabled price inputs */
+  readOnlyPriceClientExtra:boolean = false;
+  readOnlyPriceExtra:boolean = false;
+  readOnlyPricePlusClientExtra:boolean = false;
+  readOnlyPricePlusExtra:boolean = false;
+  readOnlyPricePremiumClientExtra:boolean = false;
+  readOnlyPricePremiumExtra:boolean = false;
+
   /* delivery time */
   deliveryTimeExtra: number;
   deliveryTimeExtraPlus: number;
@@ -72,39 +80,69 @@ export class ExtrasComponent implements OnInit {
 
   /* calculate the customer price */
   clientPriceExtra(){
-    if(this.priceExtra != 0){
-      this.priceClientExtra = Math.round(((this.priceExtra/.80)*1.21));
+    if(this.priceExtra != undefined){
+      this.priceClientExtra = Math.ceil(this.priceExtra * 1.3625);
+      this.readOnlyPriceClientExtra = true;
+    }
+
+    if(this.priceClientExtra === 0){
+      this.readOnlyPriceClientExtra = false;
     }
   }
 
   clientPricePlusExtra(){
-    if(this.priceExtraPlus != 0){
-      this.priceClientExtraPlus = Math.round(((this.priceExtraPlus/.80)*1.21));
+    if(this.priceExtraPlus != undefined){
+      this.priceClientExtraPlus = Math.ceil(this.priceExtraPlus * 1.3625);
+      this.readOnlyPricePlusClientExtra = true;
+    }
+
+    if(this.priceClientExtraPlus === 0){
+      this.readOnlyPricePlusClientExtra = false;
     }
   }
 
   clientPricePremiumExtra(){
-    if(this.priceExtraPremium != 0){
-      this.priceClientExtraPremium = Math.round(((this.priceExtraPremium/.80)*1.21));
+    if(this.priceExtraPremium != undefined){
+      this.priceClientExtraPremium = Math.ceil(this.priceExtraPremium * 1.3625);
+      this.readOnlyPricePremiumClientExtra = true;
+    }
+
+    if(this.priceClientExtraPremium === 0){
+      this.readOnlyPricePremiumClientExtra = false;
     }
   }
 
   /* calculate price */
   priceExtraInitial(){
-    if(this.priceClientExtra != 0){
-      this.priceExtra = Math.round(((this.priceClientExtra *.80)/1.21));
+    if(this.priceClientExtra != undefined){
+      this.priceExtra = Math.ceil(this.priceClientExtra * 0.733944495);
+      this.readOnlyPriceExtra = true;
+    }
+
+    if(this.priceExtra === 0){
+      this.readOnlyPriceExtra = false;
     }
   }
 
   pricePlusExtra(){
-    if(this.priceClientExtraPlus != 0){
-      this.priceExtraPlus = Math.round(((this.priceClientExtraPlus *.80)/1.21));
+    if(this.priceClientExtraPlus != undefined){
+      this.priceExtraPlus = Math.ceil(this.priceClientExtraPlus * 0.733944495);
+      this.readOnlyPricePlusExtra = true;
+    }
+
+    if(this.priceExtraPlus === 0){
+      this.readOnlyPricePlusExtra = false;
     }
   }
 
   pricePremiumExtra(){
-    if(this.priceClientExtraPremium != 0){
-      this.priceExtraPremium = Math.round(((this.priceClientExtraPremium *.80)/1.21));
+    if(this.priceClientExtraPremium != undefined){
+      this.priceExtraPremium = Math.ceil(this.priceClientExtraPremium *  0.733944495);
+      this.readOnlyPricePremiumExtra = true;
+    }
+
+    if(this.priceExtraPremium === 0){
+      this.readOnlyPricePremiumExtra = false;
     }
   }
 

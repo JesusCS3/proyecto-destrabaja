@@ -1,6 +1,6 @@
 import { serviceDescription } from './service-description/models/service-description.model';
 import { generalInfo } from './general-info/models/general-info.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GeneralInfoService } from './general-info/services/general-info.service';
 import { ServiceDescriptionService } from './service-description/services/service-description.service';
 import { features, featuresPlus, featuresPremium } from './service-levels/models/features/features.model';
@@ -11,7 +11,35 @@ import { PlanNameService } from './service-levels/services/plan-name/plan-name.s
 @Component({
   selector: 'app-publish-service',
   templateUrl: './publish-service.component.html',
-  styleUrls: ['./publish-service.component.css']
+  styleUrls: ['./publish-service.component.css'],
+  encapsulation: ViewEncapsulation.None,
+	styles: [
+		`
+			.my-custom-class .tooltip-inner {
+				background-color: #fff;
+				font-size: 0.8rem;
+        font-weight: bold;
+        color: #425CC7;
+        text-align: justify;
+        padding: 10px;
+        margin: 5px;
+        max-width: 310px !important;
+        box-shadow: rgba(0, 0, 0, 0.301) 0px 2px 4px 0px, rgba(0, 0, 0, 0.301) 0px 2px 16px 0px !important;
+			}
+			.my-custom-class.bs-tooltip-end .tooltip-arrow::before {
+				border-right-color: #fff;
+			}
+			.my-custom-class.bs-tooltip-start .tooltip-arrow::before {
+				border-left-color: #fff;
+			}
+			.my-custom-class.bs-tooltip-top .tooltip-arrow::before {
+				border-top-color: #fff;
+			}
+			.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
+				border-bottom-color: #fff;
+			}
+		`,
+	]
 })
 export class PublishServiceComponent implements OnInit {
 
@@ -43,6 +71,10 @@ export class PublishServiceComponent implements OnInit {
   feature: any;
   featurePlus: any;
   featurePremium: any;
+
+  /* variables to display the plans in the preview */
+  checkboxPlus:any;
+  checkboxPremium:any;
 
   constructor(private generalInfoService: GeneralInfoService,
     private serviceDescriptionService: ServiceDescriptionService,
@@ -91,6 +123,14 @@ export class PublishServiceComponent implements OnInit {
   }
 
   /* receive information from service levels component */
+
+  receiveCheckboxPlus(checkboxPlus:any){
+    this.checkboxPlus = checkboxPlus;
+  }
+
+  receiveCheckboxPremium(checkboxPremium:any){
+    this.checkboxPremium = checkboxPremium;
+  }
 
   addPlanName(planName: planName){
     this.planNameService.planName.push(planName);

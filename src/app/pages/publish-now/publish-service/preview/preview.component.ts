@@ -11,15 +11,16 @@ import { planName } from '../service-levels/models/plan-name/plan-name.model';
 })
 export class PreviewComponent implements OnInit {
 
+  /* receive variable to show preview */
   @Input() preview:any;
 
-  /* variable to receive preview image to display on the service card */
+  /* variable to receive preview image to display on the service card and service table */
   @Input() previewImg: string;
   @Input() previewImgTwo: string;
   @Input() previewImgThree: string;
 
-    /* variable to receive preview video to display on the service card */
-    @Input() previewVideo: string;
+  /* variable to receive preview video to display on the service card and service table */
+  @Input() previewVideo: string;
 
   /***** variables to receive information to display on the service card and service table *****/
   @Input() generalInfo!: generalInfo;
@@ -29,9 +30,18 @@ export class PreviewComponent implements OnInit {
   @Input() featuresPlus!: featuresPlus;
   @Input() featuresPremium!: featuresPremium;
 
+  /* receive variables to show plans */
+  @Input() checkboxPlus: boolean;
+  @Input() checkboxPremium: boolean;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  /* edit service */
+  editService() {
+    this.preview = true;
   }
 
 }

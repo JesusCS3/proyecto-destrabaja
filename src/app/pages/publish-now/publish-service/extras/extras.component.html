@@ -1,5 +1,11 @@
-<div class="col-6 col-lg-1 text-left pt-5">
-    <h5 class="first-color-blue"><strong>Extras</strong>
+<div class="col-6 col-xl-1 text-left pt-5">
+    <h5 class="first-color-blue"><strong class="pe-2">Extras</strong>
+        <button type="button" class="question-btn" placement="end"
+        ngbTooltip="Aquí se incluyen aquellas actividades que complementan los servicios que ofreces.
+        Estos montos se añadirán al costo del servicio en caso de que el cliente los solicite." 
+        tooltipClass="my-custom-class">
+        <i class="bi bi-question-circle-fill "></i>
+        </button>
         <hr>
     </h5>
 </div>
@@ -81,7 +87,8 @@
                 <tr>
                     <th scope="row">
                         <input class="extras-input" type="text" name="extraInput" id="extraInput"
-                            [(ngModel)]="extraInput" placeholder="Ingresa el nombre de tu extra">
+                            [(ngModel)]="extraInput" placeholder="Ingresa el nombre de tu extra"
+                            maxlength="30">
                     </th>
                     <td class="text-center">
                         <div>
@@ -111,7 +118,8 @@
                         <div class="row mb-3">
                             <div class="col-sm-8">
                                 <input type="text" name="deliveryTimeExtra" id="deliveryTimeExtra"
-                                    [(ngModel)]="deliveryTimeExtra">
+                                    [(ngModel)]="deliveryTimeExtra"
+                                    maxlength="3">
                             </div>
                             <label for="deliveryTimeExtra" class="col-sm-4 col-form-label"
                                 id="labelDeliveryTimeInitialPlan">días
@@ -123,7 +131,8 @@
                             <div class="col-sm-8">
                                 <input type="text" name="deliveryTimeExtraPlus" id="deliveryTimeExtraPlus"
                                     [(ngModel)]="deliveryTimeExtraPlus"
-                                    [disabled]="checkboxPlusPlanExtra === false">
+                                    [disabled]="checkboxPlusPlanExtra === false"
+                                    maxlength="3">
                             </div>
                             <label for="deliveryTimeExtraPlus" class="col-sm-4 col-form-label"
                                 id="labelDeliveryTimePlusPlan">días
@@ -135,7 +144,8 @@
                             <div class="col-sm-8">
                                 <input type="text" name="deliveryTimeExtraPremium" id="deliveryTimeExtraPremium"
                                     [(ngModel)]="deliveryTimeExtraPremium"
-                                    [disabled]="checkboxPremiumPlanExtra === false">
+                                    [disabled]="checkboxPremiumPlanExtra === false"
+                                    maxlength="3">
                             </div>
                             <label for="deliveryTimeExtraPremium" class="col-sm-4 col-form-label"
                                 id="labelDeliveryTimePremiumPlan">días
@@ -149,19 +159,23 @@
                     </th>
                     <td>
                         <input class="extras-input" type="text" name="priceExtra" id="priceExtra"
-                            [(ngModel)]="priceExtra" (keyup)="priceExtraInitial()" [value]="priceExtra">
+                            [(ngModel)]="priceExtra" (keyup)="clientPriceExtra()" [value]="priceExtra"
+                            [disabled]="readOnlyPriceExtra"
+                            maxlength="9">
                     </td>
                     <td>
                         <input class="extras-input" type="text" name="priceExtraPlus" id="priceExtraPlus"
                             [(ngModel)]="priceExtraPlus"
-                            [disabled]="checkboxPlusPlanExtra === false"
-                            (keyup)="pricePlusExtra()" [value]="priceExtraPlus">
+                            [disabled]="checkboxPlusPlanExtra === false || readOnlyPricePlusExtra"
+                            (keyup)="clientPricePlusExtra()" [value]="priceExtraPlus"
+                            maxlength="9">
                     </td>
                     <td>
                         <input class="extras-input" type="text" name="priceExtraPremium" id="priceExtraPremium"
                             [(ngModel)]="priceExtraPremium"
-                            [disabled]="checkboxPremiumPlanExtra === false"
-                            (keyup)="pricePremiumExtra()" [value]="priceExtraPremium">
+                            [disabled]="checkboxPremiumPlanExtra === false || readOnlyPricePremiumExtra"
+                            (keyup)="clientPricePremiumExtra()" [value]="priceExtraPremium"
+                            maxlength="9">
                     </td>
                 </tr>
                 <tr>
@@ -169,19 +183,23 @@
                     <td>
                         <input class="extras-input" type="text" name="priceClientExtra" id="priceClientExtra"
                             [(ngModel)]="priceClientExtra"
-                            (keyup)="clientPriceExtra()" [value]="priceClientExtra">
+                            (keyup)="priceExtraInitial()" [value]="priceClientExtra"
+                            [disabled]="readOnlyPriceClientExtra"
+                            maxlength="9">
                     </td>
                     <td>
                         <input class="extras-input" type="text" name="priceClientExtraPlus" id="priceClientExtraPlus"
                             [(ngModel)]="priceClientExtraPlus"
-                            [disabled]="checkboxPlusPlanExtra === false"
-                            (keyup)="clientPricePlusExtra()" [value]="priceClientExtraPlus">
+                            [disabled]="checkboxPlusPlanExtra === false || readOnlyPricePlusClientExtra"
+                            (keyup)="pricePlusExtra()" [value]="priceClientExtraPlus"
+                            maxlength="9">
                     </td>
                     <td>
                         <input class="extras-input" type="text" name="priceClientExtraPremium"
                             id="priceClientExtraPremium" [(ngModel)]="priceClientExtraPremium"
-                            [disabled]="checkboxPremiumPlanExtra === false"
-                            (keyup)="clientPricePremiumExtra()" [value]="priceClientExtraPremium">
+                            [disabled]="checkboxPremiumPlanExtra === false || readOnlyPricePremiumClientExtra"
+                            (keyup)="pricePremiumExtra()" [value]="priceClientExtraPremium"
+                            maxlength="9">
                     </td>
                 </tr>
                 <tr>

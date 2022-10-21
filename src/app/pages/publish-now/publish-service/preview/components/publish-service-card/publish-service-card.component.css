@@ -1,7 +1,7 @@
 /* customized cards services */
 .card-service{
     max-width: 380px;
-    max-height: 390px;
+    max-height: 415px;
     border-radius: 2rem;
     border: 1px solid rgba(0,0,0,.125);
 }
@@ -23,7 +23,7 @@
     color: #425CC7;
     font-weight: bold;
     font-size: 1.2rem;
-    padding: .3rem 1rem;
+    padding: .5rem 1rem 0 1rem;
 }
 
 .card-service p{
@@ -43,7 +43,7 @@
 /* cut arrow lengths */
 .carousel-control-next, .carousel-control-prev {
     position: absolute;
-    top: 0;
+    top: 71px;
     bottom: 71px;
     z-index: 1;
     display: flex;

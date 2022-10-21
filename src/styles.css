@@ -40,7 +40,12 @@
 
 /* custom question button */
 .question-btn {
-    color: #54C8E8;
+    color: #425CC7;
     font-size: 1.5rem;
-    display: inline;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }

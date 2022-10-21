@@ -22,6 +22,8 @@
                     (shareServiceDescription)="addServiceDescription($event)"
                     ></app-service-description>
                     <app-service-levels
+                    (shareCheckboxPlus)="receiveCheckboxPlus($event)"
+                    (shareCheckboxPremium)="receiveCheckboxPremium($event)"
                     (sharePlanName)="addPlanName($event)"
                     (shareFeatures)="addFeatures($event)"
                     (shareFeaturesPlus)="addFeaturesPlus($event)"
@@ -32,7 +34,7 @@
                     <div class="d-flex flex-row-reverse bd-highlight pt-5">
                         <div class="p-2 bd-highlight">
                             <button type="button" class="btn publish-btn" [disabled]="!publishServiceForm.valid" 
-                            (click)="servicePreview()">Previsualizar</button>
+                            (click)="servicePreview();">Previsualizar</button>
                         </div>
                       </div>
                 </form>
@@ -54,7 +56,9 @@
             [features]="feature"
             [featuresPlus]="featurePlus"
             [featuresPremium]="featurePremium"
+            [checkboxPlus]="checkboxPlus"
+            [checkboxPremium]="checkboxPremium"
             ></app-preview>
         </div>
-    <!-- </ng-template> -->
+    <!--</ng-template>-->
 </div>

@@ -11,6 +11,10 @@ import { planName } from './models/plan-name/plan-name.model';
 })
 export class ServiceLevelsComponent implements OnInit {
 
+  /* share variables to disable plans */
+  @Output() shareCheckboxPlusPlan = new EventEmitter<any>();
+  @Output() shareCheckboxPremiumPlan = new EventEmitter<any>();
+
   /* share with the publish service component */
   @Output() sharePlanName = new EventEmitter<planName>();
   @Output() shareFeatures = new EventEmitter<features>();
@@ -20,9 +24,17 @@ export class ServiceLevelsComponent implements OnInit {
   /***** variables for save information *****/
   deliverables:deliverables[] = [];
 
-  /* variables for disabled */
+  /* variables to disable plans*/
   checkboxPlusPlan:boolean = false;
   checkboxPremiumPlan:boolean = false;
+
+  /* disabled price inputs */
+  readOnlyPriceClient:boolean = false;
+  readOnlyPrice:boolean = false;
+  readOnlyPricePlusClient:boolean = false;
+  readOnlyPricePlus:boolean = false;
+  readOnlyPricePremiumClient:boolean = false;
+  readOnlyPricePremium:boolean = false;
 
   /***** variables to share information for preview *****/
 
@@ -62,7 +74,6 @@ export class ServiceLevelsComponent implements OnInit {
   constructor(private deliverableService:DeliverablesService) {}
 
   ngOnInit(): void {
-
     this.deliverables = this.deliverableService.deliverables;
   }
 
@@ -77,12 +88,25 @@ export class ServiceLevelsComponent implements OnInit {
     this.deliverableInputInitialPlan,this.deliverableInputPlusPlan,this.deliverableInputPremiumPlan));
   }
 
-  /* clear input and check box to add deliverable */
+  /* clear input and checkbox to add deliverable */
   clear() {
     this.deliverableInput = '';
     this.deliverableInputInitialPlan = false;
     this.deliverableInputPlusPlan = false;
     this.deliverableInputPremiumPlan = false;
+  }
+
+  /* share the preview video with the publish service component */
+  shareCheckboxPlus(){
+    let shareCheckboxPlusPlan = this.checkboxPlusPlan;
+    this.shareCheckboxPlusPlan.emit(shareCheckboxPlusPlan);
+    console.log('valor de los chekbox plus: ' + shareCheckboxPlusPlan);
+  }
+
+  shareCheckboxPremium(){
+    let shareCheckboxPremiumPlan = this.checkboxPremiumPlan;
+    this.shareCheckboxPremiumPlan.emit(shareCheckboxPremiumPlan);
+    console.log('valor de los chekbox premium: ' + shareCheckboxPremiumPlan);
   }
 
   /* sharing the new service-levels objects with the publish service component */
@@ -111,39 +135,93 @@ export class ServiceLevelsComponent implements OnInit {
 
   /* calculate the customer price */
   clientPrice(){
-    if(this.priceInitialPlan != 0){
-      this.priceClientInitialPlan = Math.round(((this.priceInitialPlan/.80)*1.21));
+    if(this.priceInitialPlan != undefined){
+      this.priceClientInitialPlan = Math.ceil(this.priceInitialPlan * 1.3625);
+      this.readOnlyPriceClient = true;
+    }
+
+    if(this.priceClientInitialPlan === 0){
+      this.readOnlyPriceClient = false;
     }
   }
 
   clientPricePlus(){
-    if(this.pricePlusPlan != 0){
-      this.priceClientPlusPlan = Math.round(((this.pricePlusPlan/.80)*1.21));
+    if(this.pricePlusPlan != undefined){
+      this.priceClientPlusPlan = Math.ceil(this.pricePlusPlan * 1.3625);
+      this.readOnlyPricePlusClient = true;
+    }
+
+    if(this.priceClientPlusPlan === 0){
+      this.readOnlyPricePlusClient = false;
     }
   }
 
   clientPricePremium(){
-    if(this.pricePremiumPlan != 0){
-      this.priceClientPremiumPlan = Math.round(((this.pricePremiumPlan/.80)*1.21));
+    if(this.pricePremiumPlan != undefined){
+      this.priceClientPremiumPlan = Math.ceil(this.pricePremiumPlan * 1.3625);
+      this.readOnlyPricePremiumClient = true;
+    }
+
+    if(this.priceClientPremiumPlan === 0){
+      this.readOnlyPricePremiumClient = false;
     }
   }
 
   /* calculate price */
   price(){
-    if(this.priceClientInitialPlan != 0){
-      this.priceInitialPlan = Math.round(((this.priceClientInitialPlan *.80)/1.21));
+    if(this.priceClientInitialPlan != undefined){
+      this.priceInitialPlan = Math.ceil(this.priceClientInitialPlan * 0.733944495);
+      this.readOnlyPrice = true;
+    }
+
+    if(this.priceInitialPlan === 0){
+      this.readOnlyPrice = false;
     }
   }
 
   pricePlus(){
-    if(this.priceClientPlusPlan != 0){
-      this.pricePlusPlan = Math.round(((this.priceClientPlusPlan *.80)/1.21));
+    if(this.priceClientPlusPlan != undefined){
+      this.pricePlusPlan = Math.ceil(this.priceClientPlusPlan * 0.733944495);
+      this.readOnlyPricePlus = true;
+    }
+
+    if(this.pricePlusPlan === 0){
+      this.readOnlyPricePlus = false;
     }
   }
 
   pricePremium(){
-    if(this.priceClientPremiumPlan != 0){
-      this.pricePremiumPlan = Math.round(((this.priceClientPremiumPlan *.80)/1.21));
+    if(this.priceClientPremiumPlan != undefined){
+      this.pricePremiumPlan = Math.ceil(this.priceClientPremiumPlan * 0.733944495);
+      this.readOnlyPricePremium = true;
+    }
+
+    if(this.pricePremiumPlan === 0){
+      this.readOnlyPricePremium = false;
+    }
+  }
+
+  /* clear input and checkbox to plus plan */
+  clearPlusPlan(){
+    if(this.checkboxPlusPlan === false){
+      this.plusPlanName = '';
+      this.deliverableInputPlusPlan = false;
+      this.deliveryTimePlusPlan = 0;
+      this.commentPlusPlan = '';
+      this.pricePlusPlan = 0;
+      this.priceClientPlusPlan = 0;
+    }
+  }
+
+  /* clear input and checkbox to plus plan */
+  clearPremiumPlan(){
+    if(this.checkboxPremiumPlan === false){
+      this.premiumPlanName = '';
+      this.deliverableInputPremiumPlan = false;
+      this.deliveryTimePremiumPlan = 0;
+      this.commentPremiumPlan = '';
+      this.pricePremiumPlan = 0;
+      this.priceClientPremiumPlan = 0;
     }
   }
 

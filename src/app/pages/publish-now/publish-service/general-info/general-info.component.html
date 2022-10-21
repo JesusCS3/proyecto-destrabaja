@@ -14,14 +14,15 @@
                         servicio</label>
                     <div class="col-md-7 col-xl-6">
                         <input type="textt" class="form-control" id="nameService" name="nameService"
-                            [(ngModel)]="nameService">
+                            [(ngModel)]="nameService" maxlength="45">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="input" class="col-md-5 col-xl-5 col-form-label">Hashtags<br>
                         <span style="font-size: 0.7rem ;">(Palabras clave como: #Clases #Diseño)</span></label>
                     <div class="col-md-7 col-xl-6">
-                        <input type="textt" class="form-control" id="hashtags" name="hashtags" [(ngModel)]="hashtags">
+                        <input type="textt" class="form-control" id="hashtags" name="hashtags" 
+                        [(ngModel)]="hashtags">
                     </div>
                 </div>
             </div>
