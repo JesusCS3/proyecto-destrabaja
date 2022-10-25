@@ -1,5 +1,5 @@
 <!-- title service levels -->
-<div class="col-6 col-lg-2 text-left pt-5">
+<div class="col-6 col-xl-2 text-left pt-5">
   <h5 class="first-color-blue"><strong>Niveles de servicio</strong>
     <hr>
   </h5>
@@ -9,9 +9,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th class="text-left" scope="col-3">Activar Plus / Premium</th>
-        <th class="text-center align-baseline" scope="col-3">Inicial</th>
-        <th class="text-center align-baseline" scope="col-3">
+        <th class="text-left" scope="col-xl-3">Activar Plus / Premium</th>
+        <th class="text-center align-baseline" scope="col-xl-3">Inicial</th>
+        <th class="text-center align-baseline" scope="col-xl-3">
           Plus
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPlusPlan"
@@ -19,7 +19,7 @@
             (change)="clearPlusPlan()">
           </div>
         </th>
-        <th class="text-center align-baseline" scope="col-3">
+        <th class="text-center align-baseline" scope="col-xl-3">
           Premium
           <div>
             <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan"
@@ -83,9 +83,14 @@
       </tr>
       <tr class="align-middle">
         <th scope="row">
-          <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
+          <div class="input-group">
+            <input class="service-levels-input" type="text" name="deliverableInput" id="deliverableInput"
             [(ngModel)]="deliverableInput" placeholder="Ingresa el nombre de tu entregable"
-            maxlength="30">
+            maxlength="30" (keyup)="$event.keyCode == 13 ? addDeliverable() : null">
+            <button class="btn deliverable-btn">
+              <i class="bi bi-plus-circle" type="button" (click)="addDeliverable();"></i>
+            </button>
+          </div>
         </th>
         <td class="text-center">
           <input class="form-check-input" type="checkbox" name="deliverableInputInitialPlan"
@@ -101,12 +106,6 @@
             id="deliverableInputPremiumPlan" [(ngModel)]="deliverableInputPremiumPlan" value="" aria-label="..."
             [disabled]="checkboxPremiumPlan === false">
         </td>
-      </tr>
-      <tr class="align-middle">
-        <th scope="row" type="button" (click)="addDeliverable(); clear()">+ Agregar Entregable</th>
-        <td></td>
-        <td></td>
-        <td></td>
       </tr>
       <tr class="align-middle">
         <th scope="row">Máximo tiempo de entrega</th>
@@ -170,7 +169,8 @@
           venta?<br><span class="pe-2">(en pesos mexicanos)</span>
           <button type="button" class="question-btn" placement="end"
                   ngbTooltip="Ingresa el monto que recibirás por cada venta que realices de cada servicio. 
-                  Si ingresas, por ejemplo 299 pesos, recibirás por esa venta dichos 299 pesos." 
+                  Si ingresas, por ejemplo 299 pesos, recibirás por esa venta dichos 299 pesos. Debe incluir
+                  el IVA en caso de que te soliciten factura." 
                   tooltipClass="my-custom-class">
                   <i class="bi bi-question-circle-fill "></i>
           </button>
@@ -199,7 +199,8 @@
           <span class="pe-2">Precio que verá el cliente</span>
           <button type="button" class="question-btn" placement="end"
                   ngbTooltip="Los clientes verán un precio que incluye: Lo que vas a ganar de la 
-                  venta + comisión por uso de plataforma + comisión por transacción + 16% de IVA." 
+                  venta + comisión por uso de plataforma + comisión por transacción + 16% de IVA sobre
+                  las comisiones de Destrabaja." 
                   tooltipClass="my-custom-class">
                   <i class="bi bi-question-circle-fill "></i>
           </button>
@@ -231,7 +232,7 @@
 <div class="d-flex flex-row-reverse bd-highlight">
   <div class="p-2 bd-highlight">
     <button type="button" class="btn save-btn" (click)="shareAddPlanName(); shareAddFeatures(); 
-    shareAddFeaturesPlus(); shareAddFeaturesPremium(); shareCheckboxPlus(); shareCheckboxPremium()">Guardar
+    shareAddFeaturesPlus(); shareAddFeaturesPremium()">Guardar
     </button>
   </div>
 </div>

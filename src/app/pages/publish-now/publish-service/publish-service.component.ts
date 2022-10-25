@@ -72,10 +72,6 @@ export class PublishServiceComponent implements OnInit {
   featurePlus: any;
   featurePremium: any;
 
-  /* variables to display the plans in the preview */
-  checkboxPlus:any;
-  checkboxPremium:any;
-
   constructor(private generalInfoService: GeneralInfoService,
     private serviceDescriptionService: ServiceDescriptionService,
     private featuresService: FeaturesService,
@@ -123,15 +119,7 @@ export class PublishServiceComponent implements OnInit {
   }
 
   /* receive information from service levels component */
-
-  receiveCheckboxPlus(checkboxPlus:any){
-    this.checkboxPlus = checkboxPlus;
-  }
-
-  receiveCheckboxPremium(checkboxPremium:any){
-    this.checkboxPremium = checkboxPremium;
-  }
-
+  
   addPlanName(planName: planName){
     this.planNameService.planName.push(planName);
     this.planNames = planName;

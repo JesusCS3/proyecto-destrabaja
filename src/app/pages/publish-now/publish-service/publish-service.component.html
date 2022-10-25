@@ -22,8 +22,6 @@
                     (shareServiceDescription)="addServiceDescription($event)"
                     ></app-service-description>
                     <app-service-levels
-                    (shareCheckboxPlus)="receiveCheckboxPlus($event)"
-                    (shareCheckboxPremium)="receiveCheckboxPremium($event)"
                     (sharePlanName)="addPlanName($event)"
                     (shareFeatures)="addFeatures($event)"
                     (shareFeaturesPlus)="addFeaturesPlus($event)"
@@ -56,8 +54,6 @@
             [features]="feature"
             [featuresPlus]="featurePlus"
             [featuresPremium]="featurePremium"
-            [checkboxPlus]="checkboxPlus"
-            [checkboxPremium]="checkboxPremium"
             ></app-preview>
         </div>
     <!--</ng-template>-->

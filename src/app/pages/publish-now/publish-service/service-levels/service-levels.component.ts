@@ -11,10 +11,6 @@ import { planName } from './models/plan-name/plan-name.model';
 })
 export class ServiceLevelsComponent implements OnInit {
 
-  /* share variables to disable plans */
-  @Output() shareCheckboxPlusPlan = new EventEmitter<any>();
-  @Output() shareCheckboxPremiumPlan = new EventEmitter<any>();
-
   /* share with the publish service component */
   @Output() sharePlanName = new EventEmitter<planName>();
   @Output() shareFeatures = new EventEmitter<features>();
@@ -86,27 +82,12 @@ export class ServiceLevelsComponent implements OnInit {
   addDeliverable(){
     this.deliverableService.deliverables.push(new deliverables(this.deliverableInput,
     this.deliverableInputInitialPlan,this.deliverableInputPlusPlan,this.deliverableInputPremiumPlan));
-  }
 
-  /* clear input and checkbox to add deliverable */
-  clear() {
+    /* clear input and checkbox to add deliverable */
     this.deliverableInput = '';
     this.deliverableInputInitialPlan = false;
     this.deliverableInputPlusPlan = false;
     this.deliverableInputPremiumPlan = false;
-  }
-
-  /* share the preview video with the publish service component */
-  shareCheckboxPlus(){
-    let shareCheckboxPlusPlan = this.checkboxPlusPlan;
-    this.shareCheckboxPlusPlan.emit(shareCheckboxPlusPlan);
-    console.log('valor de los chekbox plus: ' + shareCheckboxPlusPlan);
-  }
-
-  shareCheckboxPremium(){
-    let shareCheckboxPremiumPlan = this.checkboxPremiumPlan;
-    this.shareCheckboxPremiumPlan.emit(shareCheckboxPremiumPlan);
-    console.log('valor de los chekbox premium: ' + shareCheckboxPremiumPlan);
   }
 
   /* sharing the new service-levels objects with the publish service component */

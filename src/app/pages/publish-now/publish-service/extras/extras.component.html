@@ -77,10 +77,10 @@
         <table class="table">
             <thead>
                 <tr class="text-center">
-                    <th scope="col"></th>
-                    <th scope="col">Inicial</th>
-                    <th scope="col">Plus</th>
-                    <th scope="col">Premium</th>
+                    <th scope="col-xl-3"></th>
+                    <th scope="col-xl-3">Inicial</th>
+                    <th scope="col-xl-3">Plus</th>
+                    <th scope="col-xl-3">Premium</th>
                 </tr>
             </thead>
             <tbody class="align-middle">
@@ -203,7 +203,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row" type="button" (click)="addExtra(); clear()">+ Agregar Extra</th>
+                    <th scope="row">
+                        <button type="button" class="btn blue-btn" (click)="addExtra(); clear()">
+                            + Agregar Extra
+                        </button>
+                    </th>
                     <td></td>
                     <td></td>
                     <td></td>

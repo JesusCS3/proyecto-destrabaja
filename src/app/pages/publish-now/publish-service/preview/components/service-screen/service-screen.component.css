@@ -4,6 +4,52 @@
     box-shadow: -1px -1px 10px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
+/* customized cards services */
+.card-service{
+    max-width: 168px;
+    max-height: 115px;
+    min-height: 115px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-service-header{
+    max-width: 168px;
+    
+}
+
+.card-service-header img, video{
+    height: 115px;
+    max-height: 115px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* cut arrow lengths */
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: 0 0;
+    border: 0;
+    opacity: .5;
+    transition: opacity .15s ease;
+}
+
+/* shadow */
+.shadow-img{
+    -webkit-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.192);
+    -moz-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.192);
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.192);
+}
+
 /* customized service-screen */
 
 .service-screen input {
@@ -108,16 +154,6 @@
     transform: rotate(180deg);
 }
 
-/* service screen image */
-.service-screen-image {
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-
-.service-screen-image img, video {
-    width: 170px;
-    height: 115px;
-}
-
 /* custom buy button */
 .buy-btn {
     border-radius: 2rem;
@@ -143,6 +179,7 @@
 .form-check-input {
     border: none !important;
     background-color: transparent !important;
+    font-size: 2rem !important;
 }
 
 .form-check-input:disabled {
@@ -175,6 +212,8 @@
     --bs-btn-disabled-border-color: #425CC7;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
     box-shadow: none;
+    width:130px; 
+    font-size:.7rem;
 }
 
 /* custom preview buttons*/

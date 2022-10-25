@@ -2,6 +2,7 @@
 .card-service{
     max-width: 380px;
     max-height: 415px;
+    min-height: 415px;
     border-radius: 2rem;
     border: 1px solid rgba(0,0,0,.125);
 }

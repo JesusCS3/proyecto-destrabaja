@@ -4,29 +4,37 @@
             <div class="row pt-3 p-3">
                 <!-- preview images and video for service-->
                 <div class="col-xl-4">
-                    <div id="carouselServiceScreen" class="carousel slide carousel-fade service-screen-image" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" *ngIf="previewImg">
-                                <img [src]="previewImg" class="img-fluid d-block w-100" alt="preview-img-service">
-                            </div>
-                            <div class="carousel-item" *ngIf="previewImgTwo">
-                                <img [src]="previewImgTwo" class="img-fluid d-block w-100" alt="preview-img-service">
-                            </div>
-                            <div class="carousel-item" *ngIf="previewImgThree">
-                                <img [src]="previewImgThree" class="img-fluid d-block w-100" alt="preview-img-service">
-                            </div>
-                            <div class="carousel-item" *ngIf="previewVideo">
-                                <video [src]="previewVideo" class="img-fluid d-block w-100" controls poster="./assets/img/main/video.svg"></video>
+                    <div class="card-service shadow-img">
+                        <div class="card-service-header">
+                            <div id="carouselServiceScre" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                                data-bs-pause="hover" *ngIf="previewVideo || previewImg">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" *ngIf="previewVideo">
+                                        <video [src]="previewVideo" controls
+                                            poster="./assets/img/main/video.svg"></video>
+                                    </div>
+                                    <div class="carousel-item active" *ngIf="previewImg">
+                                        <img [src]="previewImg" alt="preview-img-service">
+                                    </div>
+                                    <div class="carousel-item active" *ngIf="previewImgTwo">
+                                        <img [src]="previewImgTwo" alt="preview-img-service">
+                                    </div>
+                                    <div class="carousel-item active" *ngIf="previewImgThree">
+                                        <img [src]="previewImgThree" alt="preview-img-service">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselServiceScre" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselServiceScre" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselServiceScreen" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Siguiente</span>
-                        </button>
                     </div>
                 </div>
                 <div class="col-xl-8">
@@ -35,8 +43,8 @@
                     <!-- modal to display the long description of the service -->
                     <ng-template #longContent let-modal>
                         <button type="button" class="btn modal-close position-absolute top-0 start-100"
-                                aria-label="Close" (click)="modal.dismiss('Cross click')">
-                                <i class="bi bi-x-lg"></i></button>
+                            aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <i class="bi bi-x-lg"></i></button>
                         <div class="modal-body">
                             <p style="white-space: pre-line">
                                 {{serviceDescription.longDescription}}
@@ -45,7 +53,8 @@
                     </ng-template>
 
                     <button class="btn modal-btn" (click)="openScrollableContent(longContent)">
-                        Consulta más detalles del servicio</button>
+                       <strong>Consulta más detalles del servicio</strong> 
+                    </button>
                 </div>
             </div>
         </div>
@@ -53,25 +62,25 @@
             <table class="table">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col-xl-4"></th>
-                        <th scope="col-xl-4" id="plan" class="initial text-white align-baseline">
+                        <th scope="col-xl-3"></th>
+                        <th scope="col-xl-3" id="plan" class="initial text-white align-baseline">
                             <span>Inicial</span><br>
                             {{planName.initialPlanName}}
                         </th>
-                        <th scope="col-xl-4" id="plan" class="plus text-white align-baseline"
-                        *ngIf="planName.plusPlanName">
+                        <th scope="col-xl-3" id="plan" class="plus text-white align-baseline"
+                            *ngIf="planName.plusPlanName">
                             <span>Plus</span><br>
                             {{planName.plusPlanName}}
                         </th>
-                        <th scope="col-xl-4" id="plan" class="premium text-white align-baseline"
-                        *ngIf="planName.premiumPlanName">
+                        <th scope="col-xl-3" id="plan" class="premium text-white align-baseline"
+                            *ngIf="planName.premiumPlanName">
                             <span>Premium</span><br>
                             {{planName.premiumPlanName}}
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let deliverable of deliverables">
+                    <tr class="align-middle" *ngFor="let deliverable of deliverables">
                         <th id="deliverableName" scope="row">
                             {{deliverable.name}}
                         </th>
@@ -94,7 +103,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="align-middle">
                         <th id="features" scope="row">Tiempo de entrega</th>
                         <td class="text-center initial text-white">
                             {{features.deliveryTime}} <span>días hábiles</span>
@@ -106,7 +115,7 @@
                             {{featuresPremium.deliveryTimePremium}} <span>días hábiles</span>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="align-middle">
                         <th id="features" scope="row">Comentarios</th>
                         <td class="text-center initial text-white">
                             {{features.comments}}
@@ -118,7 +127,7 @@
                             {{featuresPremium.commentsPremium}}
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="align-middle">
                         <th id="features" scope="row">Precio MXN <br><span style="font-size: 0.5rem;">(incluye IVA y
                                 comisión de compra)</span></th>
                         <td class="text-center initial text-white">
@@ -131,33 +140,35 @@
                             {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.0-0'}}
                         </td>
                     </tr>
-                    <tr *ngFor="let extras of extras">
+                    <tr class="align-middle" *ngFor="let extras of extras">
                         <th id="extras" scope="row">{{extras.nameExtra}}</th>
-                        <td class="text-center initial text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate"></td>
+                        <td class="text-center initial text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate">
+                        </td>
                         <ng-template #extrasTemplate>
                             <td class="text-center initial text-white">
                                 {{extras.deliveryTimeExtra}} <span>días hábiles por </span>
                                 {{extras.priceClientExtra | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
-                        <td class="text-center plus text-white" 
-                        *ngIf="!extras.plusPlanExtra && planName.plusPlanName else extrasPlusTemplate"></td>
+                        <td class="text-center plus text-white"
+                            *ngIf="!extras.plusPlanExtra && planName.plusPlanName else extrasPlusTemplate"></td>
                         <ng-template #extrasPlusTemplate>
                             <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra">
                                 {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
-                        <td class="text-center premium text-white" 
-                        *ngIf="!extras.premiumPlanExtra && planName.premiumPlanName else extrasPremiumTemplate"></td>
+                        <td class="text-center premium text-white"
+                            *ngIf="!extras.premiumPlanExtra && planName.premiumPlanName else extrasPremiumTemplate">
+                        </td>
                         <ng-template #extrasPremiumTemplate>
-                            <td class="text-center premium text-white">
+                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra">
                                 {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
                     </tr>
-                    <tr>
+                    <tr class="align-middle">
                         <th scope="row">Contratar</th>
                         <td class="text-center initial">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>

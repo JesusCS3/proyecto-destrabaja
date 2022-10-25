@@ -30,10 +30,6 @@ export class PreviewComponent implements OnInit {
   @Input() featuresPlus!: featuresPlus;
   @Input() featuresPremium!: featuresPremium;
 
-  /* receive variables to show plans */
-  @Input() checkboxPlus: boolean;
-  @Input() checkboxPremium: boolean;
-
   constructor() { }
 
   ngOnInit(): void {

@@ -35,10 +35,6 @@ export class ServiceScreenComponent implements OnInit {
   @Input() featuresPremium!: featuresPremium;
   extras:extras[] = [];
 
-  /* receive variables to show plans */
-  @Input() checkboxPlus: boolean;
-  @Input() checkboxPremium: boolean;
-
   values = {
     checkboxOne: false,
     checkboxTwo: false
@@ -50,19 +46,11 @@ export class ServiceScreenComponent implements OnInit {
   ngOnInit(): void {
     this.deliverables = this.deliverableService.deliverables;
     this.extras = this.extrasService.extras;
-    console.log('valor de checkboxplus: ' + this.checkboxPlus);
   }
 
   /* modal scrollable */
   openScrollableContent(longContent: any) {
     this.modalService.open(longContent, { scrollable: true });
   }
-
-  mostrar(){
-    this.values.checkboxOne = true;
-  }
-
-  ocultar(){
-    this.values.checkboxOne = false;
-  }
+  
 }
