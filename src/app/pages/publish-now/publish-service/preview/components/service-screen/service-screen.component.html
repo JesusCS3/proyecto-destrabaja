@@ -62,17 +62,17 @@
             <table class="table">
                 <thead>
                     <tr class="text-center">
-                        <th scope="col-xl-3"></th>
-                        <th scope="col-xl-3" id="plan" class="initial text-white align-baseline">
+                        <th scope="col-3"></th>
+                        <th scope="col-3" id="plan" class="initial text-white align-baseline">
                             <span>Inicial</span><br>
                             {{planName.initialPlanName}}
                         </th>
-                        <th scope="col-xl-3" id="plan" class="plus text-white align-baseline"
+                        <th scope="col-3" id="plan" class="plus text-white align-baseline"
                             *ngIf="planName.plusPlanName">
                             <span>Plus</span><br>
                             {{planName.plusPlanName}}
                         </th>
-                        <th scope="col-xl-3" id="plan" class="premium text-white align-baseline"
+                        <th scope="col-3" id="plan" class="premium text-white align-baseline"
                             *ngIf="planName.premiumPlanName">
                             <span>Premium</span><br>
                             {{planName.premiumPlanName}}
@@ -153,7 +153,7 @@
                         <td class="text-center plus text-white"
                             *ngIf="!extras.plusPlanExtra && planName.plusPlanName else extrasPlusTemplate"></td>
                         <ng-template #extrasPlusTemplate>
-                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra">
+                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra && planName.plusPlanName">
                                 {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
                             </td>
@@ -162,7 +162,7 @@
                             *ngIf="!extras.premiumPlanExtra && planName.premiumPlanName else extrasPremiumTemplate">
                         </td>
                         <ng-template #extrasPremiumTemplate>
-                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra">
+                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra && planName.premiumPlanName">
                                 {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
                             </td>

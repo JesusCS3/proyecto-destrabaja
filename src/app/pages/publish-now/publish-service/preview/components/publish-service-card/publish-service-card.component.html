@@ -31,11 +31,11 @@
       <div class="card-service-body">
           <h5>{{generalInfo.nameService}}</h5>
           <p id="description">{{serviceDescription.shortDescription}}</p>
-          <div id="price" class="row">
-              <div class="col-7">
+          <div id="priceRow" class="row">
+              <div id="price" class="">
                   <p>Desde: {{features.priceClient | currency:'MNX':'$':'1.0-0'}}</p>
               </div>
-              <div class="col-5 text-end">
+              <div id="score" class="text-end">
                   <p><i class="bi bi-star-fill yellow-color pe-1"></i> {{score}}</p>
               </div>
           </div>
