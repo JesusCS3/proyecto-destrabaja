@@ -46,6 +46,9 @@ export class PublishServiceComponent implements OnInit {
   /* variable for service preview */
   preview: boolean = false;
 
+  /* variable to confirm publish a service */
+  confirm: boolean = false;
+
   /* variable for preview img service */
   previewImg: string;
   previewImgTwo: string;
@@ -143,11 +146,18 @@ export class PublishServiceComponent implements OnInit {
   /* service preview */
   servicePreview() {
     this.preview = true;
+    console.log("service preview desde publish service");
   }
 
   /* edit service */
   editService() {
     this.preview = false;
+    console.log("editService desde preview");
+  }
+
+  /* confirm service */
+  confirmService() {
+    this.confirm = true;
   }
 
 }

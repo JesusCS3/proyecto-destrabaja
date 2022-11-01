@@ -1,29 +1,19 @@
-<div class="container-fluid col-12 header-space">
-    <div class="row justify-content-center pb-5">
-        <div class="col-11">
-            <div class="col-6 col-lg-3 text-left">
-                <h3 class="first-color-blue pb-3"><strong>Confirmación</strong>
-                    <hr>
-                </h3>
+<div class="container-fluid col-12 confirm d-flex justify-content-center align-items-center">
+    <div>
+        <div class="col">
+            <div class="pb-3 text-center">
+                <h3>¡Felicidades!</h3>
+                <h5>Tu servicio ha sido publicado</h5>
             </div>
+            <app-publish-service-card
+            [generalInfo]="generalInfo" 
+            [previewImg]="previewImg"
+            [previewImgTwo]="previewImgTwo" 
+            [previewImgThree]="previewImgThree" 
+            [previewVideo]="previewVideo"
+            [serviceDescription]="serviceDescription" 
+            [features]="features">
+            </app-publish-service-card>
         </div>
-        <div class="row justify-content-center col-11 pt-5 bg-form confirm">
-            <div class="col-11">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <div class="pb-3">
-                            <h3>¡Felicidades!</h3>
-                            <h5>Tu servicio ha sido publicado</h5>
-                        </div>
-                        <app-publish-service-card></app-publish-service-card>
-                    </div>
-                  </div>                
-            </div>
-            <div class="d-flex justify-content-center col-11 p-5">
-                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-service">Publicar otro
-                    servicio</button></div>
-                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/home-page">Terminar</button></div>
-            </div>
-        </div>
-    </div>
+    </div>  
 </div>

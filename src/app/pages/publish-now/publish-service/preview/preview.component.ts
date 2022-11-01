@@ -11,9 +11,6 @@ import { planName } from '../service-levels/models/plan-name/plan-name.model';
 })
 export class PreviewComponent implements OnInit {
 
-  /* receive variable to show preview */
-  @Input() preview:any;
-
   /* variable to receive preview image to display on the service card and service table */
   @Input() previewImg: string;
   @Input() previewImgTwo: string;
@@ -33,11 +30,6 @@ export class PreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  /* edit service */
-  editService() {
-    this.preview = true;
   }
 
 }

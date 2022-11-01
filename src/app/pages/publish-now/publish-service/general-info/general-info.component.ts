@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { generalInfo } from './models/general-info.model';
 
@@ -57,6 +57,9 @@ export class GeneralInfoComponent implements OnInit {
   /*variables de prueba preview image/video */
   url!: string | ArrayBuffer | null;
   format: string = '';
+
+  /***** variables to display information when editing *****/
+  @Input() generalInfo!: generalInfo;
 
   constructor(private sanitizer:DomSanitizer) { }
 
@@ -148,5 +151,18 @@ export class GeneralInfoComponent implements OnInit {
     this.sharePreviewVid.emit(sharePreviewVid);
   }
 
+  /* delete preview video */
+  deletePreviewVideo(){
+    this.url = '';
+    this.videoFile = '';
+  }
+
+  /* delete preview images */
+  deletePreviewImages(){
+    this.previewImg = '';
+    this.previewImgTwo = '';
+    this.previewImgThree = '';
+    this.imageFile = '';
+  }
 
 }

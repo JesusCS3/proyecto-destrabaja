@@ -1,6 +1,6 @@
 <div class="container-fluid col-12 header-space">
-    <!-- information template to publish a service *ngIf="!preview; else previewTemplate" -->
-    <div class="row justify-content-center pb-5" >
+    <!-- information template to publish a service -->
+    <div class="row justify-content-center pb-5" *ngIf="!preview; else previewTemplate">
         <div class="col-11 pb-5">
             <div class="col-8 col-md-4 col-xl-3 text-left">
                 <h3 class="first-color-blue"><strong>Publica un servicio</strong>
@@ -17,6 +17,8 @@
                     (sharePreviewImgTwo)="addPreviewImgTwo($event)"
                     (sharePreviewImgThree)="addPreviewImgThree($event)"
                     (sharePreviewVid)="addPreviewVideo($event)"
+                    
+                    [generalInfo]="gnralInfo"
                     ></app-general-info>
                     <app-service-description
                     (shareServiceDescription)="addServiceDescription($event)"
@@ -39,22 +41,76 @@
             </div>
         </div>
     </div>
-    <!-- preview template to publish a service  -->
-    <!-- <ng-template #previewTemplate> -->
-        <div>
-            <app-preview
-            [generalInfo]="gnralInfo"
-            [preview]="editService()"
-            [previewImg]="previewImg"
-            [previewImgTwo]="previewImgTwo"
-            [previewImgThree]="previewImgThree"
-            [previewVideo]="previewVideo"
-            [serviceDescription]="serviceDescrip"
-            [planName]="planNames"
-            [features]="feature"
-            [featuresPlus]="featurePlus"
-            [featuresPremium]="featurePremium"
-            ></app-preview>
+    <!-- preview template to publish a service -->
+    <ng-template #previewTemplate>
+        <div *ngIf="!confirm; else confirmTemplate">
+            <div class="row justify-content-center pb-5">
+                <div class="col-11">
+                    <div class="col-6 col-lg-3 text-left">
+                        <h3 class="first-color-blue pb-3"><strong>Previsualización</strong>
+                            <hr>
+                        </h3>
+                    </div>
+                </div>
+                <div class="row justify-content-center col-11 pt-5 bg-form">
+                    <div class="col-11 pb-5">
+                        <app-preview
+                        [generalInfo]="gnralInfo"
+                        [previewImg]="previewImg"
+                        [previewImgTwo]="previewImgTwo"
+                        [previewImgThree]="previewImgThree"
+                        [previewVideo]="previewVideo"
+                        [serviceDescription]="serviceDescrip"
+                        [planName]="planNames"
+                        [features]="feature"
+                        [featuresPlus]="featurePlus"
+                        [featuresPremium]="featurePremium"
+                        ></app-preview>
+                    </div>
+                    <div class="d-flex justify-content-center col-11 pb-5">
+                        <div class="p-2 px-4">
+                            <button type="button" class="btn publish-btn" (click)="editService()">
+                                Regresar y editar
+                            </button>
+                        </div>
+                        <div class="p-2 px-4">
+                            <button type="button" class="btn publish-btn" (click)="confirmService()">
+                                ¡Publicar!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    <!--</ng-template>-->
+    </ng-template>
+    <!-- confirmation template publish a service -->
+    <ng-template #confirmTemplate>
+        <div class="row justify-content-center pb-5">
+            <div class="col-11">
+                <div class="col-6 col-lg-3 text-left">
+                    <h3 class="first-color-blue pb-3"><strong>Confirmación</strong>
+                        <hr>
+                    </h3>
+                </div>
+            </div>
+            <div class="row justify-content-center col-11 pt-5 bg-form">
+                <div class="col-11">
+                    <app-confirm
+                    [generalInfo]="gnralInfo"
+                    [previewImg]="previewImg"
+                    [previewImgTwo]="previewImgTwo"
+                    [previewImgThree]="previewImgThree"
+                    [previewVideo]="previewVideo"
+                    [serviceDescription]="serviceDescrip"
+                    [features]="feature"
+                    ></app-confirm>          
+                </div>
+                <div class="d-flex justify-content-center col-11 p-5">
+                    <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-now">Publicar otro
+                        servicio</button></div>
+                    <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/profile">Terminar</button></div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>
