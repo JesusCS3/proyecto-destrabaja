@@ -5,6 +5,7 @@
     min-height: 415px;
     border-radius: 2rem;
     border: 1px solid rgba(0,0,0,.125);
+    background-color: #fff;
 }
 
 .card-service-header{

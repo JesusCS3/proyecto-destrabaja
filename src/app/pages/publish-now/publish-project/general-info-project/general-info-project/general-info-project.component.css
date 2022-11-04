@@ -1,5 +1,7 @@
+/* ****** general info styles (publish-service and publish-project) ****** */
+
 /* customized hr */
-hr {
+hr.underline {
     border: 1px solid #54C8E8;
     opacity: 1;
 }
@@ -18,18 +20,16 @@ hr {
     color:#425CC7;
 }
 
-.general-info input{
-    border: none;
+.general-info input {
     border: 3px solid #54C8E8;
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .general-info select{
-    border: none;
     border: 3px solid #54C8E8;
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* preview image file */
@@ -56,7 +56,7 @@ hr {
     transform: translate(15%, -50%);
 }
 
-.img-ico i{
+.img-ico i {
     font-size: 2rem;
 }
 
@@ -200,6 +200,7 @@ hr {
 .delete:hover{
     color: #54C8E8;
 }
+
 
 /* custom save button */
 .save-btn {

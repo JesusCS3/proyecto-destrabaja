@@ -2,21 +2,19 @@
     <div>
         <div class="col">
             <div class="pb-3 text-center">
-                <h3>¡Felicidades!</h3>
-                <h5>Tu servicio ha sido publicado</h5>
+                <h3 class="title-confirm">¡Felicidades!</h3>
+                <h5 class="title-confirm">Tu proyecto ha sido publicado</h5>
             </div>
             <div class="publication-star d-flex justify-content-center align-items-center">
                 <img src="./assets/img/publish-now/confirmation-star.png" class="publication-img" alt="confirmation-star">
                 <div class="publication-card-confirm">
-                    <app-publish-service-card
-                    [generalInfo]="generalInfo" 
+                    <app-publish-project-card
+                    [generalInfo]="generalInfo"
                     [previewImg]="previewImg"
-                    [previewImgTwo]="previewImgTwo" 
-                    [previewImgThree]="previewImgThree" 
+                    [previewImgTwo]="previewImgTwo"
+                    [previewImgThree]="previewImgThree"
                     [previewVideo]="previewVideo"
-                    [serviceDescription]="serviceDescription" 
-                    [features]="features">
-                    </app-publish-service-card>
+                    ></app-publish-project-card>
                 </div>
             </div>
         </div>

@@ -43,6 +43,13 @@ import { RequirementsService } from './pages/publish-now/publish-service/require
 import { ServiceDescriptionService } from './pages/publish-now/publish-service/service-description/services/service-description.service';
 import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PublishProjectComponent } from './pages/publish-now/publish-project/publish-project.component';
+import { GeneralInfoProjectComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project/general-info-project.component';
+import { GeneralInfoProjectEditComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project-edit/general-info-project-edit.component';
+import { PreviewProjectComponent } from './pages/publish-now/publish-project/preview-project/preview-project.component';
+import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
+import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
+import { ConfirmProjectComponent } from './pages/publish-now/publish-project/confirm-project/confirm-project.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +85,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PublishServiceCardComponent,
     ConfirmComponent,
     ServiceScreenComponent,
+    PublishProjectComponent,
+    GeneralInfoProjectComponent,
+    GeneralInfoProjectEditComponent,
+    PreviewProjectComponent,
+    PublishProjectCardComponent,
+    ProjectScreenComponent,
+    ConfirmProjectComponent,
   ],
   imports: [
     BrowserModule,

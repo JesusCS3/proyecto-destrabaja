@@ -1,62 +1,63 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { generalInfo } from './models/general-info.model';
+import { generalInfoProject } from '../models/general-info-project.model';
 
 @Component({
-  selector: 'app-general-info',
-  templateUrl: './general-info.component.html',
-  styleUrls: ['./general-info.component.css']
+  selector: 'app-general-info-project',
+  templateUrl: './general-info-project.component.html',
+  styleUrls: ['./general-info-project.component.css']
 })
-export class GeneralInfoComponent implements OnInit {
+export class GeneralInfoProjectComponent implements OnInit {
 
-  /* share with the publish service component */
-  @Output() shareGeneralInfo = new EventEmitter<generalInfo>();
-  @Output() sharePreviewImg = new EventEmitter<any>();
-  @Output() sharePreviewImgTwo = new EventEmitter<any>();
-  @Output() sharePreviewImgThree = new EventEmitter<any>();
-  @Output() sharePreviewVid = new EventEmitter<any>();
-
-  /* variables for general info */
-  nameService: string;
-  hashtags: string;
-  category: string;
-  subcategory: string;
-  videoFile: any;
-  imageFile: any;
-
-  /* variable for category */
-  categoryList = [
-    {
-      id:'bie',
-      name:'Bienestar'
-    },
-    {
-      id:'cla',
-      name:'Clases'
-    },
-    {
-      id:'dis',
-      name:'Diseño'
-    },
-    {
-      id:'mus',
-      name:'Música'
-    },
-    {
-      id:'web',
-      name:'Web'
-    }
-  ];
-
-  /* variables for file capture */
-  public previewImg: string;
-  public previewImgTwo: string;
-  public previewImgThree: string;
-  public files: any = [];
-
-  /*variables de prueba preview image/video */
-  url!: string | ArrayBuffer | null;
-  format: string = '';
+    /* share with the publish service component */
+    @Output() shareGeneralInfo = new EventEmitter<generalInfoProject>();
+    @Output() sharePreviewImg = new EventEmitter<any>();
+    @Output() sharePreviewImgTwo = new EventEmitter<any>();
+    @Output() sharePreviewImgThree = new EventEmitter<any>();
+    @Output() sharePreviewVid = new EventEmitter<any>();
+  
+    /* variables for general info */
+    nameService: string;
+    hashtags: string;
+    category: string;
+    subcategory: string;
+    videoFile: any;
+    imageFile: any;
+    filesProject: any;
+  
+    /* variable for category */
+    categoryList = [
+      {
+        id:'bie',
+        name:'Bienestar'
+      },
+      {
+        id:'cla',
+        name:'Clases'
+      },
+      {
+        id:'dis',
+        name:'Diseño'
+      },
+      {
+        id:'mus',
+        name:'Música'
+      },
+      {
+        id:'web',
+        name:'Web'
+      }
+    ];
+  
+    /* variables for file capture */
+    public previewImg: string;
+    public previewImgTwo: string;
+    public previewImgThree: string;
+    public files: any = [];
+  
+    /*variables de prueba preview image/video */
+    url!: string | ArrayBuffer | null;
+    format: string = '';
 
   constructor(private sanitizer:DomSanitizer) { }
 
@@ -121,8 +122,8 @@ export class GeneralInfoComponent implements OnInit {
 
   /* sharing the new general info object with the publish service component */
   shareAddGeneralInfo() {
-    let shareGeneralInfo = new generalInfo(this.nameService, this.hashtags, 
-    this.category, this.subcategory, this.videoFile, this.imageFile);
+    let shareGeneralInfo = new generalInfoProject(this.nameService, this.hashtags, 
+    this.category, this.subcategory, this.videoFile, this.imageFile, this.filesProject);
     this.shareGeneralInfo.emit(shareGeneralInfo);
   }
 

@@ -1,0 +1,46 @@
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <div class="card-service shadow-lg">
+                <div class="card-service-header">
+                    <div id="carouselServices" class="carousel slide carousel-fade" data-bs-ride="carousel"
+                        data-bs-pause="hover" *ngIf="previewVideo || previewImg">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" *ngIf="previewVideo">
+                                <video [src]="previewVideo" controls poster="./assets/img/main/video.svg"></video>
+                            </div>
+                            <div class="carousel-item active" *ngIf="previewImg">
+                                <img [src]="previewImg" alt="preview-img-service">
+                            </div>
+                            <div class="carousel-item active" *ngIf="previewImgTwo">
+                                <img [src]="previewImgTwo" alt="preview-img-service">
+                            </div>
+                            <div class="carousel-item active" *ngIf="previewImgThree">
+                                <img [src]="previewImgThree" alt="preview-img-service">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselServices"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselServices"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{generalInfo.nameService}}</h5>
+                <p class="card-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Quisque tempus dignissim dictum. Fusce at condimentum urna, a sollicitudin tortor. 
+                    Sed eu me.</p>
+                <p class="card-text"><small class="text-muted">Publicado: </small></p>
+            </div>
+        </div>
+    </div>
+</div>

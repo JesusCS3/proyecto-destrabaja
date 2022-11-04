@@ -41,7 +41,7 @@ export class ServiceLevelsComponent implements OnInit {
 
   /* variables for deliverables */
   deliverableInput:string;
-  deliverableInputInitialPlan: boolean = true;
+  deliverableInputInitialPlan: boolean;
   deliverableInputPlusPlan: boolean;
   deliverableInputPremiumPlan: boolean;
 
@@ -85,7 +85,7 @@ export class ServiceLevelsComponent implements OnInit {
 
     /* clear input and checkbox to add deliverable */
     this.deliverableInput = '';
-    this.deliverableInputInitialPlan = true;
+    this.deliverableInputInitialPlan = false;
     this.deliverableInputPlusPlan = false;
     this.deliverableInputPremiumPlan = false;
   }

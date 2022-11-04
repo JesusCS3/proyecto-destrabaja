@@ -31,6 +31,7 @@ import { FinanceComponent } from './pages/user/profile/finance/finance.component
 import { ReferredComponent } from './pages/user/profile/referred/referred.component';
 // publish-now
 import { PublishNowComponent } from './pages/publish-now/publish-now.component';
+// Publish-service
 import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component';
 import { GeneralInfoComponent } from './pages/publish-now/publish-service/general-info/general-info.component';
 import { ServiceDescriptionComponent } from './pages/publish-now/publish-service/service-description/service-description.component';
@@ -41,6 +42,14 @@ import { PreviewComponent } from './pages/publish-now/publish-service/preview/pr
 import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
 import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
 import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
+//publish-project
+import { PublishProjectComponent } from './pages/publish-now/publish-project/publish-project.component';
+import { GeneralInfoProjectComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project/general-info-project.component';
+import { GeneralInfoProjectEditComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project-edit/general-info-project-edit.component';
+import { PreviewProjectComponent } from './pages/publish-now/publish-project/preview-project/preview-project.component';
+import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
+import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
+import { ConfirmProjectComponent } from './pages/publish-now/publish-project/confirm-project/confirm-project.component';
 //about
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
@@ -69,6 +78,7 @@ const routes: Routes = [
   {path:'referred', component:ReferredComponent},
   // publish-now
   {path:'publish-now', component:PublishNowComponent},
+  // publish-service
   {path:'publish-service', component:PublishServiceComponent, canActivate: [PublishNowGuard]},
   {path:'general-info', component:GeneralInfoComponent, canActivate: [PublishNowGuard]},
   {path:'service-description', component:ServiceDescriptionComponent, canActivate: [PublishNowGuard]},
@@ -79,6 +89,15 @@ const routes: Routes = [
   {path:'publish-service-card', component:PublishServiceCardComponent, canActivate: [PublishNowGuard]},
   {path:'service-screen', component:ServiceScreenComponent, canActivate: [PublishNowGuard]},
   {path:'confirm', component:ConfirmComponent, canActivate: [PublishNowGuard]},
+  // publish-project
+  {path:'publish-project', component:PublishProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'general-info-project', component:GeneralInfoProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'general-info-project-edit', component:GeneralInfoProjectEditComponent, canActivate: [PublishNowGuard]},
+  {path:'preview-project', component:PreviewProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'publish-project-card', component:PublishProjectCardComponent, canActivate: [PublishNowGuard]},
+  {path:'project-screen', component:ProjectScreenComponent, canActivate: [PublishNowGuard]},
+  {path:'confirm-project', component:ConfirmProjectComponent, canActivate: [PublishNowGuard]},
+  //about
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent},
   {path: '', component:LandingPageComponent, canActivate: [SinginGuard]},

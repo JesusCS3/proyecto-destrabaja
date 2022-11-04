@@ -1,0 +1,19 @@
+/* customized cards services */
+.card-service{
+    max-width: 168px;
+    max-height: 115px;
+    min-height: 115px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-service-header{
+    max-width: 168px;
+    
+}
+
+.card-service-header img, video{
+    height: 115px;
+    max-height: 115px;
+    width: 100%;
+    object-fit: cover;
+}

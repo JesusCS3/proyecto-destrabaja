@@ -1,0 +1,88 @@
+<div class="container-fluid col-12 header-space">
+    <!-- information template to publish a service -->
+    <div class="row justify-content-center pb-5">
+        <div class="col-11 pb-5">
+            <div class="col-8 col-md-4 col-xl-3 text-left">
+                <h3 class="first-color-blue underline"><strong>Publica un proyecto</strong>
+                    <hr>
+                </h3>
+            </div>
+        </div>
+        <div class="row justify-content-center col-11 py-5 bg-form">
+            <div class="col-11 ">
+                <div>
+                    <app-general-info-project
+                    (shareGeneralInfo)="addGeneralInfo($event)"
+                    (sharePreviewImg)="addPreviewImg($event)"
+                    (sharePreviewImgTwo)="addPreviewImgTwo($event)"
+                    (sharePreviewImgThree)="addPreviewImgThree($event)"
+                    (sharePreviewVid)="addPreviewVideo($event)"
+                    ></app-general-info-project>
+                </div>
+                <div>
+                    <app-general-info-project-edit></app-general-info-project-edit>
+                </div>
+                <div class="d-flex flex-row-reverse bd-highlight pt-5">
+                    <div class="p-2 bd-highlight">
+                        <button type="button" class="btn publish-btn">Previsualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preview template to publish a service -->
+    <div>
+        <div class="row justify-content-center pb-5">
+            <div class="col-11">
+                <div class="col-6 col-lg-3 text-left">
+                    <h3 class="first-color-blue pb-3 underline"><strong>Previsualización</strong>
+                        <hr>
+                    </h3>
+                </div>
+            </div>
+            <div class="row justify-content-center col-11 pt-5 bg-form">
+                <div class="col-11 pb-5">
+                    <app-preview-project
+                    [generalInfo]="gnralInfo"
+                    [previewImg]="previewImg"
+                    [previewImgTwo]="previewImgTwo"
+                    [previewImgThree]="previewImgThree"
+                    [previewVideo]="previewVideo"
+                    ></app-preview-project>
+                </div>
+                <div class="d-flex justify-content-center col-11 pb-5">
+                    <div class="p-2 px-4">
+                        <button type="button" class="btn publish-btn">
+                            Regresar y editar
+                        </button>
+                    </div>
+                    <div class="p-2 px-4">
+                        <button type="button" class="btn publish-btn">
+                            ¡Publicar!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- confirmation template publish a service -->
+    <div class="row justify-content-center pb-5">
+        <div class="col-11">
+            <div class="col-6 col-lg-3 text-left">
+                <h3 class="first-color-blue pb-3 underline"><strong>Confirmación</strong>
+                    <hr>
+                </h3>
+            </div>
+        </div>
+        <div class="row justify-content-center col-11 pt-5 bg-form">
+            <div class="col-11">
+                <app-confirm-project></app-confirm-project>    
+            </div>
+            <div class="d-flex justify-content-center col-11 p-5">
+                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-now">
+                    Publicar otro proyecto</button></div>
+                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/profile">Terminar</button></div>
+            </div>
+        </div>
+    </div>
+</div>
