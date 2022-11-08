@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { generalInfoProject } from '../models/general-info-project.model';
 
@@ -8,6 +9,9 @@ import { generalInfoProject } from '../models/general-info-project.model';
   styleUrls: ['./general-info-project.component.css']
 })
 export class GeneralInfoProjectComponent implements OnInit {
+
+  /* form general-info */
+  public formGeneralInfoProject: FormGroup;
 
     /* share with the publish service component */
     @Output() shareGeneralInfo = new EventEmitter<generalInfoProject>();
@@ -59,7 +63,7 @@ export class GeneralInfoProjectComponent implements OnInit {
     url!: string | ArrayBuffer | null;
     format: string = '';
 
-  constructor(private sanitizer:DomSanitizer) { }
+  constructor(private formBuilder:FormBuilder, private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
   }

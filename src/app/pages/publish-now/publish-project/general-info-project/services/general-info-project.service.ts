@@ -8,5 +8,11 @@ export class GeneralInfoProjectService {
 
   generalInfoProject: generalInfoProject[] = [];
 
+  delete(generalInfoProject:generalInfoProject){
+    const aLength: number = this.generalInfoProject.length;
+    this.generalInfoProject.splice(0, aLength);
+  }
+
+
   constructor() { }
 }

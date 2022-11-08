@@ -10,7 +10,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SlideHomeComponent } from './pages/home-page/components/slide-home/slide-home.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
@@ -50,6 +50,12 @@ import { PreviewProjectComponent } from './pages/publish-now/publish-project/pre
 import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
 import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
 import { ConfirmProjectComponent } from './pages/publish-now/publish-project/confirm-project/confirm-project.component';
+import { ServiceDescriptionProjectComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project/service-description-project.component';
+import { ServiceDescriptionProjectEditComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project-edit/service-description-project-edit.component';
+import { FeaturesProjectComponent } from './pages/publish-now/publish-project/features-project/features-project/features-project.component';
+import { FeaturesProjectEditComponent } from './pages/publish-now/publish-project/features-project/features-project-edit/features-project-edit.component';
+import { RequirementsProjectComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project/requirements-project.component';
+import { RequirementsProjectEditComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project-edit/requirements-project-edit.component';
 
 @NgModule({
   declarations: [
@@ -92,10 +98,17 @@ import { ConfirmProjectComponent } from './pages/publish-now/publish-project/con
     PublishProjectCardComponent,
     ProjectScreenComponent,
     ConfirmProjectComponent,
+    ServiceDescriptionProjectComponent,
+    ServiceDescriptionProjectEditComponent,
+    FeaturesProjectComponent,
+    FeaturesProjectEditComponent,
+    RequirementsProjectComponent,
+    RequirementsProjectEditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { generalInfoProject } from '../general-info-project/models/general-info-project.model';
+import { serviceDescriptionProject } from '../service-description-project/models/service-description-project.model';
 
 @Component({
   selector: 'app-preview-project',
@@ -18,6 +19,7 @@ export class PreviewProjectComponent implements OnInit {
 
   /***** variables to receive information to display on the service card and service table *****/
   @Input() generalInfo!: generalInfoProject;
+  @Input() serviceDescription!: serviceDescriptionProject;
 
   constructor() { }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { generalInfoProject } from './general-info-project/models/general-info-project.model';
 import { GeneralInfoProjectService } from './general-info-project/services/general-info-project.service';
+import { serviceDescriptionProject } from './service-description-project/models/service-description-project.model';
+import { ServiceDescriptionProjectService } from './service-description-project/services/service-description-project.service';
 
 @Component({
   selector: 'app-publish-project',
@@ -54,12 +56,15 @@ export class PublishProjectComponent implements OnInit {
   /***** variables for save information *****/
   
   generalInfo: generalInfoProject[] = [];
+  serviceDescription: serviceDescriptionProject[] = [];
 
   /***** variables to share information for preview *****/
 
   gnralInfo: any;
+  serviceDescrip: any;
 
-  constructor(private generalInfoService: GeneralInfoProjectService ) { }
+  constructor(private generalInfoService: GeneralInfoProjectService,
+              private serviceDescriptionService: ServiceDescriptionProjectService ) { }
 
   ngOnInit(): void {
     this.generalInfo = this.generalInfoService.generalInfoProject;
@@ -88,5 +93,36 @@ export class PublishProjectComponent implements OnInit {
   addPreviewVideo(previewVideo: any) {
     this.previewVideo = previewVideo;
   }
+
+    /* receive information from general info edit component */
+    addGeneralInfoEdit(generalInfo: generalInfoProject) {
+      this.generalInfoService.generalInfoProject.push(generalInfo);
+      this.gnralInfo = generalInfo;
+    }
+  
+    /* receive the preview image of the general info component */
+    addPreviewImgEdit(previewImage: any) {
+      this.previewImg = previewImage;
+    }
+  
+    addPreviewImgTwoEdit(previewImageTwo: any) {
+      this.previewImgTwo = previewImageTwo;
+    }
+  
+    addPreviewImgThreeEdit(previewImageThree: any) {
+      this.previewImgThree = previewImageThree;
+    }
+  
+    /* receive the preview video of the general info component */
+    addPreviewVideoEdit(previewVideo: any) {
+      this.previewVideo = previewVideo;
+    }
+
+      /* receive information from service description component */
+  addServiceDescription(serviceDescription: serviceDescriptionProject) {
+    this.serviceDescriptionService.serviceDescriptionProject.push(serviceDescription);
+    this.serviceDescrip = serviceDescription;
+  }
+  
 
 }

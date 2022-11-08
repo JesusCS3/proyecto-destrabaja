@@ -18,9 +18,31 @@
                     (sharePreviewImgThree)="addPreviewImgThree($event)"
                     (sharePreviewVid)="addPreviewVideo($event)"
                     ></app-general-info-project>
+                    <app-service-description-project
+                    (shareServiceDescription)="addServiceDescription($event)"
+                    ></app-service-description-project>
                 </div>
                 <div>
-                    <app-general-info-project-edit></app-general-info-project-edit>
+                    <div *ngIf="gnralInfo != undefined">
+                        <app-general-info-project-edit
+                        (shareGeneralInfo)="addGeneralInfo($event)"
+                        (sharePreviewImg)="addPreviewImg($event)"
+                        (sharePreviewImgTwo)="addPreviewImgTwo($event)"
+                        (sharePreviewImgThree)="addPreviewImgThree($event)"
+                        (sharePreviewVid)="addPreviewVideo($event)"
+    
+                        [generalInfo]="gnralInfo"
+                        [previewImgEdit]="previewImg"
+                        [previewImgTwoEdit]="previewImgTwo"
+                        [previewImgThreeEdit]="previewImgThree"
+                        [previewVideoEdit]="previewVideo"
+                        ></app-general-info-project-edit>
+                    </div>
+                    <div *ngIf="serviceDescrip != undefined">
+                        <app-service-description-project-edit
+                        (shareServiceDescription)="addServiceDescription($event)"
+                        ></app-service-description-project-edit>
+                    </div>
                 </div>
                 <div class="d-flex flex-row-reverse bd-highlight pt-5">
                     <div class="p-2 bd-highlight">
@@ -48,6 +70,7 @@
                     [previewImgTwo]="previewImgTwo"
                     [previewImgThree]="previewImgThree"
                     [previewVideo]="previewVideo"
+                    [serviceDescription]="serviceDescrip"
                     ></app-preview-project>
                 </div>
                 <div class="d-flex justify-content-center col-11 pb-5">

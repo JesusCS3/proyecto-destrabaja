@@ -46,6 +46,12 @@ import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/co
 import { PublishProjectComponent } from './pages/publish-now/publish-project/publish-project.component';
 import { GeneralInfoProjectComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project/general-info-project.component';
 import { GeneralInfoProjectEditComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project-edit/general-info-project-edit.component';
+import { ServiceDescriptionProjectComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project/service-description-project.component';
+import { ServiceDescriptionProjectEditComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project-edit/service-description-project-edit.component';
+import { FeaturesProjectComponent } from './pages/publish-now/publish-project/features-project/features-project/features-project.component';
+import { FeaturesProjectEditComponent } from './pages/publish-now/publish-project/features-project/features-project-edit/features-project-edit.component';
+import { RequirementsProjectComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project/requirements-project.component';
+import { RequirementsProjectEditComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project-edit/requirements-project-edit.component';
 import { PreviewProjectComponent } from './pages/publish-now/publish-project/preview-project/preview-project.component';
 import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
 import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
@@ -93,6 +99,12 @@ const routes: Routes = [
   {path:'publish-project', component:PublishProjectComponent, canActivate: [PublishNowGuard]},
   {path:'general-info-project', component:GeneralInfoProjectComponent, canActivate: [PublishNowGuard]},
   {path:'general-info-project-edit', component:GeneralInfoProjectEditComponent, canActivate: [PublishNowGuard]},
+  {path:'service-description-project', component:ServiceDescriptionProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'service-description-project-edit', component:ServiceDescriptionProjectEditComponent, canActivate: [PublishNowGuard]},
+  {path:'features-project', component:FeaturesProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'features-project-edit', component:FeaturesProjectEditComponent, canActivate: [PublishNowGuard]},
+  {path:'requirements-project', component:RequirementsProjectComponent, canActivate: [PublishNowGuard]},
+  {path:'requirements-project-edit', component:RequirementsProjectEditComponent, canActivate: [PublishNowGuard]},
   {path:'preview-project', component:PreviewProjectComponent, canActivate: [PublishNowGuard]},
   {path:'publish-project-card', component:PublishProjectCardComponent, canActivate: [PublishNowGuard]},
   {path:'project-screen', component:ProjectScreenComponent, canActivate: [PublishNowGuard]},
