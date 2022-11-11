@@ -64,7 +64,7 @@ export class PublishProjectComponent implements OnInit {
   serviceDescrip: any;
 
   constructor(private generalInfoService: GeneralInfoProjectService,
-              private serviceDescriptionService: ServiceDescriptionProjectService ) { }
+              public serviceDescriptionService: ServiceDescriptionProjectService ) { }
 
   ngOnInit(): void {
     this.generalInfo = this.generalInfoService.generalInfoProject;
@@ -124,5 +124,21 @@ export class PublishProjectComponent implements OnInit {
     this.serviceDescrip = serviceDescription;
   }
   
+  /* prueba comunicacion */
+  textoHijo1: string;
+
+  mensaje: string;
+  mensajeDos: string;
+
+  save: any;
+
+  recibirCambios(){
+    this.mensaje = this.serviceDescriptionService.mensajeOne;
+    this.mensajeDos = this.serviceDescriptionService.mensajeTwo;
+  }
+
+  saveProjectDescription(){
+    this.save = this.serviceDescriptionService.save;
+  }
 
 }

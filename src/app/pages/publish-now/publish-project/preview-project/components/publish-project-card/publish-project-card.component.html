@@ -51,6 +51,16 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <div>
+        <h4>Componente Nieto A</h4>
+        <div>
+            <div>Descripcion corta: {{serviceDescriptionService.shortDescription}}</div>
+        </div>
+    </div>
+</div>
+
+<div *ngFor="let projectDescription of projectDescription">
+    <label>Descripcion corta</label>
+    <input type="text" [(ngModel)]="projectDescription.shortDescription">
 </div>

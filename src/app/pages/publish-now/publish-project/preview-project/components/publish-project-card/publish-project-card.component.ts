@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { generalInfoProject } from '../../../general-info-project/models/general-info-project.model';
 import { serviceDescriptionProject } from '../../../service-description-project/models/service-description-project.model';
+import { ServiceDescriptionProjectService } from '../../../service-description-project/services/service-description-project.service';
 
 @Component({
   selector: 'app-publish-project-card',
@@ -21,9 +22,15 @@ export class PublishProjectCardComponent implements OnInit {
   @Input() generalInfo!: generalInfoProject;
   @Input() serviceDescription!: serviceDescriptionProject;
 
-  constructor() { }
+  /* project description info */
+  projectDescription: serviceDescriptionProject[] = [];
+  shortDescription: any;
+
+  constructor(public serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
+    this.projectDescription = this.serviceDescriptionService.serviceDescriptionProject;
+    this.shortDescription = this.serviceDescriptionService.shortDescription;
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { generalInfoProject } from '../general-info-project/models/general-info-project.model';
 import { serviceDescriptionProject } from '../service-description-project/models/service-description-project.model';
+import { ServiceDescriptionProjectService } from '../service-description-project/services/service-description-project.service';
 
 @Component({
   selector: 'app-preview-project',
@@ -21,9 +22,22 @@ export class PreviewProjectComponent implements OnInit {
   @Input() generalInfo!: generalInfoProject;
   @Input() serviceDescription!: serviceDescriptionProject;
 
-  constructor() { }
+  constructor(public serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
+  }
+
+  /* prueba comunicacion */
+  @Input() textoHijo2: string;
+
+  mensaje: any;
+  mensajeDos: any;
+  descripcionCorta: any;
+
+  recibirCambios(){
+    this.mensaje = this.serviceDescriptionService.mensajeOne;
+    this.mensajeDos = this.serviceDescriptionService.mensajeTwo;
+    this.descripcionCorta = this.serviceDescriptionService.shortDescription;
   }
 
 }

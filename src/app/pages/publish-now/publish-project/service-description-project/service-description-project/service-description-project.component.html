@@ -9,7 +9,8 @@
     <div class="mb-3">
         <label for="shortDescription" class="form-label">Descripción corta para tu tarjeta de proyecto</label>
         <textarea class="form-control" id="shortDescription" name="shortDescription" rows="3" maxlength="150"
-            [(ngModel)]="shortDescription" (keyup)="shortDescriptionCount($event)"></textarea>
+            [(ngModel)]="shortDescription" (keyup)="shortDescriptionCount($event)"
+            (input)="sendShortDescription($event)"></textarea>
         <!-- counting characters for short description -->
         <div class="d-flex bd-highlight">
             <div class="p-2 bd-highlight"><span>Máximo 150 caracteres.</span></div>
@@ -23,7 +24,8 @@
             Descripción larga para tu tarjeta de proyecto
         </label>
         <textarea class="form-control" id="longDescription" name="longDescription" rows="3" maxlength="1500"
-            [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"></textarea>
+            [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"
+            (input)="sendLongDescription($event)"></textarea>
         <!-- counting characters for long description -->
         <div class="d-flex bd-highlight">
             <div class="p-2 bd-highlight"><span>Máximo 1,500 caracteres.</span></div>
@@ -40,4 +42,25 @@
             </button>
         </div>
     </div>
+</div>
+
+<div>
+    <h4>Componente hijo 1</h4>
+    Escribe: <input type="text" (input)="cambioTexto($event)">
+</div>
+
+<div>
+    <h4>Componente Hijo A</h4>
+    Escribe aqui: <br>
+    <div>
+        <input (input)="cambiarMensaje($event)">
+    </div><br>
+    <div>
+        <input (input)="cambiarMensajeDos($event)">
+    </div>
+</div>
+<br>
+<div *ngFor="let projectDescription of projectDescription">
+    <label>Descripcion corta</label>
+    <input type="text" [(ngModel)]="projectDescription.shortDescription">
 </div>

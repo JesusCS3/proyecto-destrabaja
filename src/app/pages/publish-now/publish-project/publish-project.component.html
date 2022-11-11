@@ -6,6 +6,20 @@
                 <h3 class="first-color-blue underline"><strong>Publica un proyecto</strong>
                     <hr>
                 </h3>
+                <div>
+                    <h4>Componente padre</h4>
+                    Esto es lo que se escribe en el input de descripcion: <br>
+                    <div>Mensaje uno: {{serviceDescriptionService.mensajeOne}}</div>
+                    <div>Mensaje dos: {{serviceDescriptionService.mensajeTwo}}</div>
+                    <div>Descripcion corta: {{serviceDescriptionService.shortDescription}}</div>
+                </div>
+                <div>
+                    <h4>recibir informacion</h4>
+                    Esto es lo que se escribe en el input de descripcion: <br>
+                    <div>{{mensaje}}</div>
+                    <div>{{mensajeDos}}</div>
+                    <button (click)="recibirCambios()">Recibir cambios</button>
+                </div>
             </div>
         </div>
         <div class="row justify-content-center col-11 py-5 bg-form">
@@ -20,6 +34,8 @@
                     ></app-general-info-project>
                     <app-service-description-project
                     (shareServiceDescription)="addServiceDescription($event)"
+
+                    (textoCambiado)="textoHijo1 = $event"
                     ></app-service-description-project>
                 </div>
                 <div>
@@ -46,7 +62,7 @@
                 </div>
                 <div class="d-flex flex-row-reverse bd-highlight pt-5">
                     <div class="p-2 bd-highlight">
-                        <button type="button" class="btn publish-btn">Previsualizar</button>
+                        <button type="button" class="btn publish-btn" (click)="serviceDescriptionService.save()">Previsualizar</button>
                     </div>
                 </div>
             </div>
@@ -71,6 +87,8 @@
                     [previewImgThree]="previewImgThree"
                     [previewVideo]="previewVideo"
                     [serviceDescription]="serviceDescrip"
+
+                    [textoHijo2]="textoHijo1"
                     ></app-preview-project>
                 </div>
                 <div class="d-flex justify-content-center col-11 pb-5">
