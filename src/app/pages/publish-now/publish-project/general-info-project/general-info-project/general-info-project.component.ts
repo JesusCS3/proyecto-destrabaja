@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { generalInfoProject } from '../models/general-info-project.model';
+import { GeneralInfoProjectService } from '../services/general-info-project.service';
 
 @Component({
   selector: 'app-general-info-project',
@@ -12,60 +12,82 @@ export class GeneralInfoProjectComponent implements OnInit {
 
   /* form general-info */
   public formGeneralInfoProject: FormGroup;
+  
+  /* variables for general info */
+  nameService: string;
+  hashtags: string;
+  category: string;
+  subcategory: string;
+  videoFile: any;
+  imageFile: any;
+  filesProject: any;
+  
+  /* variable for category */
+  categoryList = [
+    {
+      id:'bie',
+      name:'Bienestar'
+    },
+    {
+      id:'cla',
+      name:'Clases'
+    },
+    {
+      id:'dis',
+      name:'Diseño'
+    },
+    {
+      id:'mus',
+      name:'Música'
+    },
+    {
+      id:'web',
+      name:'Web'
+    }
+  ];
+  
+  /* variables for file capture */
+  previewImg: string;
+  previewImgTwo: string;
+  previewImgThree: string;
+  files: any = [];
+  
+  url!: string | ArrayBuffer | null;
+  format: string;
 
-    /* share with the publish service component */
-    @Output() shareGeneralInfo = new EventEmitter<generalInfoProject>();
-    @Output() sharePreviewImg = new EventEmitter<any>();
-    @Output() sharePreviewImgTwo = new EventEmitter<any>();
-    @Output() sharePreviewImgThree = new EventEmitter<any>();
-    @Output() sharePreviewVid = new EventEmitter<any>();
-  
-    /* variables for general info */
-    nameService: string;
-    hashtags: string;
-    category: string;
-    subcategory: string;
-    videoFile: any;
-    imageFile: any;
-    filesProject: any;
-  
-    /* variable for category */
-    categoryList = [
-      {
-        id:'bie',
-        name:'Bienestar'
-      },
-      {
-        id:'cla',
-        name:'Clases'
-      },
-      {
-        id:'dis',
-        name:'Diseño'
-      },
-      {
-        id:'mus',
-        name:'Música'
-      },
-      {
-        id:'web',
-        name:'Web'
-      }
-    ];
-  
-    /* variables for file capture */
-    public previewImg: string;
-    public previewImgTwo: string;
-    public previewImgThree: string;
-    public files: any = [];
-  
-    /*variables de prueba preview image/video */
-    url!: string | ArrayBuffer | null;
-    format: string = '';
-
-  constructor(private formBuilder:FormBuilder, private sanitizer:DomSanitizer) { }
+  constructor(private formBuilder:FormBuilder, private sanitizer:DomSanitizer,
+              private generalInfoProjectService: GeneralInfoProjectService) { }
 
   ngOnInit(): void {
+    this.generalInfoProjectService.nameServiceObservable.subscribe(response => {
+      this.nameService = response;
+    });
+
+    this.generalInfoProjectService.hashtagsObservable.subscribe(response => {
+      this.hashtags = response;
+    });
+
+    this.generalInfoProjectService.categoryObservable.subscribe(response => {
+      this.category = response;
+    });
+
+    this.generalInfoProjectService.subcategoryObservable.subscribe(response => {
+      this.subcategory = response;
+    });
+
+    this.generalInfoProjectService.videoFileObservable.subscribe(response => {
+      this.videoFile = response;
+    });
+
+    this.generalInfoProjectService.imageFileObservable.subscribe(response => {
+      this.imageFile = response;
+    });
+
+    this.generalInfoProjectService.filesProjectObservable.subscribe(response => {
+      this.filesProject = response;
+    });
+
+    
   }
 
   /* capture file general info */
@@ -73,16 +95,19 @@ export class GeneralInfoProjectComponent implements OnInit {
     const capturedFile = event.target.files[0];
     this.extractBase64(capturedFile).then((img: any) => {
       this.previewImg = img.base;
+      this.generalInfoProjectService.previewImgData(this.previewImg);
     })
 
     const capturedFileTwo = event.target.files[1];
     this.extractBase64(capturedFileTwo).then((img: any) => {
       this.previewImgTwo = img.base;
+      this.generalInfoProjectService.previewImgTwoData(this.previewImgTwo);
     })
 
     const capturedFileThree = event.target.files[2];
     this.extractBase64(capturedFileThree).then((img: any) => {
       this.previewImgThree = img.base;
+      this.generalInfoProjectService.previewImgThreeData(this.previewImgThree);
     })
 
     this.files.push(capturedFile);
@@ -120,37 +145,9 @@ export class GeneralInfoProjectComponent implements OnInit {
       }
       reader.onload = (event) => {
         this.url = (<FileReader>event.target).result;
+        this.generalInfoProjectService.previewVideoData(this.url);
       }
     }
-  }
-
-  /* sharing the new general info object with the publish service component */
-  shareAddGeneralInfo() {
-    let shareGeneralInfo = new generalInfoProject(this.nameService, this.hashtags, 
-    this.category, this.subcategory, this.videoFile, this.imageFile, this.filesProject);
-    this.shareGeneralInfo.emit(shareGeneralInfo);
-  }
-
-  /* share the preview image with the publish service component */
-  sharePreviewImage(){
-    let sharePreviewImg = this.previewImg;
-    this.sharePreviewImg.emit(sharePreviewImg);
-  }
-
-  sharePreviewImageTwo(){
-    let sharePreviewImgTwo = this.previewImgTwo;
-    this.sharePreviewImgTwo.emit(sharePreviewImgTwo);
-  }
-
-  sharePreviewImageThree(){
-    let sharePreviewImgThree = this.previewImgThree;
-    this.sharePreviewImgThree.emit(sharePreviewImgThree);
-  }
-
-  /* share the preview video with the publish service component */
-  sharePreviewVideo(){
-    let sharePreviewVid = this.url;
-    this.sharePreviewVid.emit(sharePreviewVid);
   }
 
   /* delete preview video */
@@ -165,6 +162,35 @@ export class GeneralInfoProjectComponent implements OnInit {
     this.previewImgTwo = '';
     this.previewImgThree = '';
     this.imageFile = '';
+  }
+
+  /* send info */
+  sendNameService(nameService:any){
+    this.generalInfoProjectService.nameServiceData(nameService.target.value);
+  }
+
+  sendHashtags(hashtags:any){
+    this.generalInfoProjectService.hashtagsData(hashtags.target.value);
+  }
+
+  sendCategory(category:any){
+    this.generalInfoProjectService.categoryData(category.target.value);
+  }
+
+  sendSubcategory(subcategory:any){
+    this.generalInfoProjectService.subcategoryData(subcategory.target.value);
+  }
+
+  sendVideoFile(videoFile:any){
+    this.generalInfoProjectService.videoFileData(videoFile.target.value);
+  }
+
+  sendImageFile(imageFile:any){
+    this.generalInfoProjectService.imageFileData(imageFile.target.value);
+  }
+
+  sendFilesProject(filesProject:any){
+    this.generalInfoProjectService.filesProjectData(filesProject.target.value);
   }
 
 }

@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { serviceDescriptionProject } from '../models/service-description-project.model';
+import { Component, OnInit } from '@angular/core';
 import { ServiceDescriptionProjectService } from '../services/service-description-project.service';
 
 @Component({
@@ -9,42 +8,52 @@ import { ServiceDescriptionProjectService } from '../services/service-descriptio
 })
 export class ServiceDescriptionProjectEditComponent implements OnInit {
 
-
-  /* share with the publish service component */
-  @Output() shareServiceDescription = new EventEmitter<serviceDescriptionProject>();
-
-
   /* variables for counting characters */
   counterShortDescription = 0;
   counterLongDescription = 0;
 
-  /* variables for service description */
-  shortDescription: string = '';
-  longDescription: string = '';
+  /* information to be displayed when editing the project description */
+  shortDescription: string;
+  longDescription: string;
 
-  constructor(private serviceDescriptionService: ServiceDescriptionProjectService ) { }
+  constructor(private serviceDescriptionProjectService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
-  }
+    this.receiveInfo();
 
-  /* delete  to add edited information */
-  deleteGeneralInfo(serviceDescription:serviceDescriptionProject){
-    this.serviceDescriptionService.delete(serviceDescription);
+    this.serviceDescriptionProjectService.shortDescriptionObservable.subscribe(response => {
+      this.shortDescription = response;
+    });
+
+    this.serviceDescriptionProjectService.longDescriptionObservable.subscribe(response => {
+      this.longDescription = response;
+    });
+    
   }
 
   /* functions for counting characters */
   shortDescriptionCount(event: any) {
-    this.counterShortDescription = event.target.value.length
+    this.counterShortDescription = event.target.value.length;
   }
 
   longDescriptionCount(event: any) {
-    this.counterLongDescription = event.target.value.length
+    this.counterLongDescription = event.target.value.length;
   }
 
-  /* sharing the new general info object with the publish service component */
-  shareAddServiceDescription(){
-    let shareServiceDescription = new serviceDescriptionProject(this.shortDescription, this.longDescription);
-    this.shareServiceDescription.emit(shareServiceDescription);
+  /* fill with previously saved values */
+  receiveInfo(){
+    this.shortDescription = this.serviceDescriptionProjectService.shortDescription;
+    this.longDescription = this.serviceDescriptionProjectService.longDescription;
   }
+
+   /* send info */
+   sendShortDescription(shortDescription:any){
+    this.serviceDescriptionProjectService.shortDescriptionData(shortDescription.target.value);
+  }
+
+  sendLongDescription(longDescription:any){
+    this.serviceDescriptionProjectService.longDescriptionData(longDescription.target.value);
+  }
+
 
 }

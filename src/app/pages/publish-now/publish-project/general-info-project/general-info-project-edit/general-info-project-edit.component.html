@@ -14,7 +14,7 @@
                         servicio</label>
                     <div class="col-md-7 col-xl-6">
                         <input type="textt" class="form-control" id="nameService" name="nameService"
-                            [(ngModel)]="nameService" maxlength="45">
+                            [(ngModel)]="nameService" (input)="sendNameService($event)" maxlength="45">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -22,7 +22,7 @@
                         <span style="font-size: 0.7rem ;">(Palabras clave como: #Clases #Diseño)</span></label>
                     <div class="col-md-7 col-xl-6">
                         <input type="textt" class="form-control" id="hashtags" name="hashtags" 
-                        [(ngModel)]="hashtags">
+                        [(ngModel)]="hashtags" (input)="sendHashtags($event)">
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                             servicio</label>
                         <div class="col-12 col-md-8 col-xl-7">
                             <select class="form-select" aria-label="select category" id="category" name="category"
-                                [(ngModel)]="category">
+                                [(ngModel)]="category" (input)="sendCategory($event)">
                                 <option selected disabled>Seleccionar...</option>
                                 <option *ngFor="let category of categoryList" [value]="category.id">
                                     {{category.name}}</option>
@@ -45,7 +45,7 @@
                             Categoría</label>
                         <div class="col-12 col-md-8 col-xl-7">
                             <select class="form-select" aria-label="select subcategory" id="subcategory"
-                                name="subcategory" [(ngModel)]="subcategory">
+                                name="subcategory" [(ngModel)]="subcategory" (input)="sendSubcategory($event)">
                                 <option selected disabled>Seleccionar...</option>
                                 <option value="1">Uno</option>
                                 <option value="2">Dos</option>
@@ -78,7 +78,7 @@
                                     <ng-template #previewVideotemplate>
                                         <div class="previewImageFile">
                                             <div class="previewImageHeader">
-                                                <video [src]="url" *ngIf="format==='video' && url" controls></video>
+                                                <video [src]="url" *ngIf="url" controls></video>
                                             </div>
                                         </div>
                                     </ng-template>
@@ -90,6 +90,7 @@
                                                     <i class="bi bi-folder-plus add"></i>
                                                     <input type="file" class="addFile" id="videoFile" name="videoFile"
                                                         [(ngModel)]="videoFile" accept="video/*"
+                                                        (input)="sendVideoFile($event)"
                                                         (change)="onSelectFile($event)">
                                                 </div>
                                             </div>
@@ -158,7 +159,9 @@
                                                 <div class="sendFile">
                                                     <i class="bi bi-folder-plus add"></i>
                                                     <input type="file" class="addFile" accept="image/*" multiple
-                                                        id="imageFile" name="imageFile" [(ngModel)]="imageFile"
+                                                        id="imageFile" name="imageFile" 
+                                                        [(ngModel)]="imageFile"
+                                                        (input)="sendImageFile($event)"
                                                         (change)="captureFileImg($event)">
                                                 </div>
                                             </div>
@@ -176,15 +179,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- save data for preview -->
-    <div class="d-flex flex-row-reverse bd-highlight">
-        <div class="p-2 bd-highlight">
-            <button type="button" class="btn save-btn" (click)="deleteGeneralInfo(generalInfo);
-            shareAddGeneralInfo();sharePreviewImage(); sharePreviewImageTwo(); sharePreviewImageThree();
-            sharePreviewVideo()">Guardar
-            </button>
         </div>
     </div>
 </div>

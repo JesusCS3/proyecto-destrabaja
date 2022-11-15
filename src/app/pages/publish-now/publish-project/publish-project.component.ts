@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { generalInfoProject } from './general-info-project/models/general-info-project.model';
 import { GeneralInfoProjectService } from './general-info-project/services/general-info-project.service';
-import { serviceDescriptionProject } from './service-description-project/models/service-description-project.model';
 import { ServiceDescriptionProjectService } from './service-description-project/services/service-description-project.service';
 
 @Component({
@@ -39,106 +37,44 @@ import { ServiceDescriptionProjectService } from './service-description-project/
 })
 export class PublishProjectComponent implements OnInit {
 
-  /* variable for service preview */
-  preview: boolean = false;
-
-  /* variable to confirm publish a service */
+  /* variable to confirm publish a project */
   confirm: boolean = false;
-  
-  /* variable for preview img service */
-  previewImg: string;
-  previewImgTwo: string;
-  previewImgThree: string;
-  
-  /* variable for preview video service */
-  previewVideo: string;
-  
-  /***** variables for save information *****/
-  
-  generalInfo: generalInfoProject[] = [];
-  serviceDescription: serviceDescriptionProject[] = [];
-
-  /***** variables to share information for preview *****/
-
-  gnralInfo: any;
-  serviceDescrip: any;
 
   constructor(private generalInfoService: GeneralInfoProjectService,
-              public serviceDescriptionService: ServiceDescriptionProjectService ) { }
+              private serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
-    this.generalInfo = this.generalInfoService.generalInfoProject;
   }
 
-  /* receive information from general info component */
-  addGeneralInfo(generalInfo: generalInfoProject) {
-    this.generalInfoService.generalInfoProject.push(generalInfo);
-    this.gnralInfo = generalInfo;
+  /* variables for project preview */
+  preview: boolean = false;
+  saveGeneralInfo: any;
+  saveProjectDescription: any;
+
+  /* delete */
+  deleteGeneralInfo: any;
+  deleteProjectDescription: any;
+
+  /* function to show the project preview */
+  saveInfo(){
+    this.saveGeneralInfo = this.generalInfoService.save;
+    this.saveProjectDescription = this.serviceDescriptionService.save;
+    this.preview = true;
   }
 
-  /* receive the preview image of the general info component */
-  addPreviewImg(previewImage: any) {
-    this.previewImg = previewImage;
+  editInfo(){
+
+
+    /* send new info */
+    this.saveGeneralInfo = this.generalInfoService.save;
+    this.saveProjectDescription = this.serviceDescriptionService.save;
+    this.preview = true;
   }
 
-  addPreviewImgTwo(previewImageTwo: any) {
-    this.previewImgTwo = previewImageTwo;
-  }
-
-  addPreviewImgThree(previewImageThree: any) {
-    this.previewImgThree = previewImageThree;
-  }
-
-  /* receive the preview video of the general info component */
-  addPreviewVideo(previewVideo: any) {
-    this.previewVideo = previewVideo;
-  }
-
-    /* receive information from general info edit component */
-    addGeneralInfoEdit(generalInfo: generalInfoProject) {
-      this.generalInfoService.generalInfoProject.push(generalInfo);
-      this.gnralInfo = generalInfo;
-    }
-  
-    /* receive the preview image of the general info component */
-    addPreviewImgEdit(previewImage: any) {
-      this.previewImg = previewImage;
-    }
-  
-    addPreviewImgTwoEdit(previewImageTwo: any) {
-      this.previewImgTwo = previewImageTwo;
-    }
-  
-    addPreviewImgThreeEdit(previewImageThree: any) {
-      this.previewImgThree = previewImageThree;
-    }
-  
-    /* receive the preview video of the general info component */
-    addPreviewVideoEdit(previewVideo: any) {
-      this.previewVideo = previewVideo;
-    }
-
-      /* receive information from service description component */
-  addServiceDescription(serviceDescription: serviceDescriptionProject) {
-    this.serviceDescriptionService.serviceDescriptionProject.push(serviceDescription);
-    this.serviceDescrip = serviceDescription;
-  }
-  
-  /* prueba comunicacion */
-  textoHijo1: string;
-
-  mensaje: string;
-  mensajeDos: string;
-
-  save: any;
-
-  recibirCambios(){
-    this.mensaje = this.serviceDescriptionService.mensajeOne;
-    this.mensajeDos = this.serviceDescriptionService.mensajeTwo;
-  }
-
-  saveProjectDescription(){
-    this.save = this.serviceDescriptionService.save;
-  }
-
+  delete()
+{
+      /* delete  to add edited information */
+    this.deleteGeneralInfo = this.generalInfoService.delete;
+    this.deleteProjectDescription = this.serviceDescriptionService.delete;
+}
 }

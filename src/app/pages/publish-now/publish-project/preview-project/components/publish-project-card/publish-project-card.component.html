@@ -31,8 +31,8 @@
             </div>
         </div>
         <div class="card-service-body">
-            <h5>{{generalInfo.nameService}}</h5>
-            <p id="description">{{serviceDescription.shortDescription}}</p>
+            <h5>{{nameService}}</h5>
+            <p id="description">{{shortDescription}}</p>
             <div id="publishedRow" class="row">
                 <div id="publishedIcon">
                     <div id="iconsRow">
@@ -53,14 +53,13 @@
         </div>
     </div>
     <div>
-        <h4>Componente Nieto A</h4>
-        <div>
-            <div>Descripcion corta: {{serviceDescriptionService.shortDescription}}</div>
-        </div>
+        <h4>Tarjeta Proyecto</h4>
+        <div><img [src]="previewImg" style="width:200px ;" ></div>
+        <div><img [src]="previewImgTwo" style="width:200px ;" ></div>
+        <div><img [src]="previewImgThree" style="width:200px ;" ></div>
+        <video [src]="previewVideo" style="width:200px ;" controls poster="./assets/img/main/video.svg"></video>
+        <div>{{nameService}}</div>
+        <div>{{shortDescription}}</div>
+        <button (click)="receiveChanges()">Recibir cambios</button>
     </div>
-</div>
-
-<div *ngFor="let projectDescription of projectDescription">
-    <label>Descripcion corta</label>
-    <input type="text" [(ngModel)]="projectDescription.shortDescription">
 </div>

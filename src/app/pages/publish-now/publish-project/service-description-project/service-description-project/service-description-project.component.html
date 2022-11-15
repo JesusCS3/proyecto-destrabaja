@@ -34,33 +34,4 @@
             </div>
         </div>
     </div>
-     <!-- save data for preview -->
-     <div class="d-flex flex-row-reverse bd-highlight">
-        <div class="p-2 bd-highlight">
-            <button type="button" class="btn save-btn" (click)="shareAddServiceDescription()">
-                Guardar
-            </button>
-        </div>
-    </div>
-</div>
-
-<div>
-    <h4>Componente hijo 1</h4>
-    Escribe: <input type="text" (input)="cambioTexto($event)">
-</div>
-
-<div>
-    <h4>Componente Hijo A</h4>
-    Escribe aqui: <br>
-    <div>
-        <input (input)="cambiarMensaje($event)">
-    </div><br>
-    <div>
-        <input (input)="cambiarMensajeDos($event)">
-    </div>
-</div>
-<br>
-<div *ngFor="let projectDescription of projectDescription">
-    <label>Descripcion corta</label>
-    <input type="text" [(ngModel)]="projectDescription.shortDescription">
 </div>

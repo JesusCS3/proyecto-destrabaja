@@ -4,14 +4,7 @@
             <h3 class="title-preview">Tarjeta de proyecto</h3>
         </div>
         <div class="col-xl-9">
-            <app-publish-project-card
-            [generalInfo]="generalInfo"
-            [previewImg]="previewImg"
-            [previewImgTwo]="previewImgTwo"
-            [previewImgThree]="previewImgThree"
-            [previewVideo]="previewVideo"
-            [serviceDescription]="serviceDescription" 
-            ></app-publish-project-card>
+            <app-publish-project-card></app-publish-project-card>
         </div>
     </div>
     <div class="row align-items-center">
@@ -19,28 +12,7 @@
             <h3 class="title-preview">Pantalla de servicio</h3>
         </div>
         <div class="col-xl-9">
-            <app-project-screen
-            [generalInfo]="generalInfo"
-            [previewImg]="previewImg"
-            [previewImgTwo]="previewImgTwo"
-            [previewImgThree]="previewImgThree"
-            [previewVideo]="previewVideo"
-            [serviceDescription]="serviceDescription" 
-            ></app-project-screen>
+            <app-project-screen></app-project-screen>
         </div>
     </div>
-</div>
-
-<div>
-    <h4>Componente hijo 2</h4>
-    Texto escrito en el componente service description (hermano) : {{ textoHijo2}}
-</div>
-
-<div>
-    <h4>Componente Hijo B</h4>
-    Esto es lo que se escribe en el input de descripcion: <br>
-    <div>{{mensaje}}</div>
-    <div>{{mensajeDos}}</div>
-    <div>{{descripcionCorta}}</div>
-    <button (click)="recibirCambios()">Recibir cambios</button>
 </div>

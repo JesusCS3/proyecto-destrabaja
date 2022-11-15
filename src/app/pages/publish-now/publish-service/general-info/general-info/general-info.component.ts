@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { GeneralInfoProjectService } from '../services/general-info-project.service';
+import { GeneralInfoProjectService } from '../../../publish-project/general-info-project/services/general-info-project.service';
 
 @Component({
-  selector: 'app-general-info-project-edit',
-  templateUrl: './general-info-project-edit.component.html',
-  styleUrls: ['./general-info-project-edit.component.css']
+  selector: 'app-general-info',
+  templateUrl: './general-info.component.html',
+  styleUrls: ['./general-info.component.css']
 })
-export class GeneralInfoProjectEditComponent implements OnInit {
+export class GeneralInfoComponent implements OnInit {
 
-  /* information to be displayed when editing the project description */
+  /* variables for general info */
   nameService: string;
   hashtags: string;
   category: string;
@@ -18,46 +18,44 @@ export class GeneralInfoProjectEditComponent implements OnInit {
   videoFile: any;
   imageFile: any;
   filesProject: any;
-
+  
   /* variable for category */
   categoryList = [
     {
-      id: 'bie',
-      name: 'Bienestar'
+      id:'bie',
+      name:'Bienestar'
     },
     {
-      id: 'cla',
-      name: 'Clases'
+      id:'cla',
+      name:'Clases'
     },
     {
-      id: 'dis',
-      name: 'Diseño'
+      id:'dis',
+      name:'Diseño'
     },
     {
-      id: 'mus',
-      name: 'Música'
+      id:'mus',
+      name:'Música'
     },
     {
-      id: 'web',
-      name: 'Web'
+      id:'web',
+      name:'Web'
     }
   ];
-
+  
   /* variables for file capture */
   previewImg: string;
   previewImgTwo: string;
   previewImgThree: string;
   files: any = [];
-
+  
   url!: string | ArrayBuffer | null;
   format: string;
 
-  constructor(private formBuilder: FormBuilder, private sanitizer: DomSanitizer,
-    private generalInfoProjectService: GeneralInfoProjectService) { }
+  constructor(private formBuilder:FormBuilder, private sanitizer:DomSanitizer,
+              private generalInfoProjectService: GeneralInfoProjectService) { }
 
   ngOnInit(): void {
-    this.receiveInfo();
-
     this.generalInfoProjectService.nameServiceObservable.subscribe(response => {
       this.nameService = response;
     });
@@ -86,11 +84,11 @@ export class GeneralInfoProjectEditComponent implements OnInit {
       this.filesProject = response;
     });
 
-
+    
   }
 
   /* capture file general info */
-  captureFileImg(event: any) {
+  captureFileImg(event: any){
     const capturedFile = event.target.files[0];
     this.extractBase64(capturedFile).then((img: any) => {
       this.previewImg = img.base;
@@ -115,20 +113,20 @@ export class GeneralInfoProjectEditComponent implements OnInit {
   }
 
   extractBase64 = async ($event: any) => new Promise((resolve, reject) => {
-    const unsafeImg = window.URL.createObjectURL($event);
-    const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-    const reader = new FileReader();
-    reader.readAsDataURL($event);
-    reader.onload = () => {
-      resolve({
-        base: reader.result
-      });
-    };
-    reader.onerror = error => {
-      resolve({
-        base: null
-      });
-    };
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      };
   })
 
   /* prueba para visualizar imagen y video */
@@ -137,9 +135,9 @@ export class GeneralInfoProjectEditComponent implements OnInit {
     if (file) {
       var reader = new FileReader();
       reader.readAsDataURL(file);
-      if (file.type.indexOf('image') > -1) {
+      if(file.type.indexOf('image')> -1){
         this.format = 'image';
-      } else if (file.type.indexOf('video') > -1) {
+      } else if(file.type.indexOf('video')> -1){
         this.format = 'video';
       }
       reader.onload = (event) => {
@@ -150,62 +148,45 @@ export class GeneralInfoProjectEditComponent implements OnInit {
   }
 
   /* delete preview video */
-  deletePreviewVideo() {
+  deletePreviewVideo(){
     this.url = '';
     this.videoFile = '';
   }
 
   /* delete preview images */
-  deletePreviewImages() {
+  deletePreviewImages(){
     this.previewImg = '';
     this.previewImgTwo = '';
     this.previewImgThree = '';
     this.imageFile = '';
   }
 
-  /* fill with previously saved values */
-  receiveInfo(){
-    this.nameService = this.generalInfoProjectService.nameService;
-    this.hashtags = this.generalInfoProjectService.hashtags;
-    this.category = this.generalInfoProjectService.category;
-    this.subcategory = this.generalInfoProjectService.subcategory;
-    this.videoFile = this.generalInfoProjectService.videoFile;
-    this.imageFile = this.generalInfoProjectService.imageFile;
-    this.filesProject = this.generalInfoProjectService.filesProject;
-
-    /* preview */
-    this.previewImg = this.generalInfoProjectService.previewImg;
-    this.previewImgTwo = this.generalInfoProjectService.previewImgTwo;
-    this.previewImgThree = this.generalInfoProjectService.previewImgThree;
-    this.url = this.generalInfoProjectService.previewVideo;
-  }
-
-  /* send new info */
-  sendNameService(nameService: any) {
+  /* send info */
+  sendNameService(nameService:any){
     this.generalInfoProjectService.nameServiceData(nameService.target.value);
   }
 
-  sendHashtags(hashtags: any) {
+  sendHashtags(hashtags:any){
     this.generalInfoProjectService.hashtagsData(hashtags.target.value);
   }
 
-  sendCategory(category: any) {
+  sendCategory(category:any){
     this.generalInfoProjectService.categoryData(category.target.value);
   }
 
-  sendSubcategory(subcategory: any) {
+  sendSubcategory(subcategory:any){
     this.generalInfoProjectService.subcategoryData(subcategory.target.value);
   }
 
-  sendVideoFile(videoFile: any) {
+  sendVideoFile(videoFile:any){
     this.generalInfoProjectService.videoFileData(videoFile.target.value);
   }
 
-  sendImageFile(imageFile: any) {
+  sendImageFile(imageFile:any){
     this.generalInfoProjectService.imageFileData(imageFile.target.value);
   }
 
-  sendFilesProject(filesProject: any) {
+  sendFilesProject(filesProject:any){
     this.generalInfoProjectService.filesProjectData(filesProject.target.value);
   }
 

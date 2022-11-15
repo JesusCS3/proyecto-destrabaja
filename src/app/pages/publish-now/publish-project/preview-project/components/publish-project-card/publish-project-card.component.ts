@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { generalInfoProject } from '../../../general-info-project/models/general-info-project.model';
-import { serviceDescriptionProject } from '../../../service-description-project/models/service-description-project.model';
+import { GeneralInfoProjectService } from '../../../general-info-project/services/general-info-project.service';
 import { ServiceDescriptionProjectService } from '../../../service-description-project/services/service-description-project.service';
 
 @Component({
@@ -10,27 +9,26 @@ import { ServiceDescriptionProjectService } from '../../../service-description-p
 })
 export class PublishProjectCardComponent implements OnInit {
 
-  /* variable to receive preview image to display on the service card and service table */
-  @Input() previewImg: string;
-  @Input() previewImgTwo: string;
-  @Input() previewImgThree: string;
+  /* project information to display on the project card */
+  previewImg: string;
+  previewImgTwo: string;
+  previewImgThree: string;
+  previewVideo: string;
+  nameService: string;
+  shortDescription: string;
 
-  /* variable to receive preview video to display on the service card and service table */
-  @Input() previewVideo: string;
-
-  /***** variables to receive information to display on the service card and service table *****/
-  @Input() generalInfo!: generalInfoProject;
-  @Input() serviceDescription!: serviceDescriptionProject;
-
-  /* project description info */
-  projectDescription: serviceDescriptionProject[] = [];
-  shortDescription: any;
-
-  constructor(public serviceDescriptionService: ServiceDescriptionProjectService) { }
+  constructor(private generalInfoService: GeneralInfoProjectService,
+              private serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
-    this.projectDescription = this.serviceDescriptionService.serviceDescriptionProject;
-    this.shortDescription = this.serviceDescriptionService.shortDescription;
   }
 
+  receiveChanges(){
+    this.previewImg = this.generalInfoService.previewImg;
+    this.previewImgTwo = this.generalInfoService.previewImgTwo;
+    this.previewImgThree = this.generalInfoService.previewImgThree;
+    this.previewVideo = this.generalInfoService.previewVideo;
+    this.nameService = this.generalInfoService.nameService;
+    this.shortDescription = this.serviceDescriptionService.shortDescription;
+  }
 }
