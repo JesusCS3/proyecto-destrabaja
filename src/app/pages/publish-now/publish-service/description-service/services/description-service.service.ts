@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { serviceDescriptionProject } from '../models/service-description-project.model';
+import { descriptionService } from '../models/description-service.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceDescriptionProjectService {
+export class DescriptionServiceService {
 
-  serviceDescriptionProject: serviceDescriptionProject [] = [];
+  descriptionService: descriptionService [] = [];
 
-  /* *** send information from service description project *** */
+  /* *** send information from service description service *** */
   shortDescription: string;
   private shortDescriptionSubject = new Subject<string>();
   shortDescriptionObservable = this.shortDescriptionSubject.asObservable();
@@ -30,16 +30,15 @@ export class ServiceDescriptionProjectService {
 
   /* *** save information *** */
   save(){
-    let projectDescription = new serviceDescriptionProject(this.shortDescription, this.longDescription);
-    this.serviceDescriptionProject.push(projectDescription);
-    console.log('info. ' + this.serviceDescriptionProject);
+    let serviceDescription = new descriptionService(this.shortDescription, this.longDescription);
+    this.descriptionService.push(serviceDescription);
+    console.log('info. ' + this.descriptionService);
   }
 
   /* *** delete information *** */
-  delete(serviceDescriptionProject:serviceDescriptionProject){
-    const aLength: number = this.serviceDescriptionProject.length;
-    this.serviceDescriptionProject.splice(0, aLength);
-    console.log('info. ' + this.serviceDescriptionProject);
+  delete(descriptionService:descriptionService){
+    const aLength: number = this.descriptionService.length;
+    this.descriptionService.splice(0, aLength);
+    console.log('info. ' + this.descriptionService);
   }
-  
 }

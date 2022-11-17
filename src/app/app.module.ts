@@ -56,6 +56,11 @@ import { FeaturesProjectComponent } from './pages/publish-now/publish-project/fe
 import { FeaturesProjectEditComponent } from './pages/publish-now/publish-project/features-project/features-project-edit/features-project-edit.component';
 import { RequirementsProjectComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project/requirements-project.component';
 import { RequirementsProjectEditComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project-edit/requirements-project-edit.component';
+import { GeneralInfoServiceComponent } from './pages/publish-now/publish-service/general-info-service/general-info-service/general-info-service.component';
+import { DescriptionServiceComponent } from './pages/publish-now/publish-service/description-service/description-service/description-service.component';
+import { LevelsServiceComponent } from './pages/publish-now/publish-service/levels-service/levels-service/levels-service.component';
+import { ExtrasServiceComponent } from './pages/publish-now/publish-service/extras-service/extras-service/extras-service.component';
+import { RequirementsServiceComponent } from './pages/publish-now/publish-service/requirements-service/requirements-service/requirements-service.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +109,11 @@ import { RequirementsProjectEditComponent } from './pages/publish-now/publish-pr
     FeaturesProjectEditComponent,
     RequirementsProjectComponent,
     RequirementsProjectEditComponent,
+    GeneralInfoServiceComponent,
+    DescriptionServiceComponent,
+    LevelsServiceComponent,
+    ExtrasServiceComponent,
+    RequirementsServiceComponent,
   ],
   imports: [
     BrowserModule,
