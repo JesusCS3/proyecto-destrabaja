@@ -32,13 +32,11 @@ export class DescriptionServiceService {
   save(){
     let serviceDescription = new descriptionService(this.shortDescription, this.longDescription);
     this.descriptionService.push(serviceDescription);
-    console.log('info. ' + this.descriptionService);
   }
 
   /* *** delete information *** */
   delete(descriptionService:descriptionService){
     const aLength: number = this.descriptionService.length;
     this.descriptionService.splice(0, aLength);
-    console.log('info. ' + this.descriptionService);
   }
 }

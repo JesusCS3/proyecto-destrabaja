@@ -38,8 +38,8 @@
                     </div>
                 </div>
                 <div class="col-xl-8">
-                    <h5 class="first-color-blue">{{generalInfo.nameService}}</h5>
-                    <p class="second-color-blue">{{serviceDescription.shortDescription}}</p>
+                    <h5 class="first-color-blue">{{nameService}}</h5>
+                    <p class="second-color-blue">{{shortDescription}}</p>
                     <!-- modal to display the long description of the service -->
                     <ng-template #longContent let-modal>
                         <button type="button" class="btn modal-close position-absolute top-0 start-100"
@@ -47,7 +47,7 @@
                             <i class="bi bi-x-lg"></i></button>
                         <div class="modal-body">
                             <p style="white-space: pre-line">
-                                {{serviceDescription.longDescription}}
+                                {{longDescription}}
                             </p>
                         </div>
                     </ng-template>
@@ -65,17 +65,17 @@
                         <th scope="col-3"></th>
                         <th scope="col-3" id="plan" class="initial text-white align-baseline">
                             <span>Inicial</span><br>
-                            {{planName.initialPlanName}}
+                            {{initialPlanName}}
                         </th>
                         <th scope="col-3" id="plan" class="plus text-white align-baseline"
-                            *ngIf="planName.plusPlanName">
+                            *ngIf="plusPlanName">
                             <span>Plus</span><br>
-                            {{planName.plusPlanName}}
+                            {{plusPlanName}}
                         </th>
                         <th scope="col-3" id="plan" class="premium text-white align-baseline"
-                            *ngIf="planName.premiumPlanName">
+                            *ngIf="premiumPlanName">
                             <span>Premium</span><br>
-                            {{planName.premiumPlanName}}
+                            {{premiumPlanName}}
                         </th>
                     </tr>
                 </thead>
@@ -90,13 +90,13 @@
                                     [(ngModel)]="deliverable.initialPlan" aria-label="..." [disabled]="true">
                             </div>
                         </td>
-                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
+                        <td class="text-center plus text-white" *ngIf="plusPlanName">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
                                     [(ngModel)]="deliverable.plusPlan" aria-label="..." [disabled]="true">
                             </div>
                         </td>
-                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
+                        <td class="text-center premium text-white" *ngIf="premiumPlanName">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
                                     [(ngModel)]="deliverable.premiumPlan" aria-label="..." [disabled]="true">
@@ -106,41 +106,41 @@
                     <tr class="align-middle">
                         <th id="features" scope="row">Tiempo de entrega</th>
                         <td class="text-center initial text-white">
-                            {{features.deliveryTime}} <span>días hábiles</span>
+                            {{deliveryTimeInitialPlan}} <span>días hábiles</span>
                         </td>
-                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
-                            {{featuresPlus.deliveryTimePlus}} <span>días hábiles</span>
+                        <td class="text-center plus text-white" *ngIf="plusPlanName">
+                            {{deliveryTimePlusPlan}} <span>días hábiles</span>
                         </td>
-                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
-                            {{featuresPremium.deliveryTimePremium}} <span>días hábiles</span>
+                        <td class="text-center premium text-white" *ngIf="premiumPlanName">
+                            {{deliveryTimePremiumPlan}} <span>días hábiles</span>
                         </td>
                     </tr>
                     <tr class="align-middle">
                         <th id="features" scope="row">Comentarios</th>
                         <td class="text-center initial text-white">
-                            {{features.comments}}
+                            {{commentInitialPlan}}
                         </td>
-                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
-                            {{featuresPlus.commentsPlus}}
+                        <td class="text-center plus text-white" *ngIf="plusPlanName">
+                            {{commentPlusPlan}}
                         </td>
-                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
-                            {{featuresPremium.commentsPremium}}
+                        <td class="text-center premium text-white" *ngIf="premiumPlanName">
+                            {{commentPremiumPlan}}
                         </td>
                     </tr>
                     <tr class="align-middle">
                         <th id="features" scope="row">Precio MXN <br><span style="font-size: 0.5rem;">(incluye IVA y
                                 comisión de compra)</span></th>
                         <td class="text-center initial text-white">
-                            {{features.priceClient | currency:'MNX':'$':'1.0-0'}}
+                            {{priceClientInitialPlan | currency:'MNX':'$':'1.0-0'}}
                         </td>
-                        <td class="text-center plus text-white" *ngIf="planName.plusPlanName">
-                            {{featuresPlus.priceClientPlus | currency:'MNX':'$':'1.0-0'}}
+                        <td class="text-center plus text-white" *ngIf="plusPlanName">
+                            {{priceClientPlusPlan | currency:'MNX':'$':'1.0-0'}}
                         </td>
-                        <td class="text-center premium text-white" *ngIf="planName.premiumPlanName">
-                            {{featuresPremium.priceClientPremium | currency:'MNX':'$':'1.0-0'}}
+                        <td class="text-center premium text-white" *ngIf="premiumPlanName">
+                            {{priceClientPremiumPlan | currency:'MNX':'$':'1.0-0'}}
                         </td>
                     </tr>
-                    <tr class="align-middle" *ngFor="let extras of extras">
+                    <tr class="align-middle" *ngFor="let extras of extraService">
                         <th id="extras" scope="row">{{extras.nameExtra}}</th>
                         <td class="text-center initial text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate">
                         </td>
@@ -151,18 +151,18 @@
                             </td>
                         </ng-template>
                         <td class="text-center plus text-white"
-                            *ngIf="!extras.plusPlanExtra && planName.plusPlanName else extrasPlusTemplate"></td>
+                            *ngIf="!extras.plusPlanExtra && plusPlanName else extrasPlusTemplate"></td>
                         <ng-template #extrasPlusTemplate>
-                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra && planName.plusPlanName">
+                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra && plusPlanName">
                                 {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
                         <td class="text-center premium text-white"
-                            *ngIf="!extras.premiumPlanExtra && planName.premiumPlanName else extrasPremiumTemplate">
+                            *ngIf="!extras.premiumPlanExtra && premiumPlanName else extrasPremiumTemplate">
                         </td>
                         <ng-template #extrasPremiumTemplate>
-                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra && planName.premiumPlanName">
+                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra && premiumPlanName">
                                 {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
                                 {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
                             </td>
@@ -173,10 +173,10 @@
                         <td class="text-center initial">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
-                        <td class="text-center plus" *ngIf="planName.plusPlanName">
+                        <td class="text-center plus" *ngIf="plusPlanName">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
-                        <td class="text-center premium" *ngIf="planName.premiumPlanName">
+                        <td class="text-center premium" *ngIf="premiumPlanName">
                             <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
                         </td>
                     </tr>
@@ -207,111 +207,3 @@
         </div>
     </div>
 </div>
-
-<!-- modal to display the long description of the service 
-                    <div>
-                        <button type="button" class="btn modal-btn" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Consulta más detalles del servicio
-                        </button>
-                        <div class="modal fade pt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="position relative">
-                                        <div>
-                                            <button type="button"
-                                                class="btn close-btn position-absolute top-0 start-100 translate-middle"
-                                                data-bs-dismiss="modal" aria-label="Close"><i
-                                                    class="bi bi-x-lg"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="modal-body">
-                                        {{serviceDescription.longDescription}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-
-
-
-<!--
-<table class="table">
-    <thead>
-        <tr></tr>
-        <tr class="text-center">
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col" id="plan" class="initial text-white">Inicial</th>
-            <th scope="col" id="plan" class="plus text-white">Plus</th>
-            <th scope="col" id="plan" class="premium text-white">Premium</th>
-        </tr>
-    </thead>
-    <tbody>
-        <div class="position-relative">
-            <tr>
-                <th class="verticalText" [attr.rowspan]="rowsDeliverables" scope="col">Entregables</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <div class="position-absolute top-0 start-100">
-            <tr *ngFor="let deliverable of deliverables">
-                <th scope="col"></th>
-                <th scope="row">
-                    {{deliverable.name}}
-                </th>
-                <td class="text-center initial text-white">
-                    <div>
-                        <input class="form-check-input" type="checkbox" id="checkboxDeliverableInitialPlan"
-                            [(ngModel)]="deliverable.initialPlan" aria-label="..." [disabled]="true">
-                    </div>
-                </td>
-                <td class="text-center plus text-white">
-                    <div>
-                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePlusPlan"
-                            [(ngModel)]="deliverable.plusPlan" aria-label="..." [disabled]="true">
-                    </div>
-                </td>
-                <td class="text-center premium text-white">
-                    <div>
-                        <input class="form-check-input" type="checkbox" id="checkboxDeliverablePremiumPlan"
-                            [(ngModel)]="deliverable.premiumPlan" aria-label="..." [disabled]="true">
-                    </div>
-                </td>
-            </tr>
-        </div>
-        </tr>
-        </div>
-        <tr>
-            <th scope="col"></th>
-            <th scope="row">Características</th>
-            <td class="text-center initial text-white"></td>
-            <td class="text-center plus text-white"></td>
-            <td class="text-center premium text-white"></td>
-        </tr>
-        <tr>
-            <th scope="col"></th>
-            <th scope="row">Extras</th>
-            <td class="text-center initial text-white"></td>
-            <td class="text-center plus text-white"></td>
-            <td class="text-center premium text-white"></td>
-        </tr>
-        <tr>
-            <th scope="col"></th>
-            <th scope="row">Contratar</th>
-            <td class="text-center initial">
-                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
-            </td>
-            <td class="text-center plus">
-                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
-            </td>
-            <td class="text-center premium">
-                <button type="button" class="btn buy-btn" [disabled]="true">Comprar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
--->

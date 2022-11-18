@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GeneralInfoProjectService } from '../../../general-info-project/services/general-info-project.service';
 import { ServiceDescriptionProjectService } from '../../../service-description-project/services/service-description-project.service';
 
@@ -21,6 +21,7 @@ export class PublishProjectCardComponent implements OnInit {
               private serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
+    this.receiveChanges();
   }
 
   receiveChanges(){

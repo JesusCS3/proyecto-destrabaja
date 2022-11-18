@@ -19,8 +19,10 @@ export class DescriptionServiceComponent implements OnInit {
   constructor(private descriptionServiceService: DescriptionServiceService) { }
 
   ngOnInit(): void {
+    /* fill with previously saved values */
     this.receiveInfo();
 
+    /* description service */
     this.descriptionServiceService.shortDescriptionObservable.subscribe(response => {
       this.shortDescription = response;
     });

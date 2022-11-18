@@ -17,32 +17,12 @@
                     <app-extras-service></app-extras-service>
                     <app-requirements-service></app-requirements-service>
                 </div>
-                <form #publishServiceForm = "ngForm">
-                    <app-general-info
-                    (shareGeneralInfo)="addGeneralInfo($event)"
-                    (sharePreviewImg)="addPreviewImg($event)"
-                    (sharePreviewImgTwo)="addPreviewImgTwo($event)"
-                    (sharePreviewImgThree)="addPreviewImgThree($event)"
-                    (sharePreviewVid)="addPreviewVideo($event)"
-                    ></app-general-info>
-                    <app-service-description
-                    (shareServiceDescription)="addServiceDescription($event)"
-                    ></app-service-description>
-                    <app-service-levels
-                    (sharePlanName)="addPlanName($event)"
-                    (shareFeatures)="addFeatures($event)"
-                    (shareFeaturesPlus)="addFeaturesPlus($event)"
-                    (shareFeaturesPremium)="addFeaturesPremium($event)"
-                    ></app-service-levels>
-                    <app-extras></app-extras>
-                    <app-requirements></app-requirements>
-                    <div class="d-flex flex-row-reverse bd-highlight pt-5">
-                        <div class="p-2 bd-highlight">
-                            <button type="button" class="btn publish-btn" [disabled]="!publishServiceForm.valid" 
-                            (click)="servicePreview();">Previsualizar</button>
-                        </div>
-                      </div>
-                </form>
+                <div class="d-flex flex-row-reverse bd-highlight pt-5">
+                    <div class="p-2 bd-highlight">
+                        <button type="button" class="btn publish-btn"
+                        (click)="servicePreview();">Previsualizar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -59,18 +39,7 @@
                 </div>
                 <div class="row justify-content-center col-11 pt-5 bg-form">
                     <div class="col-11 pb-5">
-                        <app-preview
-                        [generalInfo]="gnralInfo"
-                        [previewImg]="previewImg"
-                        [previewImgTwo]="previewImgTwo"
-                        [previewImgThree]="previewImgThree"
-                        [previewVideo]="previewVideo"
-                        [serviceDescription]="serviceDescrip"
-                        [planName]="planNames"
-                        [features]="feature"
-                        [featuresPlus]="featurePlus"
-                        [featuresPremium]="featurePremium"
-                        ></app-preview>
+                        <app-preview></app-preview>
                     </div>
                     <div class="d-flex justify-content-center col-11 pb-5">
                         <div class="p-2 px-4">
@@ -100,15 +69,7 @@
             </div>
             <div class="row justify-content-center col-11 pt-5 bg-form">
                 <div class="col-11">
-                    <app-confirm
-                    [generalInfo]="gnralInfo"
-                    [previewImg]="previewImg"
-                    [previewImgTwo]="previewImgTwo"
-                    [previewImgThree]="previewImgThree"
-                    [previewVideo]="previewVideo"
-                    [serviceDescription]="serviceDescrip"
-                    [features]="feature"
-                    ></app-confirm>          
+                    <app-confirm></app-confirm>          
                 </div>
                 <div class="d-flex justify-content-center col-11 p-5">
                     <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-now">Publicar otro

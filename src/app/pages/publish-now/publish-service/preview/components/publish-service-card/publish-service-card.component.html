@@ -29,11 +29,11 @@
           </div>
       </div>
       <div class="card-service-body">
-          <h5>{{generalInfo.nameService}}</h5>
-          <p id="description">{{serviceDescription.shortDescription}}</p>
+          <h5>{{nameService}}</h5>
+          <p id="description">{{shortDescription}}</p>
           <div id="priceRow" class="row">
               <div id="price" class="">
-                  <p>Desde: {{features.priceClient | currency:'MNX':'$':'1.0-0'}}</p>
+                  <p>Desde: {{priceClientInitialPlan | currency:'MNX':'$':'1.0-0'}}</p>
               </div>
               <div id="score" class="text-end">
                   <p><i class="bi bi-star-fill yellow-color pe-1"></i> {{score}}</p>

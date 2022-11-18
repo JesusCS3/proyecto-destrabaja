@@ -19,6 +19,9 @@ export class ServiceDescriptionProjectComponent implements OnInit {
   constructor(private serviceDescriptionProjectService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
+    /* fill with previously saved values */
+    this.receiveInfo();
+    /* project description */
     this.serviceDescriptionProjectService.shortDescriptionObservable.subscribe(response => {
       this.shortDescription = response;
     });
@@ -37,6 +40,12 @@ export class ServiceDescriptionProjectComponent implements OnInit {
     this.counterLongDescription = event.target.value.length;
   }
 
+  /* fill with previously saved values */
+  receiveInfo(){
+    this.shortDescription = this.serviceDescriptionProjectService.shortDescription;
+    this.longDescription = this.serviceDescriptionProjectService.longDescription;
+  }
+
   /* send info */
   sendShortDescription(shortDescription:any){
     this.serviceDescriptionProjectService.shortDescriptionData(shortDescription.target.value);
@@ -45,4 +54,5 @@ export class ServiceDescriptionProjectComponent implements OnInit {
   sendLongDescription(longDescription:any){
     this.serviceDescriptionProjectService.longDescriptionData(longDescription.target.value);
   }
+  
 }

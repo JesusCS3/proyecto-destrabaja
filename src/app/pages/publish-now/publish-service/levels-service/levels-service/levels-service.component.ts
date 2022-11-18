@@ -147,6 +147,16 @@ export class LevelsServiceComponent implements OnInit {
   this.commentPremiumPlan = this.levelsServiceService.commentPremiumPlan;
   this.pricePremiumPlan = this.levelsServiceService.pricePremiumPlan;
   this.priceClientPremiumPlan = this.levelsServiceService.priceClientPremiumPlan;
+
+  /* enable plus plan */
+  if(this.plusPlanName != undefined || this.plusPlanName != null){
+    this.checkboxPlusPlan = true;
+    }
+  /* enable premium plan */
+  if(this.premiumPlanName != undefined || this.premiumPlanName != null){
+    this.checkboxPremiumPlan = true;
+    }
+
   }
 
   /* delete deliverables information */
@@ -233,6 +243,7 @@ export class LevelsServiceComponent implements OnInit {
   clientPrice(){
     if(this.priceInitialPlan != undefined){
       this.priceClientInitialPlan = Math.ceil(this.priceInitialPlan * 1.3625);
+      this.levelsServiceService.priceClientInitialPlanData(this.priceClientInitialPlan);
       this.readOnlyPriceClient = true;
     }
 
@@ -244,6 +255,7 @@ export class LevelsServiceComponent implements OnInit {
   clientPricePlus(){
     if(this.pricePlusPlan != undefined){
       this.priceClientPlusPlan = Math.ceil(this.pricePlusPlan * 1.3625);
+      this.levelsServiceService.priceClientPlusPlanData(this.priceClientPlusPlan);
       this.readOnlyPricePlusClient = true;
     }
 
@@ -255,6 +267,7 @@ export class LevelsServiceComponent implements OnInit {
   clientPricePremium(){
     if(this.pricePremiumPlan != undefined){
       this.priceClientPremiumPlan = Math.ceil(this.pricePremiumPlan * 1.3625);
+      this.levelsServiceService.priceClientPremiumPlanData(this.priceClientPremiumPlan);
       this.readOnlyPricePremiumClient = true;
     }
 
@@ -267,6 +280,7 @@ export class LevelsServiceComponent implements OnInit {
   price(){
     if(this.priceClientInitialPlan != undefined){
       this.priceInitialPlan = Math.ceil(this.priceClientInitialPlan * 0.733944495);
+      this.levelsServiceService.priceInitialPlanData(this.priceInitialPlan);
       this.readOnlyPrice = true;
     }
 
@@ -278,6 +292,7 @@ export class LevelsServiceComponent implements OnInit {
   pricePlus(){
     if(this.priceClientPlusPlan != undefined){
       this.pricePlusPlan = Math.ceil(this.priceClientPlusPlan * 0.733944495);
+      this.levelsServiceService.pricePlusPlanData(this.pricePlusPlan);
       this.readOnlyPricePlus = true;
     }
 
@@ -289,6 +304,7 @@ export class LevelsServiceComponent implements OnInit {
   pricePremium(){
     if(this.priceClientPremiumPlan != undefined){
       this.pricePremiumPlan = Math.ceil(this.priceClientPremiumPlan * 0.733944495);
+      this.levelsServiceService.pricePremiumPlanData(this.pricePremiumPlan);
       this.readOnlyPricePremium = true;
     }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GeneralInfoServiceService } from '../services/general-info-service.service';
 
@@ -11,7 +10,7 @@ import { GeneralInfoServiceService } from '../services/general-info-service.serv
 })
 export class GeneralInfoServiceComponent implements OnInit {
   
-  /* information to be displayed when editing the project description */
+  /* variables for general info */
   nameService: string;
   hashtags: string;
   category: string;
@@ -52,7 +51,7 @@ export class GeneralInfoServiceComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
-  constructor(private formBuilder: FormBuilder, private sanitizer: DomSanitizer,
+  constructor(private sanitizer: DomSanitizer,
     private generalInfoServiceService: GeneralInfoServiceService) { }
 
   ngOnInit(): void {

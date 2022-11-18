@@ -36,6 +36,9 @@ import { ServiceDescriptionProjectService } from './service-description-project/
   ]
 })
 export class PublishProjectComponent implements OnInit {
+  
+  /* variables for project preview */
+  preview: boolean = false;
 
   /* variable to confirm publish a project */
   confirm: boolean = false;
@@ -46,8 +49,6 @@ export class PublishProjectComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /* variables for project preview */
-  preview: boolean = false;
   saveGeneralInfo: any;
   saveProjectDescription: any;
 
@@ -62,19 +63,25 @@ export class PublishProjectComponent implements OnInit {
     this.preview = true;
   }
 
-  editInfo(){
-
-
-    /* send new info */
-    this.saveGeneralInfo = this.generalInfoService.save;
-    this.saveProjectDescription = this.serviceDescriptionService.save;
+  /* preview project */
+  previewProject() {
     this.preview = true;
   }
 
+  /* edit project */
+  editProject() {
+    this.preview = false;
+  }
+
+  /* confirm project */
+  confirmProject() {
+    this.confirm = true;
+  }
+
   delete()
-{
-      /* delete  to add edited information */
-    this.deleteGeneralInfo = this.generalInfoService.delete;
-    this.deleteProjectDescription = this.serviceDescriptionService.delete;
-}
+  {
+        /* delete  to add edited information */
+      this.deleteGeneralInfo = this.generalInfoService.delete;
+      this.deleteProjectDescription = this.serviceDescriptionService.delete;
+  }
 }

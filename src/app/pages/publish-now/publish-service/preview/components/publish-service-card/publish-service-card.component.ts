@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { generalInfo } from '../../../general-info/models/general-info.model';
-import { serviceDescription } from '../../../service-description/models/service-description.model';
-import { features } from '../../../service-levels/models/features/features.model';
+import { Component, OnInit } from '@angular/core';
+import { DescriptionServiceService } from '../../../description-service/services/description-service.service';
+import { GeneralInfoServiceService } from '../../../general-info-service/services/general-info-service.service';
+import { LevelsServiceService } from '../../../levels-service/services/levels-service/levels-service.service';
 
 @Component({
   selector: 'app-publish-service-card',
@@ -10,24 +10,45 @@ import { features } from '../../../service-levels/models/features/features.model
 })
 export class PublishServiceCardComponent implements OnInit {
 
-  /* variable to receive preview image to display on the service card */
-  @Input() previewImg: string;
-  @Input() previewImgTwo: string;
-  @Input() previewImgThree: string;
+  /* *** service information to display on the service card *** */
 
-  /* variable to receive preview video to display on the service card */
-  @Input() previewVideo: string;
+  /* *** general info service *** */
+  previewImg: string;
+  previewImgTwo: string;
+  previewImgThree: string;
+  previewVideo: string;
+  nameService: string;
+  /* *** description service *** */
+  shortDescription: string;
+  /* *** levels service *** */
+  /* initial plan */
+  priceClientInitialPlan: number;
 
-  /***** variables to receive information to display on the service card and service table *****/
-  @Input() generalInfo!: generalInfo;
-  @Input() serviceDescription!: serviceDescription;
-  @Input() features!: features;
+  score: number = 0.0;
 
-  score: number = 4.8;
-
-  constructor() { }
+  constructor(
+    private generalInfoServiceService:GeneralInfoServiceService,
+    private descriptionServiceService:DescriptionServiceService,
+    private levelsServiceService:LevelsServiceService
+  ) { }
 
   ngOnInit(): void {
+    this.receiveInfo();
+  }
+
+  /* *** receive info on services *** */
+  receiveInfo(){
+    /* *** general info *** */
+    this.previewImg = this.generalInfoServiceService.previewImg;
+    this.previewImgTwo = this.generalInfoServiceService.previewImgTwo;
+    this.previewImgThree = this.generalInfoServiceService.previewImgThree;
+    this.previewVideo = this.generalInfoServiceService.previewVideo;
+    this.nameService = this.generalInfoServiceService.nameService;
+    /* *** description service *** */
+    this.shortDescription = this.descriptionServiceService.shortDescription;
+    /* *** levels service *** */
+    /* initial plan */
+    this.priceClientInitialPlan = this.levelsServiceService.priceClientInitialPlan;
   }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GeneralInfoProjectService } from '../services/general-info-project.service';
 
@@ -9,9 +8,6 @@ import { GeneralInfoProjectService } from '../services/general-info-project.serv
   styleUrls: ['./general-info-project.component.css']
 })
 export class GeneralInfoProjectComponent implements OnInit {
-
-  /* form general-info */
-  public formGeneralInfoProject: FormGroup;
   
   /* variables for general info */
   nameService: string;
@@ -55,10 +51,14 @@ export class GeneralInfoProjectComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
-  constructor(private formBuilder:FormBuilder, private sanitizer:DomSanitizer,
+  constructor(private sanitizer:DomSanitizer,
               private generalInfoProjectService: GeneralInfoProjectService) { }
 
   ngOnInit(): void {
+    /* fill with previously saved values */
+    this.receiveInfo();
+
+    /* general info */
     this.generalInfoProjectService.nameServiceObservable.subscribe(response => {
       this.nameService = response;
     });
@@ -87,9 +87,24 @@ export class GeneralInfoProjectComponent implements OnInit {
       this.filesProject = response;
     });
 
-    
   }
 
+  receiveInfo(){
+    this.nameService = this.generalInfoProjectService.nameService;
+    this.hashtags = this.generalInfoProjectService.hashtags;
+    this.category = this.generalInfoProjectService.category;
+    this.subcategory = this.generalInfoProjectService.subcategory;
+    this.videoFile = this.generalInfoProjectService.videoFile;
+    this.imageFile = this.generalInfoProjectService.imageFile;
+    this.filesProject = this.generalInfoProjectService.filesProject;
+
+    /* preview */
+    this.previewImg = this.generalInfoProjectService.previewImg;
+    this.previewImgTwo = this.generalInfoProjectService.previewImgTwo;
+    this.previewImgThree = this.generalInfoProjectService.previewImgThree;
+    this.url = this.generalInfoProjectService.previewVideo;
+  }
+  
   /* capture file general info */
   captureFileImg(event: any){
     const capturedFile = event.target.files[0];
