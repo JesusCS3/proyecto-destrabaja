@@ -14,67 +14,70 @@
                     <div>
                         <app-general-info-project></app-general-info-project>
                         <app-service-description-project></app-service-description-project>
+                        <app-features-project></app-features-project>
+                        <app-requirements-project></app-requirements-project>
                     </div>
                     <div class="d-flex flex-row-reverse bd-highlight pt-5">
                         <div class="p-2 bd-highlight">
-                            <button type="button" class="btn publish-btn" (click)="previewProject()">Previsualizar</button>
+                            <button type="button" class="btn publish-btn" (click)="previewProject(); scrollTop();">Previsualizar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- preview template to publish a project -->
-    <ng-template #previewTemplate>
-        <div *ngIf="!confirm; else confirmTemplate">
-            <div class="row justify-content-center pb-5">
-                <div class="col-11">
-                    <div class="col-6 col-lg-3 text-left">
-                        <h3 class="first-color-blue pb-3 underline"><strong>Previsualización</strong>
-                            <hr>
-                        </h3>
-                    </div>
-                </div>
-                <div class="row justify-content-center col-11 pt-5 bg-form">
-                    <div class="col-11 pb-5">
-                        <app-preview-project></app-preview-project>
-                    </div>
-                    <div class="d-flex justify-content-center col-11 pb-5">
-                        <div class="p-2 px-4">
-                            <button type="button" class="btn publish-btn" (click)="editProject()">
-                                Regresar y editar
-                            </button>
-                        </div>
-                        <div class="p-2 px-4">
-                            <button type="button" class="btn publish-btn" (click)="confirmProject()">
-                                ¡Publicar!
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-template>    
-    <!-- confirmation template publish a project -->
-    <ng-template #confirmTemplate>
+</div>
+
+<!-- preview template to publish a project -->
+<ng-template #previewTemplate>
+    <div *ngIf="!confirm; else confirmTemplate">
         <div class="row justify-content-center pb-5">
             <div class="col-11">
                 <div class="col-6 col-lg-3 text-left">
-                    <h3 class="first-color-blue pb-3 underline"><strong>Confirmación</strong>
+                    <h3 class="first-color-blue pb-3 underline"><strong>Previsualización</strong>
                         <hr>
                     </h3>
                 </div>
             </div>
             <div class="row justify-content-center col-11 pt-5 bg-form">
-                <div class="col-11">
-                    <app-confirm-project></app-confirm-project>    
+                <div class="col-11 pb-5">
+                    <app-preview-project></app-preview-project>
                 </div>
-                <div class="d-flex justify-content-center col-11 p-5">
-                    <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-now">
-                        Publicar otro proyecto</button></div>
-                    <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/profile">Terminar</button></div>
+                <div class="d-flex justify-content-center col-11 pb-5">
+                    <div class="p-2 px-4">
+                        <button type="button" class="btn publish-btn" (click)="editProject(); scrollTop()">
+                            Regresar y editar
+                        </button>
+                    </div>
+                    <div class="p-2 px-4">
+                        <button type="button" class="btn publish-btn" (click)="confirmProject(); scrollTop()">
+                            ¡Publicar!
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </ng-template>
-</div>
+    </div>
+</ng-template>    
+<!-- confirmation template publish a project -->
+<ng-template #confirmTemplate>
+    <div class="row justify-content-center pb-5">
+        <div class="col-11">
+            <div class="col-6 col-lg-3 text-left">
+                <h3 class="first-color-blue pb-3 underline"><strong>Confirmación</strong>
+                    <hr>
+                </h3>
+            </div>
+        </div>
+        <div class="row justify-content-center col-11 pt-5 bg-form">
+            <div class="col-11">
+                <app-confirm-project></app-confirm-project>    
+            </div>
+            <div class="d-flex justify-content-center col-11 p-5">
+                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/publish-now">
+                    Publicar otro proyecto</button></div>
+                <div class="p-2 px-4"><button type="button" class="btn publish-btn" routerLink="/profile">Terminar</button></div>
+            </div>
+        </div>
+    </div>
+</ng-template>

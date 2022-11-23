@@ -7,7 +7,14 @@
 <!-- input text for service description -->
 <div class="service-description">
     <div class="mb-3">
-        <label for="shortDescription" class="form-label">Descripción corta para tu tarjeta de proyecto</label>
+        <label for="shortDescription" class="form-label pe-2">Descripción corta para tu tarjeta de proyecto</label>
+        <button type="button" class="question-btn" placement="end"
+        ngbTooltip="Esta información se verá en la primer pantalla de tu proyecto publicado, antes de entrar
+        al detalle completo de requisitos de los destrabadores y características del proyecto. Te recomendamos
+        resumir tu necesidad para que invite a destrabadores a enviarte propuestas." 
+        tooltipClass="my-custom-class">
+        <i class="bi bi-question-circle-fill "></i>
+        </button>
         <textarea class="form-control" id="shortDescription" name="shortDescription" rows="3" maxlength="150"
             [(ngModel)]="shortDescription" (keyup)="shortDescriptionCount($event)"
             (input)="sendShortDescription($event)"></textarea>
@@ -20,9 +27,16 @@
         </div>
     </div>
     <div class="mb-3">
-        <label for="longDescription" class="form-label">
+        <label for="longDescription" class="form-label pe-2">
             Descripción larga para tu tarjeta de proyecto
         </label>
+        <button type="button" class="question-btn" placement="end"
+        ngbTooltip="Esta información se verá dentro de tu página de proyecto. Aquí podrás poner toda la 
+        información que consideres relevante para que los destrabadores entiendan tu necesidad, tu contexto, 
+        información de empresa u otros que ayudarán a generar propuestas precisas a tu necesidad." 
+        tooltipClass="my-custom-class">
+        <i class="bi bi-question-circle-fill "></i>
+        </button>
         <textarea class="form-control" id="longDescription" name="longDescription" rows="3" maxlength="1500"
             [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"
             (input)="sendLongDescription($event)"></textarea>

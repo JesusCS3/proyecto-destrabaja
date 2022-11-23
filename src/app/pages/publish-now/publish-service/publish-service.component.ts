@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { DescriptionServiceService } from './description-service/services/description-service.service';
+import { extraService } from './extras-service/models/extras-service.model';
+import { ExtrasServiceService } from './extras-service/services/extras-service.service';
+import { GeneralInfoServiceService } from './general-info-service/services/general-info-service.service';
+import { deliverables } from './levels-service/models/deliverables/deliverables.model';
+import { DeliverablesService } from './levels-service/services/deliverables/deliverables.service';
+import { LevelsServiceService } from './levels-service/services/levels-service/levels-service.service';
 
 @Component({
   selector: 'app-publish-service',
@@ -36,15 +43,79 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 export class PublishServiceComponent implements OnInit {
 
+    /* *** service information to display on the service screen *** */
+
+  /* *** general info service *** */
+  previewImg: string;
+  previewImgTwo: string;
+  previewImgThree: string;
+  previewVideo: string;
+  nameService: string;
+  /* *** description service *** */
+  shortDescription: string;
+  longDescription: string;
+  /* *** levels service *** */
+  /* deliverables */
+  deliverables:deliverables[] = [];
+  /* initial plan */  
+  initialPlanName:string;
+  deliveryTimeInitialPlan: number;
+  commentInitialPlan: string;
+  priceInitialPlan: number;
+  priceClientInitialPlan: number;
+  /* plus plan */
+  plusPlanName:string;
+  deliveryTimePlusPlan: number;
+  commentPlusPlan: string;
+  pricePlusPlan: number;
+  priceClientPlusPlan: number;
+  /* premium plan */
+  premiumPlanName:string;
+  deliveryTimePremiumPlan: number;
+  commentPremiumPlan: string;
+  pricePremiumPlan: number;
+  priceClientPremiumPlan: number;
+  /* extras */
+  extraService:extraService[] = [];
+
   /* variable for service preview */
   preview: boolean = false;
 
   /* variable to confirm publish a service */
   confirm: boolean = false;
 
-  constructor() { }
+  constructor(
+    private generalInfoServiceService:GeneralInfoServiceService,
+    private descriptionServiceService:DescriptionServiceService,
+    private levelsServiceService:LevelsServiceService,
+    private deliverableService:DeliverablesService, 
+    private extraServiceService:ExtrasServiceService
+  ) { }
 
   ngOnInit(): void {
+    this.scrollTop();
+  }
+
+  /* *** scroll to top *** */
+  @HostListener('window:scroll')
+  checkScroll() {
+    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
+
+    const scrollPosition =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    console.log('[scroll]', scrollPosition);
+  }
+
+  scrollTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
   /* service preview */
@@ -60,6 +131,17 @@ export class PublishServiceComponent implements OnInit {
   /* confirm service */
   confirmService() {
     this.confirm = true;
+  }
+
+  /* delete  to add edited information */
+deleteDeliverablesData(deliverables:deliverables){
+  this.deliverableService.delete(deliverables);
+}
+
+  clearDeliverables:any;
+
+  clearData(){
+    this.deleteDeliverablesData;
   }
 
 }

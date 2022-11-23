@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { requirementsProject } from '../models/requirements-project.model';
+import { RequirementsProjectService } from '../services/requirements-project.service';
 
 @Component({
   selector: 'app-requirements-project',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequirementsProjectComponent implements OnInit {
 
-  constructor() { }
+  /***** variables for receive information *****/
+  requirementsProject:requirementsProject[] = [];
+
+  /* variables for requirements */
+  requirementInput:string;
+
+  constructor(
+    private requirementsProjectService:RequirementsProjectService
+  ) { }
 
   ngOnInit(): void {
+
+    this.requirementsProject = this.requirementsProjectService.requirementsProject;
   }
 
+  /* delete requirements information */
+  deleteRequirement(requirementsProject:requirementsProject){
+    this.requirementsProjectService.delete(requirementsProject);
+  }
+
+  /* save deliverables information */
+  addRequirement(){
+    this.requirementsProjectService.requirementsProject.push(new requirementsProject(this.requirementInput));
+  }
+
+  /* clear input and check box to add deliverable */
+  clear() {
+    this.requirementInput = '';
+  }
 }

@@ -1,8 +1,8 @@
 <div class="row justify-content-center col-12 bg-form">
-    <div class="service-screen">
+    <div class="project-screen">
         <div class="col-xl-12">
             <div class="row pt-3 p-3">
-                <!-- preview images and video for service-->
+                <!-- preview images and video for project-->
                 <div class="col-xl-4">
                     <div class="card-service shadow-img">
                         <div class="card-service-header">
@@ -37,14 +37,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-8">
+                <div class="col-xl-8" id="shortDescription">
                     <h5 class="first-color-blue">{{nameService}}</h5>
                     <p class="second-color-blue">{{shortDescription}}</p>
                 </div>
             </div>
-            <div class="bg-form text-justify p-3">
+            <div class="bg-form text-justify p-3" id="longDescription">
                 <h5 class="pb-3">Descripción completa del proyecto</h5>
                 <p>{{longDescription}}</p>
+            </div>
+            <div class="p-3">
+                <div class="row">
+                    <div class="col-xl-6" id="features">
+                        <div class="bg-form p-3">
+                            <h5>Características del proyecto</h5>
+                            <ul>
+                                <li>Presupuesto de 2,500 pesos mexicanos</li>
+                                <li>Fecha de entrega esperada:14/02/2023</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6" id="requirements">
+                        <div class="bg-form p-3">
+                            <h5>Requisitos para participar</h5>
+                            <ul class="align-middle">
+                                <li *ngFor="let requirements of requirementsProject">
+                                    {{requirements.requirement}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="d-flex justify-content-center col-12">

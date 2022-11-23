@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralInfoProjectService } from '../../../general-info-project/services/general-info-project.service';
+import { requirementsProject } from '../../../requirements-project/models/requirements-project.model';
+import { RequirementsProjectService } from '../../../requirements-project/services/requirements-project.service';
 import { ServiceDescriptionProjectService } from '../../../service-description-project/services/service-description-project.service';
 
 @Component({
@@ -21,13 +23,19 @@ export class ProjectScreenComponent implements OnInit {
   shortDescription: string;
   longDescription: string;
 
+  /* *** requierements *** */
+  requirementsProject:requirementsProject[] = [];
+
   constructor(
     private generalInfoProjectService:GeneralInfoProjectService,
-    private serviceDescriptionProjectService:ServiceDescriptionProjectService
+    private serviceDescriptionProjectService:ServiceDescriptionProjectService,
+    private requirementsProjectService:RequirementsProjectService
   ) { }
 
   ngOnInit(): void {
     this.receiveInfo();
+    /* receive info on service requirements */
+    this.requirementsProject = this.requirementsProjectService.requirementsProject;
   }
 
   /* *** receive info on services *** */

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { GeneralInfoProjectService } from './general-info-project/services/general-info-project.service';
 import { ServiceDescriptionProjectService } from './service-description-project/services/service-description-project.service';
 
@@ -47,6 +47,29 @@ export class PublishProjectComponent implements OnInit {
               private serviceDescriptionService: ServiceDescriptionProjectService) { }
 
   ngOnInit(): void {
+    this. scrollTop();
+  }
+
+  /* *** scroll to top *** */
+  @HostListener('window:scroll')
+  checkScroll() {
+    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
+
+    const scrollPosition =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+
+    console.log('[scroll]', scrollPosition);
+  }
+
+  scrollTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
 
   saveGeneralInfo: any;
@@ -84,4 +107,5 @@ export class PublishProjectComponent implements OnInit {
       this.deleteGeneralInfo = this.generalInfoService.delete;
       this.deleteProjectDescription = this.serviceDescriptionService.delete;
   }
+
 }

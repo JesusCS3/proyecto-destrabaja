@@ -6,7 +6,7 @@
     -webkit-border-radius: 2rem 0 0 2rem;
     -moz-border-radius: 2rem 0 0 2rem;
     border-radius: 2rem 0 0 2rem;
-    border: 1px solid #425CC7;
+    border: 1px solid rgba(0,0,0,.125);
     background-color: #fff;
     display: flex;
 }
@@ -108,4 +108,5 @@
 .shadow-lg {
     box-shadow: 0.5rem 1rem 1rem  rgba(0, 0, 0, 0.192) !important;
 }
+
 
