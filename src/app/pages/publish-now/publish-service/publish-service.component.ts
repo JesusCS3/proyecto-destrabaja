@@ -6,6 +6,8 @@ import { GeneralInfoServiceService } from './general-info-service/services/gener
 import { deliverables } from './levels-service/models/deliverables/deliverables.model';
 import { DeliverablesService } from './levels-service/services/deliverables/deliverables.service';
 import { LevelsServiceService } from './levels-service/services/levels-service/levels-service.service';
+import { requirementsService } from './requirements-service/models/requirements-service.model';
+import { RequirementsServiceService } from './requirements-service/services/requirements-service.service';
 
 @Component({
   selector: 'app-publish-service',
@@ -77,6 +79,8 @@ export class PublishServiceComponent implements OnInit {
   priceClientPremiumPlan: number;
   /* extras */
   extraService:extraService[] = [];
+  /* requirements */
+  requirementsService:requirementsService[] = [];
 
   /* variable for service preview */
   preview: boolean = false;
@@ -89,11 +93,15 @@ export class PublishServiceComponent implements OnInit {
     private descriptionServiceService:DescriptionServiceService,
     private levelsServiceService:LevelsServiceService,
     private deliverableService:DeliverablesService, 
-    private extraServiceService:ExtrasServiceService
+    private extraServiceService:ExtrasServiceService,
+    private requirementsServiceService:RequirementsServiceService
   ) { }
 
   ngOnInit(): void {
     this.scrollTop();
+    this.deliverables = this.deliverableService.deliverables;
+    this.extraService = this.extraServiceService.extraService;
+    this.requirementsService = this.requirementsServiceService.requirementsService;
   }
 
   /* *** scroll to top *** */
@@ -138,10 +146,20 @@ deleteDeliverablesData(deliverables:deliverables){
   this.deliverableService.delete(deliverables);
 }
 
+  clearGeneralInfo:any;
   clearDeliverables:any;
+  clearExtras: any;
+  clearRequirements: any;
 
   clearData(){
-    this.deleteDeliverablesData;
+    /* *** *** */
+    this.clearGeneralInfo = this.generalInfoServiceService.clearInfo();
+    /* *** deliverables *** */
+    this.clearDeliverables = this.deliverableService.deleteData();
+    /* *** extras *** */
+    this.clearExtras = this.extraServiceService.deleteData();
+    /* *** extras *** */
+    this.clearRequirements = this.requirementsServiceService.deleteData();
   }
 
 }

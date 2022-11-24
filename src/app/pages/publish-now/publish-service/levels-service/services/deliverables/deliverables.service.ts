@@ -14,8 +14,8 @@ export class DeliverablesService {
     this.deliverables.splice(index, 1);
   }
 
-    /* *** delete information *** */
-  deleteData(deliverables:deliverables){
+  /* *** delete information *** */
+  deleteData(){
     const aLength: number = this.deliverables.length;
     this.deliverables.splice(0, aLength);
   }

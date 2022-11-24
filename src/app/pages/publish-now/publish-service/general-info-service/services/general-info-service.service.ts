@@ -97,4 +97,19 @@ export class GeneralInfoServiceService {
     this.generalInfoService.splice(0, aLength);
   }
 
+  /* *** clear information *** */
+  clearInfo(){
+    this.nameService = '';
+    this.hashtags = '';
+    this.category = '';
+    this.subcategory = '';
+    this.videoFile = '';
+    this.imageFile = '';
+    this.previewImg = '';
+    this.previewImgTwo = '';
+    this.previewImgThree = '';
+    this.previewVideo = '';
+    this.nameService = '';
+  }
+
 }

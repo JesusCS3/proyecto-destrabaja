@@ -13,4 +13,11 @@ export class RequirementsServiceService {
     const index: number = this.requirementsService.indexOf(requirementsService);
     this.requirementsService.splice(index, 1);
   }
+
+  /* *** delete information *** */
+  deleteData(){
+    const aLength: number = this.requirementsService.length;
+    this.requirementsService.splice(0, aLength);
+  }
+
 }

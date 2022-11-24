@@ -48,7 +48,7 @@
                             </button>
                         </div>
                         <div class="p-2 px-4">
-                            <button type="button" class="btn publish-btn" (click)="confirmService(); scrollTop()">
+                            <button type="button" class="btn publish-btn" (click)="confirmService(); scrollTop(); clearData()">
                                 ¡Publicar!
                             </button>
                         </div>
@@ -80,3 +80,17 @@
         </div>
     </ng-template>
 </div>
+
+<div *ngFor="let deliverable of deliverables">
+    {{deliverable.name}}
+</div>
+
+<div *ngFor="let extra of extraService">
+    {{extra.nameExtra}}
+</div>
+
+<div *ngFor="let requirement of requirementsService">
+    {{requirement.requirement}}
+</div>
+
+<button (click)="clearData()">eliminar</button>
