@@ -35,8 +35,15 @@ export class DescriptionServiceService {
   }
 
   /* *** delete information *** */
-  delete(descriptionService:descriptionService){
+  delete(){
     const aLength: number = this.descriptionService.length;
     this.descriptionService.splice(0, aLength);
   }
+
+  /* *** clear information *** */
+  clearInfo(){
+    this.shortDescription = '';
+    this.longDescription =  '';
+  }
+  
 }

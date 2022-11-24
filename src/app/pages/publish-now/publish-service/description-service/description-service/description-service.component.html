@@ -1,13 +1,13 @@
 <!-- title service description -->
 <div class="col-12 col-md-5 col-xl-3 text-left pt-5">
-    <h5 class="first-color-blue"><strong>Descripción de tu proyecto</strong>
+    <h5 class="first-color-blue"><strong>Descripción de tu servicio</strong>
         <hr>
     </h5>
 </div>
 <!-- input text for service description -->
 <div class="service-description">
     <div class="mb-3">
-        <label for="shortDescription" class="form-label">Descripción corta para tu tarjeta de proyecto</label>
+        <label for="shortDescription" class="form-label">Descripción corta para tu tarjeta de servicio</label>
         <textarea class="form-control" id="shortDescription" name="shortDescription" rows="3" maxlength="150"
             [(ngModel)]="shortDescription" (keyup)="shortDescriptionCount($event)"
             (input)="sendShortDescription($event)"></textarea>
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
         <label for="longDescription" class="form-label">
-            Descripción larga para tu tarjeta de proyecto
+            Descripción larga para tu tarjeta de servicio (Opcional)
         </label>
         <textarea class="form-control" id="longDescription" name="longDescription" rows="3" maxlength="1500"
             [(ngModel)]="longDescription" (keyup)="longDescriptionCount($event)"

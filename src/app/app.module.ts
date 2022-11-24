@@ -27,35 +27,20 @@ import { ServicesPublishedComponent } from './pages/user/profile/services-publis
 import { ServiceCardComponent } from './pages/user/profile/services-published/components/service-card/service-card.component';
 import { PublishNowComponent } from './pages/publish-now/publish-now.component';
 import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component';
-import { GeneralInfoComponent } from './pages/publish-now/publish-service/general-info/general-info.component';
-import { ServiceDescriptionComponent } from './pages/publish-now/publish-service/service-description/service-description.component';
-import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
-import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
-import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component'
-import { DeliverablesService } from './pages/publish-now/publish-service/service-levels/services/deliverables/deliverables.service';
-import { FeaturesService } from './pages/publish-now/publish-service/service-levels/services/features/features.service';
-import { PlansService } from './pages/publish-now/publish-service/service-levels/services/plans/plans.service';
 import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
 import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
 import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
-import { GeneralInfoService } from './pages/publish-now/publish-service/general-info/services/general-info.service';
-import { RequirementsService } from './pages/publish-now/publish-service/requirements/services/requirements.service';
-import { ServiceDescriptionService } from './pages/publish-now/publish-service/service-description/services/service-description.service';
 import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PublishProjectComponent } from './pages/publish-now/publish-project/publish-project.component';
 import { GeneralInfoProjectComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project/general-info-project.component';
-import { GeneralInfoProjectEditComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project-edit/general-info-project-edit.component';
 import { PreviewProjectComponent } from './pages/publish-now/publish-project/preview-project/preview-project.component';
 import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
 import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
 import { ConfirmProjectComponent } from './pages/publish-now/publish-project/confirm-project/confirm-project.component';
 import { ServiceDescriptionProjectComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project/service-description-project.component';
-import { ServiceDescriptionProjectEditComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project-edit/service-description-project-edit.component';
 import { FeaturesProjectComponent } from './pages/publish-now/publish-project/features-project/features-project/features-project.component';
-import { FeaturesProjectEditComponent } from './pages/publish-now/publish-project/features-project/features-project-edit/features-project-edit.component';
 import { RequirementsProjectComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project/requirements-project.component';
-import { RequirementsProjectEditComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project-edit/requirements-project-edit.component';
 import { GeneralInfoServiceComponent } from './pages/publish-now/publish-service/general-info-service/general-info-service/general-info-service.component';
 import { DescriptionServiceComponent } from './pages/publish-now/publish-service/description-service/description-service/description-service.component';
 import { LevelsServiceComponent } from './pages/publish-now/publish-service/levels-service/levels-service/levels-service.component';
@@ -87,28 +72,19 @@ import { RequirementsServiceComponent } from './pages/publish-now/publish-servic
     ServiceCardComponent,
     PublishNowComponent,
     PublishServiceComponent,
-    GeneralInfoComponent,
-    ServiceDescriptionComponent,
-    ServiceLevelsComponent,
-    ExtrasComponent,
-    RequirementsComponent,
     PreviewComponent,
     PublishServiceCardComponent,
     ConfirmComponent,
     ServiceScreenComponent,
     PublishProjectComponent,
     GeneralInfoProjectComponent,
-    GeneralInfoProjectEditComponent,
     PreviewProjectComponent,
     PublishProjectCardComponent,
     ProjectScreenComponent,
     ConfirmProjectComponent,
     ServiceDescriptionProjectComponent,
-    ServiceDescriptionProjectEditComponent,
     FeaturesProjectComponent,
-    FeaturesProjectEditComponent,
     RequirementsProjectComponent,
-    RequirementsProjectEditComponent,
     GeneralInfoServiceComponent,
     DescriptionServiceComponent,
     LevelsServiceComponent,
@@ -124,13 +100,7 @@ import { RequirementsServiceComponent } from './pages/publish-now/publish-servic
     NgbModule
   ],
   providers: [
-    AuthService,
-    GeneralInfoService,
-    ServiceDescriptionService,
-    DeliverablesService,
-    FeaturesService,
-    RequirementsService,
-    PlansService
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

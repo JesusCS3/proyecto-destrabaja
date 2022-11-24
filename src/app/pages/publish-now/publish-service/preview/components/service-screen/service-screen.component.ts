@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DescriptionServiceService } from '../../../description-service/services/description-service.service';
 import { extraService } from '../../../extras-service/models/extras-service.model';
@@ -7,13 +7,39 @@ import { GeneralInfoServiceService } from '../../../general-info-service/service
 import { deliverables } from '../../../levels-service/models/deliverables/deliverables.model';
 import { DeliverablesService } from '../../../levels-service/services/deliverables/deliverables.service';
 import { LevelsServiceService } from '../../../levels-service/services/levels-service/levels-service.service';
+import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-service-screen',
   templateUrl: './service-screen.component.html',
-  styleUrls: ['./service-screen.component.css']
+  styleUrls: ['./service-screen.component.css'],
+  encapsulation: ViewEncapsulation.None,
+	styles: [
+		`
+      .carousel-control-next, .carousel-control-prev {
+        position: absolute;
+        top: 61px;
+        bottom: 61px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: 0 0;
+        border: 0;
+        opacity: .5;
+        transition: opacity .15s ease;
+      }
+		`,
+	]
 })
 export class ServiceScreenComponent implements OnInit {
+
+  /* *** carousel *** */
+  @ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   /* *** service information to display on the service screen *** */
 
@@ -56,11 +82,19 @@ export class ServiceScreenComponent implements OnInit {
     private levelsServiceService:LevelsServiceService,
     private deliverableService:DeliverablesService, 
     private extraServiceService:ExtrasServiceService,
-    private modalService: NgbModal
-  ) { }
+    private modalService: NgbModal,
+    config: NgbCarouselConfig
+  ) {
+    /* customize default values of carousels */
+    config.showNavigationIndicators = false;
+    config.interval = 10000;
+    config.pauseOnHover = true;
+    config.pauseOnFocus = true;
+   }
 
   ngOnInit(): void {
     this.receiveInfo();
+    this.carousel.pause();
   }
 
   /* *** modal scrollable *** */

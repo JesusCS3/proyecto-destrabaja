@@ -16,7 +16,7 @@
                     <div>
                         <input class="form-check-input" type="checkbox" id="checkboxPlusPlan"
                             aria-label="checkboxPlusPlan" name="checkboxPlusPlan" [(ngModel)]="checkboxPlusPlan"
-                            (change)="clearPlusPlan()">
+                            (change)="clearPlusPlan(); clearInfoPlus()">
                     </div>
                 </th>
                 <th class="text-center align-baseline" scope="col-3">
@@ -24,7 +24,7 @@
                     <div>
                         <input class="form-check-input" type="checkbox" id="checkboxPremiumPlan"
                             aria-label="checkboxPremiumPlan" name="checkboxPremiumPlan"
-                            [(ngModel)]="checkboxPremiumPlan" (change)="clearPremiumPlan()">
+                            [(ngModel)]="checkboxPremiumPlan" (change)="clearPremiumPlan(); clearInfoPremium()">
                     </div>
                 </th>
             </tr>

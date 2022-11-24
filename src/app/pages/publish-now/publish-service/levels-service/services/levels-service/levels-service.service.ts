@@ -189,4 +189,31 @@ export class LevelsServiceService {
     this.premiumPlan.splice(0, aLength);
   }
 
+  /* *** clear information *** */
+  clearInfoInitialPlan(){
+    this.initialPlanName = '';
+    this.deliveryTimeInitialPlan = 0;
+    this.commentInitialPlan = '';
+    this.priceInitialPlan = 0;
+    this.priceClientInitialPlan = 0;
+  }
+
+  clearInfoPlusPlan(){
+    /* plus plan */
+    this.plusPlanName = '';
+    this.deliveryTimePlusPlan = 0;
+    this.commentPlusPlan = '';
+    this.pricePlusPlan = 0;
+    this.priceClientPlusPlan = 0;
+  }
+
+  clearInfoPremiumPlan(){
+    /* premium plan */
+    this.premiumPlanName = '';
+    this.deliveryTimePremiumPlan = 0;
+    this.commentPremiumPlan = '';
+    this.pricePremiumPlan = 0;
+    this.priceClientPremiumPlan = 0;
+  }
+
 }

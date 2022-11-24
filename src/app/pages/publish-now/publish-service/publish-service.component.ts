@@ -39,54 +39,49 @@ import { RequirementsServiceService } from './requirements-service/services/requ
 			.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
 				border-bottom-color: #fff;
 			}
+
+      .carousel-control-next, .carousel-control-prev {
+        position: absolute;
+        top: 71px;
+        bottom: 71px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: 0 0;
+        border: 0;
+        opacity: .5;
+        transition: opacity .15s ease;
+      }
 		`,
 	]
 })
 
 export class PublishServiceComponent implements OnInit {
 
-    /* *** service information to display on the service screen *** */
+  /* variables for test */
 
   /* *** general info service *** */
-  previewImg: string;
-  previewImgTwo: string;
-  previewImgThree: string;
-  previewVideo: string;
-  nameService: string;
+
   /* *** description service *** */
-  shortDescription: string;
-  longDescription: string;
+
   /* *** levels service *** */
   /* deliverables */
   deliverables:deliverables[] = [];
   /* initial plan */  
-  initialPlanName:string;
-  deliveryTimeInitialPlan: number;
-  commentInitialPlan: string;
-  priceInitialPlan: number;
-  priceClientInitialPlan: number;
+
   /* plus plan */
-  plusPlanName:string;
-  deliveryTimePlusPlan: number;
-  commentPlusPlan: string;
-  pricePlusPlan: number;
-  priceClientPlusPlan: number;
+
   /* premium plan */
-  premiumPlanName:string;
-  deliveryTimePremiumPlan: number;
-  commentPremiumPlan: string;
-  pricePremiumPlan: number;
-  priceClientPremiumPlan: number;
+
   /* extras */
   extraService:extraService[] = [];
   /* requirements */
   requirementsService:requirementsService[] = [];
-
-  /* variable for service preview */
-  preview: boolean = false;
-
-  /* variable to confirm publish a service */
-  confirm: boolean = false;
 
   constructor(
     private generalInfoServiceService:GeneralInfoServiceService,
@@ -114,8 +109,6 @@ export class PublishServiceComponent implements OnInit {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-
-    console.log('[scroll]', scrollPosition);
   }
 
   scrollTop() {
@@ -125,6 +118,10 @@ export class PublishServiceComponent implements OnInit {
       behavior: 'smooth',
     });
   }
+
+  
+  /* variable for service preview */
+  preview: boolean = false;
 
   /* service preview */
   servicePreview() {
@@ -136,24 +133,32 @@ export class PublishServiceComponent implements OnInit {
     this.preview = false;
   }
 
+  /* variable to confirm publish a service */
+  confirm: boolean = false;
+
   /* confirm service */
   confirmService() {
     this.confirm = true;
   }
 
-  /* delete  to add edited information */
-deleteDeliverablesData(deliverables:deliverables){
-  this.deliverableService.delete(deliverables);
-}
-
   clearGeneralInfo:any;
+  clearDescriptionService: any;
+  clearInitialPlan: any;
+  clearPlusPlan: any;
+  clearPremiumPlan: any;
   clearDeliverables:any;
   clearExtras: any;
   clearRequirements: any;
 
   clearData(){
-    /* *** *** */
+    /* *** general info *** */
     this.clearGeneralInfo = this.generalInfoServiceService.clearInfo();
+    /* *** description service *** */
+    this.clearDescriptionService = this.descriptionServiceService.clearInfo();
+    /* *** levels service *** */
+    this.clearInitialPlan = this.levelsServiceService.clearInfoInitialPlan();
+    this.clearPlusPlan = this.levelsServiceService.clearInfoPlusPlan(); 
+    this.clearPremiumPlan = this.levelsServiceService.clearInfoPremiumPlan();   
     /* *** deliverables *** */
     this.clearDeliverables = this.deliverableService.deleteData();
     /* *** extras *** */

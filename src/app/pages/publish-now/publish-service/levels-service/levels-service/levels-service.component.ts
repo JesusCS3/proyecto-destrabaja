@@ -151,11 +151,19 @@ export class LevelsServiceComponent implements OnInit {
   /* enable plus plan */
   if(this.plusPlanName != undefined || this.plusPlanName != null){
     this.checkboxPlusPlan = true;
-    }
+  }
+  /* disble plus plan */
+  if(this.plusPlanName === ''){
+    this.checkboxPlusPlan = false;
+  }
   /* enable premium plan */
   if(this.premiumPlanName != undefined || this.premiumPlanName != null){
     this.checkboxPremiumPlan = true;
-    }
+  }
+  /* disble plus plan */
+  if(this.premiumPlanName === ''){
+    this.checkboxPremiumPlan = false;
+  }
 
   }
 
@@ -335,6 +343,18 @@ export class LevelsServiceComponent implements OnInit {
       this.pricePremiumPlan = 0;
       this.priceClientPremiumPlan = 0;
     }
+  }
+
+  /* *** clear information *** */
+  clearInfoPlusPlan: any;
+  clearInfoPremiumPlan: any;
+
+  clearInfoPlus(){
+    this.clearInfoPlusPlan = this.levelsServiceService.clearInfoPlusPlan(); 
+  }
+
+  clearInfoPremium(){
+    this.clearInfoPremiumPlan = this.levelsServiceService.clearInfoPremiumPlan(); 
   }
 
 }

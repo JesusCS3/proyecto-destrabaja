@@ -33,29 +33,8 @@ import { ReferredComponent } from './pages/user/profile/referred/referred.compon
 import { PublishNowComponent } from './pages/publish-now/publish-now.component';
 // Publish-service
 import { PublishServiceComponent } from './pages/publish-now/publish-service/publish-service.component';
-import { GeneralInfoComponent } from './pages/publish-now/publish-service/general-info/general-info.component';
-import { ServiceDescriptionComponent } from './pages/publish-now/publish-service/service-description/service-description.component';
-import { ServiceLevelsComponent } from './pages/publish-now/publish-service/service-levels/service-levels.component';
-import { ExtrasComponent } from './pages/publish-now/publish-service/extras/extras.component';
-import { RequirementsComponent } from './pages/publish-now/publish-service/requirements/requirements.component';
-import { PreviewComponent } from './pages/publish-now/publish-service/preview/preview.component';
-import { PublishServiceCardComponent } from './pages/publish-now/publish-service/preview/components/publish-service-card/publish-service-card.component';
-import { ServiceScreenComponent } from './pages/publish-now/publish-service/preview/components/service-screen/service-screen.component';
-import { ConfirmComponent } from './pages/publish-now/publish-service/confirm/confirm.component';
 //publish-project
 import { PublishProjectComponent } from './pages/publish-now/publish-project/publish-project.component';
-import { GeneralInfoProjectComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project/general-info-project.component';
-import { GeneralInfoProjectEditComponent } from './pages/publish-now/publish-project/general-info-project/general-info-project-edit/general-info-project-edit.component';
-import { ServiceDescriptionProjectComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project/service-description-project.component';
-import { ServiceDescriptionProjectEditComponent } from './pages/publish-now/publish-project/service-description-project/service-description-project-edit/service-description-project-edit.component';
-import { FeaturesProjectComponent } from './pages/publish-now/publish-project/features-project/features-project/features-project.component';
-import { FeaturesProjectEditComponent } from './pages/publish-now/publish-project/features-project/features-project-edit/features-project-edit.component';
-import { RequirementsProjectComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project/requirements-project.component';
-import { RequirementsProjectEditComponent } from './pages/publish-now/publish-project/requirements-project/requirements-project-edit/requirements-project-edit.component';
-import { PreviewProjectComponent } from './pages/publish-now/publish-project/preview-project/preview-project.component';
-import { PublishProjectCardComponent } from './pages/publish-now/publish-project/preview-project/components/publish-project-card/publish-project-card.component';
-import { ProjectScreenComponent } from './pages/publish-now/publish-project/preview-project/components/project-screen/project-screen.component';
-import { ConfirmProjectComponent } from './pages/publish-now/publish-project/confirm-project/confirm-project.component';
 //about
 import { PrivacyPolicyComponent } from './pages/about/privacy-policy/privacy-policy.component';
 import { ServiceConditionsComponent } from './pages/about/service-conditions/service-conditions.component';
@@ -86,29 +65,8 @@ const routes: Routes = [
   {path:'publish-now', component:PublishNowComponent},
   // publish-service
   {path:'publish-service', component:PublishServiceComponent, canActivate: [PublishNowGuard]},
-  {path:'general-info', component:GeneralInfoComponent, canActivate: [PublishNowGuard]},
-  {path:'service-description', component:ServiceDescriptionComponent, canActivate: [PublishNowGuard]},
-  {path:'service-levels', component:ServiceLevelsComponent, canActivate: [PublishNowGuard]},
-  {path:'extras', component:ExtrasComponent, canActivate: [PublishNowGuard]},
-  {path:'requeriments', component:RequirementsComponent, canActivate: [PublishNowGuard]},
-  {path:'preview', component:PreviewComponent, canActivate: [PublishNowGuard]},
-  {path:'publish-service-card', component:PublishServiceCardComponent, canActivate: [PublishNowGuard]},
-  {path:'service-screen', component:ServiceScreenComponent, canActivate: [PublishNowGuard]},
-  {path:'confirm', component:ConfirmComponent, canActivate: [PublishNowGuard]},
   // publish-project
   {path:'publish-project', component:PublishProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'general-info-project', component:GeneralInfoProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'general-info-project-edit', component:GeneralInfoProjectEditComponent, canActivate: [PublishNowGuard]},
-  {path:'service-description-project', component:ServiceDescriptionProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'service-description-project-edit', component:ServiceDescriptionProjectEditComponent, canActivate: [PublishNowGuard]},
-  {path:'features-project', component:FeaturesProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'features-project-edit', component:FeaturesProjectEditComponent, canActivate: [PublishNowGuard]},
-  {path:'requirements-project', component:RequirementsProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'requirements-project-edit', component:RequirementsProjectEditComponent, canActivate: [PublishNowGuard]},
-  {path:'preview-project', component:PreviewProjectComponent, canActivate: [PublishNowGuard]},
-  {path:'publish-project-card', component:PublishProjectCardComponent, canActivate: [PublishNowGuard]},
-  {path:'project-screen', component:ProjectScreenComponent, canActivate: [PublishNowGuard]},
-  {path:'confirm-project', component:ConfirmProjectComponent, canActivate: [PublishNowGuard]},
   //about
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'service-conditions', component:ServiceConditionsComponent},
@@ -117,9 +75,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled', // Add options right here
-  })],
+  imports: [
+    RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',})
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
