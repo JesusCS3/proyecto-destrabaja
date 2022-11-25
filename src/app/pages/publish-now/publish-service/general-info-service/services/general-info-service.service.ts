@@ -92,7 +92,7 @@ export class GeneralInfoServiceService {
   }
 
   /* *** delete information *** */
-  delete(generalInfoService:generalInfoService){
+  delete(){
     const aLength: number = this.generalInfoService.length;
     this.generalInfoService.splice(0, aLength);
   }
@@ -109,7 +109,18 @@ export class GeneralInfoServiceService {
     this.previewImgTwo = '';
     this.previewImgThree = '';
     this.previewVideo = '';
-    this.nameService = '';
+  }
+
+  clearPreviewImg(){
+    this.previewImg = '';
+    this.previewImgTwo = '';
+    this.previewImgThree = '';
+    this.imageFile = '';
+  }
+
+  clearPreviewVideo(){
+    this.previewVideo = '';
+    this.videoFile = '';
   }
 
 }

@@ -10,13 +10,13 @@ export class GeneralInfoProjectService {
   generalInfoProject: generalInfoProject[] = [];
 
   /* *** send information from general info project *** */
-  nameService: string;
-  private nameServiceSubject = new Subject<string>();
-  nameServiceObservable = this.nameServiceSubject.asObservable();
+  nameProject: string;
+  private nameProjectSubject = new Subject<string>();
+  nameProjectObservable = this.nameProjectSubject.asObservable();
 
-  nameServiceData(nameService: string){
-    this.nameService = nameService;
-    this.nameServiceSubject.next(nameService);
+  nameProjectData(nameProject: string){
+    this.nameProject = nameProject;
+    this.nameProjectSubject.next(nameProject);
   }
   
   hashtags: string;
@@ -96,17 +96,46 @@ export class GeneralInfoProjectService {
 
   /* *** save information *** */
   save(){
-    let generalInfo = new generalInfoProject(this.nameService, this.hashtags, this.category, this.subcategory,
+    let generalInfo = new generalInfoProject(this.nameProject, this.hashtags, this.category, this.subcategory,
       this.videoFile, this.imageFile, this.filesProject);
     this.generalInfoProject.push(generalInfo);
   }
 
   /* *** delete information *** */
-  delete(generalInfoProject:generalInfoProject){
+  delete(){
     const aLength: number = this.generalInfoProject.length;
     this.generalInfoProject.splice(0, aLength);
   }
 
+  /* *** clear information *** */
+  clearInfo(){
+    this.nameProject = '';
+    this.hashtags = '';
+    this.category = '';
+    this.subcategory = '';
+    this.videoFile = '';
+    this.imageFile = '';
+    this.filesProject = '';
+    this.previewImg = '';
+    this.previewImgTwo = '';
+    this.previewImgThree = '';
+    this.previewVideo = '';
+  }
 
-  constructor() { }
+  clearPreviewImg(){
+    this.previewImg = '';
+    this.previewImgTwo = '';
+    this.previewImgThree = '';
+    this.imageFile = '';
+  }
+
+  clearPreviewVideo(){
+    this.previewVideo = '';
+    this.videoFile = '';
+  }
+
+  clearPreviewFiles(){
+    this.filesProject = '';
+  }
+
 }

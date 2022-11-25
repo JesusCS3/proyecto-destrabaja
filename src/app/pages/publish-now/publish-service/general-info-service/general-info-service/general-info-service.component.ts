@@ -145,10 +145,13 @@ export class GeneralInfoServiceComponent implements OnInit {
     }
   }
 
+  clearPreviewImg: any;
+  clearPreviewVideo: any;
   /* delete preview video */
   deletePreviewVideo() {
     this.url = '';
     this.videoFile = '';
+    this.clearPreviewVideo = this.generalInfoServiceService.clearPreviewVideo();
   }
 
   /* delete preview images */
@@ -157,6 +160,7 @@ export class GeneralInfoServiceComponent implements OnInit {
     this.previewImgTwo = '';
     this.previewImgThree = '';
     this.imageFile = '';
+    this.clearPreviewImg = this.generalInfoServiceService.clearPreviewImg();
   }
 
   /* fill with previously saved values */

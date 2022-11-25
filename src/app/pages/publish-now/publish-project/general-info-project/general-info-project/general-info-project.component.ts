@@ -10,7 +10,7 @@ import { GeneralInfoProjectService } from '../services/general-info-project.serv
 export class GeneralInfoProjectComponent implements OnInit {
   
   /* variables for general info */
-  nameService: string;
+  nameProject: string;
   hashtags: string;
   category: string;
   subcategory: string;
@@ -59,8 +59,8 @@ export class GeneralInfoProjectComponent implements OnInit {
     this.receiveInfo();
 
     /* general info */
-    this.generalInfoProjectService.nameServiceObservable.subscribe(response => {
-      this.nameService = response;
+    this.generalInfoProjectService.nameProjectObservable.subscribe(response => {
+      this.nameProject = response;
     });
 
     this.generalInfoProjectService.hashtagsObservable.subscribe(response => {
@@ -90,7 +90,7 @@ export class GeneralInfoProjectComponent implements OnInit {
   }
 
   receiveInfo(){
-    this.nameService = this.generalInfoProjectService.nameService;
+    this.nameProject = this.generalInfoProjectService.nameProject;
     this.hashtags = this.generalInfoProjectService.hashtags;
     this.category = this.generalInfoProjectService.category;
     this.subcategory = this.generalInfoProjectService.subcategory;
@@ -165,10 +165,13 @@ export class GeneralInfoProjectComponent implements OnInit {
     }
   }
 
+  clearPreviewImg: any;
+  clearPreviewVideo: any;
   /* delete preview video */
   deletePreviewVideo(){
     this.url = '';
     this.videoFile = '';
+    this.clearPreviewVideo = this.generalInfoProjectService.clearPreviewVideo();
   }
 
   /* delete preview images */
@@ -177,11 +180,12 @@ export class GeneralInfoProjectComponent implements OnInit {
     this.previewImgTwo = '';
     this.previewImgThree = '';
     this.imageFile = '';
+    this.clearPreviewImg = this.generalInfoProjectService.clearPreviewImg();
   }
 
   /* send info */
-  sendNameService(nameService:any){
-    this.generalInfoProjectService.nameServiceData(nameService.target.value);
+  sendNameService(nameProject:any){
+    this.generalInfoProjectService.nameProjectData(nameProject.target.value);
   }
 
   sendHashtags(hashtags:any){

@@ -54,6 +54,15 @@
     color:#425CC7;
 }
 
+.project-screen #description{
+    text-align: justify;
+}
+
+.project-screen #longDescription{
+    text-align: justify;
+    white-space: pre-line;
+}
+
 /* custom preview buttons*/
 .preview-btn {
     --bs-btn-color: #fff;

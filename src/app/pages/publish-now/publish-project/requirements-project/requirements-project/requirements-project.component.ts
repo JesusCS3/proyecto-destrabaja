@@ -29,12 +29,12 @@ export class RequirementsProjectComponent implements OnInit {
     this.requirementsProjectService.delete(requirementsProject);
   }
 
-  /* save deliverables information */
+  /* save requirements information */
   addRequirement(){
     this.requirementsProjectService.requirementsProject.push(new requirementsProject(this.requirementInput));
   }
 
-  /* clear input and check box to add deliverable */
+  /* clear */
   clear() {
     this.requirementInput = '';
   }

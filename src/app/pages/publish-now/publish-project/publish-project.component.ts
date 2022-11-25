@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { FeaturesProjectService } from './features-project/services/features-project.service';
 import { GeneralInfoProjectService } from './general-info-project/services/general-info-project.service';
+import { RequirementsProjectService } from './requirements-project/services/requirements-project.service';
 import { ServiceDescriptionProjectService } from './service-description-project/services/service-description-project.service';
 
 @Component({
@@ -32,19 +34,34 @@ import { ServiceDescriptionProjectService } from './service-description-project/
 			.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
 				border-bottom-color: #fff;
 			}
+      .carousel-control-next, .carousel-control-prev {
+        position: absolute;
+        top: 71px;
+        bottom: 71px;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: 0 0;
+        border: 0;
+        opacity: .5;
+        transition: opacity .15s ease;
+      }
 		`,
   ]
 })
 export class PublishProjectComponent implements OnInit {
   
-  /* variables for project preview */
-  preview: boolean = false;
-
-  /* variable to confirm publish a project */
-  confirm: boolean = false;
-
-  constructor(private generalInfoService: GeneralInfoProjectService,
-              private serviceDescriptionService: ServiceDescriptionProjectService) { }
+  constructor(
+    private generalInfoService: GeneralInfoProjectService,
+    private serviceDescriptionService: ServiceDescriptionProjectService,
+    private featuresProjectService: FeaturesProjectService,
+    private requirementsProjectService: RequirementsProjectService
+  ) { }
 
   ngOnInit(): void {
     this. scrollTop();
@@ -60,8 +77,6 @@ export class PublishProjectComponent implements OnInit {
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
       0;
-
-    console.log('[scroll]', scrollPosition);
   }
 
   scrollTop() {
@@ -74,17 +89,15 @@ export class PublishProjectComponent implements OnInit {
 
   saveGeneralInfo: any;
   saveProjectDescription: any;
-
-  /* delete */
-  deleteGeneralInfo: any;
-  deleteProjectDescription: any;
-
   /* function to show the project preview */
   saveInfo(){
     this.saveGeneralInfo = this.generalInfoService.save;
     this.saveProjectDescription = this.serviceDescriptionService.save;
     this.preview = true;
   }
+
+  /* variables for project preview */
+  preview: boolean = false;
 
   /* preview project */
   previewProject() {
@@ -96,16 +109,28 @@ export class PublishProjectComponent implements OnInit {
     this.preview = false;
   }
 
+  /* variable to confirm publish a project */
+  confirm: boolean = false;
+
   /* confirm project */
   confirmProject() {
     this.confirm = true;
   }
 
-  delete()
-  {
-        /* delete  to add edited information */
-      this.deleteGeneralInfo = this.generalInfoService.delete;
-      this.deleteProjectDescription = this.serviceDescriptionService.delete;
+  clearGeneralInfo:any;
+  clearDescriptionProject: any;
+  clearFeatures: any;
+  clearRequirements: any;
+
+  clearData(){
+    /* *** general info *** */
+    this.clearGeneralInfo = this.generalInfoService.clearInfo();
+    /* *** description project *** */
+    this.clearDescriptionProject = this.serviceDescriptionService.clearInfo();
+    /* *** features project *** */
+    this.clearFeatures = this.featuresProjectService.clearInfo();
+    /* *** requirements project *** */
+    this.clearRequirements = this.requirementsProjectService.deleteData();
   }
 
 }

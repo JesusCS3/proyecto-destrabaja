@@ -163,7 +163,7 @@ export class PublishServiceComponent implements OnInit {
     this.clearDeliverables = this.deliverableService.deleteData();
     /* *** extras *** */
     this.clearExtras = this.extraServiceService.deleteData();
-    /* *** extras *** */
+    /* *** requirements *** */
     this.clearRequirements = this.requirementsServiceService.deleteData();
   }
 

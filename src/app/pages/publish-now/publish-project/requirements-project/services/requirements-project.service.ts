@@ -13,4 +13,10 @@ export class RequirementsProjectService {
     const index: number = this.requirementsProject.indexOf(requirementsProject);
     this.requirementsProject.splice(index, 1);
   }
+
+  /* *** delete information *** */
+  deleteData(){
+    const aLength: number = this.requirementsProject.length;
+    this.requirementsProject.splice(0, aLength);
+  }
 }

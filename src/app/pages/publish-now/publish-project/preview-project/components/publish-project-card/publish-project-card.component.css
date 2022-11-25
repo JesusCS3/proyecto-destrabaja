@@ -13,6 +13,7 @@
 
 .card-service-header{
     max-width: 252px;
+    min-width: 252px;
     
 }
 

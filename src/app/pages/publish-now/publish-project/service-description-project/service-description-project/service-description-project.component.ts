@@ -16,7 +16,9 @@ export class ServiceDescriptionProjectComponent implements OnInit {
   shortDescription: string;
   longDescription: string;
 
-  constructor(private serviceDescriptionProjectService: ServiceDescriptionProjectService) { }
+  constructor(
+    private serviceDescriptionProjectService: ServiceDescriptionProjectService
+  ) { }
 
   ngOnInit(): void {
     /* fill with previously saved values */

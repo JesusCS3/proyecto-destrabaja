@@ -32,14 +32,18 @@ export class ServiceDescriptionProjectService {
   save(){
     let projectDescription = new serviceDescriptionProject(this.shortDescription, this.longDescription);
     this.serviceDescriptionProject.push(projectDescription);
-    console.log('info. ' + this.serviceDescriptionProject);
   }
 
   /* *** delete information *** */
-  delete(serviceDescriptionProject:serviceDescriptionProject){
+  delete(){
     const aLength: number = this.serviceDescriptionProject.length;
     this.serviceDescriptionProject.splice(0, aLength);
-    console.log('info. ' + this.serviceDescriptionProject);
+  }
+
+  /* *** clear information *** */
+  clearInfo(){
+    this.shortDescription = '';
+    this.longDescription =  '';
   }
   
 }

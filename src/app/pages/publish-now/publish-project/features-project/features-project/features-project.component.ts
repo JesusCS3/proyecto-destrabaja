@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeaturesProjectService } from '../services/features-project.service';
 
 @Component({
   selector: 'app-features-project',
@@ -7,9 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturesProjectComponent implements OnInit {
 
-  constructor() { }
+  /* *** variables for features *** */
+  budget: number;
+  deliveryDate: string;
+
+  constructor(
+    private featuresProjectService:FeaturesProjectService
+  ) { }
 
   ngOnInit(): void {
+    /* fill with previously saved values */
+    this.receiveInfo();
+    /* features project */
+    this.featuresProjectService.budgetObservable.subscribe(response => {
+      this.budget = response;
+    });
+
+    this.featuresProjectService.deliveryDateObservable.subscribe(response => {
+      this.deliveryDate = response;
+    });
+  }
+
+  /* fill with previously saved values */
+  receiveInfo(){
+    this.budget = this.featuresProjectService.budget;
+    this.deliveryDate = this.featuresProjectService.deliveryDate;
+  }
+
+  /* send info */
+  sendBudget(budget:any){
+    this.featuresProjectService.budgetData(budget.target.value);
+  }
+
+  sendDeliveryDate(deliveryDate:any){
+    this.featuresProjectService.deliveryDateData(deliveryDate.target.value);
   }
 
 }

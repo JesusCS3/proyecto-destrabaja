@@ -11,15 +11,15 @@
             <div class="col-xl-12">
                 <div class="mb-3 row">
                     <label for="input" class="col-md-5 col-xl-5 col-form-label">Nombre de tu<br>
-                        servicio</label>
+                        proyecto</label>
                     <div class="col-md-7 col-xl-6">
                         <input type="textt" class="form-control" id="nameService" name="nameService"
-                            [(ngModel)]="nameService" (input)="sendNameService($event)" maxlength="45">
+                            [(ngModel)]="nameProject" (input)="sendNameService($event)" maxlength="45">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="input" class="col-md-5 col-xl-5 col-form-label">Hashtags<br>
-                        <span style="font-size: 0.7rem ;">(Palabras clave como: #Clases #Diseño)</span></label>
+                        <span style="font-size: 0.7rem ;">(Palabras clave como: #Arquitectura #Web)</span></label>
                     <div class="col-md-7 col-xl-6">
                         <input type="textt" class="form-control" id="hashtags" name="hashtags" 
                         [(ngModel)]="hashtags" (input)="sendHashtags($event)">
@@ -30,7 +30,7 @@
                 <div class="input-group mb-3">
                     <div class="col-md-6 col-xl-6 mb-3 row">
                         <label for="input" class="col-12 col-md-4 col-xl-5 col-form-label">Categoría del
-                            servicio</label>
+                            proyecto</label>
                         <div class="col-12 col-md-8 col-xl-7">
                             <select class="form-select" aria-label="select category" id="category" name="category"
                                 [(ngModel)]="category" (input)="sendCategory($event)">
@@ -87,7 +87,7 @@
                                     <ng-template #previewVideotemplate>
                                         <div class="previewImageFile">
                                             <div class="previewImageHeader">
-                                                <video [src]="url" *ngIf="format==='video' && url" controls></video>
+                                                <video [src]="url" *ngIf="url" controls></video>
                                             </div>
                                         </div>
                                     </ng-template>

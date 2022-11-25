@@ -3,65 +3,63 @@
         <div class="col-xl-12">
             <div class="row pt-3 p-3">
                 <!-- preview images and video for project-->
-                <div class="col-xl-4">
+                <div class="col-xl-3">
                     <div class="card-service shadow-img">
                         <div class="card-service-header">
-                            <div id="carouselServiceScre" class="carousel slide carousel-fade" data-bs-ride="carousel"
-                                data-bs-pause="hover" *ngIf="previewVideo || previewImg">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active" *ngIf="previewVideo">
-                                        <video [src]="previewVideo" controls
-                                            poster="./assets/img/main/video.svg"></video>
-                                    </div>
-                                    <div class="carousel-item active" *ngIf="previewImg">
-                                        <img [src]="previewImg" alt="preview-img-service">
-                                    </div>
-                                    <div class="carousel-item active" *ngIf="previewImgTwo">
-                                        <img [src]="previewImgTwo" alt="preview-img-service">
-                                    </div>
-                                    <div class="carousel-item active" *ngIf="previewImgThree">
-                                        <img [src]="previewImgThree" alt="preview-img-service">
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselServiceScre" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Anterior</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselServiceScre" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Siguiente</span>
-                                </button>
-                            </div>
+                            <ngb-carousel class="carousel-fade" #carouselProjectCard>
+                                <ng-template ngbSlide *ngIf="previewVideo">
+                                  <div class="picsum-img-wrapper">
+                                    <video [src]="previewVideo" controls poster="./assets/img/main/video.svg"></video>
+                                  </div>
+                                </ng-template>
+                                <ng-template ngbSlide *ngIf="previewImg">
+                                  <div class="picsum-img-wrapper">
+                                    <img [src]="previewImg" alt="preview-img-service" />
+                                  </div>
+                                </ng-template>
+                                <ng-template ngbSlide *ngIf="previewImgTwo">
+                                  <div class="picsum-img-wrapper">
+                                    <img [src]="previewImgTwo" alt="preview-img-service" />
+                                  </div>
+                                </ng-template>
+                                <ng-template ngbSlide *ngIf="previewImgThree">
+                                  <div class="picsum-img-wrapper">
+                                    <img [src]="previewImgThree" alt="preview-img-service" />
+                                  </div>
+                                </ng-template>
+                            </ngb-carousel>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-8" id="shortDescription">
-                    <h5 class="first-color-blue">{{nameService}}</h5>
-                    <p class="second-color-blue">{{shortDescription}}</p>
+                <div class="col-xl-9" id="shortDescription">
+                    <div class="p-3">
+                        <h5 class="first-color-blue"><strong>{{nameProject}}</strong></h5>
+                        <p id="description" class="second-color-blue">{{shortDescription}}</p>
+                    </div>
                 </div>
             </div>
-            <div class="bg-form text-justify m-3" id="longDescription">
+            <div class="bg-form m-3" id="longDescription">
                 <div class="p-3">
-                    <h5 class="pb-3">Descripción completa del proyecto</h5>
-                    <p>{{longDescription}}</p>
+                    <h5 class="pb-3"><strong>Descripción completa del proyecto</strong></h5>
+                    <p>
+                        {{longDescription}}
+                    </p>
                 </div>
             </div>
             <div class="px-3">
                 <div class="row">
                     <div class="col-xl-6" id="features">
                         <div class="bg-form p-3">
-                            <h5>Características del proyecto</h5>
+                            <h5><strong>Características del proyecto</strong></h5>
                             <ul>
-                                <li>Presupuesto de 2,500 pesos mexicanos</li>
-                                <li>Fecha de entrega esperada:14/02/2023</li>
+                                <li>Presupuesto de {{budget| currency:'MNX':'$':'1.0-0'}} pesos mexicanos</li>
+                                <li>Fecha de entrega esperada: {{deliveryDate | date:"dd-MM-yyyy"}}</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-xl-6" id="requirements">
                         <div class="bg-form p-3">
-                            <h5>Requisitos para participar</h5>
+                            <h5><strong>Requisitos para participar</strong></h5>
                             <ul class="align-middle">
                                 <li *ngFor="let requirements of requirementsProject">
                                     {{requirements.requirement}}
