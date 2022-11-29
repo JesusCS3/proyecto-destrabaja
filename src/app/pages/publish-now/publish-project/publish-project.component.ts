@@ -34,23 +34,6 @@ import { ServiceDescriptionProjectService } from './service-description-project/
 			.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
 				border-bottom-color: #fff;
 			}
-      .carousel-control-next, .carousel-control-prev {
-        position: absolute;
-        top: 71px;
-        bottom: 71px;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 15%;
-        padding: 0;
-        color: #fff;
-        text-align: center;
-        background: 0 0;
-        border: 0;
-        opacity: .5;
-        transition: opacity .15s ease;
-      }
 		`,
   ]
 })

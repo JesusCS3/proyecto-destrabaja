@@ -49,38 +49,3 @@
     display: inline-block;
     cursor: pointer;
 }
-
-
-/* ****** preview styles (publish-service and publish-project)****** */
-
-/* customized preview */
-.title-preview{
-    color: #425CC7;
-    font-weight: bold;
-}
-
-/* ****** confirm styles (publish-service and publish-project)****** */
-
-/* customized confirm */
-.title-confirm{
-    color: #425CC7;
-    font-weight: bold;
-}
-
-.publication-star{
-    position: relative;
-}
-
-.publication-card-confirm{
-    position: absolute;
-    top:50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.publication-img{
-    max-width: 100%;
-    height: auto;
-}

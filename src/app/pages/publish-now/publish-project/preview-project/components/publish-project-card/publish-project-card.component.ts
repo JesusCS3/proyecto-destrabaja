@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GeneralInfoProjectService } from '../../../general-info-project/services/general-info-project.service';
 import { ServiceDescriptionProjectService } from '../../../service-description-project/services/service-description-project.service';
-import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-publish-project-card',
@@ -9,9 +8,6 @@ import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./publish-project-card.component.css']
 })
 export class PublishProjectCardComponent implements OnInit {
-
-  /* *** carousel *** */
-  @ViewChild('carouselProjectCard', { static: true }) carouselProjectCard: NgbCarousel;
 
   /* project information to display on the project card */
   previewImg: string;
@@ -24,18 +20,10 @@ export class PublishProjectCardComponent implements OnInit {
   constructor(
     private generalInfoService: GeneralInfoProjectService,
     private serviceDescriptionService: ServiceDescriptionProjectService,
-    config: NgbCarouselConfig
-  ) {
-        /* customize default values of carousels */
-        config.showNavigationIndicators = false;
-        config.interval = 10000;
-        config.pauseOnHover = true;
-        config.pauseOnFocus = true;
-    }
+  ) {}
 
   ngOnInit(): void {
     this.receiveChanges();
-    this.carouselProjectCard.pause();
   }
 
   receiveChanges(){

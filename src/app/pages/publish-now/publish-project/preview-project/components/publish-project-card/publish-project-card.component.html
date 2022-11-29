@@ -2,28 +2,30 @@
 <div class="mt-5">
     <div class="card-service shadow-lg">
         <div class="card-service-header">
-            <ngb-carousel class="carousel-fade" #carouselProjectCard>
-                <ng-template ngbSlide *ngIf="previewVideo">
-                  <div class="picsum-img-wrapper">
-                    <video [src]="previewVideo" controls poster="./assets/img/main/video.svg"></video>
-                  </div>
-                </ng-template>
-                <ng-template ngbSlide *ngIf="previewImg">
-                  <div class="picsum-img-wrapper">
-                    <img [src]="previewImg" alt="preview-img-service" />
-                  </div>
-                </ng-template>
-                <ng-template ngbSlide *ngIf="previewImgTwo">
-                  <div class="picsum-img-wrapper">
-                    <img [src]="previewImgTwo" alt="preview-img-service" />
-                  </div>
-                </ng-template>
-                <ng-template ngbSlide *ngIf="previewImgThree">
-                  <div class="picsum-img-wrapper">
-                    <img [src]="previewImgThree" alt="preview-img-service" />
-                  </div>
-                </ng-template>
-            </ngb-carousel>
+          <div id="carouselProjectCard" class="carousel slide carousel-fade" data-bs-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active" *ngIf="previewVideo">
+                <video [src]="previewVideo" controls poster="./assets/img/main/video.svg"></video>
+              </div>
+              <div class="carousel-item" *ngIf="previewImg">
+                <img [src]="previewImg" alt="preview-img-service" />
+              </div>
+              <div class="carousel-item" *ngIf="previewImgTwo">
+                <img [src]="previewImgTwo" alt="preview-img-service" />
+              </div>
+              <div class="carousel-item" *ngIf="previewImgThree">
+                <img [src]="previewImgThree" alt="preview-img-service" />
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjectCard" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProjectCard" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
         </div>
         <div class="card-service-body">
             <h5>{{nameProject}}</h5>

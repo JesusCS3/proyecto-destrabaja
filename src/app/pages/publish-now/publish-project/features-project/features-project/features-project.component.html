@@ -8,7 +8,14 @@
     <!-- input text for requierements -->
     <div class="row mb-3">
         <div class="col-auto">
-          <label for="budget" class="col-form-label">Tu presupuesto máximo</label>
+          <label for="budget" class="col-form-label pe-2">Tu presupuesto máximo</label>
+          <button type="button" class="question-btn" placement="end"
+          ngbTooltip="El presupuesto acordado con el destrabador estará compuesto de la siguiente manera:
+          La parte que ganará el destrabador que te ayude + comisión por uso de plataforma + comisión por
+          transacción + 16% de IVA. La suma de estos conceptos no superará tu presupuesto máximo." 
+          tooltipClass="my-custom-class">
+          <i class="bi bi-question-circle-fill "></i>
+          </button>
         </div>
         <div class="col-auto">
           <input type="text" id="budget" class="form-control" style="width: 150px ;"
