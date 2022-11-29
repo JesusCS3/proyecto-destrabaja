@@ -19,7 +19,7 @@ import { SlideHomeComponent } from './pages/home-page/components/slide-home/slid
 // landing-page
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 //profile
-import { ProfileSettingsComponent } from './pages/user/profile/profile-settings/profile-settings.component';
+import { ProfileSettingsComponent } from './pages/user/profile/profile-settings/profile-settings/profile-settings.component';
 import { ProfileComponent } from './pages/user/profile/profile.component';
 import { ProfileInformationComponent } from './pages/user/profile/profile-information/profile-information.component';
 import { FavoritesComponent } from './pages/user/profile/favorites/favorites.component';

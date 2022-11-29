@@ -51,8 +51,10 @@ export class GeneralInfoServiceComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
-  constructor(private sanitizer: DomSanitizer,
-    private generalInfoServiceService: GeneralInfoServiceService) { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private generalInfoServiceService: GeneralInfoServiceService
+  ) { }
 
   ngOnInit(): void {
     /* fill with previously saved values */

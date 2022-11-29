@@ -19,7 +19,7 @@ import { ProfileComponent } from './pages/user/profile/profile.component';
 import { ProfileInformationComponent } from './pages/user/profile/profile-information/profile-information.component';
 import { FavoritesComponent } from './pages/user/profile/favorites/favorites.component';
 import { ProjectsComponent } from './pages/user/profile/projects/projects.component';
-import { ProfileSettingsComponent } from './pages/user/profile/profile-settings/profile-settings.component';
+import { ProfileSettingsComponent } from './pages/user/profile/profile-settings/profile-settings/profile-settings.component';
 import { FinanceComponent } from './pages/user/profile/finance/finance.component';
 import { ReferredComponent } from './pages/user/profile/referred/referred.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
