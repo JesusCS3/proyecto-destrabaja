@@ -12,30 +12,33 @@
                                 <div class="img-file">
                                     <p id="text-file">Da clic para agregar tu foto de perfil</p>
                                     <input type="file" id="profileImg" name="profileImg" [(ngModel)]='profileImg'
-                                        accept="image/png, image/jpeg">
+                                        accept="image/png, image/jpeg" (input)="sendProfileImg($event)">
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Nombre"
-                                    [(ngModel)]='name' required>
+                                    [(ngModel)]='name' (input)="sendName($event)" required>
                                 <label for="name">Nombre(s)</label>
                             </div>
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
                                 <input type="text" class="form-control" name="fathersLastName" id="fathersLastName"
-                                    placeholder="Apellido Paterno" [(ngModel)]='fathersLastName' required>
+                                    placeholder="Apellido Paterno" [(ngModel)]='fathersLastName'
+                                    (input)="sendFathersLastName($event)" required>
                                 <label for="fathersLastName">Apellido Paterno</label>
                             </div>
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
                                 <input type="text" class="form-control" name="mothersLastName" id="mothersLastName"
-                                    placeholder="Apellido Materno" [(ngModel)]='mothersLastName' required>
+                                    placeholder="Apellido Materno" [(ngModel)]='mothersLastName'
+                                    (input)="sendMothersLastName($event)" required>
                                 <label for="mothersLastName">Apellido Materno</label>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
-                                <select class="form-select" id="gender" name="gender" required>
+                                <select class="form-select" id="gender" name="gender"
+                                [(ngModel)]="gender" (input)="sendGender($event)" required>
                                     <option selected disabled>Género</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
@@ -45,18 +48,21 @@
                             <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
                                 <label class="pb-2" for="dateBirth">Fecha de nacimiento</label>
                                 <input type="date" class="form-control" name="dateBirth" id="dateBirth"
-                                    placeholder="Fecha de nacimiento" [(ngModel)]='dateBirth' required>
+                                    placeholder="Fecha de nacimiento" [(ngModel)]='dateBirth'
+                                    (input)="sendDateBirth($event)" required>
                             </div>
                             <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="contry" name="contry" required>
+                                <select class="form-select" id="contry" name="contry"
+                                [(ngModel)]="contry" (input)="sendContry($event)" required>
                                     <option selected disabled>País</option>
-                                    <option value="méxico">...</option>
+                                    <option value="México">México</option>
                                 </select>
                             </div>
                             <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="city" name="city" required>
+                                <select class="form-select" id="city" name="city"
+                                [(ngModel)]="city" (input)="sendCity($event)" required>
                                     <option selected disabled>Ciudad</option>
-                                    <option value="hidalgo">...</option>
+                                    <option value="Hidalgo">Hidalgo</option>
                                 </select>
                             </div>
                         </div>
@@ -84,8 +90,12 @@
                     </div>
                 </div>
                 <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
-                    <div class="p-2 bd-highlight"><button class="btn next-btn" type="button">Atras</button></div>
-                    <div class="ms-auto p-2 bd-highlight"><button class="btn next-btn" type="submit">Siguiente</button></div>
+                    <div class="p-2 bd-highlight">
+                        <button class="btn next-btn" type="button" (click)="backFirstPart()">Atrás</button>
+                    </div>
+                    <div class="ms-auto p-2 bd-highlight">
+                        <button class="btn next-btn" type="submit">Siguiente</button>
+                    </div>
                 </div>
             </div>
         </form>
@@ -162,8 +172,12 @@
                     </div>
                 </div>
                 <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
-                    <div class="p-2 bd-highlight"><button class="btn next-btn" type="button">Atras</button></div>
-                    <div class="ms-auto p-2 bd-highlight"><button class="btn next-btn" type="submit">Finalizar</button></div>
+                    <div class="p-2 bd-highlight">
+                        <button class="btn next-btn" type="button" (click)="backSecondPart()">Atrás</button>
+                    </div>
+                    <div class="ms-auto p-2 bd-highlight">
+                        <button class="btn next-btn" type="submit" (click)="clearData()">Finalizar</button>
+                    </div>
                 </div>
             </div>
         </form>

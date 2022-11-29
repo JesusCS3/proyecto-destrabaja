@@ -31,9 +31,6 @@ export class ProfileSettingsComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
-  firstPart = false;
-  secondPart = false;
-
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
@@ -74,34 +71,188 @@ export class ProfileSettingsComponent implements OnInit {
     this.profileSettingsService.cityObservable.subscribe(response => {
       this.city = response;
     });
+
+    this.profileSettingsService.resumeSummaryObservable.subscribe(response => {
+      this.resumeSummary = response;
+    });
+
+    this.profileSettingsService.profileVideoObservable.subscribe(response => {
+      this.profileVideo = response;
+    });
+
+    this.profileSettingsService.resumeSummaryFileObservable.subscribe(response => {
+      this.resumeSummaryFile = response;
+    });
+
+    this.profileSettingsService.previousWorkObservable.subscribe(response => {
+      this.previousWork = response;
+    });
     
   }
 
-  registerFirstPart(): void {
-    const registerFirstPart = {
-      profileImg: this.profileImg,
-      name: this.name,
-      fathersLastName: this.fathersLastName,
-      mothersLastName: this.mothersLastName,
-      gender: this.gender,
-      dateBirth: this.dateBirth,
-      contry: this.contry,
-      city: this.city,
-    }
-    this.firstPart = true;
-    console.log(this.firstPart);
-    console.log(registerFirstPart);
+  /* capture file general info */
+  captureFileImg(event: any) {
+    const capturedFile = event.target.files[0];
+    this.extractBase64(capturedFile).then((img: any) => {
+      this.previewImg = img.base;
+      this.profileSettingsService.previewImgProfileData(this.previewImg);
+    })
+
+    this.files.push(capturedFile);
   }
 
-  registerSecondPart(): void {
-    const registerSecondPart ={
-      resumeSummary: this.resumeSummary
+  extractBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    const unsafeImg = window.URL.createObjectURL($event);
+    const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+    const reader = new FileReader();
+    reader.readAsDataURL($event);
+    reader.onload = () => {
+      resolve({
+        base: reader.result
+      });
+    };
+    reader.onerror = error => {
+      resolve({
+        base: null
+      });
+    };
+  })
+
+  /* prueba para visualizar imagen y video */
+  onSelectFile(event: any) {
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      if (file.type.indexOf('image') > -1) {
+        this.format = 'image';
+      } else if (file.type.indexOf('video') > -1) {
+        this.format = 'video';
+      }
+      reader.onload = (event) => {
+        this.url = (<FileReader>event.target).result;
+        this.profileSettingsService.previewVideoProfileData(this.url);
+      }
     }
+  }
+
+  clearPreviewImgProfile: any;
+  clearPreviewVideoProfile: any;
+  /* delete preview video */
+  deletePreviewVideo() {
+    this.url = '';
+    this.profileVideo = '';
+    this.clearPreviewVideoProfile = this.profileSettingsService.clearPreviewVideoProfile();
+  }
+
+  /* delete preview images */
+  deletePreviewImages() {
+    this.previewImg = '';
+    this.profileImg = '';
+    this.clearPreviewImgProfile = this.profileSettingsService.clearPreviewImgProfile();
+  }
+
+  /* fill with previously saved values */
+  receiveInfo(){
+    this.profileImg = this.profileSettingsService.profileImg;
+    this.name = this.profileSettingsService.name;
+    this.fathersLastName = this.profileSettingsService.fathersLastName;
+    this.mothersLastName = this.profileSettingsService.mothersLastName;
+    this.gender = this.profileSettingsService.gender;
+    this.dateBirth = this.profileSettingsService.dateBirth;
+    this.contry = this.profileSettingsService.contry;
+    this.city = this.profileSettingsService.city;
+    this.resumeSummary = this.profileSettingsService.resumeSummary;
+    this.profileVideo = this.profileSettingsService.profileVideo;
+    this.resumeSummaryFile = this.profileSettingsService.resumeSummaryFile;
+    this.previousWork = this.profileSettingsService.previousWork;
+
+    /* preview */
+    this.previewImg = this.profileSettingsService.previewImgProfile;
+    this.url = this.profileSettingsService.previewVideoProfile;
+  }
+
+  /* send new info */
+  sendProfileImg(profileImg: any) {
+    this.profileSettingsService.profileImgData(profileImg.target.value);
+  }
+
+  sendName(name: any) {
+    this.profileSettingsService.nameData(name.target.value);
+  }
+
+  sendFathersLastName(fathersLastName: any) {
+    this.profileSettingsService.fathersLastNameData(fathersLastName.target.value);
+  }
+
+  sendMothersLastName(mothersLastName: any) {
+    this.profileSettingsService.mothersLastNameData(mothersLastName.target.value);
+  }
+
+  sendGender(gender: any) {
+    this.profileSettingsService.genderData(gender.target.value);
+  }
+
+  sendDateBirth(dateBirth: any) {
+    this.profileSettingsService.dateBirthData(dateBirth.target.value);
+  }
+
+  sendContry(contry: any) {
+    this.profileSettingsService.contryData(contry.target.value);
+  }
+
+  sendCity(city: any) {
+    this.profileSettingsService.cityData(city.target.value);
+  }
+
+  sendResumeSummary(resumeSummary: any) {
+    this.profileSettingsService.resumeSummaryData(resumeSummary.target.value);
+  }
+
+  sendProfileVideo(profileVideo: any) {
+    this.profileSettingsService.profileVideoData(profileVideo.target.value);
+  }
+
+  sendResumeSummaryFile(resumeSummaryFile: any) {
+    this.profileSettingsService.resumeSummaryFileData(resumeSummaryFile.target.value);
+  }
+
+  sendPreviousWork(previousWork: any) {
+    this.profileSettingsService.previousWorkData(previousWork.target.value);
+  }
+
+  /* *** save and proceed to the second part *** */
+  firstPart = false;
+
+  registerFirstPart(): void {
+    this.firstPart = true;
+  }
+
+  /* *** save and proceed to the third part *** */
+  secondPart = false;
+  registerSecondPart(): void {
     this.secondPart = true;
   }
 
+  /* back to first part */
+  backFirstPart(): void {
+    this.firstPart = false;
+  }
+
+  /* *** save and proceed to the profile *** */
   registerThirdPart(): void {
     this.router.navigate(['/profile']);
+  }
+
+  /* back to second part */
+  backSecondPart(): void {
+    this.secondPart = false;
+  }
+
+  clearProfileSettingsInfo:any;
+  clearData(){
+    /* *** profile settings *** */
+    this.clearProfileSettingsInfo = this.profileSettingsService.clearInfo();
   }
 
 }

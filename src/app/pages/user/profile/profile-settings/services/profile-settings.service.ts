@@ -161,12 +161,12 @@ export class ProfileSettingsService {
     this.previewVideoProfile = '';
   }
 
-  clearPreviewImg(){
+  clearPreviewImgProfile(){
     this.previewImgProfile = '';
     this.profileImg = '';
   }
 
-  clearPreviewVideo(){
+  clearPreviewVideoProfile(){
     this.previewVideoProfile = '';
     this.profileVideo = '';
   }
