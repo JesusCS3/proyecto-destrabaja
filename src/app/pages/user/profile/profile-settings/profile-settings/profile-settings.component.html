@@ -8,11 +8,43 @@
                 <div class="row justify-content-center">
                     <div class="row align-items-center col-12 col-md-10 col-lg-12 register">
                         <div class="row justify-content-center col-12 col-md-12 col-lg-4 mb-md-5 mb-5 mb-lg-0">
-                            <div class="img-profile row align-items-center">
-                                <div class="img-file">
-                                    <p id="text-file">Da clic para agregar tu foto de perfil</p>
-                                    <input type="file" id="profileImg" name="profileImg" [(ngModel)]='profileImg'
-                                        accept="image/png, image/jpeg" (input)="sendProfileImg($event)">
+                            <!-- capturing images for profile -->
+                            <div class="previewFile">
+                                <div *ngIf="!previewImg; else previewImgtemplate">
+                                    <div class="img-ico">
+                                        <p>Da clic para agregar tu foto de perfil</p>
+                                    </div>
+                                </div>
+                                <!-- preview images for profile-->
+                                <ng-template #previewImgtemplate>
+                                    <div class="previewImageFile">
+                                        <div class="previewImageHeader">
+                                            <div *ngIf="previewImg">
+                                                <img [src]="previewImg" alt="preview-profile-img" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <!-- buttons to add and delete file -->
+                                <div class="btns-SendFile">
+                                    <div class="btns-file">
+                                        <div class="btn-add">
+                                            <div class="sendFile">
+                                                <i class="bi bi-person-plus-fill add"></i>
+                                                <input type="file" class="addFile" id="profileImg" name="profileImg" 
+                                                [(ngModel)]='profileImg'
+                                                accept="image/*" 
+                                                (input)="sendProfileImg($event)" 
+                                                (change)="captureFileImg($event)">
+                                            </div>
+                                        </div>
+                                        <div class="btn-delete">
+                                            <div class="deleteFile">
+                                                <i class="bi bi-person-dash-fill delete"
+                                                (click)="deletePreviewImages()"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -47,6 +47,7 @@ import { LevelsServiceComponent } from './pages/publish-now/publish-service/leve
 import { ExtrasServiceComponent } from './pages/publish-now/publish-service/extras-service/extras-service/extras-service.component';
 import { RequirementsServiceComponent } from './pages/publish-now/publish-service/requirements-service/requirements-service/requirements-service.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

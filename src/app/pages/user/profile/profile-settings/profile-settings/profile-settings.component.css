@@ -16,6 +16,178 @@
     --bs-btn-disabled-border-color: #425CC7;
 }
 
+/* preview image file */
+
+.previewFile{
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: #54C8E8;
+    background-color: transparent;
+    border: 3px solid #54C8E8;
+}
+
+.img-ico{
+    text-align: center;
+    position: absolute;
+    top: 51%;
+    -webkit-transform: translate(5%, -50%);
+    -moz-transform: translate(5%, -50%);
+    transform: translate(5%, -50%);
+    max-width: 80%;
+}
+
+.img-ico i {
+    font-size: 2rem;
+}
+
+.previewFile:hover{
+    z-index: 1 !important;
+}
+
+.previewImageFile{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.previewImageHeader{
+    max-width: 200px;
+    min-width: 200px;
+}
+
+.previewImageHeader img{
+    height: 200px;
+    max-height: 194px;
+    width: 97%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btns-SendFile{
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: #fff;
+    background: #54C8E8;
+    border-color: #54C8E8;
+    border: 3px solid #54C8E8;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.previewFile:hover > .btns-SendFile {
+    display: block;
+  }
+
+/* buttons to add and delete file */
+
+.btns-file{
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(15%, -50%);
+    -moz-transform: translate(15%, -50%);
+    transform: translate(15%, -50%);
+}
+
+.btn-add{
+    display:inline-block;
+    padding: .5rem;
+}
+
+.btn-delete{
+    display:inline-block;
+    padding: .5rem;
+}
+
+.sendFile{
+    position: relative;
+    padding: auto;
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    color: #fff;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.1);
+}
+
+.add{
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+}
+
+.addFile{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sendFile:hover{
+    color: #54C8E8;
+    background: #fff;
+    border-color: #fff;
+}
+
+.add:hover{
+    color: #54C8E8;
+}
+
+.deleteFile{
+    padding: auto;
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    color: #fff;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.01);
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.1); 
+    cursor: pointer; 
+}
+
+.delete{
+    text-align: center;
+    font-size: 30px;
+    margin: auto;   
+}
+
+.deleteFile:hover{
+    color: #54C8E8;
+    background: #fff;
+    border-color: #fff;
+}
+
+.delete:hover{
+    color: #54C8E8;
+}
+
+/* img profile */
 .img-profile{
     width: 200px;
     height: 200px;
