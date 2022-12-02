@@ -1,13 +1,13 @@
 <section>
-    <div class="container-fluid col-12 col-md-12 col-lg-12 header-space">
-        <div class="col-12 col-md-8 col-lg-11 ms-lg-5 ps-5 pb-3">
-            <h2 class="col-12 col-md-12 col-lg-12 fw-bold first-color-blue px-lg-2 mx-lg-2">Completa tu registro</h2>
-        </div>
-        <div *ngIf="!firstPart; else secondPartTemplate">
-            <form #f="ngForm" novalidate (ngSubmit)="registerFirstPart()">
-                <div class="row justify-content-center">
-                    <div class="row align-items-center col-12 col-md-10 col-lg-12 register">
-                        <div class="row justify-content-center col-12 col-md-12 col-lg-4 mb-md-5 mb-5 mb-lg-0">
+    <div class="container-fluid col-xl-12 header-space">
+        <div class="profile">
+            <div class="col-xl-10 col-md-10 col-10 profile-settings">
+                <div id="title-profile-settings">
+                    <h2><strong>Completa tu registro</strong></h2>
+                </div>
+                <div *ngIf="!firstPart; else secondPartTemplate">
+                    <div class="row align-items-center form-profile">
+                        <div class="col-xl-3 col-md-12">
                             <!-- capturing images for profile -->
                             <div class="previewFile">
                                 <div *ngIf="!previewImg; else previewImgtemplate">
@@ -48,27 +48,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
-                            <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                        <div class="col-xl-4 col-md-6">
+                            <div class=" form-floating mb-3">
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Nombre"
                                     [(ngModel)]='name' (input)="sendName($event)" required>
                                 <label for="name">Nombre(s)</label>
                             </div>
-                            <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <div class=" form-floating mb-3">
                                 <input type="text" class="form-control" name="fathersLastName" id="fathersLastName"
                                     placeholder="Apellido Paterno" [(ngModel)]='fathersLastName'
                                     (input)="sendFathersLastName($event)" required>
                                 <label for="fathersLastName">Apellido Paterno</label>
                             </div>
-                            <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                            <div class=" form-floating mb-3">
                                 <input type="text" class="form-control" name="mothersLastName" id="mothersLastName"
                                     placeholder="Apellido Materno" [(ngModel)]='mothersLastName'
                                     (input)="sendMothersLastName($event)" required>
                                 <label for="mothersLastName">Apellido Materno</label>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4 row justify-content-center">
-                            <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="form-floating mb-3">
                                 <select class="form-select" id="gender" name="gender"
                                 [(ngModel)]="gender" (input)="sendGender($event)" required>
                                     <option selected disabled>Género</option>
@@ -76,34 +76,48 @@
                                     <option value="Femenino">Femenino</option>
                                     <option value="Prefiero no decirlo">Prefiero no decirlo</option>
                                 </select>
+                                <label for="contry">Género</label>
                             </div>
-                            <div class="col-10 col-md-12 col-lg-10 form-floating mb-3">
-                                <label class="pb-2" for="dateBirth">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" name="dateBirth" id="dateBirth"
-                                    placeholder="Fecha de nacimiento" [(ngModel)]='dateBirth'
-                                    (input)="sendDateBirth($event)" required>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="dateBirth" name="dateBirth"
+                                placeholder="Fecha de nacimiento" [(ngModel)]='dateBirth'
+                                (input)="sendDateBirth($event)" required>
+                                <label for="dateBirth">Fecha de nacimiento</label>
                             </div>
-                            <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="contry" name="contry"
-                                [(ngModel)]="contry" (input)="sendContry($event)" required>
-                                    <option selected disabled>País</option>
-                                    <option value="México">México</option>
-                                </select>
-                            </div>
-                            <div class="col-5 col-md-6 col-lg-5 form-floating mb-3">
-                                <select class="form-select" id="city" name="city"
-                                [(ngModel)]="city" (input)="sendCity($event)" required>
-                                    <option selected disabled>Ciudad</option>
-                                    <option value="Hidalgo">Hidalgo</option>
-                                </select>
+                            <div class="row justify-content-center">
+                                <div class="col-xl-6 col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="contry" name="contry"
+                                        [(ngModel)]="contry" (input)="sendContry($event)" required>
+                                          <option selected disabled>País</option>
+                                          <option value="1">México</option>
+                                          <option value="2">Dos</option>
+                                          <option value="3">Tres</option>
+                                        </select>
+                                        <label for="contry">País</label>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="city" name="city"
+                                        [(ngModel)]="city" (input)="sendCity($event)" required>
+                                          <option selected disabled>Ciudad</option>
+                                          <option value="1">Hidalgo</option>
+                                          <option value="2">Dos</option>
+                                          <option value="3">Tres</option>
+                                        </select>
+                                        <label for="city">Ciudad</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end col-10 col-lg-10 pt-5">
-                        <button class="btn next-btn col-3 col-md-3 col-lg-1" type="submit">Siguiente</button>
+                    <div class="next-register">
+                        <button type="button" class="btn next-btn"
+                        (click)="registerFirstPart()">Siguiente</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>
@@ -113,11 +127,14 @@
         <form #f="ngForm" novalidate (ngSubmit)="registerSecondPart()">
             <div class="col-10 col-md-8 col-lg-12 row justify-content-center registerCV">
                 <div class="col-10 col-md-12 col-lg-10">
-                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">Redacta tu hoja de
-                        vida</label><i class="bi bi-question-circle-fill question-btn"></i>
+                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">
+                        Redacta tu hoja de vida
+                    </label>
+                    <i class="bi bi-question-circle-fill question-btn"></i>
                     <div class="form-floating">
                         <textarea class="form-control" name="resumeSummary" id="resumeSummary"
                             placeholder="Redacta de manera breve" [(ngModel)]="resumeSummary"
+                            (input)="sendResumeSummary($event)"
                             maxlength="250"></textarea>
                     </div>
                 </div>
@@ -145,13 +162,34 @@
                                     CV</strong></label>
                             <i class="bi bi-question-circle-fill question-btn"></i>
                         </div>
-                        <div class="ps-3 pb-3">
-                            <img src="./assets/img/user/settings/profile/video.svg" class="img-fluid add-files" alt="video">
+                        <!-- capturing video for profile -->
+                        <div class="previewVideoFile pb-3">
+                            <div *ngIf="!url; else previewVideotemplate">
+                                <div class="ps-3 pb-3">
+                                    <img src="./assets/img/user/settings/profile/video.svg" class="img-fluid" alt="video-profile">
+                                </div>
+                            </div>
+                            <!-- preview video for profile-->
+                            <ng-template #previewVideotemplate>
+                                <div class="previewVideoFile">
+                                    <div class="previewVideoHeader">
+                                        <video [src]="url" *ngIf="url" controls poster="./assets/img/main/video.svg"></video>
+                                    </div>
+                                </div>
+                            </ng-template>
                         </div>
-                        <div class="justify-content-center d-flex flex-row">
+                        <div class="justify-content-center d-flex flex-row pt-3">
                             <div class="col-12 file">
                                 <p id="text-file">Editar</p>
-                                <input type="file" id="send-file" name="send-file" accept="video/*">
+                                <input type="file" id="profileVideo" name="profileVideo"
+                                [(ngModel)]="profileVideo" accept="video/*"
+                                (input)="sendProfileVideo($event)"
+                                (change)="onSelectFile($event)">
+                            </div>
+                            <div class="ps-3">
+                                <button type="button" class="btn btn-see" (click)="deletePreviewVideo()">
+                                    Eliminar
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -171,7 +209,8 @@
                         <div class="justify-content-center d-flex flex-row">
                             <div class="col-12 file">
                                 <p id="text-file">Editar</p>
-                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                                <input type="file" id="resumeSummaryFile" name="resumeSummaryFile" accept="application/pdf"
+                                [(ngModel)]="resumeSummaryFile" (input)="sendResumeSummaryFile($event)">
                             </div>
                             <div class="ps-3">
                                 <button type="button" class="btn btn-see">Ver</button>
@@ -195,7 +234,8 @@
                         <div class="justify-content-center d-flex flex-row">
                             <div class="file">
                                 <p id="text-file">Editar</p>
-                                <input type="file" id="send-file" name="send-file" accept="application/pdf">
+                                <input type="file" id="previousWork" name="previousWork" accept="application/pdf"
+                                [(ngModel)]="previousWork" (input)="sendPreviousWork($event)">
                             </div>
                             <div class="ps-3">
                                 <button type="button" class="btn btn-see">Ver</button>
