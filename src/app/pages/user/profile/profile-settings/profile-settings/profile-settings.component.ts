@@ -59,6 +59,9 @@ export class ProfileSettingsComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
+  /* variables for counting characters */
+  counterResumeSummary = 0;
+
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
@@ -198,6 +201,11 @@ export class ProfileSettingsComponent implements OnInit {
     /* preview */
     this.previewImg = this.profileSettingsService.previewImgProfile;
     this.url = this.profileSettingsService.previewVideoProfile;
+  }
+
+  /* functions for counting characters */
+  resumeSummaryCount(event: any) {
+    this.counterResumeSummary = event.target.value.length;
   }
 
   /* send new info */

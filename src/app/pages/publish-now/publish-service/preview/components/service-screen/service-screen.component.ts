@@ -48,6 +48,27 @@ export class ServiceScreenComponent implements OnInit {
   pricePremiumPlan: number;
   priceClientPremiumPlan: number;
   /* extras */
+  nameExtra:string;
+
+   /* initial plans */
+   initialPlanExtra: boolean = true;
+   deliveryTimeInitialPlanExtra: number;
+   priceInitialPlanExtra: number;
+   priceClientInitialPlanExtra: number;
+
+   /* plus plan */
+   plusPlanExtra: boolean = false;
+   deliveryTimePlusPlanExtra: number;
+   pricePlusPlanExtra: number;
+   priceClientPlusPlanExtra: number;
+ 
+   /* premium plan */
+   premiumPlanExtra: boolean = false;
+   deliveryTimePremiumPlanExtra: number;
+   pricePremiumPlanExtra: number;
+   priceClientPremiumPlanExtra: number;
+
+  //eliminar esta linea despues
   extraService:extraService[] = [];
 
   constructor(
@@ -101,6 +122,25 @@ export class ServiceScreenComponent implements OnInit {
     /* *** deliverables *** */
     this.deliverables = this.deliverableService.deliverables;
     /* *** extras *** */
+    /* name extra */
+    this.nameExtra = this.extraServiceService.nameExtra;
+    /* initial plan */  
+    this.initialPlanExtra = this.extraServiceService.initialPlanExtra;
+    this.deliveryTimeInitialPlanExtra = this.extraServiceService.deliveryTimeInitialPlanExtra;
+    this.priceInitialPlanExtra = this.extraServiceService.priceInitialPlanExtra;
+    this.priceClientInitialPlanExtra = this.extraServiceService.priceClientInitialPlanExtra;
+    /* plus plan */
+    this.plusPlanExtra = this.extraServiceService.plusPlanExtra;
+    this.deliveryTimePlusPlanExtra = this.extraServiceService.deliveryTimePlusPlanExtra;
+    this.pricePlusPlanExtra = this.extraServiceService.pricePlusPlanExtra;
+    this.priceClientPlusPlanExtra = this.extraServiceService.priceClientPlusPlanExtra;
+    /* premium plan */
+    this.premiumPlanExtra = this.extraServiceService.premiumPlanExtra;
+    this.deliveryTimePremiumPlanExtra = this.extraServiceService.deliveryTimePremiumPlanExtra;
+    this.pricePremiumPlanExtra = this.extraServiceService.pricePremiumPlanExtra;
+    this.priceClientPremiumPlanExtra = this.extraServiceService.priceClientPremiumPlanExtra;
+
+    //eliminar esta linea despues
     this.extraService = this.extraServiceService.extraService;
 
   }

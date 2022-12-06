@@ -117,7 +117,7 @@ export class LevelsServiceService {
     this.priceClientPlusPlanSubject.next(priceClientPlusPlan);
   }
 
-  /* *** save information initial plan *** */
+  /* *** save information plus plan *** */
   savePlusPlan(){
     let plusPlanLevel = new plusPlan(this.plusPlanName, this.deliveryTimePlusPlan, this.commentPlusPlan,
       this.pricePlusPlan, this.priceClientPlusPlan);
@@ -176,7 +176,7 @@ export class LevelsServiceService {
     this.priceClientPremiumPlanSubject.next(priceClientPremiumPlan);
   }
 
-  /* *** save information initial plan *** */
+  /* *** save information premium plan *** */
   savePremiumPlan(){
     let premiumPlanLevel = new premiumPlan(this.premiumPlanName, this.deliveryTimePremiumPlan, this.commentPremiumPlan,
       this.pricePremiumPlan, this.priceClientPremiumPlan);

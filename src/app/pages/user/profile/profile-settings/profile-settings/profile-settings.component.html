@@ -7,7 +7,7 @@
                 </div>
                 <div *ngIf="!firstPart; else secondPartTemplate">
                     <div class="row align-items-center form-profile">
-                        <div class="col-xl-3 col-md-12">
+                        <div class="col-xl-3 col-md-12 center-profile-img">
                             <!-- capturing images for profile -->
                             <div class="previewFile">
                                 <div *ngIf="!previewImg; else previewImgtemplate">
@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-4 col-md-5">
                             <div class=" form-floating mb-3">
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Nombre"
                                     [(ngModel)]='name' (input)="sendName($event)" required>
@@ -67,7 +67,7 @@
                                 <label for="mothersLastName">Apellido Materno</label>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-4 col-md-5">
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="gender" name="gender"
                                 [(ngModel)]="gender" (input)="sendGender($event)" required>
@@ -122,36 +122,122 @@
     </div>
 </section>
 
+<div class="container-fluid col-xl-12 header-space">
+    <div class="profile">
+        <div class="col-xl-10 col-md-10 col-10 profile-settings">
+            <div id="title-profile-settings">
+                <h2><strong>Completa tu registro</strong></h2>
+            </div>
+            <div class="row align-items-center form-profile profile-files">
+                <div class="col-xl-6 col-md-12">
+                    <div class="mb-3 resumesummary">
+                        <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
+                            <strong>Agrega tu Video CV</strong>
+                        </label>
+                        <button type="button" class="question-btn" placement="bottom"
+                        ngbTooltip="NOTA: El video CV no deberá pesar más de 50 Mb." 
+                        tooltipClass="my-custom-class">
+                        <i class="bi bi-question-circle-fill "></i>
+                        </button>
+                    </div>
+                    <!-- preview video file -->
+                    <div>
+                        <!-- capturing video for profile -->
+                        <div class="previewFileVideo">
+                            <div *ngIf="!url; else previewVideotemplate">
+                                <div class="video-ico">
+                                    <p>Da clic para agregar tu video CV</p>
+                                </div>
+                            </div>
+                            <!-- preview video for profile-->
+                            <ng-template #previewVideotemplate>
+                                <div class="previewVideoFile">
+                                    <div class="previewVideoHeader">
+                                        <video [src]="url" *ngIf="url" controls></video>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <!-- buttons to add and delete file -->
+                            <div class="btns-SendVideoFile">
+                                <div class="btns-video-file">
+                                    <div class="btn-add-video">
+                                        <div class="sendVideoFile">
+                                            <i class="bi bi-camera-video-fill add-video"></i>
+                                            <input type="file" class="addVideoFile"  id="profileVideo" 
+                                            name="profileVideo"
+                                            [(ngModel)]="profileVideo" accept="video/*"
+                                            (input)="sendProfileVideo($event)"
+                                            (change)="onSelectFile($event)">
+                                        </div>
+                                    </div>
+                                    <div class="btn-delete-video">
+                                        <div class="deleteVideoFile">
+                                            <i class="bi bi-camera-video-off-fill delete-video"
+                                            (click)="deletePreviewVideo()"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6" style="background:#54C8E8">
+                  Una de tres columnas
+                </div>
+                <div class="col-xl-3 col-md-6" style="background:#b742c7">
+                  Una de tres columnas
+                </div>
+            </div>
+            <div class="btns-record">
+                <button class="btn next-btn" type="button" (click)="backSecondPart()">
+                    Atrás
+                </button>
+                <button type="button" class="btn next-btn" (click)="registerThirdPart(); clearData()">
+                    Finalizar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <ng-template #secondPartTemplate>
     <div *ngIf="!secondPart; else thirdTemplate">
-        <form #f="ngForm" novalidate (ngSubmit)="registerSecondPart()">
-            <div class="col-10 col-md-8 col-lg-12 row justify-content-center registerCV">
-                <div class="col-10 col-md-12 col-lg-10">
-                    <label class="me-3 first-color-blue fw-bold mb-3" style="font-size:1.2rem;">
-                        Redacta tu hoja de vida
+        <div class="form-profile">
+            <div class="col-xl-11 col-md-10">
+                <div class="mb-3 resumesummary">
+                    <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
+                        <strong>Redacta tu hoja de vida</strong>
                     </label>
                     <button type="button" class="question-btn" placement="end"
-                    ngbTooltip="Texto de ayuda" 
+                    ngbTooltip="Esto te sirve para explicar cómo tu experiencia y tu visión te ayudarán
+                    a desempeñar con éxito tu trabajo. Recuerda que la carta de presentación debe ser
+                    corta y concisa." 
                     tooltipClass="my-custom-class">
                     <i class="bi bi-question-circle-fill "></i>
                     </button>
-                    <div class="form-floating">
-                        <textarea class="form-control" name="resumeSummary" id="resumeSummary"
-                            placeholder="Redacta de manera breve" [(ngModel)]="resumeSummary"
-                            (input)="sendResumeSummary($event)"
-                            maxlength="250"></textarea>
-                    </div>
-                </div>
-                <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
-                    <div class="p-2 bd-highlight">
-                        <button class="btn next-btn" type="button" (click)="backFirstPart()">Atrás</button>
-                    </div>
-                    <div class="ms-auto p-2 bd-highlight">
-                        <button class="btn next-btn" type="submit">Siguiente</button>
-                    </div>
+                    <textarea class="form-control" id="resumeSummary"
+                    [(ngModel)]="resumeSummary"
+                    (input)="sendResumeSummary($event)"
+                    (keyup)="resumeSummaryCount($event)"
+                    maxlength="1500"></textarea>
                 </div>
             </div>
-        </form>
+        </div>
+        <!-- counting characters for short description -->
+        <div class="count-characters">
+            <div><span>Máximo 1500 caracteres.</span></div>
+            <div #counter>
+                <span>{{counterResumeSummary}} de 1500 caracteres.</span>
+            </div>
+        </div>
+        <div class="btns-record">
+            <button class="btn next-btn" type="button" (click)="backFirstPart()">
+                Atrás
+            </button>
+            <button type="button" class="btn next-btn" (click)="registerSecondPart()">
+                Siguiente
+            </button>
+        </div>
     </div>
 </ng-template>
 

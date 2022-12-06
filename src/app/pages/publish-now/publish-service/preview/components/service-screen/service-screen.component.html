@@ -136,31 +136,31 @@
                             {{priceClientPremiumPlan | currency:'MNX':'$':'1.0-0'}}
                         </td>
                     </tr>
-                    <tr class="align-middle" *ngFor="let extras of extraService">
-                        <th id="extras" scope="row">{{extras.nameExtra}}</th>
-                        <td class="text-center initial text-white" *ngIf="!extras.initialPlanExtra else extrasTemplate">
+                    <tr class="align-middle">
+                        <th id="extras" scope="row">{{nameExtra}}</th>
+                        <td class="text-center initial text-white" *ngIf="!initialPlanExtra else extrasTemplate">
                         </td>
                         <ng-template #extrasTemplate>
                             <td class="text-center initial text-white">
-                                {{extras.deliveryTimeExtra}} <span>días hábiles por </span>
-                                {{extras.priceClientExtra | currency:'MNX':'$':'1.0-0'}}
+                                {{deliveryTimeInitialPlanExtra}} <span>días hábiles por </span>
+                                {{priceClientInitialPlanExtra | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
                         <td class="text-center plus text-white"
-                            *ngIf="!extras.plusPlanExtra && plusPlanName else extrasPlusTemplate"></td>
+                            *ngIf="!plusPlanExtra && plusPlanName else extrasPlusTemplate"></td>
                         <ng-template #extrasPlusTemplate>
-                            <td class="text-center plus text-white" *ngIf="extras.plusPlanExtra && plusPlanName">
-                                {{extras.deliveryTimeExtraPlus}} <span>días hábiles por </span>
-                                {{extras.priceClientExtraPlus | currency:'MNX':'$':'1.0-0'}}
+                            <td class="text-center plus text-white" *ngIf="plusPlanExtra && plusPlanName">
+                                {{deliveryTimePlusPlanExtra}} <span>días hábiles por </span>
+                                {{priceClientPlusPlanExtra | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
                         <td class="text-center premium text-white"
-                            *ngIf="!extras.premiumPlanExtra && premiumPlanName else extrasPremiumTemplate">
+                            *ngIf="!premiumPlanExtra && premiumPlanName else extrasPremiumTemplate">
                         </td>
                         <ng-template #extrasPremiumTemplate>
-                            <td class="text-center premium text-white" *ngIf="extras.premiumPlanExtra && premiumPlanName">
-                                {{extras.deliveryTimeExtraPremium}} <span>días hábiles por </span>
-                                {{extras.priceClientExtraPremium | currency:'MNX':'$':'1.0-0'}}
+                            <td class="text-center premium text-white" *ngIf="premiumPlanExtra && premiumPlanName">
+                                {{deliveryTimePremiumPlanExtra}} <span>días hábiles por </span>
+                                {{priceClientPremiumPlanExtra | currency:'MNX':'$':'1.0-0'}}
                             </td>
                         </ng-template>
                     </tr>

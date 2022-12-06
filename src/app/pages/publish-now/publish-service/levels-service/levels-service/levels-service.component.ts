@@ -52,8 +52,10 @@ export class LevelsServiceComponent implements OnInit {
   priceClientPremiumPlan: number;
 
 
-  constructor(private deliverableService:DeliverablesService, 
-              private levelsServiceService: LevelsServiceService) { }
+  constructor(
+    private deliverableService:DeliverablesService, 
+    private levelsServiceService: LevelsServiceService
+  ) { }
 
   ngOnInit(): void {
     /* fill with previously saved values */
