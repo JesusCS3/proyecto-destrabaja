@@ -169,6 +169,8 @@ export class ProfileSettingsComponent implements OnInit {
 
   clearPreviewImgProfile: any;
   clearPreviewVideoProfile: any;
+  clearCvFile: any;
+  clearPreviousWork: any;
   /* delete preview video */
   deletePreviewVideo() {
     this.url = '';
@@ -181,6 +183,18 @@ export class ProfileSettingsComponent implements OnInit {
     this.previewImg = '';
     this.profileImg = '';
     this.clearPreviewImgProfile = this.profileSettingsService.clearPreviewImgProfile();
+  }
+
+  /* delete cv file */
+  deleteResumeSummaryFile(){
+    this.resumeSummaryFile = '';
+    this.clearCvFile = this.profileSettingsService.clearResumeSummaryFile();
+  }
+
+  /* delete prevoious work */
+  deletePreviousWork(){
+    this.previousWork = '';
+    this.clearPreviousWork = this.profileSettingsService.clearPreviousWork();
   }
 
   /* fill with previously saved values */

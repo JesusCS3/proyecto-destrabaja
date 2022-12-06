@@ -171,4 +171,12 @@ export class ProfileSettingsService {
     this.profileVideo = '';
   }
 
+  clearResumeSummaryFile(){
+    this.resumeSummaryFile = '';
+  }
+
+  clearPreviousWork(){
+    this.previousWork = '';
+  }
+
 }

@@ -6,7 +6,7 @@
                     <h2><strong>Completa tu registro</strong></h2>
                 </div>
                 <div *ngIf="!firstPart; else secondPartTemplate">
-                    <div class="row align-items-center form-profile">
+                    <div class="row align-items-center form-profile pt-5">
                         <div class="col-xl-3 col-md-12 center-profile-img">
                             <!-- capturing images for profile -->
                             <div class="previewFile">
@@ -122,84 +122,6 @@
     </div>
 </section>
 
-<div class="container-fluid col-xl-12 header-space">
-    <div class="profile">
-        <div class="col-xl-10 col-md-10 col-10 profile-settings">
-            <div id="title-profile-settings">
-                <h2><strong>Completa tu registro</strong></h2>
-            </div>
-            <div class="row align-items-center form-profile profile-files">
-                <div class="col-xl-6 col-md-12">
-                    <div class="mb-3 resumesummary">
-                        <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
-                            <strong>Agrega tu Video CV</strong>
-                        </label>
-                        <button type="button" class="question-btn" placement="bottom"
-                        ngbTooltip="NOTA: El video CV no deberá pesar más de 50 Mb." 
-                        tooltipClass="my-custom-class">
-                        <i class="bi bi-question-circle-fill "></i>
-                        </button>
-                    </div>
-                    <!-- preview video file -->
-                    <div>
-                        <!-- capturing video for profile -->
-                        <div class="previewFileVideo">
-                            <div *ngIf="!url; else previewVideotemplate">
-                                <div class="video-ico">
-                                    <p>Da clic para agregar tu video CV</p>
-                                </div>
-                            </div>
-                            <!-- preview video for profile-->
-                            <ng-template #previewVideotemplate>
-                                <div class="previewVideoFile">
-                                    <div class="previewVideoHeader">
-                                        <video [src]="url" *ngIf="url" controls></video>
-                                    </div>
-                                </div>
-                            </ng-template>
-                            <!-- buttons to add and delete file -->
-                            <div class="btns-SendVideoFile">
-                                <div class="btns-video-file">
-                                    <div class="btn-add-video">
-                                        <div class="sendVideoFile">
-                                            <i class="bi bi-camera-video-fill add-video"></i>
-                                            <input type="file" class="addVideoFile"  id="profileVideo" 
-                                            name="profileVideo"
-                                            [(ngModel)]="profileVideo" accept="video/*"
-                                            (input)="sendProfileVideo($event)"
-                                            (change)="onSelectFile($event)">
-                                        </div>
-                                    </div>
-                                    <div class="btn-delete-video">
-                                        <div class="deleteVideoFile">
-                                            <i class="bi bi-camera-video-off-fill delete-video"
-                                            (click)="deletePreviewVideo()"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6" style="background:#54C8E8">
-                  Una de tres columnas
-                </div>
-                <div class="col-xl-3 col-md-6" style="background:#b742c7">
-                  Una de tres columnas
-                </div>
-            </div>
-            <div class="btns-record">
-                <button class="btn next-btn" type="button" (click)="backSecondPart()">
-                    Atrás
-                </button>
-                <button type="button" class="btn next-btn" (click)="registerThirdPart(); clearData()">
-                    Finalizar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <ng-template #secondPartTemplate>
     <div *ngIf="!secondPart; else thirdTemplate">
         <div class="form-profile">
@@ -208,7 +130,7 @@
                     <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
                         <strong>Redacta tu hoja de vida</strong>
                     </label>
-                    <button type="button" class="question-btn" placement="end"
+                    <button type="button" class="question-btn" placement="bottom"
                     ngbTooltip="Esto te sirve para explicar cómo tu experiencia y tu visión te ayudarán
                     a desempeñar con éxito tu trabajo. Recuerda que la carta de presentación debe ser
                     corta y concisa." 
@@ -219,7 +141,7 @@
                     [(ngModel)]="resumeSummary"
                     (input)="sendResumeSummary($event)"
                     (keyup)="resumeSummaryCount($event)"
-                    maxlength="1500"></textarea>
+                    maxlength="1500" required></textarea>
                 </div>
             </div>
         </div>
@@ -243,120 +165,171 @@
 
 <ng-template #thirdTemplate>
     <div>
-        <form #f="ngForm" novalidate (ngSubmit)="registerThirdPart()">
-            <div class="row justify-content-center">
-                <div class="row col-12 col-md-8 col-lg-10">
-                    <div class="col-12 col-md-4 col-lg-5 pb-5 pb-lg-0">
-                        <div style="height: 3.6rem;">
-                            <label class="first-color-blue px-3" style="font-size:1.2rem;">
-                                <strong>Agrega tu Video CV</strong>
-                            </label>
-                            <button type="button" class="question-btn" placement="end"
-                            ngbTooltip="Texto de ayuda" 
-                            tooltipClass="my-custom-class">
-                            <i class="bi bi-question-circle-fill "></i>
-                            </button>
+        <div class="row align-items-start form-profile profile-files">
+            <div class="col-xl-6 col-md-12">
+                <div class="mb-3 resumesummary">
+                    <label for="resumeSummary" id="label-resumeSummary" class="form-label pe-2">
+                        <strong>Agrega tu Video CV</strong>
+                    </label>
+                    <button type="button" class="question-btn" placement="bottom"
+                    ngbTooltip="NOTA: El video CV no deberá pesar más de 50 Mb." 
+                    tooltipClass="my-custom-class">
+                    <i class="bi bi-question-circle-fill "></i>
+                    </button>
+                </div>
+                <!-- preview video file -->
+                <div>
+                    <!-- capturing video for profile -->
+                    <div class="previewFileVideo">
+                        <div *ngIf="!url; else previewVideotemplate">
+                            <div class="video-ico">
+                                <p>Da clic para sleccionar tu video CV</p>
+                            </div>
                         </div>
-                        <!-- capturing video for profile -->
-                        <div class="previewVideoFile pb-3">
-                            <div *ngIf="!url; else previewVideotemplate">
-                                <div class="ps-3 pb-3">
-                                    <img src="./assets/img/user/settings/profile/video.svg" class="img-fluid" alt="video-profile">
+                        <!-- preview video for profile-->
+                        <ng-template #previewVideotemplate>
+                            <div class="previewVideoFile">
+                                <div class="previewVideoHeader">
+                                    <video [src]="url" *ngIf="url" controls></video>
                                 </div>
                             </div>
-                            <!-- preview video for profile-->
-                            <ng-template #previewVideotemplate>
-                                <div class="previewVideoFile">
-                                    <div class="previewVideoHeader">
-                                        <video [src]="url" *ngIf="url" controls poster="./assets/img/main/video.svg"></video>
+                        </ng-template>
+                        <!-- buttons to add and delete file -->
+                        <div class="btns-SendVideoFile">
+                            <div class="btns-video-file">
+                                <div class="btn-add-video">
+                                    <div class="sendVideoFile">
+                                        <i class="bi bi-camera-video-fill add-video"></i>
+                                        <input type="file" class="addVideoFile"  id="profileVideo" 
+                                        name="profileVideo"
+                                        [(ngModel)]="profileVideo" accept="video/*"
+                                        (input)="sendProfileVideo($event)"
+                                        (change)="onSelectFile($event)">
                                     </div>
                                 </div>
-                            </ng-template>
-                        </div>
-                        <div class="justify-content-center d-flex flex-row pt-3">
-                            <div class="col-12 file">
-                                <p id="text-file">Editar</p>
-                                <input type="file" id="profileVideo" name="profileVideo"
-                                [(ngModel)]="profileVideo" accept="video/*"
-                                (input)="sendProfileVideo($event)"
-                                (change)="onSelectFile($event)">
-                            </div>
-                            <div class="ps-3">
-                                <button type="button" class="btn btn-see" (click)="deletePreviewVideo()">
-                                    Eliminar
-                                </button>
+                                <div class="btn-delete-video">
+                                    <div class="deleteVideoFile">
+                                        <i class="bi bi-camera-video-off-fill delete-video"
+                                        (click)="deletePreviewVideo()"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center col-12 col-md-4 col-lg-3 pb-5 pb-lg-0">
-                        <div style="height: 3.6rem;">
-                            <label class="first-color-blue px-3" style="font-size:1.2rem;">
-                                <strong>Agrega tu CV</strong>
-                            </label>
-                            <button type="button" class="question-btn" placement="end"
-                            ngbTooltip="Texto de ayuda" 
-                            tooltipClass="my-custom-class">
-                            <i class="bi bi-question-circle-fill "></i>
-                            </button>
-                        </div>
-                        <div class="row justify-content-center ps-2">
-                            <div class="col-6">
-                                <button type="button" class="btn btn-file">
-                                    <i class="bi bi-paperclip"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="justify-content-center d-flex flex-row">
-                            <div class="col-12 file">
-                                <p id="text-file">Editar</p>
-                                <input type="file" id="resumeSummaryFile" name="resumeSummaryFile" accept="application/pdf"
-                                [(ngModel)]="resumeSummaryFile" (input)="sendResumeSummaryFile($event)">
-                            </div>
-                            <div class="ps-3">
-                                <button type="button" class="btn btn-see">Ver</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center col-12 col-md-4 col-lg-4 pb-5 pb-lg-0">
-                        <div style="height: 3.6rem;">
-                            <label class="first-color-blue px-3 text-center"
-                                style="font-size:1.2rem; width: 15rem;">
-                                <strong>Agrega muestras de tu trabajo previo</strong>
-                            </label>
-                            <button type="button" class="question-btn" placement="end"
-                            ngbTooltip="Texto de ayuda" 
-                            tooltipClass="my-custom-class">
-                            <i class="bi bi-question-circle-fill "></i>
-                            </button>
-                        </div>
-                        <div class="row justify-content-center ps-2">
-                            <div class="col-6">
-                                <button type="button" class="btn btn-file">
-                                    <i class="bi bi-filetype-pdf"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="justify-content-center d-flex flex-row">
-                            <div class="file">
-                                <p id="text-file">Editar</p>
-                                <input type="file" id="previousWork" name="previousWork" accept="application/pdf"
-                                [(ngModel)]="previousWork" (input)="sendPreviousWork($event)">
-                            </div>
-                            <div class="ps-3">
-                                <button type="button" class="btn btn-see">Ver</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex bd-highlight mb-3 col-10 col-lg-10 pt-5">
-                    <div class="p-2 bd-highlight">
-                        <button class="btn next-btn" type="button" (click)="backSecondPart()">Atrás</button>
-                    </div>
-                    <div class="ms-auto p-2 bd-highlight">
-                        <button class="btn next-btn" type="submit" (click)="clearData()">Finalizar</button>
                     </div>
                 </div>
             </div>
-        </form>
+            <div class="col-xl-3 col-md-6">
+                <div class="mb-3 text-center">
+                    <label for="resumeSummaryFile" id="label-resumeSummary-file" class="form-label pe-2">
+                        <strong>Agrega tu CV</strong>
+                    </label>
+                    <button type="button" class="question-btn" placement="bottom"
+                    ngbTooltip="NOTA: El CV debe cargarse en formato PDF." 
+                    tooltipClass="my-custom-class">
+                    <i class="bi bi-question-circle-fill "></i>
+                    </button>
+                </div>
+                <div class="pdf-profile">
+                    <!-- preview cv file -->
+                    <div>
+                        <!-- capturing cv for profile -->
+                        <div class="previewPdfFile">
+                            <div *ngIf="!resumeSummaryFile; else previewCVtemplate">
+                                <i class="bi bi-paperclip" id="clip"></i>
+                                <p id="text-file">CV</p>
+                            </div>
+                            <!-- preview cv for profile-->
+                            <ng-template #previewCVtemplate>
+                                <div>
+                                    <i class="bi bi-filetype-pdf" id="pdf"></i>
+                                    <p id="text-pdf">Agregado</p>
+                                </div>
+                            </ng-template>
+                            <!-- buttons to add and delete file -->
+                            <div class="btns-SendPdfFile">
+                                <div class="btns-pdf-file">
+                                    <div class="btn-add-pdf">
+                                        <div class="sendPdfFile">
+                                            <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
+                                            <input type="file" class="addPdfFile" id="resumeSummaryFile"
+                                                name="resumeSummaryFile"
+                                                [(ngModel)]="resumeSummaryFile" accept="application/pdf"
+                                                (input)="sendResumeSummaryFile($event)">
+                                        </div>
+                                    </div>
+                                    <div class="btn-delete-pdf">
+                                        <div class="deletePdfFile">
+                                            <i class="bi bi-file-earmark-minus-fill delete-pdf"
+                                            (click)="deleteResumeSummaryFile()"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="mb-3 text-center">
+                    <label for="previousWork" id="label-preview-works" 
+                    class="form-label">
+                        <strong>Agrega muestras de tu trabajo previo</strong>
+                        <span type="button" class="question-btn ps-2" placement="bottom"
+                        ngbTooltip="NOTA: Las muestras de tus trabajos previos 
+                        deben cargarse en formato PDF." 
+                        tooltipClass="my-custom-class">
+                        <i class="bi bi-question-circle-fill "></i>
+                    </span>
+                    </label>
+                </div>
+                <div class="pdf-profile">
+                    <!-- preview works file -->
+                    <div>
+                        <!-- capturing preview work for profile -->
+                        <div class="previewPdfFile">
+                            <div *ngIf="!previousWork; else previewCVtemplate">
+                                <i class="bi bi-paperclip" id="clip"></i>
+                                <p id="text-file">Trabajo previo</p>
+                            </div>
+                            <!-- preview works for profile-->
+                            <ng-template #previewCVtemplate>
+                                <div>
+                                    <i class="bi bi-filetype-pdf" id="pdf"></i>
+                                    <p id="text-pdf">Agregado</p>
+                                </div>
+                            </ng-template>
+                            <!-- buttons to add and delete file -->
+                            <div class="btns-SendPdfFile">
+                                <div class="btns-pdf-file">
+                                    <div class="btn-add-pdf">
+                                        <div class="sendPdfFile">
+                                            <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
+                                            <input type="file" class="addPdfFile" id="previousWork"
+                                            name="previousWork" accept="application/pdf"
+                                            [(ngModel)]="previousWork" 
+                                            (input)="sendPreviousWork($event)">
+                                        </div>
+                                    </div>
+                                    <div class="btn-delete-pdf">
+                                        <div class="deletePdfFile">
+                                            <i class="bi bi-file-earmark-minus-fill delete-pdf"
+                                            (click)="deletePreviousWork()"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btns-record">
+            <button class="btn next-btn" type="button" (click)="backSecondPart()">
+                Atrás
+            </button>
+            <button type="button" class="btn next-btn" (click)="registerThirdPart(); clearData()">
+                Finalizar
+            </button>
+        </div>
     </div>
 </ng-template>
