@@ -66,6 +66,7 @@ hr.underline {
 
 .previewImageFile{
     max-width: 150px;
+    min-width: 144px;
     max-height: 97px;
 }
 

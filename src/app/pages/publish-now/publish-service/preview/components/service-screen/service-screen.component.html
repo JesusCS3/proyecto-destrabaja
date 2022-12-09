@@ -61,15 +61,12 @@
                     <tr id="plans">
                         <th data-label="Planes"></th>
                         <th class="initial">
-                            <span>Inicial</span><br>
                             {{initialPlanName}}
                         </th>
                         <th class="plus" *ngIf="plusPlanName">
-                            <span>Plus</span><br>
                             {{plusPlanName}}
                         </th>
                         <th class="premium" *ngIf="premiumPlanName">
-                            <span>Premium</span><br>
                             {{premiumPlanName}}
                         </th>
                     </tr>
@@ -175,7 +172,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="p-3">
+            <div class="p-3 included-info">
                 <ul class="included">
                     <li>
                         <input class="deliverables-included" readonly>
@@ -192,7 +189,7 @@
                 </ul>
             </div>
         </div>
-        <div class="btns-record">
+        <div class="contact-btns">
             <button class="btn preview-btn" type="button" [disabled]="true">
                 Visita mi perfil
             </button>

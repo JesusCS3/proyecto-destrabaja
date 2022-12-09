@@ -628,7 +628,7 @@
 /* *** responsive *** */
 
 /* Small devices (landscape phones, 576px and down) */
-@media (max-width: 576px) {
+@media screen and (max-width: 576px) {
     /* title profile settings */
     .profile-settings #title-profile-settings{
         padding-left: 0;
@@ -656,16 +656,8 @@
     
 }
 
-/* Medium devices (tablets, 768px and down) */
-@media (max-width: 768px) {
-    .logo {
-        width: 60%;
-        height: auto;
-    }
-}
-
 /* Large devices (desktops, 992px and down) */
-@media (max-width: 992px) {
+@media screen and (max-width: 992px) {
     /* center profile image */
     .center-profile-img{
         padding-bottom: 3rem;
@@ -689,13 +681,5 @@
     .count-characters{
         padding-right: 3.5rem;
         padding-left: 3.5rem;
-    }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .logo {
-        width: 60%;
-        height: auto;
     }
 }
