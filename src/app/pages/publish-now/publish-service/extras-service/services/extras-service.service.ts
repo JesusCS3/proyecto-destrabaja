@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { extraService, extraServicePlus, extraServicePremium } from '../models/extras-service.model';
+import { extraService } from '../models/extras-service.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,6 @@ import { extraService, extraServicePlus, extraServicePremium } from '../models/e
 export class ExtrasServiceService {
 
   extraService:extraService[]=[];
-  extraServicePlus:extraServicePlus[]=[];
-  extraServicePremium:extraServicePremium[]=[];
 
   /* *** send information from extras service *** */
 
@@ -24,7 +22,7 @@ export class ExtrasServiceService {
   }
 
   /* *** initial plan *** */
-  initialPlanExtra:boolean;
+  initialPlanExtra:boolean = false;
   private initialPlanExtraSubject = new Subject<boolean>();
   initialPlanExtraObservable = this.initialPlanExtraSubject.asObservable();
 
@@ -60,27 +58,8 @@ export class ExtrasServiceService {
     this.priceClientInitialPlanExtraSubject.next(priceClientInitialPlanExtra);
   }
 
-  /* *** save information initial plan *** */
-  saveExtraService(){
-    let extraServiceInitial = new extraService(this.nameExtra, this.initialPlanExtra, 
-      this.deliveryTimeInitialPlanExtra, this.priceInitialPlanExtra, this.priceClientInitialPlanExtra);
-    this.extraService.push(extraServiceInitial);
-  }
-
-  /* *** delete information *** */
-  deleteExtraService(){
-    const aLength: number = this.extraService.length;
-    this.extraService.splice(0, aLength);
-  }
-
-  /*  delete */
-  delete(extraService:extraService){
-    const index: number = this.extraService.indexOf(extraService);
-    this.extraService.splice(index, 1);
-  }
-
   /* *** plus plan *** */
-  plusPlanExtra:boolean;
+  plusPlanExtra:boolean = false;
   private plusPlanExtraSubject = new Subject<boolean>();
   plusPlanExtraObservable = this.plusPlanExtraSubject.asObservable();
 
@@ -116,28 +95,8 @@ export class ExtrasServiceService {
     this.priceClientPlusPlanExtraSubject.next(priceClientPlusPlanExtra);
   }
 
-  /* *** save information plus plan *** */
-   saveExtraServicePlus(){
-    let extraServicePlusPlan = new extraServicePlus(this.nameExtra, this.plusPlanExtra, 
-      this.deliveryTimePlusPlanExtra, this.pricePlusPlanExtra, this.priceClientPlusPlanExtra);
-    this.extraServicePlus.push(extraServicePlusPlan);
-  }
-
-  /* *** delete information *** */
-  deleteExtraServicePlus(){
-    const aLength: number = this.extraServicePlus.length;
-    this.extraServicePlus.splice(0, aLength);
-  }
-
-  /*  delete */
-  deletePlus(extraServicePlus:extraServicePlus){
-    const index: number = this.extraServicePlus.indexOf(extraServicePlus);
-    this.extraServicePlus.splice(index, 1);
-  }
-
-
   /* *** premium plan *** */
-  premiumPlanExtra:boolean;
+  premiumPlanExtra:boolean = false;
   private premiumPlanExtraSubject = new Subject<boolean>();
   premiumPlanExtraObservable = this.premiumPlanExtraSubject.asObservable();
 
@@ -173,42 +132,59 @@ export class ExtrasServiceService {
     this.priceClientPremiumPlanExtraSubject.next(priceClientPremiumPlanExtra);
   }
 
-  /* *** save information plus plan *** */
-  saveExtraServicePremium(){
-    let extraServicePremiumPlan = new extraServicePremium(this.nameExtra, this.premiumPlanExtra, 
-      this.deliveryTimePremiumPlanExtra, this.pricePremiumPlanExtra, this.priceClientPremiumPlanExtra);
-    this.extraServicePremium.push(extraServicePremiumPlan);
+  /* *** save information *** */
+  saveExtraService(){
+    let extraServiceInfo = new extraService(this.nameExtra, this.initialPlanExtra, 
+      this.deliveryTimeInitialPlanExtra, this.priceInitialPlanExtra, this.priceClientInitialPlanExtra,
+      this.plusPlanExtra, this.deliveryTimePlusPlanExtra, this.pricePlusPlanExtra, 
+      this.priceClientPlusPlanExtra, this.premiumPlanExtra, this.deliveryTimePremiumPlanExtra, 
+      this.pricePremiumPlanExtra, this.priceClientPremiumPlanExtra);
+    this.extraService.push(extraServiceInfo);
   }
 
-  /* *** delete information *** */
-  deleteExtraServicePremium(){
-    const aLength: number = this.extraServicePremium.length;
-    this.extraServicePremium.splice(0, aLength);
+  /* *** edit information *** */
+  updateExtraService(extraServiceExtra:extraService){
+    const index: number = this.extraService.indexOf(extraServiceExtra);
+
+    let extraServiceNewExtra = new extraService(this.nameExtra, this.initialPlanExtra, 
+      this.deliveryTimeInitialPlanExtra, this.priceInitialPlanExtra, this.priceClientInitialPlanExtra,
+      this.plusPlanExtra, this.deliveryTimePlusPlanExtra, this.pricePlusPlanExtra, 
+      this.priceClientPlusPlanExtra, this.premiumPlanExtra, this.deliveryTimePremiumPlanExtra, 
+      this.pricePremiumPlanExtra, this.priceClientPremiumPlanExtra);
+      
+    this.extraService.splice(index, 1, extraServiceNewExtra);
   }
 
-  /*  delete */
-  deletePremium(extraServicePremium:extraServicePremium){
-    const index: number = this.extraServicePremium.indexOf(extraServicePremium);
-    this.extraServicePremium.splice(index, 1);
-  }
+    /* *** delete information *** */
+    deleteExtraService(){
+      const aLength: number = this.extraService.length;
+      this.extraService.splice(0, aLength);
+    }
+  
+    /*  delete */
+    delete(extraService:extraService){
+      const index: number = this.extraService.indexOf(extraService);
+      this.extraService.splice(index, 1);
+    }
+
 
   /* *** clear information *** */
-  clearInfoInitialPlanExtra(){
+    /* clear input and check box to add extra */
+  clearInfo() {
+    this.nameExtra = '';
+
+    /* initial plans */
     this.initialPlanExtra = false;
     this.deliveryTimeInitialPlanExtra = 0;
     this.priceInitialPlanExtra = 0;
     this.priceClientInitialPlanExtra = 0;
-  }
-
-  clearInfoPlusPlanExtra(){
+ 
     /* plus plan */
     this.plusPlanExtra = false;
     this.deliveryTimePlusPlanExtra = 0;
     this.pricePlusPlanExtra = 0;
     this.priceClientPlusPlanExtra = 0;
-  }
-
-  clearInfoPremiumPlanExtra(){
+  
     /* premium plan */
     this.premiumPlanExtra = false;
     this.deliveryTimePremiumPlanExtra = 0;

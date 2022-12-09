@@ -51,41 +51,105 @@
 }
 
 /* customized service-screen */
+.service-screen p {
+    color: #54C8E8;
+    text-align: justify;
+    font-size: 0.8rem;
+}
 
-.service-screen input {
-    border: none;
-    border: 3px solid #54C8E8;
+/* *** included *** */
+.included{
+    padding-left: 0;
+    list-style: none;
+}
+
+.included span{
     color: #425CC7;
+}
+
+.deliverables-included{
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    border-radius: 0.5rem;
     outline: none;
     box-shadow: none;
+    background-color: #425CC7;
 }
 
-.service-screen table {
-    border-radius: 2rem;
+.features-included{
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    box-shadow: none;
+    background-color: #FF4713;
+}
+
+.extras-included{
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    box-shadow: none;
+    background-color: #FFC600;
+}
+
+
+
+/* *** table styles *** */
+.table-info{
+    width: 100%;
+    margin: auto;
+}
+
+.table-service-screen{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
     table-layout: fixed;
-    width: 250px;
 }
 
-.service-screen thead {
+.table-service-screen #plans{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.table-service-screen thead{
+    vertical-align: baseline;
+    text-align: center;
+    color: #425CC7;
+    font-weight: bold;
     border-bottom: 1px solid #8edef2;
 }
 
-.service-screen tbody {
-    border: 1px solid #8edef2;
-}
-
-.service-screen th {
+.table-service-screen th{
     color: #425CC7;
+    font-weight: bold;
 }
 
-.service-screen th, .service-screen td {
-    width: 132px;
-    word-wrap: break-word;
+.table-service-screen tr{
+    border: 1px solid #8edef2;
+    vertical-align: middle;
 }
 
-.service-screen #plan {
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
+.table-service-screen th, .table-service-screen td{
+    padding: 0.5rem;
+}
+
+.deliverables{
+    border-left:10px solid #425CC7;
+}
+
+.features{
+    border-left: 10px solid #FF4713;
+}
+
+.extras-service{
+    border-left:10px solid #FFC600;
 }
 
 .initial {
@@ -100,65 +164,64 @@
     background-color: #21145F;
 }
 
-.service-screen h5, #included {
-    color: #425CC7;
+/* customized check box */
+.form-check-input {
+    border: none !important;
+    background-color: transparent !important;
+    font-size: 2rem !important;
 }
 
-.service-screen p {
-    color: #54C8E8;
+.form-check-input:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: 1;
+}
+
+.form-check-input:checked {
+    background-color: transparent !important;
+    border-color: #0d6efd;
+}
+
+.table-service-screen #plans th{
+    color: #fff;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+.table-service-screen #deliverables td{
+    text-align: center;
+}
+
+.table-service-screen #features td, .table-service-screen #prices td{
+    color: #fff;
+    text-align: center;
+}
+
+.table-service-screen #comments td, .table-service-screen #extras td{
+    color: #fff;
     text-align: justify;
-    font-size: 0.8rem;
 }
 
-.service-screen #deliverableName{
-    border-left:10px solid #425CC7;
-    color: #425CC7;
+.table-service-screen #comments td{
+    vertical-align: baseline;
 }
 
-.service-screen #features{
-    border-left:10px solid #FF4713;
-    color: #425CC7;
+.table-service-screen #btns td{
+    text-align: center;
 }
 
-.service-screen #extras{
-    border-left:10px solid #FFC600;
-    color: #425CC7;
+/* next and back profile record */
+.btns-record{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-bottom: 1.5rem;
 }
 
-.service-screen #deliverables-included{
-    width: 1rem;
-    height: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    outline: none;
-    box-shadow: none;
-    background-color: #425CC7;
-}
-
-.service-screen #features-included{
-    width: 1rem;
-    height: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    outline: none;
-    box-shadow: none;
-    background-color: #FF4713;
-}
-
-.service-screen #extras-included{
-    width: 1rem;
-    height: 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    outline: none;
-    box-shadow: none;
-    background-color: #FFC600;
-}
-
-/* prueba */
-.verticalText {
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
+.btns-record button{
+    margin: 1rem;
 }
 
 /* custom buy button */
@@ -180,24 +243,6 @@
     --bs-btn-disabled-border-color: #fff;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
     box-shadow: none;
-}
-
-/* customized check box */
-.form-check-input {
-    border: none !important;
-    background-color: transparent !important;
-    font-size: 2rem !important;
-}
-
-.form-check-input:disabled {
-    pointer-events: none;
-    filter: none;
-    opacity: 1;
-}
-
-.form-check-input:checked {
-    background-color: transparent !important;
-    border-color: #0d6efd;
 }
 
 /* custom modal button */
@@ -279,5 +324,47 @@
     box-shadow: none;
     transform: translate(-110%,10%) !important;
     z-index: 2000;
+}
+
+/* *** responsive *** */
+
+/* Small devices (landscape phones, 600px and down) */
+@media screen and (max-width: 600px) {
+    .table-service-screen{
+        border: 0px;
+    } 
+
+    .table-service-screen th{
+        display: block;
+    }
+    
+    .table-service-screen tr{
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .table-service-screen td{
+        display: block;
+    }
+
+    .table-service-screen td::before, .table-service-screen th::before{
+        content: attr(data-label);
+        font-weight: bold;
+        color: #425dc757;
+    }
+
+    .table-service-screen #plans th{
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    /* contact btns */
+    .btns-record{
+        display: block;
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
 }
 

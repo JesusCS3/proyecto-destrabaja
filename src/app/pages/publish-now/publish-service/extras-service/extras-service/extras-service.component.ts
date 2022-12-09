@@ -1,4 +1,3 @@
-import { initialPlan } from './../../levels-service/models/levels-service/levels-service.model';
 import { Component, OnInit } from '@angular/core';
 import { extraService } from '../models/extras-service.model';
 import { ExtrasServiceService } from '../services/extras-service.service';
@@ -13,10 +12,6 @@ export class ExtrasServiceComponent implements OnInit {
   /***** variables for save information *****/
   extraService:extraService[] = [];
 
-  /* variables for extras */
-
-  extraInput:string;
-
   /* disabled price inputs */
   readOnlyPriceClientExtra:boolean = false;
   readOnlyPriceExtra:boolean = false;
@@ -25,42 +20,24 @@ export class ExtrasServiceComponent implements OnInit {
   readOnlyPricePremiumClientExtra:boolean = false;
   readOnlyPricePremiumExtra:boolean = false;
 
-  /* *** initial plan *** */
-  checkboxInitialPlanExtra: boolean;
-  deliveryTimeExtra: number;
-  priceExtra: number;
-  priceClientExtra: number;
-
-  /* *** plus plan *** */
-  checkboxPlusPlanExtra: boolean = false;
-  deliveryTimeExtraPlus: number;
-  priceExtraPlus: number;
-  priceClientExtraPlus: number;
-
-  /* *** premium plan *** */
-  checkboxPremiumPlanExtra: boolean = false;
-  deliveryTimeExtraPremium: number;
-  priceExtraPremium: number;
-  priceClientExtraPremium: number;
-
-   /* variables for extras service */
+  /* variables for extras service */
 
    nameExtra:string;
 
    /* initial plans */
-   initialPlanExtra: boolean = true;
+   initialPlanExtra: boolean;
    deliveryTimeInitialPlanExtra: number;
    priceInitialPlanExtra: number;
    priceClientInitialPlanExtra: number;
 
    /* plus plan */
-   plusPlanExtra: boolean = false;
+   plusPlanExtra: boolean;
    deliveryTimePlusPlanExtra: number;
    pricePlusPlanExtra: number;
    priceClientPlusPlanExtra: number;
  
    /* premium plan */
-   premiumPlanExtra: boolean = false;
+   premiumPlanExtra: boolean;
    deliveryTimePremiumPlanExtra: number;
    pricePremiumPlanExtra: number;
    priceClientPremiumPlanExtra: number;
@@ -71,6 +48,8 @@ export class ExtrasServiceComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.actualizarInfo();
 
     //eliminar despues esta linea
     this.extraService = this.extrasServiceService.extraService;
@@ -185,8 +164,8 @@ export class ExtrasServiceComponent implements OnInit {
 
   /* send info initial plan extra */
 
-  sendInitialPlanExtra(initialPlanExtra: any) {
-    this.extrasServiceService.initialPlanExtraData(initialPlanExtra.target.value);
+  sendInitialPlanExtra() {
+    this.extrasServiceService.initialPlanExtraData(this.initialPlanExtra);
   }
 
   sendDeliveryTimeInitialPlanExtra(deliveryTimeInitialPlanExtra: any) {
@@ -203,8 +182,8 @@ export class ExtrasServiceComponent implements OnInit {
 
   /* send info plus plan extra*/
 
-  sendPlusPlanExtra(plusPlanExtra: any) {
-    this.extrasServiceService.plusPlanExtraData(plusPlanExtra.target.value);
+  sendPlusPlanExtra() {
+    this.extrasServiceService.plusPlanExtraData(this.plusPlanExtra);
   }
 
   sendDeliveryTimePlusPlanExtra(deliveryTimePlusPlanExtra: any) {
@@ -221,8 +200,8 @@ export class ExtrasServiceComponent implements OnInit {
 
   /* send info premium plan extra*/
 
-  sendPremiumPlanExtra(premiumPlanExtra: any) {
-    this.extrasServiceService.premiumPlanExtraData(premiumPlanExtra.target.value);
+  sendPremiumPlanExtra() {
+    this.extrasServiceService.premiumPlanExtraData(this.premiumPlanExtra);
   }
 
   sendDeliveryTimePremiumPlanExtra(deliveryTimePremiumPlanExtra: any) {
@@ -241,6 +220,7 @@ export class ExtrasServiceComponent implements OnInit {
   clientPriceInitialPlanExtra(){
     if(this.priceInitialPlanExtra != undefined){
       this.priceClientInitialPlanExtra = Math.ceil(this.priceInitialPlanExtra * 1.376263);
+      this.extrasServiceService.priceClientInitialPlanExtraData(this.priceClientInitialPlanExtra);
       this.readOnlyPriceClientExtra = true;
     }
 
@@ -252,6 +232,7 @@ export class ExtrasServiceComponent implements OnInit {
   clientPricePlusPlanExtra(){
     if(this.pricePlusPlanExtra != undefined){
       this.priceClientPlusPlanExtra = Math.ceil(this.pricePlusPlanExtra * 1.376263);
+      this.extrasServiceService.priceClientPlusPlanExtraData(this.priceClientPlusPlanExtra);
       this.readOnlyPricePlusClientExtra = true;
     }
 
@@ -263,6 +244,7 @@ export class ExtrasServiceComponent implements OnInit {
   clientPricePremiumPlanExtra(){
     if(this.pricePremiumPlanExtra != undefined){
       this.priceClientPremiumPlanExtra = Math.ceil(this.pricePremiumPlanExtra * 1.376263);
+      this.extrasServiceService.priceClientPremiumPlanExtraData(this.priceClientPremiumPlanExtra);
       this.readOnlyPricePremiumClientExtra = true;
     }
 
@@ -275,6 +257,7 @@ export class ExtrasServiceComponent implements OnInit {
   priceExtraInitialPlan(){
     if(this.priceClientInitialPlanExtra != undefined){
       this.priceInitialPlanExtra = Math.ceil(this.priceClientInitialPlanExtra / 1.376263);
+      this.extrasServiceService.priceInitialPlanExtraData(this.priceInitialPlanExtra);
       this.readOnlyPriceExtra = true;
     }
 
@@ -286,6 +269,7 @@ export class ExtrasServiceComponent implements OnInit {
   priceExtraPlusPlan(){
     if(this.priceClientPlusPlanExtra != undefined){
       this.pricePlusPlanExtra = Math.ceil(this.priceClientPlusPlanExtra / 1.376263);
+      this.extrasServiceService.pricePlusPlanExtraData(this.pricePlusPlanExtra);
       this.readOnlyPricePlusExtra = true;
     }
 
@@ -297,6 +281,7 @@ export class ExtrasServiceComponent implements OnInit {
   priceExtraPremiumPlan(){
     if(this.priceClientPremiumPlanExtra != undefined){
       this.pricePremiumPlanExtra = Math.ceil(this.priceClientPremiumPlanExtra / 1.376263);
+      this.extrasServiceService.pricePremiumPlanExtraData(this.pricePremiumPlanExtra);
       this.readOnlyPricePremiumExtra = true;
     }
 
@@ -305,18 +290,68 @@ export class ExtrasServiceComponent implements OnInit {
     }
   }
 
+  /* *** save information *** */
+  saveInfoExtraService:any;
+
+  saveExtraService(){
+    this.saveInfoExtraService = this.extrasServiceService.saveExtraService();
+    console.log(this.initialPlanExtra);
+  }
+
+  /* *** update info *** */
+  
+  updateInfo(extraServiceUpdate:extraService){
+    const index: number = this.extraService.indexOf(extraServiceUpdate);
+
+    for(let extras of this.extraService){
+      let extraServiceNewExtra = new extraService(extras.nameExtra, extras.initialPlanExtra, 
+        extras.deliveryTimeExtra, extras.priceExtra, extras.priceClientExtra,
+        extras.plusPlanExtra, extras.deliveryTimeExtraPlus, extras.priceExtraPlus, 
+        extras.priceClientExtraPlus, extras.premiumPlanExtra, extras.deliveryTimeExtraPremium, 
+        extras.priceExtraPremium, extras.priceClientExtraPremium);
+        
+      this.extraService.splice(index, 1, extraServiceNewExtra);
+      console.log(extras);
+      console.log(index);
+    }
+  }
+
+  /* save extra information */
+  addExtra(){
+    this.extrasServiceService.extraService.push(new extraService(this.nameExtra, this.initialPlanExtra, 
+      this.deliveryTimeInitialPlanExtra, this.priceInitialPlanExtra, this.priceClientInitialPlanExtra,
+      this.plusPlanExtra, this.deliveryTimePlusPlanExtra, this.pricePlusPlanExtra, 
+      this.priceClientPlusPlanExtra, this.premiumPlanExtra, this.deliveryTimePremiumPlanExtra, 
+      this.pricePremiumPlanExtra, this.priceClientPremiumPlanExtra));
+  }
+
   /* *** clear information *** */
-  clearInfoPlusPlanExtra: any;
-  clearInfoPremiumPlanExtra: any;
 
-  clearInfoPlus(){
-    this.clearInfoPlusPlanExtra = this.extrasServiceService.clearInfoPlusPlanExtra(); 
+  clearInfoExtra: any;
+  clearInfo(){
+    this.nameExtra = '';
+
+    /* initial plans */
+    this.initialPlanExtra = false;
+    this.deliveryTimeInitialPlanExtra = 0;
+    this.priceInitialPlanExtra = 0;
+    this.priceClientInitialPlanExtra = 0;
+ 
+    /* plus plan */
+    this.plusPlanExtra = false;
+    this.deliveryTimePlusPlanExtra = 0;
+    this.pricePlusPlanExtra = 0;
+    this.priceClientPlusPlanExtra = 0;
+  
+    /* premium plan */
+    this.premiumPlanExtra = false;
+    this.deliveryTimePremiumPlanExtra = 0;
+    this.pricePremiumPlanExtra = 0;
+    this.priceClientPremiumPlanExtra = 0; 
+
+    /* clear info on service */
+    this.clearInfoExtra = this.extrasServiceService.clearInfo();
   }
-
-  clearInfoPremium(){
-    this.clearInfoPremiumPlanExtra = this.extrasServiceService.clearInfoPremiumPlanExtra(); 
-  }
-
 
   /* extra funciones antes de modificacion  */
 
@@ -327,97 +362,12 @@ export class ExtrasServiceComponent implements OnInit {
     this.extrasServiceService.delete(extraService);
   }
 
-  /* save extra information 
-  addExtra(){
-    this.extrasServiceService.extraService.push(new extraService(this.extraInput, this.checkboxInitialPlanExtra,
-      this.deliveryTimeExtra, this.priceExtra, this.priceClientExtra, this.checkboxPlusPlanExtra,
-      this.deliveryTimeExtraPlus, this.priceExtraPlus, this.priceClientExtraPlus, this.checkboxPremiumPlanExtra,
-      this.deliveryTimeExtraPremium, this.priceExtraPremium, this.priceClientExtraPremium));
-  }
+  actualizarInfo(){
+    var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
+    var removed = myFish.splice(0, 4, 'parrot', 'anemone', 'blue');
 
-  /* clear input and check box to add extra */
-  clear() {
-    this.extraInput = '';
-    this.checkboxInitialPlanExtra = false;
-    this.deliveryTimeExtra = 0; 
-    this.priceExtra = 0; 
-    this.priceClientExtra = 0; 
-    this.checkboxPlusPlanExtra = false;
-    this.deliveryTimeExtraPlus = 0; 
-    this.priceExtraPlus = 0; 
-    this.priceClientExtraPlus = 0; 
-    this.checkboxPremiumPlanExtra = false;
-    this.deliveryTimeExtraPremium = 0; 
-    this.priceExtraPremium = 0; 
-    this.priceClientExtraPremium = 0; 
-  }
-
-  /* calculate the customer price */
-  clientPriceExtra(){
-    if(this.priceExtra != undefined){
-      this.priceClientExtra = Math.ceil(this.priceExtra * 1.3625);
-      this.readOnlyPriceClientExtra = true;
-    }
-
-    if(this.priceClientExtra === 0){
-      this.readOnlyPriceClientExtra = false;
-    }
-  }
-
-  clientPricePlusExtra(){
-    if(this.priceExtraPlus != undefined){
-      this.priceClientExtraPlus = Math.ceil(this.priceExtraPlus * 1.3625);
-      this.readOnlyPricePlusClientExtra = true;
-    }
-
-    if(this.priceClientExtraPlus === 0){
-      this.readOnlyPricePlusClientExtra = false;
-    }
-  }
-
-  clientPricePremiumExtra(){
-    if(this.priceExtraPremium != undefined){
-      this.priceClientExtraPremium = Math.ceil(this.priceExtraPremium * 1.3625);
-      this.readOnlyPricePremiumClientExtra = true;
-    }
-
-    if(this.priceClientExtraPremium === 0){
-      this.readOnlyPricePremiumClientExtra = false;
-    }
-  }
-
-  /* calculate price */
-  priceExtraInitial(){
-    if(this.priceClientExtra != undefined){
-      this.priceExtra = Math.ceil(this.priceClientExtra * 0.733944495);
-      this.readOnlyPriceExtra = true;
-    }
-
-    if(this.priceExtra === 0){
-      this.readOnlyPriceExtra = false;
-    }
-  }
-
-  pricePlusExtra(){
-    if(this.priceClientExtraPlus != undefined){
-      this.priceExtraPlus = Math.ceil(this.priceClientExtraPlus * 0.733944495);
-      this.readOnlyPricePlusExtra = true;
-    }
-
-    if(this.priceExtraPlus === 0){
-      this.readOnlyPricePlusExtra = false;
-    }
-  }
-
-  pricePremiumExtra(){
-    if(this.priceClientExtraPremium != undefined){
-      this.priceExtraPremium = Math.ceil(this.priceClientExtraPremium *  0.733944495);
-      this.readOnlyPricePremiumExtra = true;
-    }
-
-    if(this.priceExtraPremium === 0){
-      this.readOnlyPricePremiumExtra = false;
-    }
+    console.log('original: ' + myFish);
+    console.log('removido: ' + removed);
   }
   
 }
