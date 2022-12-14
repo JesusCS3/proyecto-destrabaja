@@ -464,11 +464,15 @@
     border-radius: 1.5rem;
 }
 
-.previewPdfFile #clip, .previewPdfFile #pdf{
+.previewPdfFile #clip{
     font-size: 2rem;
 }
 
-.previewPdfFile #pdf, .previewPdfFile #text-pdf{
+.previewPdfFile #pdf{
+    width: 2rem;
+}
+
+.previewPdfFile #text-pdf{
     color:#FF4713;
 }
 

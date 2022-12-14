@@ -1,7 +1,7 @@
-/* ****** general info styles (publish-service and publish-project) ****** */
+/* ****** general info styles ****** */
 
 /* customized hr */
-hr.underline {
+hr {
     border: 1px solid #54C8E8;
     opacity: 1;
 }
