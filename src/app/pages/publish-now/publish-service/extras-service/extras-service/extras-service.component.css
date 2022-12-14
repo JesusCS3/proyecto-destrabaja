@@ -79,6 +79,10 @@ hr {
     padding-left: 0.5rem;
 }
 
+.extras-table #nameExtraPreview{
+    width: 76%;
+}
+
 /* customized delete extra */
 
 .element {
@@ -141,6 +145,26 @@ hr {
     --bs-btn-disabled-border-color: #425CC7;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem #425CC7;
     box-shadow: none;
+}
+
+/* delete extra btn */
+.delete-extra-btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #425CC7;
+    padding: .2rem;
+}
+
+/* edit extra btn */
+.edit-extra-btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #425CC7;
+    padding: .2rem;
 }
 
 /* *** responsive *** */

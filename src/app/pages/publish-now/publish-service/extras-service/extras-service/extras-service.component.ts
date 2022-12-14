@@ -42,6 +42,9 @@ export class ExtrasServiceComponent implements OnInit {
    pricePremiumPlanExtra: number;
    priceClientPremiumPlanExtra: number;
 
+   /* edit extras */
+  editExtras: boolean = false;
+
 
   constructor(
     private extrasServiceService:ExtrasServiceService
@@ -299,6 +302,10 @@ export class ExtrasServiceComponent implements OnInit {
   }
 
   /* *** update info *** */
+
+  editExtrasInfo(){
+    this.editExtras = true;
+  }
   
   updateInfo(extraServiceUpdate:extraService){
     const index: number = this.extraService.indexOf(extraServiceUpdate);
@@ -314,6 +321,10 @@ export class ExtrasServiceComponent implements OnInit {
       console.log(extras);
       console.log(index);
     }
+  }
+
+  cancelEdit(){
+    this.editExtras = false;
   }
 
   /* save extra information */

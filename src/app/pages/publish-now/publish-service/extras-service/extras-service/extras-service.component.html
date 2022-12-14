@@ -15,9 +15,9 @@
         <thead>
             <tr>
                 <th></th>
-                <th>Inicial</th>
-                <th>Plus</th>
-                <th>Premium</th>
+                <th>Plan 1</th>
+                <th>Plan 2</th>
+                <th>Plan 3</th>
             </tr>
         </thead>
         <tbody>
@@ -27,19 +27,19 @@
                         placeholder="Nombre de tu extra" maxlength="30" [(ngModel)]="nameExtra"
                         (input)="sendNameExtra($event)">
                 </th>
-                <td data-label="Inicial">
+                <td data-label="Plan 1">
                     <div>
                         <input class="form-check-input" type="checkbox" id="initialPlanExtra" name="initialPlanExtra"
                             [(ngModel)]="initialPlanExtra" (change)="sendInitialPlanExtra()">
                     </div>
                 </td>
-                <td data-label="Plus">
+                <td data-label="Plan 2">
                     <div>
                         <input class="form-check-input" type="checkbox" id="plusPlanExtra" name="plusPlanExtra"
                             [(ngModel)]="plusPlanExtra" (change)="sendPlusPlanExtra()">
                     </div>
                 </td>
-                <td data-label="Premium">
+                <td data-label="Plan 3">
                     <div>
                         <input class="form-check-input" type="checkbox" id="premiumPlanExtra" name="premiumPlanExtra"
                             [(ngModel)]="premiumPlanExtra" (change)="sendPremiumPlanExtra()">
@@ -48,7 +48,7 @@
             </tr>
             <tr id="deliveryTime">
                 <th>Tiempo de entrega</th>
-                <td data-label="Inicial">
+                <td data-label="Plan 1">
                     <div>
                         <input class="extras-input" type="text" name="deliveryTimeInitialPlanExtra" id="deliveryTimeInitialPlanExtra"
                             maxlength="3" [(ngModel)]="deliveryTimeInitialPlanExtra"
@@ -57,7 +57,7 @@
                     </div>
                     
                 </td>
-                <td data-label="Plus">
+                <td data-label="Plan 2">
                     <div>
                         <input class="extras-input" type="text" name="deliveryTimePlusPlanExtra" id="deliveryTimePlusPlanExtra" maxlength="3"
                             [(ngModel)]="deliveryTimePlusPlanExtra" (input)="sendDeliveryTimePlusPlanExtra($event)"
@@ -65,7 +65,7 @@
                         <label for="deliveryTimePlusPlanExtra" id="labelDeliveryTimePlusPlanExtra">días hab.</label>
                     </div>
                 </td>
-                <td data-label="Premium">
+                <td data-label="Plan 3">
                     <div>
                         <input class="extras-input" type="text" name="deliveryTimePremiumPlanExtra" id="deliveryTimePremiumPlanExtra"
                             maxlength="3" [(ngModel)]="deliveryTimePremiumPlanExtra"
@@ -78,19 +78,19 @@
                 <th>¿Cuánto quieres ganar por
                     este extra?<span>(en pesos mexicanos)</span>
                 </th>
-                <td data-label="Inicial">
+                <td data-label="Plan 1">
                     <input class="extras-input" type="text" name="priceInitialPlanExtra" id="priceInitialPlanExtra"
                         [(ngModel)]="priceInitialPlanExtra" (input)="sendPriceInitialPlanExtra($event)"
                         (keyup)="clientPriceInitialPlanExtra()" [value]="priceInitialPlanExtra"
                         [disabled]="initialPlanExtra === false || readOnlyPriceExtra" maxlength="9">
                 </td>
-                <td data-label="Plus">
+                <td data-label="Plan 2">
                     <input class="extras-input" type="text" name="pricePlusPlanExtra" id="pricePlusPlanExtra"
                         [(ngModel)]="pricePlusPlanExtra" (input)="sendPricePlusPlanExtra($event)"
                         [disabled]="plusPlanExtra === false || readOnlyPricePlusExtra"
                         (keyup)="clientPricePlusPlanExtra()" [value]="pricePlusPlanExtra" maxlength="9">
                 </td>
-                <td data-label="Premium">
+                <td data-label="Plan 3">
                     <input class="extras-input" type="text" name="pricePremiumPlanExtra" id="pricePremiumPlanExtra"
                         [(ngModel)]="pricePremiumPlanExtra" (input)="sendPricePremiumPlanExtra($event)"
                         [disabled]="premiumPlanExtra === false || readOnlyPricePremiumExtra"
@@ -99,21 +99,21 @@
             </tr>
             <tr>
                 <th>Precio que verá el cliente</th>
-                <td data-label="Inicial">
+                <td data-label="Plan 1">
                     <input class="extras-input" type="text" name="priceClientInitialPlanExtra"
                         id="priceClientInitialPlanExtra" [(ngModel)]="priceClientInitialPlanExtra"
                         (input)="sendPriceClientInitialPlanExtra($event)"
                         (keyup)="priceExtraInitialPlan()" [value]="priceClientInitialPlanExtra"
                         [disabled]="initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
                 </td>
-                <td data-label="Plus">
+                <td data-label="Plan 2">
                     <input class="extras-input" type="text" name="priceClientPlusPlanExtra"
                         id="priceClientPlusPlanExtra" [(ngModel)]="priceClientPlusPlanExtra"
                         (input)="sendPriceClientPlusPlanExtra($event)"
                         [disabled]="plusPlanExtra === false || readOnlyPricePlusClientExtra"
                         (keyup)="priceExtraPlusPlan()" [value]="priceClientPlusPlanExtra" maxlength="9">
                 </td>
-                <td data-label="Premium">
+                <td data-label="Plan 3">
                     <input class="extras-input" type="text" name="priceClientPremiumPlanExtra"
                         id="priceClientPremiumPlanExtra" [(ngModel)]="priceClientPremiumPlanExtra"
                         (input)="sendPriceClientPremiumPlanExtra($event)"
@@ -136,58 +136,73 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Inicial</th>
-                        <th>Plus</th>
-                        <th>Premium</th>
+                        <th>Plan 1</th>
+                        <th>Plan 2</th>
+                        <th>Plan 3</th>
                     </tr>
                 </thead>
                 <tbody  *ngFor="let extras of extraService">
                     <tr id="plans">
                         <th>
-                            <input class="extras-input" type="text" id="nameExtra"
+                            <div>
+                                <input class="extras-input" type="text" id="nameExtraPreview"
                                 placeholder="Nombre de tu extra" maxlength="30" [value]="extras.nameExtra"
-                                [(ngModel)]="extras.nameExtra" [name]="extras.nameExtra">
+                                [(ngModel)]="extras.nameExtra" [name]="extras.nameExtra"
+                                [disabled]="editExtras === false">
+                                <button class="btn delete-extra-btn">
+                                    <i class="bi bi-x-circle" (click)="deleteExtra(extras)"></i>
+                                </button>
+                                <button class="btn edit-extra-btn">
+                                    <i class="bi bi-pencil-square" (click)="editExtrasInfo()"></i>
+                                </button>
+                            </div>
                         </th>
-                        <td data-label="Inicial">
+                        <td data-label="Plan 1">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="initialPlanExtra"
-                                [(ngModel)]="extras.initialPlanExtra">
+                                [(ngModel)]="extras.initialPlanExtra"
+                                [disabled]="editExtras === false">
                             </div>
                         </td>
-                        <td data-label="Plus">
+                        <td data-label="Plan 2">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="plusPlanExtra" 
-                                [(ngModel)]="extras.plusPlanExtra">
+                                [(ngModel)]="extras.plusPlanExtra"
+                                [disabled]="editExtras === false">
                             </div>
                         </td>
-                        <td data-label="Premium">
+                        <td data-label="Plan 3">
                             <div>
                                 <input class="form-check-input" type="checkbox" id="premiumPlanExtra" 
-                                [(ngModel)]="extras.premiumPlanExtra">
+                                [(ngModel)]="extras.premiumPlanExtra"
+                                [disabled]="editExtras === false">
                             </div>
                         </td>
                     </tr>
                     <tr id="deliveryTime">
                         <th>Tiempo de entrega</th>
-                        <td data-label="Inicial">
+                        <td data-label="Plan 1">
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimeInitialPlanExtra"
-                                    maxlength="3" [value]="extras.deliveryTimeExtra" [disabled]="extras.initialPlanExtra === false">
+                                    maxlength="3" [value]="extras.deliveryTimeExtra" 
+                                    [disabled]="editExtras === false || extras.initialPlanExtra === false">
                                 <label for="deliveryTimeInitialPlanExtra" id="labelDeliveryTimeInitialPlanExtra">días hab.</label>
                             </div>
                             
                         </td>
-                        <td data-label="Plus">
+                        <td data-label="Plan 2">
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimePlusPlanExtra" maxlength="3"
-                                    [value]="extras.deliveryTimeExtraPlus" [disabled]="extras.plusPlanExtra === false">
+                                    [value]="extras.deliveryTimeExtraPlus" 
+                                    [disabled]="editExtras === false || extras.plusPlanExtra === false">
                                 <label for="deliveryTimePlusPlanExtra" id="labelDeliveryTimePlusPlanExtra">días hab.</label>
                             </div>
                         </td>
-                        <td data-label="Premium">
+                        <td data-label="Plan 3">
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimePremiumPlanExtra"
-                                    maxlength="3" [value]="extras.deliveryTimeExtraPremium" [disabled]="extras.premiumPlanExtra === false">
+                                    maxlength="3" [value]="extras.deliveryTimeExtraPremium" 
+                                    [disabled]="editExtras === false || extras.premiumPlanExtra === false">
                                 <label for="deliveryTimePremiumPlanExtra" id="labelDeliveryTimePremiumPlanExtra">días hab.</label>
                             </div>
                         </td>
@@ -196,45 +211,52 @@
                         <th>¿Cuánto quieres ganar por
                             este extra?<span>(en pesos mexicanos)</span>
                         </th>
-                        <td data-label="Inicial">
+                        <td data-label="Plan 1">
                             <input class="extras-input" type="text" id="priceInitialPlanExtra"
                                 (keyup)="clientPriceInitialPlanExtra()" [value]="extras.priceExtra"
-                                [disabled]="extras.initialPlanExtra === false || readOnlyPriceExtra" maxlength="9">
+                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceExtra" maxlength="9">
                         </td>
-                        <td data-label="Plus">
+                        <td data-label="Plan 2">
                             <input class="extras-input" type="text" id="pricePlusPlanExtra"   
-                                [disabled]="extras.plusPlanExtra === false || readOnlyPricePlusExtra"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusExtra"
                                 (keyup)="clientPricePlusPlanExtra()" [value]="extras.priceExtraPlus" maxlength="9">
                         </td>
-                        <td data-label="Premium">
+                        <td data-label="Plan 3">
                             <input class="extras-input" type="text" id="pricePremiumPlanExtra"
-                                [disabled]="extras.premiumPlanExtra === false || readOnlyPricePremiumExtra"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumExtra"
                                 (keyup)="clientPricePremiumPlanExtra()" [value]="extras.priceExtraPremium" maxlength="9">
                         </td>
                     </tr>
                     <tr>
                         <th>Precio que verá el cliente</th>
-                        <td data-label="Inicial">
+                        <td data-label="Plan 1">
                             <input class="extras-input" type="text" id="priceClientInitialPlanExtra" 
                                 (keyup)="priceExtraInitialPlan()" [value]="extras.priceClientExtra"
-                                [disabled]="extras.initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
+                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
                         </td>
-                        <td data-label="Plus">
+                        <td data-label="Plan 2">
                             <input class="extras-input" type="text" id="priceClientPlusPlanExtra" 
-                                [disabled]="extras.plusPlanExtra === false || readOnlyPricePlusClientExtra"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusClientExtra"
                                 (keyup)="priceExtraPlusPlan()" [value]="extras.priceClientExtraPlus" maxlength="9">
                         </td>
-                        <td data-label="Premium">
+                        <td data-label="Plan 3">
                             <input class="extras-input" type="text" id="priceClientPremiumPlanExtra" 
-                                [disabled]="extras.premiumPlanExtra === false || readOnlyPricePremiumClientExtra"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumClientExtra"
                                 (keyup)="priceExtraPremiumPlan()" [value]="extras.priceClientExtraPremium" maxlength="9">
                         </td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="editExtras != false">
                         <td>
-                            <div class="add-extra">
+                            <button type="button" class="btn blue-btn" (click)="cancelEdit()">
+                                Cancelar edición
+                            </button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div>
                                 <button type="button" class="btn blue-btn" (click)="updateInfo(extras)">
-                                    editar
+                                    Guardar cambios
                                 </button>
                             </div>
                         </td>
