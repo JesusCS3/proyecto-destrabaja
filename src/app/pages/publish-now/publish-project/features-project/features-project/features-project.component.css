@@ -33,3 +33,8 @@ hr {
     outline: none !important;
     box-shadow: none !important;
 }
+
+/* disabled inputs */
+#deliveryDate:disabled{
+    background-color: #54C8E8 !important;
+}

@@ -58,4 +58,8 @@ export class ProjectScreenComponent implements OnInit {
     this.requirementsProject = this.requirementsProjectService.requirementsProject;
   }
 
+  priceReceive:number;
+  calculatePriceReceive(){
+    this.priceReceive = (this.budget * 72.7231);
+  }
 }

@@ -27,7 +27,7 @@
         <div class="col-auto">
           <label for="deliveryDate" class="col-form-label">¿Tienes una fecha ideal de entrega?</label>
         </div>
-        <select class="form-select" style="width: 150px ;">
+        <select class="form-select" style="width: 150px ;" (change)="dateLock($event)">
             <option selected>Seleccionar..</option>
             <option value="Si">Sí</option>
             <option value="No">No</option>
@@ -35,7 +35,8 @@
         <div class="col-auto">
           <input type="date" class="deliveryDate" id="deliveryDate" class="form-control" style="width: 160px ;"
           [ngModel]='deliveryDate' (ngModelChange)='deliveryDate=$event'
-          (input)="sendDeliveryDate($event)">
+          (input)="sendDeliveryDate($event)"
+          [disabled]="lock === false">
         </div>
     </div>
 </div>

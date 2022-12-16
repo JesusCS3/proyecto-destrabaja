@@ -44,4 +44,21 @@ export class FeaturesProjectComponent implements OnInit {
     this.featuresProjectService.deliveryDateData(deliveryDate.target.value);
   }
 
+  /* date lock */ 
+  lock:boolean = false;
+  /* locking data */
+  lockData: string;
+  /* date lock */
+  dateLock(event: any){
+    this.lockData = event.target.value;
+
+    if(this.lockData === 'Si'){
+      this.lock = true;
+    }
+
+    if(this.lockData === 'No'){
+      this.lock = false;
+    }
+  }
+
 }
