@@ -30,19 +30,19 @@
                 <td data-label="Plan 1">
                     <div>
                         <input class="form-check-input" type="checkbox" id="initialPlanExtra" name="initialPlanExtra"
-                            [(ngModel)]="initialPlanExtra" (change)="sendInitialPlanExtra()">
+                            [(ngModel)]="initialPlanExtra" (change)="sendInitialPlanExtra(); clearInfoInitial()">
                     </div>
                 </td>
                 <td data-label="Plan 2">
                     <div>
                         <input class="form-check-input" type="checkbox" id="plusPlanExtra" name="plusPlanExtra"
-                            [(ngModel)]="plusPlanExtra" (change)="sendPlusPlanExtra()">
+                            [(ngModel)]="plusPlanExtra" (change)="sendPlusPlanExtra(); clearInfoPlus()">
                     </div>
                 </td>
                 <td data-label="Plan 3">
                     <div>
                         <input class="form-check-input" type="checkbox" id="premiumPlanExtra" name="premiumPlanExtra"
-                            [(ngModel)]="premiumPlanExtra" (change)="sendPremiumPlanExtra()">
+                            [(ngModel)]="premiumPlanExtra" (change)="sendPremiumPlanExtra(); clearInfoPremium()">
                     </div>
                 </td>
             </tr>
@@ -124,7 +124,7 @@
         </tbody>
     </table>
     <div class="add-extra">
-        <button type="button" class="btn blue-btn" (click)="saveExtraService(); clearInfo()">
+        <button type="button" class="btn blue-btn" (click)="addExtraService(); clearInfo()">
             + Agregar Extra
         </button>
     </div>
@@ -153,7 +153,7 @@
                                     <i class="bi bi-x-circle" (click)="deleteExtra(extras)"></i>
                                 </button>
                                 <button class="btn edit-extra-btn">
-                                    <i class="bi bi-pencil-square" (click)="editExtrasInfo()"></i>
+                                    <i class="bi bi-pencil-square" (click)="editExtrasInfo(); getExtrasInfo(extras)"></i>
                                 </button>
                             </div>
                         </th>
@@ -161,6 +161,7 @@
                             <div>
                                 <input class="form-check-input" type="checkbox" id="initialPlanExtra"
                                 [(ngModel)]="extras.initialPlanExtra"
+                                (change)="clearExtra(extras)"
                                 [disabled]="editExtras === false">
                             </div>
                         </td>
@@ -168,6 +169,7 @@
                             <div>
                                 <input class="form-check-input" type="checkbox" id="plusPlanExtra" 
                                 [(ngModel)]="extras.plusPlanExtra"
+                                (change)="clearExtraPlus(extras)"
                                 [disabled]="editExtras === false">
                             </div>
                         </td>
@@ -175,6 +177,7 @@
                             <div>
                                 <input class="form-check-input" type="checkbox" id="premiumPlanExtra" 
                                 [(ngModel)]="extras.premiumPlanExtra"
+                                (change)="clearExtraPremium(extras)"
                                 [disabled]="editExtras === false">
                             </div>
                         </td>
@@ -185,6 +188,7 @@
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimeInitialPlanExtra"
                                     maxlength="3" [value]="extras.deliveryTimeExtra" 
+                                    [(ngModel)]="extras.deliveryTimeExtra"
                                     [disabled]="editExtras === false || extras.initialPlanExtra === false">
                                 <label for="deliveryTimeInitialPlanExtra" id="labelDeliveryTimeInitialPlanExtra">días hab.</label>
                             </div>
@@ -194,6 +198,7 @@
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimePlusPlanExtra" maxlength="3"
                                     [value]="extras.deliveryTimeExtraPlus" 
+                                    [(ngModel)]="extras.deliveryTimeExtraPlus"
                                     [disabled]="editExtras === false || extras.plusPlanExtra === false">
                                 <label for="deliveryTimePlusPlanExtra" id="labelDeliveryTimePlusPlanExtra">días hab.</label>
                             </div>
@@ -202,6 +207,7 @@
                             <div>
                                 <input class="extras-input" type="text" id="deliveryTimePremiumPlanExtra"
                                     maxlength="3" [value]="extras.deliveryTimeExtraPremium" 
+                                    [(ngModel)]="extras.deliveryTimeExtraPremium"
                                     [disabled]="editExtras === false || extras.premiumPlanExtra === false">
                                 <label for="deliveryTimePremiumPlanExtra" id="labelDeliveryTimePremiumPlanExtra">días hab.</label>
                             </div>
@@ -213,41 +219,47 @@
                         </th>
                         <td data-label="Plan 1">
                             <input class="extras-input" type="text" id="priceInitialPlanExtra"
-                                (keyup)="clientPriceInitialPlanExtra()" [value]="extras.priceExtra"
-                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceExtra" maxlength="9">
+                                (keyup)="clientPriceExtra(extras)" [value]="extras.priceExtra" maxlength="9"
+                                [(ngModel)]="extras.priceExtra"
+                                [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceExtra">
                         </td>
                         <td data-label="Plan 2">
-                            <input class="extras-input" type="text" id="pricePlusPlanExtra"   
-                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusExtra"
-                                (keyup)="clientPricePlusPlanExtra()" [value]="extras.priceExtraPlus" maxlength="9">
+                            <input class="extras-input" type="text" id="pricePlusPlanExtra"
+                                [(ngModel)]="extras.priceExtraPlus"   
+                                (keyup)="clientPriceExtraPlus(extras)" [value]="extras.priceExtraPlus" maxlength="9"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusExtra">
                         </td>
                         <td data-label="Plan 3">
                             <input class="extras-input" type="text" id="pricePremiumPlanExtra"
-                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumExtra"
-                                (keyup)="clientPricePremiumPlanExtra()" [value]="extras.priceExtraPremium" maxlength="9">
+                                [(ngModel)]="extras.priceExtraPremium"
+                                (keyup)="clientPriceExtraPremium(extras)" [value]="extras.priceExtraPremium" maxlength="9"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumExtra">
                         </td>
                     </tr>
                     <tr>
                         <th>Precio que verá el cliente</th>
                         <td data-label="Plan 1">
                             <input class="extras-input" type="text" id="priceClientInitialPlanExtra" 
-                                (keyup)="priceExtraInitialPlan()" [value]="extras.priceClientExtra"
+                                (keyup)="priceExtra(extras)" [value]="extras.priceClientExtra"
+                                [(ngModel)]="extras.priceClientExtra"
                                 [disabled]="editExtras === false || extras.initialPlanExtra === false || readOnlyPriceClientExtra" maxlength="9">
                         </td>
                         <td data-label="Plan 2">
-                            <input class="extras-input" type="text" id="priceClientPlusPlanExtra" 
-                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusClientExtra"
-                                (keyup)="priceExtraPlusPlan()" [value]="extras.priceClientExtraPlus" maxlength="9">
+                            <input class="extras-input" type="text" id="priceClientPlusPlanExtra"
+                                (keyup)="priceExtraPlus(extras)" [value]="extras.priceClientExtraPlus" maxlength="9"
+                                [(ngModel)]="extras.priceClientExtraPlus"
+                                [disabled]="editExtras === false || extras.plusPlanExtra === false || readOnlyPricePlusClientExtra">
                         </td>
                         <td data-label="Plan 3">
-                            <input class="extras-input" type="text" id="priceClientPremiumPlanExtra" 
-                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumClientExtra"
-                                (keyup)="priceExtraPremiumPlan()" [value]="extras.priceClientExtraPremium" maxlength="9">
+                            <input class="extras-input" type="text" id="priceClientPremiumPlanExtra"
+                                (keyup)="priceExtraPremium(extras)" [value]="extras.priceClientExtraPremium" maxlength="9"
+                                [(ngModel)]="extras.priceClientExtraPremium"
+                                [disabled]="editExtras === false || extras.premiumPlanExtra === false || readOnlyPricePremiumClientExtra">
                         </td>
                     </tr>
                     <tr *ngIf="editExtras != false">
                         <td>
-                            <button type="button" class="btn blue-btn" (click)="cancelEdit()">
+                            <button type="button" class="btn blue-btn" (click)="ifExtraCanceled(extras)">
                                 Cancelar edición
                             </button>
                         </td>

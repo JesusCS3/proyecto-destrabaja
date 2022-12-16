@@ -52,8 +52,6 @@ export class ExtrasServiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.actualizarInfo();
-
     //eliminar despues esta linea
     this.extraService = this.extrasServiceService.extraService;
 
@@ -293,37 +291,109 @@ export class ExtrasServiceComponent implements OnInit {
     }
   }
 
-  /* *** save information *** */
-  saveInfoExtraService:any;
+  /* calculate the customer price after adding extra */
+  clientPriceExtra(extraService:extraService){
+    if(extraService.priceExtra != undefined){
+      extraService.priceClientExtra = Math.ceil(extraService.priceExtra * 1.376263);
+      this.readOnlyPriceClientExtra = true;
+    }
 
-  saveExtraService(){
-    this.saveInfoExtraService = this.extrasServiceService.saveExtraService();
-    console.log(this.initialPlanExtra);
+    if(extraService.priceClientExtra === 0){
+      this.readOnlyPriceClientExtra = false;
+    }
+  }
+
+  clientPriceExtraPlus(extraService:extraService){
+    if(extraService.priceExtraPlus != undefined){
+      extraService.priceClientExtraPlus = Math.ceil(extraService.priceExtraPlus * 1.376263);
+      this.readOnlyPricePlusClientExtra = true;
+    }
+
+    if(extraService.priceClientExtraPlus === 0){
+      this.readOnlyPricePlusClientExtra = false;
+    }
+  }
+
+  clientPriceExtraPremium(extraService:extraService){
+    if(extraService.priceExtraPremium != undefined){
+      extraService.priceClientExtraPremium = Math.ceil(extraService.priceExtraPremium * 1.376263);
+      this.readOnlyPricePremiumClientExtra = true;
+    }
+
+    if(extraService.priceClientExtraPremium === 0){
+      this.readOnlyPricePremiumClientExtra = false;
+    }
+  }
+
+  /* calculate price after adding extra */
+  priceExtra(extraService:extraService){
+    if(extraService.priceClientExtra != undefined){
+      extraService.priceExtra = Math.ceil(extraService.priceClientExtra / 1.376263);
+      this.readOnlyPriceExtra = true;
+    }
+
+    if(extraService.priceExtra === 0){
+      this.readOnlyPriceExtra = false;
+    }
+  }
+
+  priceExtraPlus(extraService:extraService){
+    if(extraService.priceClientExtraPlus != undefined){
+      extraService.priceExtraPlus = Math.ceil(extraService.priceClientExtraPlus / 1.376263);
+      this.readOnlyPricePlusExtra = true;
+    }
+
+    if(extraService.priceExtraPlus === 0){
+      this.readOnlyPricePlusExtra = false;
+    }
+  }
+
+  priceExtraPremium(extraService:extraService){
+    if(extraService.priceClientExtraPremium != undefined){
+      extraService.priceExtraPremium = Math.ceil(extraService.priceClientExtraPremium / 1.376263);
+      this.readOnlyPricePremiumExtra = true;
+    }
+
+    if(extraService.priceExtraPremium === 0){
+      this.readOnlyPricePremiumExtra = false;
+    }
+  }
+
+
+  /* *** add info *** */
+  addInfoExtraService:any;
+
+  addExtraService(){
+    this.addInfoExtraService = this.extrasServiceService.addExtraService();
+  }
+
+  /* *** get info if canceled *** */
+
+  /*  get info */
+  getInfo: any;
+  getExtrasInfo(extraService:extraService){
+    this.getInfo = this.extrasServiceService.getInfoEdit(extraService);
+  }
+
+  extraCanceled: any;
+  ifExtraCanceled(extraService:extraService){
+    this.extraCanceled = this.extrasServiceService.ifCanceled(extraService);
+    /* lock fields */
+    this.editExtras = false;
   }
 
   /* *** update info *** */
 
   editExtrasInfo(){
+    /* enable fields */
     this.editExtras = true;
   }
   
+  updateExtra: any;
   updateInfo(extraServiceUpdate:extraService){
-    const index: number = this.extraService.indexOf(extraServiceUpdate);
+    this.updateExtra = this.extrasServiceService.editExtraService(extraServiceUpdate);
 
-    for(let extras of this.extraService){
-      let extraServiceNewExtra = new extraService(extras.nameExtra, extras.initialPlanExtra, 
-        extras.deliveryTimeExtra, extras.priceExtra, extras.priceClientExtra,
-        extras.plusPlanExtra, extras.deliveryTimeExtraPlus, extras.priceExtraPlus, 
-        extras.priceClientExtraPlus, extras.premiumPlanExtra, extras.deliveryTimeExtraPremium, 
-        extras.priceExtraPremium, extras.priceClientExtraPremium);
-        
-      this.extraService.splice(index, 1, extraServiceNewExtra);
-      console.log(extras);
-      console.log(index);
-    }
-  }
-
-  cancelEdit(){
+    /* lock fields */
     this.editExtras = false;
   }
 
@@ -364,6 +434,79 @@ export class ExtrasServiceComponent implements OnInit {
     this.clearInfoExtra = this.extrasServiceService.clearInfo();
   }
 
+  clearInfoExtraInitial: any;
+  clearInfoInitial() {
+    if(this.initialPlanExtra === false){
+      /* initial plans */
+      this.initialPlanExtra = false;
+      this.deliveryTimeInitialPlanExtra = 0;
+      this.priceInitialPlanExtra = 0;
+      this.priceClientInitialPlanExtra = 0;
+
+      /* clear info on service */
+      this.clearInfoExtraInitial = this.extrasServiceService.clearInfoInitial;
+    }
+  }
+
+  clearInfoExtraPlus:any;
+  clearInfoPlus(){
+    if(this.plusPlanExtra === false){
+      /* plus plan */
+      this.plusPlanExtra = false;
+      this.deliveryTimePlusPlanExtra = 0;
+      this.pricePlusPlanExtra = 0;
+      this.priceClientPlusPlanExtra = 0;
+
+      /* clear info on service */
+      this.clearInfoExtraPlus = this.extrasServiceService.clearInfoPlus;
+    }
+  }
+
+  clearInfoExtraPremium:any;
+  clearInfoPremium() {
+    if(this.premiumPlanExtra === false){
+      /* premium plan */
+      this.premiumPlanExtra = false;
+      this.deliveryTimePremiumPlanExtra = 0;
+      this.pricePremiumPlanExtra = 0;
+      this.priceClientPremiumPlanExtra = 0;
+
+      /* clear info on service */
+      this.clearInfoExtraPremium = this.extrasServiceService.clearInfoPremium;
+    }
+  }
+
+  /* *** clear information after add *** */
+  clearExtra(extraService:extraService) {
+    if(extraService.initialPlanExtra === false){
+      /* initial plans */
+      extraService.initialPlanExtra = false;
+      extraService.deliveryTimeExtra = 0;
+      extraService.priceExtra = 0;
+      extraService.priceClientExtra = 0;
+    }
+  }
+
+  clearExtraPlus(extraService:extraService){
+    if(extraService.plusPlanExtra === false){
+      /* plus plan */
+      extraService.plusPlanExtra = false;
+      extraService.deliveryTimeExtraPlus = 0;
+      extraService.priceExtraPlus = 0;
+      extraService.priceClientExtraPlus = 0;
+    }
+  }
+
+  clearExtraPremium(extraService:extraService) {
+    if(extraService.premiumPlanExtra === false){
+      /* premium plan */
+      extraService.premiumPlanExtra = false;
+      extraService.deliveryTimeExtraPremium = 0;
+      extraService.priceExtraPremium = 0;
+      extraService.priceClientExtraPremium = 0;
+    }
+  }
+
   /* extra funciones antes de modificacion  */
 
 
@@ -371,14 +514,6 @@ export class ExtrasServiceComponent implements OnInit {
   /* delete extra information */
   deleteExtra(extraService:extraService){
     this.extrasServiceService.delete(extraService);
-  }
-
-  actualizarInfo(){
-    var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
-    var removed = myFish.splice(0, 4, 'parrot', 'anemone', 'blue');
-
-    console.log('original: ' + myFish);
-    console.log('removido: ' + removed);
   }
   
 }
