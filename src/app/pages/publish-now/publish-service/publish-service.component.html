@@ -39,7 +39,8 @@
                         <button class="btn publish-btn" type="button" (click)="editService(); scrollTop()">
                             Regresar y editar
                         </button>
-                        <button type="button" class="btn publish-btn" (click)="confirmService(); scrollTop()">
+                        <button type="button" class="btn publish-btn" 
+                        (click)="confirmService(); clearData(); scrollTop()">
                             ¡Publicar!
                         </button>
                     </div>

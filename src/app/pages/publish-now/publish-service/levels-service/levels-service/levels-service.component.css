@@ -95,15 +95,15 @@ hr {
 
 /* customized delete deliverable */
 
-.elementDescription {
+.deliverableDescription {
     float: left;
 }
 
-.elementDelete {
+.deleteDeliverable {
     float: left;
 }
 
-.elementDelete--btn {
+.deleteDeliverable-btn {
     font-size: 22px;
     background: none;
     border: none;
@@ -115,10 +115,10 @@ hr {
     color: #425CC7;
 }
 
-.elementDelete--btn:focus { outline: none; }
-.elementDelete--btn:active { transform: translateY(2px); }
+.deleteDeliverable-btn:focus { outline: none; }
+.deleteDeliverable-btn:active { transform: translateY(2px); }
 
-.element:hover .elementDelete--btn { display: block; }
+.deliverable:hover .deleteDeliverable-btn { display: block; }
 
 /* custom save button */
 .save-btn {

@@ -81,6 +81,10 @@ export class PublishServiceComponent implements OnInit {
     this.requirementsService = this.requirementsServiceService.requirementsService;
   }
 
+  ngOnDestroy(): void {
+    this.clearData();
+  }
+
   /* *** scroll to top *** */
   @HostListener('window:scroll')
   checkScroll() {

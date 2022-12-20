@@ -51,6 +51,7 @@ export class ProfileSettingsComponent implements OnInit {
   profileVideo:any;
   resumeSummaryFile:string;
   previousWork:string;
+  rfc:string;
 
   /* variables for file capture */
   previewImg: string;
@@ -303,6 +304,23 @@ export class ProfileSettingsComponent implements OnInit {
   clearData(){
     /* *** profile settings *** */
     this.clearProfileSettingsInfo = this.profileSettingsService.clearInfo();
+  }
+
+  /* rfc lock */ 
+  lock:boolean = false;
+  /* locking data */
+  lockData: string;
+  /* date lock */
+  rfcLock(event: any){
+    this.lockData = event.target.value;
+
+    if(this.lockData === 'Si'){
+      this.lock = true;
+    }
+
+    if(this.lockData === 'No'){
+      this.lock = false;
+    }
   }
 
 }

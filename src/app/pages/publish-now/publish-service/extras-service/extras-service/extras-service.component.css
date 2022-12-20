@@ -167,6 +167,15 @@ hr {
     padding: .2rem;
 }
 
+/* edit btns */
+.canceledExtra-btn{
+    text-align: left;
+}
+
+.editExtra-btn{
+    text-align: right;
+}
+
 /* *** responsive *** */
 
 /* Small devices (landscape phones, 600px and down) */
@@ -192,6 +201,17 @@ hr {
         content: attr(data-label);
         font-weight: bold;
         color: #425dc757;
+    }
 
+    .extras-table #nameExtraPreview {
+        width: 100%;
+    }
+
+    .canceledExtra-btn{
+        text-align: center;
+    }
+
+    .editExtra-btn{
+        text-align: center;
     }
 } 

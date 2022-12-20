@@ -55,11 +55,11 @@
                 </td>
             </tr>
             <!-- deliverables preview -->
-            <tr id="deliverablesPreview" *ngFor="let deliverables of deliverables">
+            <tr id="deliverablesPreview" *ngFor="let deliverables of deliverables" class="deliverable">
                 <th>
-                    <div class="elementDescription pe-3">{{deliverables.name}}</div>
-                    <div class="elementDelete">
-                        <button class="elementDelete--btn">
+                    <div class="deliverableDescription pe-3">{{deliverables.name}}</div>
+                    <div class="deleteDeliverable">
+                        <button class="deleteDeliverable-btn">
                             <i class="bi bi-x-circle" type="button" (click)="deleteDeliverable(deliverables)"></i>
                         </button>
                     </div>

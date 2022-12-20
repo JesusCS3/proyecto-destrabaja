@@ -38,6 +38,8 @@ export class ProjectScreenComponent implements OnInit {
 
   ngOnInit(): void {
     this.receiveInfo();
+
+    this.calculatePriceReceive();
   }
 
   /* *** receive info on services *** */
@@ -58,8 +60,9 @@ export class ProjectScreenComponent implements OnInit {
     this.requirementsProject = this.requirementsProjectService.requirementsProject;
   }
 
+  /* *** calculate price to receive *** */
   priceReceive:number;
   calculatePriceReceive(){
-    this.priceReceive = (this.budget * 72.7231);
+    this.priceReceive = this.budget / 1.376263;
   }
 }

@@ -52,7 +52,7 @@ export class ExtrasServiceComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //eliminar despues esta linea
+    /* receive info from extras service */
     this.extraService = this.extrasServiceService.extraService;
 
     /* fill with previously saved values */
@@ -137,24 +137,6 @@ export class ExtrasServiceComponent implements OnInit {
   this.deliveryTimePremiumPlanExtra = this.extrasServiceService.deliveryTimePremiumPlanExtra;
   this.pricePremiumPlanExtra = this.extrasServiceService.pricePremiumPlanExtra;
   this.priceClientPremiumPlanExtra = this.extrasServiceService.priceClientPremiumPlanExtra;
-
-  /* 
-  
-  if(this.deliveryTimeExtraPlus != undefined || this.deliveryTimeExtraPlus != null){
-    this.plusPlanExtra = true;
-  }
-  
-  if(this.deliveryTimeExtraPlus === 0){
-    this.plusPlanExtra = false;
-  }
-  
-  if(this.deliveryTimeExtraPremium != undefined || this.deliveryTimeExtraPremium != null){
-    this.premiumPlanExtra = true;
-  }
-
-  if(this.deliveryTimeExtraPremium === 0){
-    this.premiumPlanExtra = false;
-  } */
 
   }
 
@@ -507,10 +489,6 @@ export class ExtrasServiceComponent implements OnInit {
     }
   }
 
-  /* extra funciones antes de modificacion  */
-
-
-    //eliminar despues esta funcion
   /* delete extra information */
   deleteExtra(extraService:extraService){
     this.extrasServiceService.delete(extraService);

@@ -629,6 +629,17 @@
     --bs-gradient: none;
 }
 
+/* titles third part */
+.titles-third-part{
+    width: 100%;
+    height: 70px;
+}
+
+/* disabled inputs */
+#rfc:disabled{
+    background-color: #54C8E8;
+}
+
 /* *** responsive *** */
 
 /* Small devices (landscape phones, 576px and down) */
