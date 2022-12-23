@@ -5,13 +5,13 @@
                 <div id="title-profile-settings">
                     <h2><strong>Completa tu registro</strong></h2>
                 </div>
-                <form (ngSubmit)="formProfileSettings.form.valid && registerThirdPart(); clearData()"
+                <form (ngSubmit)="formProfileSettings.form.valid && registerFourthPart(); clearData()"
                  #formProfileSettings="ngForm">
                     <div *ngIf="!firstPart; else secondPartTemplate">
                         <div class="row align-items-center form-profile pt-5">
                             <div class="col-xl-3 col-md-12 center-profile-img">
                                 <!-- capturing images for profile -->
-                                <div class="previewFile">
+                                <div class="previewFileProfile">
                                     <div *ngIf="!previewImg; else previewImgtemplate">
                                         <div class="img-ico">
                                             <p>Da clic para agregar tu foto de perfil</p>
@@ -19,8 +19,8 @@
                                     </div>
                                     <!-- preview images for profile-->
                                     <ng-template #previewImgtemplate>
-                                        <div class="previewImageFile">
-                                            <div class="previewImageHeader">
+                                        <div class="previewImageProfile">
+                                            <div class="previewHeaderProfile">
                                                 <div *ngIf="previewImg">
                                                     <img [src]="previewImg" alt="preview-profile-img" />
                                                 </div>
@@ -140,7 +140,7 @@
                                         name="resumeSummary"
                                         (input)="sendResumeSummary($event)"
                                         (keyup)="resumeSummaryCount($event)"
-                                        maxlength="1500" required></textarea>
+                                        maxlength="1500"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                     </ng-template>
                     
                     <ng-template #thirdTemplate>
-                        <div>
+                        <div *ngIf="!thirdPart; else fourthTemplate">
                             <div class="row form-profile profile-files">
                                 <div class="col-xl-6 col-md-12">
                                     <div class="mb-3 resumesummary">
@@ -201,7 +201,7 @@
                                                             <i class="bi bi-camera-video-fill add-video"></i>
                                                             <input type="file" class="addVideoFile"  id="profileVideo" 
                                                             name="profileVideo"
-                                                            [(ngModel)]="profileVideo" accept="video/*" required
+                                                            [(ngModel)]="profileVideo" accept="video/*"
                                                             (input)="sendProfileVideo($event)"
                                                             (change)="onSelectFile($event)">
                                                         </div>
@@ -251,7 +251,7 @@
                                                             <div class="sendPdfFile">
                                                                 <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
                                                                 <input type="file" class="addPdfFile" id="resumeSummaryFile"
-                                                                    name="resumeSummaryFile" required
+                                                                    name="resumeSummaryFile"
                                                                     [(ngModel)]="resumeSummaryFile" accept="application/pdf"
                                                                     (input)="sendResumeSummaryFile($event)">
                                                             </div>
@@ -304,7 +304,7 @@
                                                             <div class="sendPdfFile">
                                                                 <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
                                                                 <input type="file" class="addPdfFile" id="previousWork"
-                                                                name="previousWork" accept="application/pdf" required
+                                                                name="previousWork" accept="application/pdf"
                                                                 [(ngModel)]="previousWork" 
                                                                 (input)="sendPreviousWork($event)">
                                                             </div>
@@ -326,10 +326,51 @@
                                 <button class="btn next-btn" type="button" (click)="backSecondPart()">
                                     Atrás
                                 </button>
+                                <button type="button" class="btn next-btn" (click)="registerThirdPart()">
+                                    Siguiente
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <!-- fourth part of the register -->
+                    <ng-template #fourthTemplate>
+                        <div>
+                            <div class="row align-items-center form-profile pt-5">
+                                <div class="col-xl-4 col-md-5">
+                                    <label for="previousWork" id="label-preview-works" 
+                                    class="form-label">
+                                        <strong>Agregar RFC</strong>
+                                        <span type="button" class="question-btn ps-2" placement="bottom"
+                                        ngbTooltip="NOTA: Debes agregar tu RFC para publicar algún servicio o proyecto en destrabaja." 
+                                        tooltipClass="my-custom-class">
+                                        <i class="bi bi-question-circle-fill "></i>
+                                    </span>
+                                    </label>
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="rcf-selection" name="rcf-selection"
+                                        required (change)="rfcLock($event)">
+                                            <option selected disabled>¿vas a publicar algún servicio o proyecto?</option>
+                                            <option value="Si">Sí</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                        <label for="rcf-selection">Seleccionar...</label>
+                                    </div>
+                                    <div class=" form-floating mb-3">
+                                        <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC"
+                                            [(ngModel)]='rfc' (input)="sendRfc($event)">
+                                        <label for="rfc">RFC</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btns-record">
+                                <button class="btn next-btn" type="button" (click)="backThirdPart()">
+                                    Atrás
+                                </button>
                                 <button type="submit" class="btn next-btn">
                                     Finalizar
                                 </button>
-                            </div>
+                            </div> 
                         </div>
                     </ng-template>
 
@@ -338,43 +379,3 @@
         </div>
     </div>
 </section>
-
-<div>
-    <div class="row align-items-center form-profile pt-5">
-        <div class="col-xl-4 col-md-5">
-            <label for="previousWork" id="label-preview-works" 
-            class="form-label">
-                <strong>Agregar RFC</strong>
-                <span type="button" class="question-btn ps-2" placement="bottom"
-                ngbTooltip="NOTA: Debes agregar tu RFC para publicar algún servicio o proyecto en destrabaja." 
-                tooltipClass="my-custom-class">
-                <i class="bi bi-question-circle-fill "></i>
-            </span>
-            </label>
-            <div class="form-floating mb-3">
-                <select class="form-select" id="rcf-selection" name="rcf-selection"
-                required (change)="rfcLock($event)">
-                    <option selected disabled>¿vas a publicar algún servicio o proyecto?</option>
-                    <option value="Si">Sí</option>
-                    <option value="No">No</option>
-                </select>
-                <label for="rcf-selection">Seleccionar...</label>
-            </div>
-            <div class=" form-floating mb-3">
-                <input type="text" class="form-control" name="rfc" id="rfc" placeholder="RFC"
-                    [(ngModel)]='rfc' (input)="sendName($event)" required
-                    [disabled]="lock === false">
-                <label for="rfc">RFC</label>
-            </div>
-        </div>
-    </div>
-    <div class="btns-record">
-        <button class="btn next-btn" type="button">
-            Atrás
-        </button>
-        <button type="submit" class="btn next-btn">
-            Finalizar
-        </button>
-    </div> 
-</div>
-

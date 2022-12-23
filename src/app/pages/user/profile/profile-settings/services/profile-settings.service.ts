@@ -118,6 +118,15 @@ export class ProfileSettingsService {
     this.previousWorkSubject.next(previousWork);
   }
 
+  rfc: string;
+  private rfcSubject = new Subject<string>();
+  rfcObservable = this.rfcSubject.asObservable();
+
+  rfcData(rfc: string){
+    this.rfc = rfc;
+    this.rfcSubject.next(rfc);
+  }
+
   /* *** save images and video preview *** */
   previewImgProfile: string;
   previewImgProfileData(previewImgProfile: string){
@@ -133,7 +142,8 @@ export class ProfileSettingsService {
   save(){
     let profileSettingsInfo = new profileSettings(this.profileImg, this.name,this.fathersLastName,
       this.mothersLastName, this.gender, this.dateBirth, this.contry, this.city, this.resumeSummary,
-      this.profileVideo, this.resumeSummaryFile, this.previousWork);
+      this.profileVideo, this.resumeSummaryFile, this.previousWork,this.rfc);
+      
     this.profileSettings.push(profileSettingsInfo);
   }
 

@@ -119,6 +119,10 @@ export class ProfileSettingsComponent implements OnInit {
     this.profileSettingsService.previousWorkObservable.subscribe(response => {
       this.previousWork = response;
     });
+
+    this.profileSettingsService.rfcObservable.subscribe(response => {
+      this.rfc = response;
+    });
     
   }
 
@@ -272,15 +276,19 @@ export class ProfileSettingsComponent implements OnInit {
     this.profileSettingsService.previousWorkData(previousWork.target.value);
   }
 
+  sendRfc(rfc: any) {
+    this.profileSettingsService.rfcData(rfc.target.value);
+  }
+
   /* *** save and proceed to the second part *** */
-  firstPart = false;
+  firstPart: boolean = false;
 
   registerFirstPart(): void {
     this.firstPart = true;
   }
 
   /* *** save and proceed to the third part *** */
-  secondPart = false;
+  secondPart: boolean = false;
   registerSecondPart(): void {
     this.secondPart = true;
   }
@@ -290,14 +298,25 @@ export class ProfileSettingsComponent implements OnInit {
     this.firstPart = false;
   }
 
-  /* *** save and proceed to the profile *** */
+  /* *** save and proceed to the fourth part *** */
+  thirdPart: boolean = false;
   registerThirdPart(): void {
-    this.router.navigate(['/profile']);
+    this.thirdPart = true;
   }
 
   /* back to second part */
   backSecondPart(): void {
     this.secondPart = false;
+  }
+
+  /* *** save and proceed to the profile *** */
+  registerFourthPart(): void {
+    this.router.navigate(['/profile']);
+  }
+
+  /* back to third part */
+  backThirdPart(): void {
+    this.thirdPart = false;
   }
 
   clearProfileSettingsInfo:any;
