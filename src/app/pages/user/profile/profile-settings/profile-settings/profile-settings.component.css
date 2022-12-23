@@ -90,12 +90,12 @@
     max-height: 200px;
 }
 
-.previewHeader{
+.previewHeaderProfile{
     max-width: 200px;
     min-width: 200px;
 }
 
-.previewHeader img{
+.previewHeaderProfile img{
     height: 200px;
     max-height: 194px;
     width: 97%;
