@@ -181,6 +181,45 @@
                             </div>
                         </div>
                     </div>
+                    <div class="pdf-profile">
+                        <!-- preview files -->
+                        <div>
+                            <!-- capturing files for project -->
+                            <div class="previewPdfFile">
+                                <div *ngIf="!filesProject; else previewFiles">
+                                    <i class="bi bi-paperclip" id="clip"></i>
+                                    <p id="text-file">Máximo 3 archivos</p>
+                                </div>
+                                <!-- preview files for project-->
+                                <ng-template #previewFiles>
+                                    <div>
+                                        <img src="./assets/img/publish-now/pdf.svg" alt="pdf" id="pdf">
+                                        <p id="text-pdf">Agregados</p>
+                                    </div>
+                                </ng-template>
+                                <!-- buttons to add and delete file -->
+                                <div class="btns-SendPdfFile">
+                                    <div class="btns-pdf-file">
+                                        <div class="btn-add-pdf">
+                                            <div class="sendPdfFile">
+                                                <i class="bi bi-file-earmark-plus-fill add-pdf"></i>
+                                                <input type="file" class="addPdfFile" id="filesProject"
+                                                name="filesProject" accept="application/pdf"
+                                                [(ngModel)]="filesProject" 
+                                                (input)="sendFilesProject($event)">
+                                            </div>
+                                        </div>
+                                        <div class="btn-delete-pdf">
+                                            <div class="deletePdfFile">
+                                                <i class="bi bi-file-earmark-minus-fill delete-pdf"
+                                                (click)="deleteFilesProject()"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

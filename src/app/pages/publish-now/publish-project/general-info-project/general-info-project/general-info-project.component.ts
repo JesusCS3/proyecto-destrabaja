@@ -51,8 +51,10 @@ export class GeneralInfoProjectComponent implements OnInit {
   url!: string | ArrayBuffer | null;
   format: string;
 
-  constructor(private sanitizer:DomSanitizer,
-              private generalInfoProjectService: GeneralInfoProjectService) { }
+  constructor(
+    private sanitizer:DomSanitizer,
+    private generalInfoProjectService: GeneralInfoProjectService
+  ) { }
 
   ngOnInit(): void {
     /* fill with previously saved values */
@@ -167,6 +169,7 @@ export class GeneralInfoProjectComponent implements OnInit {
 
   clearPreviewImg: any;
   clearPreviewVideo: any;
+  clearFiles: any;
   /* delete preview video */
   deletePreviewVideo(){
     this.url = '';
@@ -182,6 +185,13 @@ export class GeneralInfoProjectComponent implements OnInit {
     this.imageFile = '';
     this.clearPreviewImg = this.generalInfoProjectService.clearPreviewImg();
   }
+
+  /* delete files */
+  deleteFilesProject(){
+    this.filesProject = '';
+    this.clearFiles = this.generalInfoProjectService.clearPreviewFiles();
+  }
+
 
   /* send info */
   sendNameService(nameProject:any){
